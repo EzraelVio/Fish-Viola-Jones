@@ -1,0 +1,170 @@
+%!TEX root = ./template-skripsi.tex
+%-------------------------------------------------------------------------------
+%                     BAB III
+%               			PEMBAHASAN
+%-------------------------------------------------------------------------------
+
+\chapter{METODOLOGI PENELITIAN}
+
+\section{Tahapan Penelitian}
+
+Gambar \textit{flowchart} berikut mengilustrasikan proses pelatihan 
+ dari dataset dan juga proses penggunaan yang sesungguhnya.
+
+\begin{figure}[H]
+  \centering{}
+	\includegraphics[width=0.6\textwidth]{gambar/metode\_pelatihan}
+  \caption{Diagram alir untuk algoritma pelatihan klasifikasi objek}
+\end{figure}
+
+\begin{figure}[H]
+  \centering{}
+	\includegraphics[width=0.6\textwidth]{gambar/metode\_use}
+  \caption{Diagram alir untuk algoritma pendeteksian objek}
+\end{figure}
+
+(Jelasin disini secara ringkas, biar gak terlalu ambigu)
+
+\section{Desain Sistem}
+
+Dalam proses pembuatan \emph{classifier} perlu dilewati tahapan \textit{training}. 
+Tujuan \textit{training} adalah untuk menciptakan suatu \emph{strong classifier} 
+yang nantinya dapat digunakan untuk melakukan klasifikasi yang sebenarnya.
+Pertama, gambar yang akan menjadi \textit{set} latihan dianotasi sesuai kelasnya masing-masing, 
+\textit{set} latihan ini juga berisikan gambar-gambar yang tidak memiliki kelas yang benar, atau 
+\emph{false example}. Setelah itu gambar melalui proses \emph{pre-processing} dan disesuaikan 
+untuk mengoptimalkan proses pelatihan. Setiap gambar latihan nantinya akan 
+diubah menjadi \emph{integral image} untuk dapat diproses.
+
+Pertama algoritma akan mengkonstruksi sebuah \emph{decision tree} untuk setiap 
+\emph{weaklearn} dimana \emph{branch} untuk setiap kelas akan ditentukan. Lalu 
+\emph{Adaboost} akan menentukan bobot dari setiap \emph{weaklearn} dalam menentukan hasil akhir 
+klasifikasi gambar. Terakhir, \emph{Adaboost} akan membuat sebuah 
+\emph{strong classifier} dengan membuat sebuah \emph{Attentional Cascade}
+
+Dengan \emph{strong classifier}, klasifikasi objek yang sesungguhnya bisa dilakukan. 
+Pertama gambar yang akan dideteksi akan melalui \emph{pre-processing}. 
+Kemudian \emph{integral image} akan dihitung untuk 
+menghasilkan \emph{sub-window} pada gambar. setiap sub-window akan dicek menggunakan 
+\emph{strong classifier}. \emph{Sub-window} yang ditemukan memiliki objek yang 
+dicari akan dibuatkan \emph{bounding box} pada kelilingnya. Setelah semua 
+\emph{sub-window} diperiksa, semua \emph{bounding box} yang bertindihan akan 
+digabungkan sebelum gambar hasil dikembalikan ke pengguna.
+
+\section{Training \emph{Strong Classifier}}
+
+Pada \textit{Training} ada tiga tahapan yang perlu dijalankan 
+untuk menghasilkan sebuah \emph{Strong Classifier}, 
+yaitu penginputan \textit{dataset} pelatihan yang sudah dianotasi, 
+pembuatan \emph{decision tree} untuk setiap fitur, 
+\emph{Boosting }dan pemilihan fitur oleh Adaboost untuk membuat \emph{attentional cascade}.
+
+\subsection{\textit{Input Dataset} Pelatihan}
+
+\textit{Dataset} yang akan dipakai diambil dari fishR (Dapat dilihat di 
+ ini harus diganti) yang 
+berisikan gambar ikan genus Abudefduf, Amphiprion dan Chaetodon. 
+Untuk contoh pelatihan kelas-kelas ikan adalah gambar berukuran 72x41 piksel, 
+dengan warna grayscale. Selain itu juga akan dipilih contoh 
+pelatihan negatif atau kumpulan gambar yang tidak terdapat kelas 
+ikan dengan jumlah yang sama dari (cari sumber), resolusi sama dan perlakuan 
+yang sama. (Jelasin anotasinya kayak gimana disisni) \textit{Dataset} ini lalu 
+akan dibagi menjadi tiga yaitu \textit{training dataset}, 
+\textit{validation dataset}, dan \emph{test dataset} dengan jumlah 
+(belum ditentukan, tergantung dataset. 
+Ada banyak metode pembagian yang bisa dipilih).
+Nilai bobot pada tiap \textit{dataset} akan di inisialisasi dengan rumus:
+\begin{equation}
+  w^1_i = D(i) \text{ for } i=1,...,N
+\end{equation}
+dimana $w$ adalah bobot, $D$ Distribusi dan $N$ jumlah contoh pelatihan.
+
+\subsection{Pembuatan \textit{Decision Tree}}
+
+Setiap \emph{weaklearner} adalah sebuah \emph{decision tree} yang mengambil nilai 
+dari \emph{Haar-like features} sebagai variabel klasifikasi.
+\emph{Haar-like features} dapat mengembalikan 
+sebuah nilai perbandingan intensitas cahaya dari suatu area pada gambar dan 
+mendeteksi keberadaan suatu \emph{fitur} seperti 
+perbedaan warna, garis, maupun perbedaan kontras pada gambar. 
+(Jelasin step by step pembuatan decision tree pake algoritma).
+
+\subsection{\emph{Boosting}}
+
+Algoritma \emph{Adaboost} akan mem-\emph{boosting} \emph{weaklearner} untuk 
+menciptakan sebuah \emph{strong classifier}. \emph{Boosting} dilakukan dari 
+\emph{weaklearner} yang memiliki tingkat akurasi paling tinggi, dan dengan 
+menggunakan \emph{dataset} latihan.
+
+\emph{Adaboost} akan menjalankan \emph{weaklearner} terbaik untuk 
+mengklasifikasi seluruh contoh \emph{dataset} latihan dan mencatat contoh yang 
+gagal diklasifikasi oleh \emph{weaklearner} tersebut. Nilai dari \emph{weaklearner} 
+tersebut dihitung dengan (Masukin rumus disini, yg gini purity itu), yang nantinya 
+akan dicatat untuk urutan \emph{Boosting} ronde berikutnya dan juga sebagai nilai 
+voting pada klasifikasi yang sebenarnya. 
+Nantinya bobot dari seluruh \emph{dataset} latihan akan dihitung ulang dengan menaikan bobot dari contoh 
+yang gagal diklasifikasi oleh \emph{weaklearner} sebelumnya. Proses ini dilakukan 
+untuk setiap \emph{weaklearner}. (Masukin rumus re-distribusi bobot contoh disini)
+
+Ketika sebuah ronde \emph{Boosting} sudah selesai dan seluruh \emph{weaklearner} sudah  diurutkan sesuai dengan 
+nilai yang didapat dari ronde tersebut. \emph{Adaboost} akan melakukan validasi 
+tingkat akurasi \emph{strong classifier} yang sudah dibuat menggunakan \emph{dataset} validasi. 
+hal ini dilakukan dengan membandingkan tingkat presisi \emph{strong classifer} 
+yang dihasilkan ronde ini dengan \emph{strong classifer} yang dihasilkan ronde 
+sebelumnya. Bisa tingkat presisi ternyata semakin berkurang, maka \emph{Boosting} 
+akan dihentikan dan \emph{strong classifier} (ronde ini atau sebelumnya, cek lagi) 
+menjadi \emph{final strong classifier}.
+
+\subsection{Pembuatan \emph{Attentional Cascade}}
+
+Sebelum pembuatan \emph{attentional cascade}, \emph{weaklearner} yang kurang 
+diskriminatif akan dibuang. Hal ini dilakukan dengan (cari, karena bagian ini 
+belum jelas dari kemarin). \emph{Attentional cascade} akan dibuat dari \emph{weaklearner} 
+yang tersisa secara bertahap. Pada setiap fase \emph{cascade}, \emph{weaklearner} akan 
+ditambahkan satu-persatu. Setiap sebuah \emph{weaklearner} ditambahkan, tes akan dilakukan 
+dengan \emph{dataset} tes. \emph{Weaklearner} akan terus ditambahkan hingga \emph{false positive rate} 
+yang ditentukan untuk fase itu dicapai. Fase akan terus bertambah hingga 
+akurasi sempurna dicapai, atau hingga \emph{weaklearner} sudah habis. (Ini periu 
+dijabarin lagi dengan rumus per-step).
+
+\section{Klasifikasi Objek Sebenarnya}
+
+Tahapan ini adalah penggunakaan \emph{classifier} yang sebenarnya. 
+Gambar yang akan dipakai akan melalui beberapa langkah dalam tahap ini, 
+yaitu: \textit{Pre-processing} dalam bentuk \emph{grayscaling}, Penghitungan 
+\emph{Integral Image}, dan deteksi yang sesungguhnya menggunakan \emph{strong classsifier} 
+yang telah dibuat dengan metode Sliding Window.
+
+\subsection{\textit{Pre-processing} dan Penghitungan \emph{Integral Image}}
+
+Untuk klasifikasi sebenarnya, gambar \emph{input} akan diproses terlebih dahulu. 
+Gambar awalnya akan melakui proses \textit{pre-processing} dan dirubah kedalam warna 
+\emph{grayscale} (Jelasin perubahan greyscale ini kayak gimana) 
+untuk mempermudah penghitungan dengan bantuan \emph{library OpenCV}. 
+Setelah tu sebuah matriks sebesar resolusi gambar akan dibuat untuk 
+penghitungan \emph{Integral Image} yang nantinya akan mempercepat proses 
+penghitungan fitur.
+
+Untuk pembuatan \emph{Integral Image}, pertama perlu dicari nilai fitur 
+baris pertama dan kolom pertama dari gambar. Nilai pada matriks \emph{Integral Image} 
+adalah median dari nilai RGB pada piksel tersebut, namun dikarenakan warna 
+gambar sudah dirubah menjadi \emph{greyscale} maka nilai pada setiap piksel 
+hanya akan berupa bilangan bulat dikisaran 0 sampai 255. Nilai pada kolom 
+pertama hanyalah penjumlahan nilai piksel dari piksel $(0, 0)$ sampai ke piksel 
+$(0, j)$, sementara nilai pada baris pertama juga hanya penjumlahan nilai 
+piksel dari $(0, 0)$ ke  $(i, 0)$. Nilai-nilai piksel lainnya lalu dapat 
+dihitung menggunakan rumus: 
+\begin{equation}
+  \begin{split}
+    \text{integral image } (i,j) = {} & \text{integral image } (i-1,j) + \text{integral image } (i,j-1) - \\
+    & \text{integral image } (i-1,j-1) + \text{nilai dari piksel } (i,j)
+  \end{split}
+\end{equation}
+Atau jumlah semua nilai piksel dari $(0, 0)$ sampai ke $(i, j)$.
+Pembuatan \emph{integral image} nantinya akan mempercepat proses penghitungan 
+fitur pada setiap \emph{sub-window}.
+
+
+\subsection{Klasifikasi}
+
+

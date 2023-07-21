@@ -1,0 +1,184 @@
+%!TEX root = ./template-skripsi.tex
+%-------------------------------------------------------------------------------
+% 								BAB I
+% 							LATAR BELAKANG
+%-------------------------------------------------------------------------------
+
+\chapter{PENDAHULUAN}
+
+\section{Latar Belakang Masalah}
+
+% Intro
+Ikan merupakan salah satu kekayaan hayati yang dimiliki oleh bangsa Indonesia 
+dalam jumlah yang sangat besar. Ikan telah menjadi sumber makanan bagi bangsa 
+Indonesia dari zaman dahulu, dibuktikan dengan banyaknya resep masakan ikan yang 
+ada di kuliner tradisional rakyat Indonesia. Selain itu banyak orang yang 
+memelihara ikan tidak untuk dimakan melaikan untuk hiasan, seperti didalam 
+kolam maupun akuarium.
+
+% Sumber ikan
+Ikan bisa didapatkan melalui dua sumber, dengan menangkap ikan dari habitat 
+aslinya dan dengan melalukan proses pembudidayaan. Pembudidayaan ikan 
+memerlukan banyak infrastruktur pendukung yang tidaklah murah seperti 
+lahan, konstruksi tambak atau kolam yang memadai, dan pakan dalam jumlah 
+yang cukup besar. Walaupun cukup mahal, budidaya ikan dapat 
+menghasilkan keuntungan yang besar. Ikan budidaya contohnya bisa dijual 
+dalam keadan hidup atau segar ke wilayah-wilayah yang jauh dari habitat asli ikan, 
+hal yang sulit dilakukan dengan ikan hasil tangkapan liar. Budidaya ikan 
+juga dapat mengurangi permintaan pasar untuk ikan secara besar, yang secara tidak 
+langsung berkontribusi terhadap berkurangnya \textit{overfishing} atau penangkapan 
+ikan berlebih yang berdampak pada berkurangnya populasi ikan dalam jumlah 
+yang besar di habitat aslinya. Permintaan untuk ikan sangat besar di 
+Indonesia, hal ini menyebabkan besarnya nilai pasar dari industri ini. 
+Kementrian Kelautan dan Perikanan Indonesia mencatat bahwa 
+produksi ikan budidaya di Indonesia mencapai 14 juta ton pada tahun 
+2021 dengan nilai sebesar Rp196.000.000.000.000,00 trilliun rupiah (KKP, 2021).
+
+% Dasar problem permasalahan lapangan
+Budidaya ikan di Indonesia memiliki problem yang lumayan besar yaitu 
+diperlukannya usaha yang besar untuk menghitung dan mengawasi jumlah ikan 
+yang dibudidayakan. Dalam penghitungan bibit pada proses jual beli contohnya, 
+dalam menghitungan bibit lele para pedagang masih menghitung ikan dengan 
+cara manual (Al-Amri, 2020). Bibit ikan dipindahkan satu persatu atau 
+ditimbang sesuai berat untuk mendapatkan jumlah ikan. Cara-cara ini anatara sangat tidak 
+efisien atau kurang akurat. Dalam metode penghitungan contohnya, ikan 
+dihitung satu per satu dengan tangan atau dengan bantuan sendok atau centong, 
+yang memungkinkan penghitung untuk mengambil ikan dengan jumlah tertentu. 
+Metode ini bisa memakai waktu yang cukup lama bilamana ikan yang dihitung 
+ada dalam jumlah besar, maka dari itu metode ini biasanya hanya digunakan 
+dalam menghitung ikan dalam jumlah yang sedikit. Tingkat akurasi yang 
+tinggi menjadi keuntungan utama dari metode penghitungan.
+
+Sementara itu metode penimbangan hanya menghasilkan jumlah perkiraan yang tidak 
+selalu akurat. Dalam metode ini bibit ikan dimasukan ke dalam suatu wadah dan lalu 
+beratnya dihitung menggunakan timbangan. Berat hasil penimbangan lalu bisa 
+dijadikan acuan kira-kira jumlah ikan yang terdapat didalam wadah. 
+Metode ini cepat dan cukup efisien dalam menghitung ikan dalam jumlah yang 
+sangat besar. Namun jumlah bibit ikan tidaklah akurat dan hanya berupa perkiraan belaka.
+
+% Elaborasi lebih lanjut problem lapangan
+Problem perhitungan ikan ini akan sangat terasa pada industri budidaya ikan yang 
+sangat mementingkan kepadatan populasi dalam tempat budidaya ikan. Populasi ikan 
+yang berlebihan dapat memperlambat pertumbuhan ikan (Diansari et al, 2013), tapi 
+disisi lain populasi ikan yang terlalu kecil akan mengurangi efisiensi lahan 
+yang dimiliki peternak ikan. Dalam mengatasi problem Al-Amri (2020) menciptakan 
+sebuah sistem penghitungan menggunakan sensor \emph{proximity}. Hasil uji coba mendapat 
+hasil yang baik dengan persentase error sebesar 4,07\% dengan penghitungan 
+memakan waktu 228 detik per 1000 ikan. Jauh lebih cepat dibanding kecepatan 
+hitung manual yang memakan waktu 20 menit per 1000 ikan. Cara lain dipakai 
+oleh Rusydi (2019) untuk mendeteksi ikan. Rusydi menciptakan sebuah alat 
+penghitungan dengan katup otomatis yang akan terbuka bilamana jumlah ikan 
+yang diinginkan telah tercapai. Alat tersebut mendeteksi ikan menggunakan 
+konsep \emph{through beam} dimana ikan akan terdeteksi ketika melewati pipa oleh 
+inframerah dan photodioda. Alat tersebut dapat mendeteksi ikan dengan 
+kecepatan 58ms per ikan dengan tingkat akurasi 100\%.
+
+% Kelemahan metode penghitungan manual Al-Amri dan Rusydi
+Penggunaan alat deteksi fisik seperti yang digunakan Al-Amri (2020) maupun 
+Rusydi (2019) memiliki beberapa kekurangan, seperti ukuran ikan bergantung 
+kepada ukuran alat yang dipergunakan. Alat Rusyidi (2019) sangat bergantung 
+dengan kelandaian dan kecepatan lewat ikan yang melewati pipa sensor, mengganti 
+ukuran ikan yang akan dideteksi mengharuskan tes ulang untuk 
+mendapatkan pengaturan alat yang paling optimal (dalam tes, Rusyidi (2019) 
+menemukan bahwa kelandaian pipa 30° memberikan hasil paling akurat dalam 
+mendeteksi ikan). Sementara pada alat Al-Amri (2020), lubang keluar 
+ikan yang perlu dimodifikasi untuk mengamodasi ikan yang lebih besar. 
+Metode-metode tersebut sangatlah tidak fleksibel dalam industri peternakan 
+ikan yang tidak hanya menternakan satu jenis ikan saja.
+
+% Penjelasan Rapid Object Detection
+Deteksi Objek Cepat (\emph{Rapid Object Detection}) adalah sebuah algoritma yang 
+diciptakan untuk pendeteteksian muka (Viola et al, 2001). Viola (2001) 
+menjelaskan kalau algoritma deteksi yang diciptakannya dapat mendeteksi 
+muka dari gambar berukuran 384 x 288 pixel dari kamera berkecepatan 15 
+\textit{frame} per detik. Deteksi objek dapat digunakan untuk berbagai hal seperti 
+anotasi gambar, penghitungan mobil, deteksi muka, rekognisi muka, pelacakan 
+gambar dan lain-lain. Setiap algoritma deteksi objek bekerja dengan cara yang 
+berbeda-beda namun dengan konsep yang kurang lebih sama. Setiap kelas objek 
+pasti memiliki fitur yang dapat menunjukan jati diri objek tersebut, misalnya 
+objek bola sepak pastilah bulat dan umumnya memiliki dua warna yaitu hitam dan 
+putih dengan pola yang spesifik. Muka manusia memiliki mata, hidung dan mulut 
+yang dapat dibedakan dengan mahluk lainnya misalnya dengan kucing. Metode-metode 
+deteksi objek umumnya menggunakan pendekatan neural network dan 
+\textit{non-neural network} untuk mendefinisikan fitur dari kelas objek yang 
+berusaha dideteksi.
+
+% Metode Adaboost
+Adaboost (Freund et al, 1995) adalah sebuah pendekatan \textit{non-neural network} 
+yang sering digunakan untuk mendefinisikan fitur dari objek yang ingin 
+dideteksi (Weber, 2005). Adaboost telah digunakan untuk deteksi berbagai objek 
+seperti deteksi plat nomor kendaraan bermotor (Ho et al, 2009), deteksi muka 
+(Viola et al, 2001), deteksi pesawat terbang (Weber, 2005) dan lain-lain. 
+Adaboost mencari fitur sebuah kelas objek dengan menggunakan sekumpulan 
+\emph{weak learner} untuk membuat sebuah \emph{strong learner}. 
+Kumpulan weak learner tersebut nantinya akan dinilai sesuai dengan akurasi 
+mereka, dimana weak learner yang secara konsisten benar menebak fitur sebuah 
+objek akan memiliki nilai lebih dalam keputusan klasifikasi akhir. Weber (1995) 
+menjelaskan bahwa metode Adaboost dapat digambarkan selayaknya seorang pejudi 
+pacuan kuda yang kalah terus menerus. Pejudi tersebut lalu memutuskan untuk 
+menjadikan teman-teman penjudinya menjadi acuan untuk taruhan berikutnya. 
+Adaboost bekerja layaknya penjudi tersebut, membuat asumsi dari berbagai 
+pendapat lemah. Tentu saja bilamana sang penjudi melihat bahwa seorang 
+temannya bertaruh dengan baik berulang-ulang kali, maka dia akan 
+memandang tinggi pendapatnya diatas teman-teman lainnya yang tidak menang 
+sebanyak orang tersebut. Adaboost juga bekerja mirip dengan situasi tersebut.
+
+% Usulan
+Berdasarkan latar yang telah dijelaskan, penulis mengusulkan untuk mendeteksi 
+jenis ikan dengan menggunakan metode \emph{Viola-Jones Object Detection Framework}. 
+Adaboost dalam \emph{Viola-Jones Object Detection Framework} berguna untuk 
+mengkonstruksi sebuah \emph{classifier} objek ikan yang nantinya dapat mendeteksi 
+ikan dalam input gambar maupun video. Hasil yang diharapkan adalah sistem 
+mampu mengklasifikasi ikan dari gambar maupun video secara akurat.
+
+\section{Rumusan Masalah}
+Dari uraian permasalahan diatas, perumusan masalah dalam penelitian ini adalah 
+'\textbf{Bagaimana cara mengklasifikasi ikan menggunakan metode 
+\textit{Viola-Jones Object Detection Framework}?}'.
+
+\section{Batasan Masalah}
+Batasan masalah pada penelitian ini adalah:
+\begin{enumerate}
+	\item Klasifikasi ikan menggunakan \textit{Viola-Jones Object Detection Framework} yang didapat dari penelitian Viola-Jones (Viola et al, 2004)
+	\item Program didesan untuk mengklasifikasi ikan saja
+	\item Klasifikasi dilakukan dengan gambar tampak samping ikan saja
+	\item Klasifikasi harus bisa melakukan deteksi kelas ikan lebih dari satu (\textit{multi-class classification})
+\end{enumerate}
+
+\section{Tujuan Penelitian}
+	Tujuan dari penelitian ini adalah Menciptakan metode yang mampu mempermudah 
+	klasifikasi ikan dengan menggunakan \textit{Viola-Jones Object Detection Framework}.
+
+\section{Manfaat Penelitian}
+\begin{enumerate}
+	\item Bagi penulis
+		
+	Memperoleh gelar sarjana dalam bidang Ilmu Komputer, serta menambahkan 
+	pengalaman dalam pembuatan sebuah program komputer dengan aplikasi dunia 
+	nyata. Dan menambahkan pengetahuan penulis tentang deteksi objek, metode 
+	\textit{Adaboost} dan \textit{Harr-Like Features}.
+		
+	\item Bagi Program Studi Ilmu Komputer
+	
+	\begin{itemize}
+		\item Mahasiswa
+		
+		Diharapkan penelitian ini dapat digunakan sebagai penunjang referensi, 
+		khususnya pustaka tentang klasifikasi object dengan 
+		\textit{Viola-Jones Object Detection Framework}.
+
+		\item Bagi Peneliti Selanjutnya
+		
+		Diharapkan penelitian ini dapat digunakan sebagai dasar atau kajian 
+		awal bagi peneliti lain yang ingin meneliti permasalahan yang sama.
+
+	\end{itemize}
+			
+\end{enumerate}
+
+% Baris ini digunakan untuk membantu dalam melakukan sitasi
+% Karena diapit dengan comment, maka baris ini akan diabaikan
+% oleh compiler LaTeX.
+\begin{comment}
+\bibliography{daftar-pustaka}
+\end{comment}
