@@ -28,6 +28,6 @@
 \contentsline {subsection}{\numberline {3.3.2}Pembuatan \textit {Decision Tree}}{13}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}\emph {Boosting}}{14}{subsection.3.3.3}%
 \contentsline {subsection}{\numberline {3.3.4}Pembuatan \emph {Attentional Cascade}}{14}{subsection.3.3.4}%
-\contentsline {section}{\numberline {3.4}Klasifikasi Objek Sebenarnya}{14}{section.3.4}%
+\contentsline {section}{\numberline {3.4}Skenario Eksperimen dan Validasi}{14}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}\textit {Pre-processing} dan Penghitungan \emph {Integral Image}}{15}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Klasifikasi}{15}{subsection.3.4.2}%

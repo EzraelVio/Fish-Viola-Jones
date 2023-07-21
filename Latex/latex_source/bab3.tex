@@ -63,7 +63,10 @@ pembuatan \emph{decision tree} untuk setiap fitur,
 
 \textit{Dataset} yang akan dipakai diambil dari fishR (Dapat dilihat di 
  ini harus diganti) yang 
-berisikan gambar ikan genus Abudefduf, Amphiprion dan Chaetodon. 
+berisikan gambar ikan genus Abudefduf, Amphiprion dan Chaetodon. Selain itu 
+/textit{dataset} juga akan ditambahkan dari hasil penelitian lapangan 
+secukupnya, dengan mempertimbangkan waktu komputasi pada tahap 
+pelatihan.
 Untuk contoh pelatihan kelas-kelas ikan adalah gambar berukuran 72x41 piksel, 
 dengan warna grayscale. Selain itu juga akan dipilih contoh 
 pelatihan negatif atau kumpulan gambar yang tidak terdapat kelas 
@@ -127,10 +130,12 @@ yang ditentukan untuk fase itu dicapai. Fase akan terus bertambah hingga
 akurasi sempurna dicapai, atau hingga \emph{weaklearner} sudah habis. (Ini periu 
 dijabarin lagi dengan rumus per-step).
 
-\section{Klasifikasi Objek Sebenarnya}
+\section{Skenario Eksperimen dan Validasi}
 
-Tahapan ini adalah penggunakaan \emph{classifier} yang sebenarnya. 
-Gambar yang akan dipakai akan melalui beberapa langkah dalam tahap ini, 
+Tahapan ini adalah penggunakaan \emph{classifier} yang sebenarnya dengan tujuan 
+memvalidasi akurasi dari \emph{classifier} tersebut. 
+Gambar ikan yang akan dipakai dalam proses validasi akan 
+melalui beberapa langkah dalam tahap ini, 
 yaitu: \textit{Pre-processing} dalam bentuk \emph{grayscaling}, Penghitungan 
 \emph{Integral Image}, dan deteksi yang sesungguhnya menggunakan \emph{strong classsifier} 
 yang telah dibuat dengan metode Sliding Window.
@@ -167,4 +172,26 @@ fitur pada setiap \emph{sub-window}.
 
 \subsection{Klasifikasi}
 
+Pada tahap ini, gambar yang sudah berubah dalam bentuk 
+\emph{integral image} akan diklasifikasi menggunakan 
+\emph{strong classifier}. \emph{Strong classifier} akan berjalan dari 
+pojok kiri atas gambar, atau piksel pertama, mencoba untuk mengklasifikasi 
+sebuah \emph{sub-window} berukuran 72x41 piksel. Bila posisi tersebut sudah 
+selesai diklasifikasi, terlepas hasilnya, \emph{sub-window} akan 
+bergerak ke kanan sebanyak satu piksel dan mengklasifikasi area baru tersebut. 
+Hal ini akan terus berlanjut hingga \emph{sub-window} bisa dibuat lagi ke kanan. 
+Bilama demikian \emph{sub-window} akan kembali ke ka kanan, namun kali ini 
+diturunkan sebanyak satu piksel. Pergerakan \emph{sliding window} ini 
+bertujuan agar seluruh bagian dari gambar dapat terklasifikasi.
 
+\begin{figure}[H]
+  \centering{}
+	\includegraphics[width=0.6\textwidth]{gambar/sliding\_window\_1}
+  \caption{Gambaran ukuran \emph{sub-window} 72x41 piksel pada gambar 300x220}
+\end{figure}
+
+Jika \emph{sub-window} dengan ukuran 72x42 piksel sudah mengklasifikasi 
+seluruh bagian gambar hingga pojok kanan bawah, maka \emph{sub-window} 
+akan diperbesar dengan faktor 1.25 dan proses dimulai lagi dari pojok kiri atas. 
+Selain itu ukuran dan lokasi dari \emph{feature} akan disesuaikan untuk mangakomodasi 
+\emph{sub-window} yang sudah diperbesar. 
