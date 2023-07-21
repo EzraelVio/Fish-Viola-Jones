@@ -1,9 +1,9 @@
-[0] Config.pm:306> INFO - This is Biber 2.18
-[0] Config.pm:309> INFO - Logfile is 'template-skripsi.blg'
-[578] biber-MSWIN64:340> INFO - === 
-[780] Biber.pm:418> INFO - Reading 'template-skripsi.bcf'
-[991] Biber.pm:978> INFO - Found 0 citekeys in bib section 0
-[1033] bbl.pm:654> INFO - Writing 'template-skripsi.bbl' with encoding 'UTF-8'
-[1034] bbl.pm:757> INFO - Output to template-skripsi.bbl
-[1034] Biber.pm:130> WARN - The file 'template-skripsi.bcf' does not contain any citations!
-[1035] Biber.pm:132> INFO - WARNINGS: 1
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'template-skripsi.blg'
+[189] biber-MSWIN64:340> INFO - === 
+[250] Biber.pm:419> INFO - Reading 'template-skripsi.bcf'
+[439] Biber.pm:979> INFO - Found 0 citekeys in bib section 0
+[463] bbl.pm:660> INFO - Writing 'template-skripsi.bbl' with encoding 'UTF-8'
+[464] bbl.pm:763> INFO - Output to template-skripsi.bbl
+[464] Biber.pm:131> WARN - The file 'template-skripsi.bcf' does not contain any citations!
+[465] Biber.pm:133> INFO - WARNINGS: 1
