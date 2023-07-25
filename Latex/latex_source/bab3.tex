@@ -107,7 +107,8 @@ akan dicatat untuk urutan \emph{Boosting} ronde berikutnya dan juga sebagai nila
 voting pada klasifikasi yang sebenarnya. 
 Nantinya bobot dari seluruh \emph{dataset} latihan akan dihitung ulang dengan menaikan bobot dari contoh 
 yang gagal diklasifikasi oleh \emph{weaklearner} sebelumnya. Proses ini dilakukan 
-untuk setiap \emph{weaklearner}. (Masukin rumus re-distribusi bobot contoh disini)
+untuk setiap \emph{weaklearner}. 
+%(Masukin rumus re-distribusi bobot contoh disini)
 
 Ketika sebuah ronde \emph{Boosting} sudah selesai dan seluruh \emph{weaklearner} sudah  diurutkan sesuai dengan 
 nilai yang didapat dari ronde tersebut. \emph{Adaboost} akan melakukan validasi 
@@ -115,20 +116,32 @@ tingkat akurasi \emph{strong classifier} yang sudah dibuat menggunakan \emph{dat
 hal ini dilakukan dengan membandingkan tingkat presisi \emph{strong classifer} 
 yang dihasilkan ronde ini dengan \emph{strong classifer} yang dihasilkan ronde 
 sebelumnya. Bisa tingkat presisi ternyata semakin berkurang, maka \emph{Boosting} 
-akan dihentikan dan \emph{strong classifier} (ronde ini atau sebelumnya, cek lagi) 
+akan dihentikan dan \emph{strong classifier} 
+%(ronde ini atau sebelumnya, cek lagi) 
 menjadi \emph{final strong classifier}.
 
 \subsection{Pembuatan \emph{Attentional Cascade}}
 
 Sebelum pembuatan \emph{attentional cascade}, \emph{weaklearner} yang kurang 
-diskriminatif akan dibuang. Hal ini dilakukan dengan (cari, karena bagian ini 
-belum jelas dari kemarin). \emph{Attentional cascade} akan dibuat dari \emph{weaklearner} 
-yang tersisa secara bertahap. Pada setiap fase \emph{cascade}, \emph{weaklearner} akan 
+diskriminatif akan dibuang. 
+%Hal ini dilakukan dengan (cari, karena bagian ini 
+%belum jelas dari kemarin). 
+\emph{Attentional cascade} akan dibuat dari \emph{weaklearner} 
+yang tersisa secara bertahap. 
+Pertama, target \textit{false positive} pada setiap \emph{cascade} 
+harus ditentukan oleh pengguna. \emph{Framework VIola-Jones} menggunakan target 
+\textit{false positive} 50\% untuk \emph{cascade} pertama, dan 
+\textit{false positive} 80\% untuk semua \emph{cascade} setelahnya.
+Target \textit{false posiive} ini akan disesuaikan 
+saat penelitian lapangan, bila target akurasi tidak berhasil dicapai 
+dengan target \textit{false positive} sebelumnya.
+Pada setiap fase \emph{cascade}, \emph{weaklearner} akan 
 ditambahkan satu-persatu. Setiap sebuah \emph{weaklearner} ditambahkan, tes akan dilakukan 
 dengan \emph{dataset} tes. \emph{Weaklearner} akan terus ditambahkan hingga \emph{false positive rate} 
 yang ditentukan untuk fase itu dicapai. Fase akan terus bertambah hingga 
-akurasi sempurna dicapai, atau hingga \emph{weaklearner} sudah habis. (Ini periu 
-dijabarin lagi dengan rumus per-step).
+akurasi sempurna dicapai, atau hingga \emph{weaklearner} sudah habis. 
+%(Ini periu dijabarin lagi dengan rumus per-step). 
+
 
 \section{Skenario Eksperimen dan Validasi}
 
@@ -169,6 +182,11 @@ Atau jumlah semua nilai piksel dari $(0, 0)$ sampai ke $(i, j)$.
 Pembuatan \emph{integral image} nantinya akan mempercepat proses penghitungan 
 fitur pada setiap \emph{sub-window}.
 
+\begin{figure}[H]
+  \centering{}
+	\includegraphics[width=0.6\textwidth]{gambar/integral\_image\_3}
+  \caption{Gambaran \emph{integral image} dari gambar sebuah bidak catur.}
+\end{figure}
 
 \subsection{Klasifikasi}
 
@@ -194,4 +212,19 @@ Jika \emph{sub-window} dengan ukuran 72x42 piksel sudah mengklasifikasi
 seluruh bagian gambar hingga pojok kanan bawah, maka \emph{sub-window} 
 akan diperbesar dengan faktor 1.25 dan proses dimulai lagi dari pojok kiri atas. 
 Selain itu ukuran dan lokasi dari \emph{feature} akan disesuaikan untuk mangakomodasi 
-\emph{sub-window} yang sudah diperbesar. 
+\emph{sub-window} yang sudah diperbesar. Hal ini dilakukan untuk mengklasifikasi 
+objek yang memiliki ukuran berbeda didalam gambar.
+
+\begin{figure}[H]
+  \centering{}
+	\includegraphics[width=0.6\textwidth]{gambar/sliding\_window\_2}
+  \caption{Gambaran \textit{sub-window} yang berhasil mengklasifikasi ikdan didalam gambar}
+\end{figure}
+
+Setelah semua \textit{sub-window} sudah diklasifikasi dengan menggunakan 
+\emph{strong classifier}. Algoritma akan menggambarkan di lokasi \textit{sub-window} 
+yang positif terklasifikasi (Memiliki salah satu kelas ikan yang telah dilatih ke \emph{strong classifier}), 
+\emph{bounding box} untuk menganotasi kelasnya. Pengguna lalu dapat menentukan 
+dari hasil anotasi bilamana target akurasi sudah tercapai.
+
+
