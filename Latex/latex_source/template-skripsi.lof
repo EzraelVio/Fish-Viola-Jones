@@ -12,5 +12,6 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Diagram alir untuk algoritma pendeteksian objek\relax }}{12}{figure.caption.10}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Contoh gambar Abudefduf, Amphiprion, Chaetodon dan contoh gambar-gambar negatif\relax }}{13}{figure.caption.11}%
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Gambaran \emph {integral image} dari gambar sebuah bidak catur.\relax }}{14}{figure.caption.12}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Gambaran ukuran \emph {sub-window} 72x41 piksel pada gambar 300x220\relax }}{16}{figure.caption.13}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Gambaran \textit {sub-window} yang berhasil mengklasifikasi ikan didalam gambar\relax }}{17}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces \textit {Workflow} dari \emph {Attentional Cascade}\relax }}{15}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Gambaran ukuran \emph {sub-window} 72x41 piksel pada gambar 300x220\relax }}{17}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Gambaran \textit {sub-window} yang berhasil mengklasifikasi ikan didalam gambar\relax }}{17}{figure.caption.15}%

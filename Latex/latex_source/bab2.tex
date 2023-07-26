@@ -171,7 +171,7 @@ klasifikasi biner saja. Oleh karena itu perlu adanya modifikasi \emph{Adaboost} 
 dapat melakukan klasifikasi \emph{Multi-class}. Yang pertama adalah anotasi 
 contoh gambar $(x_1, y_1),...,(x_n, y_n)$ dimana $y_i \in Y = {1,...,k}$. 
 Maka dari itu distribusi $(D)$ nilai bobot $(w)$ akan berubah sesuai dengan 
-jumlah contoh $(N)$: $w^1_i = D(i) \text{ for } i=1,...,N$. (harus dilanjutin)
+jumlah contoh $(N)$: $w^1_i = D(i) \text{ for } i=1,...,N$. %(harus dilanjutin)
 
 \subsection{\emph{Weaklearn}}
 
@@ -254,12 +254,12 @@ kebawah.
     \State Pengguna memilih nilai dari \textit{f}, nilai maksimum \emph{false positive} 
     pada setiap tahap yang dapat diterima, dan \textit{d}, nilai minimum \emph{detection rate} 
     per tahap yang dapat diterima
-    \State Pengguna memilih target keseluruhan \emph{false positive rate}, $F_target$
+    \State Pengguna memilih target keseluruhan \emph{false positive rate}, $F_{target}$
     \State \textit{P} = kumpulan contoh positif
     \State \textit{N} = kumpulan contoh negatif
     \State $F_0 = 1.0; D_0 - 1.0$
     \State $i = 0$
-    \State $while F_i > F_target$
+    \State $while F_i > F_{target}$
     \Statex $-i \leftarrow i + 1$
     \Statex $-n_i = 0; F_i = F_i-_1$
     \Statex -while $F_i > f x F_i-_1$
