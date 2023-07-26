@@ -13,17 +13,17 @@ Gambar \textit{flowchart} berikut mengilustrasikan proses pelatihan
 
 \begin{figure}[H]
   \centering{}
-	\includegraphics[width=0.6\textwidth]{gambar/metode\_pelatihan}
+	\includegraphics[width=0.6\textwidth]{gambar/flowchart\_1}
   \caption{Diagram alir untuk algoritma pelatihan klasifikasi objek}
 \end{figure}
 
 \begin{figure}[H]
   \centering{}
-	\includegraphics[width=0.6\textwidth]{gambar/metode\_use}
+	\includegraphics[width=0.6\textwidth]{gambar/flowchart\_2}
   \caption{Diagram alir untuk algoritma pendeteksian objek}
 \end{figure}
 
-(Jelasin disini secara ringkas, biar gak terlalu ambigu)
+%(Jelasin disini secara ringkas, biar gak terlalu ambigu)
 
 \section{Desain Sistem}
 
@@ -61,26 +61,58 @@ pembuatan \emph{decision tree} untuk setiap fitur,
 
 \subsection{\textit{Input Dataset} Pelatihan}
 
-\textit{Dataset} yang akan dipakai diambil dari fishR (Dapat dilihat di 
- ini harus diganti) yang 
+\begin{figure}[H]
+  \centering{}
+	\includegraphics[width=0.6\textwidth]{gambar/dataset\_2}
+  \caption{Contoh gambar Abudefduf, Amphiprion, Chaetodon dan contoh gambar-gambar negatif}
+\end{figure}
+
+\textit{Dataset} yang akan dipakai diambil dari fishR (Dapat dilihat di https://github.com/mekas/fishR) yang 
 berisikan gambar ikan genus Abudefduf, Amphiprion dan Chaetodon. Selain itu 
-/textit{dataset} juga akan ditambahkan dari hasil penelitian lapangan 
+\textit{dataset} juga akan ditambahkan dari hasil penelitian lapangan 
 secukupnya, dengan mempertimbangkan waktu komputasi pada tahap 
 pelatihan.
 Untuk contoh pelatihan kelas-kelas ikan adalah gambar berukuran 72x41 piksel, 
 dengan warna grayscale. Selain itu juga akan dipilih contoh 
 pelatihan negatif atau kumpulan gambar yang tidak terdapat kelas 
-ikan dengan jumlah yang sama dari (cari sumber), resolusi sama dan perlakuan 
-yang sama. (Jelasin anotasinya kayak gimana disisni) \textit{Dataset} ini lalu 
+ikan dari http://www.vision.caltech.edu/datasets/ dengan jumlah yang sama, resolusi sama dan perlakuan 
+yang sama. Anotasi dilakukan dengan rumus $(x_1, y_1),...,(x_n, y_n)$ dimana 
+$y_i \in Y = {1,...,k}$, $k$ disini adalah kelas-kelas yang ada dimana $y_i = 0$ 
+direservasi untuk kelas negatif dan angka-angka setelahnya untuk kelas-kelas lainnya.
+\textit{Dataset} ini lalu 
 akan dibagi menjadi tiga yaitu \textit{training dataset}, 
-\textit{validation dataset}, dan \emph{test dataset} dengan jumlah 
-(belum ditentukan, tergantung dataset. 
-Ada banyak metode pembagian yang bisa dipilih).
+\textit{validation dataset}, dan \emph{test dataset} dengan jumlah yang sama.
 Nilai bobot pada tiap \textit{dataset} akan di inisialisasi dengan rumus:
 \begin{equation}
   w^1_i = D(i) \text{ for } i=1,...,N
 \end{equation}
 dimana $w$ adalah bobot, $D$ Distribusi dan $N$ jumlah contoh pelatihan.
+
+\subsection{Pembuatan \textit{Integral Image}}
+
+Untuk pembuatan \emph{Integral Image}, pertama perlu dicari nilai piksel
+baris pertama dan kolom pertama dari gambar. Nilai pada matriks \emph{Integral Image} 
+adalah median dari nilai RGB pada piksel tersebut, namun dikarenakan warna 
+gambar sudah dirubah menjadi \emph{greyscale} maka nilai pada setiap piksel 
+hanya akan berupa bilangan bulat dikisaran 0 sampai 255. Nilai pada kolom 
+pertama hanyalah penjumlahan nilai piksel dari piksel $(0, 0)$ sampai ke piksel 
+$(0, j)$, sementara nilai pada baris pertama juga hanya penjumlahan nilai 
+piksel dari $(0, 0)$ ke  $(i, 0)$. Nilai-nilai piksel lainnya lalu dapat 
+dihitung menggunakan rumus: 
+\begin{equation}
+  \begin{split}
+    \text{integral image } (i,j) = {} & \text{integral image } (i-1,j) + \text{integral image } (i,j-1) - \\
+    & \text{integral image } (i-1,j-1) + \text{nilai dari piksel } (i,j)
+  \end{split}
+\end{equation}
+Atau jumlah semua nilai piksel dari $(0, 0)$ sampai ke $(i, j)$.
+Pembuatan \emph{integral image} nantinya akan digunakan oleh fitur sebagai \textit{input}.
+
+\begin{figure}[H]
+  \centering{}
+	\includegraphics[width=0.6\textwidth]{gambar/integral\_image\_3}
+  \caption{Gambaran \emph{integral image} dari gambar sebuah bidak catur.}
+\end{figure}
 
 \subsection{Pembuatan \textit{Decision Tree}}
 
@@ -90,7 +122,7 @@ dari \emph{Haar-like features} sebagai variabel klasifikasi.
 sebuah nilai perbandingan intensitas cahaya dari suatu area pada gambar dan 
 mendeteksi keberadaan suatu \emph{fitur} seperti 
 perbedaan warna, garis, maupun perbedaan kontras pada gambar. 
-(Jelasin step by step pembuatan decision tree pake algoritma).
+%(Jelasin step by step pembuatan decision tree pake algoritma).
 
 \subsection{\emph{Boosting}}
 
@@ -101,10 +133,18 @@ menggunakan \emph{dataset} latihan.
 
 \emph{Adaboost} akan menjalankan \emph{weaklearner} terbaik untuk 
 mengklasifikasi seluruh contoh \emph{dataset} latihan dan mencatat contoh yang 
-gagal diklasifikasi oleh \emph{weaklearner} tersebut. Nilai dari \emph{weaklearner} 
-tersebut dihitung dengan (Masukin rumus disini, yg gini purity itu), yang nantinya 
-akan dicatat untuk urutan \emph{Boosting} ronde berikutnya dan juga sebagai nilai 
-voting pada klasifikasi yang sebenarnya. 
+gagal diklasifikasi oleh \emph{weaklearner} tersebut. 
+Nilai dari \emph{weaklearner} 
+tersebut dihitung dengan:
+\begin{equation}
+  sum(N)(i=1) w^t_i.1(h(x_i)\ne y_i)
+\end{equation} 
+dimana $N$ adalah jumlah total contoh latihan, $D_t$ adalah distribusi bobot pada 
+iterasi $t$, $w^t_i$ adalah nilai bobot contoh ke-$i$ pada iterasi $t$, 
+$y_i$ adalah label yang benar untuk contoh latihan ke-$i$, dan $h(x_i)$ 
+adalah hasil dari \emph{weaklearn}. 
+Hasilnya juga akan dicatat untuk urutan \emph{Boosting} ronde berikutnya dan 
+juga sebagai nilai voting pada klasifikasi yang sebenarnya. 
 Nantinya bobot dari seluruh \emph{dataset} latihan akan dihitung ulang dengan menaikan bobot dari contoh 
 yang gagal diklasifikasi oleh \emph{weaklearner} sebelumnya. Proses ini dilakukan 
 untuk setiap \emph{weaklearner}. 
@@ -121,6 +161,12 @@ akan dihentikan dan \emph{strong classifier}
 menjadi \emph{final strong classifier}.
 
 \subsection{Pembuatan \emph{Attentional Cascade}}
+
+\begin{figure}[H]
+  \centering{}
+	\includegraphics[width=0.6\textwidth]{gambar/cascade}
+  \caption{\textit{Workflow} dari \emph{Attentional Cascade}}
+\end{figure}
 
 Sebelum pembuatan \emph{attentional cascade}, \emph{weaklearner} yang kurang 
 diskriminatif akan dibuang. 
@@ -157,36 +203,12 @@ yang telah dibuat dengan metode Sliding Window.
 
 Untuk klasifikasi sebenarnya, gambar \emph{input} akan diproses terlebih dahulu. 
 Gambar awalnya akan melakui proses \textit{pre-processing} dan dirubah kedalam warna 
-\emph{grayscale} (Jelasin perubahan greyscale ini kayak gimana) 
+\emph{grayscale} %(Jelasin perubahan greyscale ini kayak gimana) 
 untuk mempermudah penghitungan dengan bantuan \emph{library OpenCV}. 
 Setelah tu sebuah matriks sebesar resolusi gambar akan dibuat untuk 
 penghitungan \emph{Integral Image} yang nantinya akan mempercepat proses 
-penghitungan fitur.
-
-Untuk pembuatan \emph{Integral Image}, pertama perlu dicari nilai fitur 
-baris pertama dan kolom pertama dari gambar. Nilai pada matriks \emph{Integral Image} 
-adalah median dari nilai RGB pada piksel tersebut, namun dikarenakan warna 
-gambar sudah dirubah menjadi \emph{greyscale} maka nilai pada setiap piksel 
-hanya akan berupa bilangan bulat dikisaran 0 sampai 255. Nilai pada kolom 
-pertama hanyalah penjumlahan nilai piksel dari piksel $(0, 0)$ sampai ke piksel 
-$(0, j)$, sementara nilai pada baris pertama juga hanya penjumlahan nilai 
-piksel dari $(0, 0)$ ke  $(i, 0)$. Nilai-nilai piksel lainnya lalu dapat 
-dihitung menggunakan rumus: 
-\begin{equation}
-  \begin{split}
-    \text{integral image } (i,j) = {} & \text{integral image } (i-1,j) + \text{integral image } (i,j-1) - \\
-    & \text{integral image } (i-1,j-1) + \text{nilai dari piksel } (i,j)
-  \end{split}
-\end{equation}
-Atau jumlah semua nilai piksel dari $(0, 0)$ sampai ke $(i, j)$.
-Pembuatan \emph{integral image} nantinya akan mempercepat proses penghitungan 
-fitur pada setiap \emph{sub-window}.
-
-\begin{figure}[H]
-  \centering{}
-	\includegraphics[width=0.6\textwidth]{gambar/integral\_image\_3}
-  \caption{Gambaran \emph{integral image} dari gambar sebuah bidak catur.}
-\end{figure}
+penghitungan fitur. Pembuatan \emph{integral image} pada tahap ini sama persis 
+dengan pembuatan pada tahap pelatihan.
 
 \subsection{Klasifikasi}
 
@@ -215,10 +237,12 @@ Selain itu ukuran dan lokasi dari \emph{feature} akan disesuaikan untuk mangakom
 \emph{sub-window} yang sudah diperbesar. Hal ini dilakukan untuk mengklasifikasi 
 objek yang memiliki ukuran berbeda didalam gambar.
 
+\subsection{Anotasi}
+
 \begin{figure}[H]
   \centering{}
 	\includegraphics[width=0.6\textwidth]{gambar/sliding\_window\_2}
-  \caption{Gambaran \textit{sub-window} yang berhasil mengklasifikasi ikdan didalam gambar}
+  \caption{Gambaran \textit{sub-window} yang berhasil mengklasifikasi ikan didalam gambar}
 \end{figure}
 
 Setelah semua \textit{sub-window} sudah diklasifikasi dengan menggunakan 
