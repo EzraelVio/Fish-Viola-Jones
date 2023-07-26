@@ -8,8 +8,9 @@
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Sebuah nilai \emph {Integral Image} $(x,y)$ dan area yang diwakilinyak\relax }}{6}{figure.caption.7}%
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Jumlah dari intensitas cahaya pada persegi D dapat dihitung dengan 4 referensi \textit {array}. Nilai dari 1 adalah jumlah intensitas cahaya pada persegi A, Nilai dari 2 adalah persegi A + B, nilai dari 3 adalah A + C dan nilai 4 adalah A + B + C + D.\relax }}{7}{figure.caption.8}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagram alir untuk algoritma pelatihan klasifikasi objek\relax }}{13}{figure.caption.10}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagram alir untuk algoritma pendeteksian objek\relax }}{13}{figure.caption.11}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Gambaran \emph {integral image} dari gambar sebuah bidak catur.\relax }}{16}{figure.caption.12}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Gambaran ukuran \emph {sub-window} 72x41 piksel pada gambar 300x220\relax }}{17}{figure.caption.13}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Gambaran \textit {sub-window} yang berhasil mengklasifikasi ikdan didalam gambar\relax }}{17}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagram alir untuk algoritma pelatihan klasifikasi objek\relax }}{12}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagram alir untuk algoritma pendeteksian objek\relax }}{12}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Contoh gambar Abudefduf, Amphiprion, Chaetodon dan contoh gambar-gambar negatif\relax }}{13}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Gambaran \emph {integral image} dari gambar sebuah bidak catur.\relax }}{14}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Gambaran ukuran \emph {sub-window} 72x41 piksel pada gambar 300x220\relax }}{16}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Gambaran \textit {sub-window} yang berhasil mengklasifikasi ikan didalam gambar\relax }}{17}{figure.caption.14}%
