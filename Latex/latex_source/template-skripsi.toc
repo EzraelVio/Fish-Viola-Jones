@@ -1,34 +1,34 @@
 \babel@toc {english}{}\relax 
 \babel@toc {bahasa}{}\relax 
-\contentsline {chapter}{DAFTAR ISI}{v}{chapter*.3}%
-\contentsline {chapter}{DAFTAR GAMBAR}{vi}{chapter*.4}%
-\contentsline {chapter}{DAFTAR TABEL}{vii}{chapter*.5}%
+\contentsline {chapter}{DAFTAR ISI}{vi}{chapter*.3}%
+\contentsline {chapter}{DAFTAR GAMBAR}{vii}{chapter*.4}%
+\contentsline {chapter}{DAFTAR TABEL}{viii}{chapter*.5}%
 \babel@toc {bahasa}{}\relax 
 \contentsline {chapter}{\numberline {I}PENDAHULUAN}{1}{chapter.1}%
 \contentsline {section}{\numberline {1.1}Latar Belakang Masalah}{1}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Rumusan Masalah}{3}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Batasan Masalah}{3}{section.1.3}%
+\contentsline {section}{\numberline {1.2}Rumusan Masalah}{4}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Batasan Masalah}{4}{section.1.3}%
 \contentsline {section}{\numberline {1.4}Tujuan Penelitian}{4}{section.1.4}%
 \contentsline {section}{\numberline {1.5}Manfaat Penelitian}{4}{section.1.5}%
 \babel@toc {bahasa}{}\relax 
-\contentsline {chapter}{\numberline {II}KAJIAN PUSTAKA}{5}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Pengertian Klasifikasi Objek}{5}{section.2.1}%
-\contentsline {section}{\numberline {2.2}\emph {Viola Jones Object Detection Framework}}{5}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}\emph {Features}}{5}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}\emph {Integral Image}}{6}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}\emph {Adaboost}}{8}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}\emph {Weaklearn}}{9}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}\emph {Attentional Cascade}}{10}{subsection.2.2.5}%
-\contentsline {chapter}{\numberline {III}METODOLOGI PENELITIAN}{12}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Tahapan Penelitian}{12}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Desain Sistem}{12}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Training \emph {Strong Classifier}}{13}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}\textit {Input Dataset} Pelatihan}{13}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Pembuatan \textit {Integral Image}}{14}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Pembuatan \textit {Decision Tree}}{14}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}\emph {Boosting}}{14}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Pembuatan \emph {Attentional Cascade}}{15}{subsection.3.3.5}%
-\contentsline {section}{\numberline {3.4}Skenario Eksperimen dan Validasi}{16}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}\textit {Pre-processing} dan Penghitungan \emph {Integral Image}}{16}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Klasifikasi}{16}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Anotasi}{17}{subsection.3.4.3}%
+\contentsline {chapter}{\numberline {II}KAJIAN PUSTAKA}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Pengertian Klasifikasi Objek}{6}{section.2.1}%
+\contentsline {section}{\numberline {2.2}\emph {Viola Jones Object Detection Framework}}{6}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}\emph {Features}}{7}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}\emph {Integral Image}}{8}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}\emph {Adaboost}}{10}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}\emph {Weaklearn}}{11}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}\emph {Attentional Cascade}}{12}{subsection.2.2.5}%
+\contentsline {chapter}{\numberline {III}METODOLOGI PENELITIAN}{14}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Tahapan Penelitian}{14}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Desain Sistem}{14}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Training \emph {Strong Classifier}}{15}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}\textit {Input Dataset} Pelatihan}{15}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Pembuatan \textit {Integral Image}}{16}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Pembuatan \textit {Decision Tree}}{17}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}\emph {Boosting}}{17}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Pembuatan \emph {Attentional Cascade}}{18}{subsection.3.3.5}%
+\contentsline {section}{\numberline {3.4}Skenario Eksperimen dan Validasi}{18}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}\textit {Pre-processing} dan Penghitungan \emph {Integral Image}}{19}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Klasifikasi}{19}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Anotasi}{20}{subsection.3.4.3}%

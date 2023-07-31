@@ -393,7 +393,6 @@
 % \fi%
 % \fi
 % }
-
 \onehalfspacing
 
 \AtBeginDocument{%
