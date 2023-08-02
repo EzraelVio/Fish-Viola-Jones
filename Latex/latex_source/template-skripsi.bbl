@@ -16,5 +16,34 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{alamri}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=52e4bf39cb8e43c23fe63f87ac3693d1}{%
+           family={Al-Amri},
+           familyi={A\bibinithyphendelim A\bibinitperiod},
+           given={Chaisar\bibnamedelima Fadli},
+           giveni={C\bibinitperiod\bibinitdelim F\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{52e4bf39cb8e43c23fe63f87ac3693d1}
+      \strng{fullhash}{52e4bf39cb8e43c23fe63f87ac3693d1}
+      \strng{bibnamehash}{52e4bf39cb8e43c23fe63f87ac3693d1}
+      \strng{authorbibnamehash}{52e4bf39cb8e43c23fe63f87ac3693d1}
+      \strng{authornamehash}{52e4bf39cb8e43c23fe63f87ac3693d1}
+      \strng{authorfullhash}{52e4bf39cb8e43c23fe63f87ac3693d1}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Rancangan Bangun Fish Counter Untuk Menghitung Bibit Ikan Lele}
+      \field{year}{2020}
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 

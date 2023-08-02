@@ -25,10 +25,12 @@
 \contentsline {section}{\numberline {3.3}Training \emph {Strong Classifier}}{15}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}\textit {Input Dataset} Pelatihan}{15}{subsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}Pembuatan \textit {Integral Image}}{16}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Pembuatan \textit {Decision Tree}}{17}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}\emph {Boosting}}{17}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Pembuatan \emph {Attentional Cascade}}{18}{subsection.3.3.5}%
-\contentsline {section}{\numberline {3.4}Skenario Eksperimen dan Validasi}{18}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}\textit {Pre-processing} dan Penghitungan \emph {Integral Image}}{19}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Klasifikasi}{19}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Anotasi}{20}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.3.3}Pembuatan \textit {Features}}{17}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}Pembuatan \textit {Decision Tree}}{18}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}\emph {Boosting}}{18}{subsection.3.3.5}%
+\contentsline {subsection}{\numberline {3.3.6}Pembuatan \emph {Attentional Cascade}}{19}{subsection.3.3.6}%
+\contentsline {section}{\numberline {3.4}Skenario Eksperimen dan Validasi}{19}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}\textit {Pre-processing} dan Penghitungan \emph {Integral Image}}{20}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Klasifikasi}{20}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Anotasi}{21}{subsection.3.4.3}%
+\contentsline {chapter}{DAFTAR PUSTAKA}{23}{figure.caption.16}%

@@ -13,7 +13,7 @@ Gambar \textit{flowchart} berikut mengilustrasikan proses pelatihan
 
 \begin{figure}[H]
   \centering{}
-	\includegraphics[width=0.6\textwidth]{gambar/flowchart\_1}
+	\includegraphics[width=0.6\textwidth]{gambar/flowchart\_1\_1}
   \caption{Diagram alir untuk algoritma pelatihan klasifikasi objek}
 \end{figure}
 
@@ -113,6 +113,43 @@ Pembuatan \emph{integral image} nantinya akan digunakan oleh fitur sebagai \text
 	\includegraphics[width=0.6\textwidth]{gambar/integral\_image\_3}
   \caption{Gambaran \emph{integral image} dari gambar sebuah bidak catur.}
 \end{figure}
+
+\subsection{Pembuatan \textit{Features}}
+
+Fitur-fitur yang akan digunakan dalam klasifikasi dibuat 
+berdasarkan \emph{Haar-like Features} dan berisikan informasi 
+lokasinya pada \emph{sub-window} dan titik-titik \emph{integral image}. 
+Misalnya sebuah fitur dua persegi dengan persegi putih di 
+sebelah kiri, fitur tersebut memerlukan 
+nilai \emph{integral image} dari pojok kiri atas persegi putih, 
+pojok kiri bawah persegi putih,  
+pojok kanan atas persegi putih, 
+pojok kanan bawah persegi putih, 
+, pojok kanan atas persegi hitam, 
+dan pojok kanan bawah persegi hitam. 
+\begin{figure}[H]
+  \centering{}
+	\includegraphics[width=0.6\textwidth]{gambar/integral\_image\_4}
+  \caption{Nilai yang diperlukan oleh fitur dua persegi, direpresentasi sebagai A, B, C, dan D}
+\end{figure} 
+Keenam nilai tersebut dapat digunakan untuk mencari nilai 
+fitur dengan rumus:
+
+\begin{equation}
+  \begin{split}
+    &\text{integral image E} - \text{integral image B} - \text{integral image D} + \text{integral image A} \\
+    & - \text{integral image F} - \text{integral image C} - \text{integral image E} + \text{integral image B} \\    
+  \end{split}
+\end{equation}
+
+Pada tahap ini \emph{integral image} yang dipilih akan dibuat untuk semua 
+posibilitas lokasi yang ada dan ukuran yang ada. Hal ini dilakukan dengan 
+membuat fitur dimulai dari kiri atas gambar dengan ukuran 20 x 20 piksel untuk fitur 
+dua persegi, dan 20 x 30 piksel untuk fitur tiga persegi, sampai pojok kanan bawah. 
+Hal ini juga dilakukan untuk ukuran-ukuran yang lebih besar sampai fitur lebih besar 
+dari \emph{sub-window} yang digunakan dan tidak bisa muat lagi didalan \emph{sub-window}. 
+Ukuran paling kecil dari fitur akan disesuaikan pada saat penelitian 
+bila ternyata fitur terlalu banyak dan memperlambat proses pelatihan. 
 
 \subsection{Pembuatan \textit{Decision Tree}}
 

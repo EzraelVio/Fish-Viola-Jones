@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.21)  31 JUL 2023 13:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.21)  2 AUG 2023 14:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -882,7 +882,7 @@ Package biblatex Info: ... file 'template-skripsi.bbl' found.
 Package biblatex Info: Reference section=0 on input line 169.
 Package biblatex Info: Reference segment=0 on input line 169.
 \c@lstlisting=\count465
-<gambar/logounj.png, id=123, 186.38052pt x 186.38052pt>
+<gambar/logounj.png, id=131, 186.38052pt x 186.38052pt>
 File: gambar/logounj.png Graphic file (type png)
 <use gambar/logounj.png>
 Package pdftex.def Info: gambar/logounj.png  used on input line 171.
@@ -912,15 +912,15 @@ Overfull \hbox (22.07805pt too wide) in paragraph at lines 32--43
 
 
 
-]) [4] (template-skripsi.toc)
+]) [4] (template-skripsi.toc [5
+
+
+
+])
 \tf@toc=\write5
 \openout5 = `template-skripsi.toc'.
 
- [5
-
-
-
-] [6] (template-skripsi.lof)
+ [6] (template-skripsi.lof)
 \tf@lof=\write6
 \openout6 = `template-skripsi.lof'.
 
@@ -950,7 +950,7 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 
  (bab2.tex
 BAB II.
-<gambar/haar_features.png, id=259, 429.85594pt x 118.19156pt>
+<gambar/haar_features.png, id=273, 429.85594pt x 118.19156pt>
 File: gambar/haar_features.png Graphic file (type png)
 <use gambar/haar_features.png>
 Package pdftex.def Info: gambar/haar_features.png  used on input line 41.
@@ -961,13 +961,13 @@ Package pdftex.def Info: gambar/haar_features.png  used on input line 41.
 
 
 ]
-<gambar/integral_image_1.png, id=264, 203.67pt x 203.9985pt>
+<gambar/integral_image_1.png, id=278, 203.67pt x 203.9985pt>
 File: gambar/integral_image_1.png Graphic file (type png)
 <use gambar/integral_image_1.png>
 Package pdftex.def Info: gambar/integral_image_1.png  used on input line 66.
 (pdftex.def)             Requested size: 244.12717pt x 244.53549pt.
  [7 <./gambar/haar_features.png>]
-<gambar/integral_image_2.png, id=270, 200.0565pt x 200.0565pt>
+<gambar/integral_image_2.png, id=284, 200.0565pt x 200.0565pt>
 File: gambar/integral_image_2.png Graphic file (type png)
 <use gambar/integral_image_2.png>
 Package pdftex.def Info: gambar/integral_image_2.png  used on input line 91.
@@ -979,12 +979,12 @@ Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on inp
 
  (bab3.tex
 BAB III.
-<gambar/flowchart_1.png, id=321, 573.14125pt x 251.94125pt>
-File: gambar/flowchart_1.png Graphic file (type png)
-<use gambar/flowchart_1.png>
-Package pdftex.def Info: gambar/flowchart_1.png  used on input line 16.
-(pdftex.def)             Requested size: 244.12717pt x 107.31387pt.
-<gambar/flowchart_2.png, id=322, 573.14125pt x 251.94125pt>
+<gambar/flowchart_1_1.png, id=335, 604.2575pt x 252.945pt>
+File: gambar/flowchart_1_1.png Graphic file (type png)
+<use gambar/flowchart_1_1.png>
+Package pdftex.def Info: gambar/flowchart_1_1.png  used on input line 16.
+(pdftex.def)             Requested size: 244.12717pt x 102.19128pt.
+<gambar/flowchart_2.png, id=336, 573.14125pt x 251.94125pt>
 File: gambar/flowchart_2.png Graphic file (type png)
 <use gambar/flowchart_2.png>
 Package pdftex.def Info: gambar/flowchart_2.png  used on input line 22.
@@ -994,63 +994,68 @@ Package pdftex.def Info: gambar/flowchart_2.png  used on input line 22.
 
 
 
- <./gambar/flowchart_1.png> <./gambar/flowchart_2.png>]
-<gambar/dataset_2.png, id=329, 1716.4125pt x 584.1825pt>
+ <./gambar/flowchart_1_1.png> <./gambar/flowchart_2.png>]
+<gambar/dataset_2.png, id=343, 1716.4125pt x 584.1825pt>
 File: gambar/dataset_2.png Graphic file (type png)
 <use gambar/dataset_2.png>
 Package pdftex.def Info: gambar/dataset_2.png  used on input line 66.
 (pdftex.def)             Requested size: 244.12717pt x 83.08641pt.
  [15 <./gambar/dataset_2.png>]
-<gambar/integral_image_3.png, id=334, 1847.90375pt x 602.25pt>
+<gambar/integral_image_3.png, id=348, 1847.90375pt x 602.25pt>
 File: gambar/integral_image_3.png Graphic file (type png)
 <use gambar/integral_image_3.png>
 Package pdftex.def Info: gambar/integral_image_3.png  used on input line 113.
 (pdftex.def)             Requested size: 244.12717pt x 79.5634pt.
- [16 <./gambar/integral_image_3.png>]
-<gambar/cascade.png, id=341, 223.58531pt x 150.5625pt>
+<gambar/integral_image_4.png, id=349, 752.8125pt x 722.7pt>
+File: gambar/integral_image_4.png Graphic file (type png)
+<use gambar/integral_image_4.png>
+Package pdftex.def Info: gambar/integral_image_4.png  used on input line 132.
+(pdftex.def)             Requested size: 244.12717pt x 234.35641pt.
+ [16 <./gambar/integral_image_3.png>] [17 <./gambar/integral_image_4.png>] [18]
+<gambar/cascade.png, id=368, 223.58531pt x 150.5625pt>
 File: gambar/cascade.png Graphic file (type png)
 <use gambar/cascade.png>
-Package pdftex.def Info: gambar/cascade.png  used on input line 167.
+Package pdftex.def Info: gambar/cascade.png  used on input line 204.
 (pdftex.def)             Requested size: 244.12717pt x 164.39932pt.
- [17] [18 <./gambar/cascade.png>]
-<gambar/sliding_window_1.png, id=353, 120.45pt x 88.33pt>
+ [19 <./gambar/cascade.png>]
+<gambar/sliding_window_1.png, id=374, 120.45pt x 88.33pt>
 File: gambar/sliding_window_1.png Graphic file (type png)
 <use gambar/sliding_window_1.png>
-Package pdftex.def Info: gambar/sliding_window_1.png  used on input line 229.
+Package pdftex.def Info: gambar/sliding_window_1.png  used on input line 266.
 (pdftex.def)             Requested size: 244.12717pt x 179.04381pt.
- [19 <./gambar/sliding_window_1.png>]
-<gambar/sliding_window_2.png, id=359, 120.45pt x 88.33pt>
+ [20]
+<gambar/sliding_window_2.png, id=379, 120.45pt x 88.33pt>
 File: gambar/sliding_window_2.png Graphic file (type png)
 <use gambar/sliding_window_2.png>
-Package pdftex.def Info: gambar/sliding_window_2.png  used on input line 244.
+Package pdftex.def Info: gambar/sliding_window_2.png  used on input line 281.
 (pdftex.def)             Requested size: 244.12717pt x 179.04381pt.
-) [20 <./gambar/sliding_window_2.png>]
+ [21 <./gambar/sliding_window_1.png> <./gambar/sliding_window_2.png>]) [22] [23
 
-LaTeX Warning: Empty bibliography on input line 215.
 
-(template-skripsi.aux (pengesahan.aux) (kata-pengantar.aux) (bab1.aux) (bab2.aux) (bab3.aux))
+
+] (template-skripsi.aux (pengesahan.aux) (kata-pengantar.aux) (bab1.aux) (bab2.aux) (bab3.aux))
  ***********
 LaTeX2e <2023-06-01> patch level 1
 L3 programming layer <2023-06-30>
  ***********
 Package rerunfilecheck Info: File `template-skripsi.out' has not changed.
-(rerunfilecheck)             Checksum: C6D268E4E3BA98E570D2D049AF9DB419;4543.
+(rerunfilecheck)             Checksum: 10F453C40609D64CA5CA0B9735389552;4823.
 Package logreq Info: Writing requests to 'template-skripsi.run.xml'.
 \openout1 = `template-skripsi.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 24073 strings out of 475550
- 420660 string characters out of 5763005
- 1931238 words of memory out of 5000000
- 44826 multiletter control sequences out of 15000+600000
+ 24305 strings out of 475550
+ 425457 string characters out of 5763005
+ 1932238 words of memory out of 5000000
+ 45050 multiletter control sequences out of 15000+600000
  591357 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 75i,17n,81p,756b,1936s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 75i,17n,81p,756b,2205s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on template-skripsi.pdf (28 pages, 2775818 bytes).
+Output written on template-skripsi.pdf (31 pages, 2786584 bytes).
 PDF statistics:
- 450 PDF objects out of 1000 (max. 8388607)
- 100 named destinations out of 1000 (max. 500000)
- 296 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 482 PDF objects out of 1000 (max. 8388607)
+ 108 named destinations out of 1000 (max. 500000)
+ 317 words of extra memory for PDF output out of 10000 (max. 10000000)
 
