@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.21)  2 AUG 2023 14:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.21)  4 AUG 2023 13:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -764,32 +764,32 @@ Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
 
 Package biblatex Warning: Conflicting options.
 (biblatex)                '<namepart>inits' conflicts with 'uniquename=full'.
-(biblatex)                Setting 'uniquename=init' on input line 169.
+(biblatex)                Setting 'uniquename=init' on input line 170.
 
-LaTeX Font Info:    Trying to load font information for T1+ptm on input line 169.
+LaTeX Font Info:    Trying to load font information for T1+ptm on input line 170.
 (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
 ) (template-skripsi.aux (pengesahan.aux) (kata-pengantar.aux) (bab1.aux) (bab2.aux) (bab3.aux))
 \openout1 = `template-skripsi.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 169.
-LaTeX Font Info:    ... okay on input line 169.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 170.
+LaTeX Font Info:    ... okay on input line 170.
  (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count459
@@ -837,7 +837,7 @@ File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package hyperref Info: Link coloring OFF on input line 169.
+Package hyperref Info: Link coloring OFF on input line 170.
 (template-skripsi.out) (template-skripsi.out)
 \@outlinefile=\write4
 \openout4 = `template-skripsi.out'.
@@ -869,7 +869,7 @@ Package biblatex Info: ... file 'bahasa.lbx' not found.
 
 
 Package biblatex Warning: Language 'bahasa' not supported.
-(biblatex)                Using dummy definitions on input line 169.
+(biblatex)                Using dummy definitions on input line 170.
 
 Package biblatex Info: Input encoding 'utf8' detected.
 Package biblatex Info: Automatic encoding selection.
@@ -879,13 +879,13 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'template-skripsi.bbl' found.
 (template-skripsi.bbl)
-Package biblatex Info: Reference section=0 on input line 169.
-Package biblatex Info: Reference segment=0 on input line 169.
+Package biblatex Info: Reference section=0 on input line 170.
+Package biblatex Info: Reference segment=0 on input line 170.
 \c@lstlisting=\count465
 <gambar/logounj.png, id=131, 186.38052pt x 186.38052pt>
 File: gambar/logounj.png Graphic file (type png)
 <use gambar/logounj.png>
-Package pdftex.def Info: gambar/logounj.png  used on input line 171.
+Package pdftex.def Info: gambar/logounj.png  used on input line 172.
 (pdftex.def)             Requested size: 162.7473pt x 162.7498pt.
  [1
 
@@ -950,7 +950,7 @@ File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 
  (bab2.tex
 BAB II.
-<gambar/haar_features.png, id=273, 429.85594pt x 118.19156pt>
+<gambar/haar_features.png, id=296, 429.85594pt x 118.19156pt>
 File: gambar/haar_features.png Graphic file (type png)
 <use gambar/haar_features.png>
 Package pdftex.def Info: gambar/haar_features.png  used on input line 41.
@@ -961,13 +961,13 @@ Package pdftex.def Info: gambar/haar_features.png  used on input line 41.
 
 
 ]
-<gambar/integral_image_1.png, id=278, 203.67pt x 203.9985pt>
+<gambar/integral_image_1.png, id=304, 203.67pt x 203.9985pt>
 File: gambar/integral_image_1.png Graphic file (type png)
 <use gambar/integral_image_1.png>
 Package pdftex.def Info: gambar/integral_image_1.png  used on input line 66.
 (pdftex.def)             Requested size: 244.12717pt x 244.53549pt.
  [7 <./gambar/haar_features.png>]
-<gambar/integral_image_2.png, id=284, 200.0565pt x 200.0565pt>
+<gambar/integral_image_2.png, id=311, 200.0565pt x 200.0565pt>
 File: gambar/integral_image_2.png Graphic file (type png)
 <use gambar/integral_image_2.png>
 Package pdftex.def Info: gambar/integral_image_2.png  used on input line 91.
@@ -979,12 +979,12 @@ Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on inp
 
  (bab3.tex
 BAB III.
-<gambar/flowchart_1_1.png, id=335, 604.2575pt x 252.945pt>
+<gambar/flowchart_1_1.png, id=362, 604.2575pt x 252.945pt>
 File: gambar/flowchart_1_1.png Graphic file (type png)
 <use gambar/flowchart_1_1.png>
 Package pdftex.def Info: gambar/flowchart_1_1.png  used on input line 16.
 (pdftex.def)             Requested size: 244.12717pt x 102.19128pt.
-<gambar/flowchart_2.png, id=336, 573.14125pt x 251.94125pt>
+<gambar/flowchart_2.png, id=363, 573.14125pt x 251.94125pt>
 File: gambar/flowchart_2.png Graphic file (type png)
 <use gambar/flowchart_2.png>
 Package pdftex.def Info: gambar/flowchart_2.png  used on input line 22.
@@ -995,41 +995,45 @@ Package pdftex.def Info: gambar/flowchart_2.png  used on input line 22.
 
 
  <./gambar/flowchart_1_1.png> <./gambar/flowchart_2.png>]
-<gambar/dataset_2.png, id=343, 1716.4125pt x 584.1825pt>
+<gambar/dataset_2.png, id=370, 1716.4125pt x 584.1825pt>
 File: gambar/dataset_2.png Graphic file (type png)
 <use gambar/dataset_2.png>
 Package pdftex.def Info: gambar/dataset_2.png  used on input line 66.
 (pdftex.def)             Requested size: 244.12717pt x 83.08641pt.
  [15 <./gambar/dataset_2.png>]
-<gambar/integral_image_3.png, id=348, 1847.90375pt x 602.25pt>
+<gambar/integral_image_3.png, id=375, 1847.90375pt x 602.25pt>
 File: gambar/integral_image_3.png Graphic file (type png)
 <use gambar/integral_image_3.png>
 Package pdftex.def Info: gambar/integral_image_3.png  used on input line 113.
 (pdftex.def)             Requested size: 244.12717pt x 79.5634pt.
-<gambar/integral_image_4.png, id=349, 752.8125pt x 722.7pt>
+<gambar/integral_image_4.png, id=376, 752.8125pt x 722.7pt>
 File: gambar/integral_image_4.png Graphic file (type png)
 <use gambar/integral_image_4.png>
 Package pdftex.def Info: gambar/integral_image_4.png  used on input line 132.
 (pdftex.def)             Requested size: 244.12717pt x 234.35641pt.
  [16 <./gambar/integral_image_3.png>] [17 <./gambar/integral_image_4.png>] [18]
-<gambar/cascade.png, id=368, 223.58531pt x 150.5625pt>
+<gambar/cascade.png, id=395, 223.58531pt x 150.5625pt>
 File: gambar/cascade.png Graphic file (type png)
 <use gambar/cascade.png>
 Package pdftex.def Info: gambar/cascade.png  used on input line 204.
 (pdftex.def)             Requested size: 244.12717pt x 164.39932pt.
  [19 <./gambar/cascade.png>]
-<gambar/sliding_window_1.png, id=374, 120.45pt x 88.33pt>
+<gambar/sliding_window_1.png, id=401, 120.45pt x 88.33pt>
 File: gambar/sliding_window_1.png Graphic file (type png)
 <use gambar/sliding_window_1.png>
 Package pdftex.def Info: gambar/sliding_window_1.png  used on input line 266.
 (pdftex.def)             Requested size: 244.12717pt x 179.04381pt.
  [20]
-<gambar/sliding_window_2.png, id=379, 120.45pt x 88.33pt>
+<gambar/sliding_window_2.png, id=406, 120.45pt x 88.33pt>
 File: gambar/sliding_window_2.png Graphic file (type png)
 <use gambar/sliding_window_2.png>
 Package pdftex.def Info: gambar/sliding_window_2.png  used on input line 281.
 (pdftex.def)             Requested size: 244.12717pt x 179.04381pt.
- [21 <./gambar/sliding_window_1.png> <./gambar/sliding_window_2.png>]) [22] [23
+ [21 <./gambar/sliding_window_1.png> <./gambar/sliding_window_2.png>]) [22]
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 216.
+ (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+) [23
 
 
 
@@ -1045,17 +1049,17 @@ Package logreq Info: Writing requests to 'template-skripsi.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 24305 strings out of 475550
- 425457 string characters out of 5763005
+ 24409 strings out of 475550
+ 427544 string characters out of 5763005
  1932238 words of memory out of 5000000
- 45050 multiletter control sequences out of 15000+600000
- 591357 words of font info for 73 fonts, out of 8000000 for 9000
+ 45138 multiletter control sequences out of 15000+600000
+ 597194 words of font info for 77 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,17n,81p,756b,2205s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on template-skripsi.pdf (31 pages, 2786584 bytes).
+<C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
+Output written on template-skripsi.pdf (31 pages, 2805544 bytes).
 PDF statistics:
- 482 PDF objects out of 1000 (max. 8388607)
- 108 named destinations out of 1000 (max. 500000)
+ 519 PDF objects out of 1000 (max. 8388607)
+ 117 named destinations out of 1000 (max. 500000)
  317 words of extra memory for PDF output out of 10000 (max. 10000000)
 

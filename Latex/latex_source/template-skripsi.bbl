@@ -43,6 +43,241 @@
       \field{title}{Rancangan Bangun Fish Counter Untuk Menghitung Bibit Ikan Lele}
       \field{year}{2020}
     \endentry
+    \entry{papaetal}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=8db382622d34aee4764c5143cba846cc}{%
+           family={Constantine\bibnamedelimb P.\bibnamedelimi Papageorgiou},
+           familyi={C\bibinitperiod\bibinitdelim P\bibinitperiod\bibinitdelim P\bibinitperiod},
+           given={Tomaso\bibnamedelima Poggio},
+           giveni={T\bibinitperiod\bibinitdelim P\bibinitperiod},
+           givenun=0,
+           suffix={Michael\bibnamedelima Oren},
+           suffixi={M\bibinitperiod\bibinitdelim O\bibinitperiod},
+           suffixun=0}}%
+      }
+      \strng{namehash}{8db382622d34aee4764c5143cba846cc}
+      \strng{fullhash}{8db382622d34aee4764c5143cba846cc}
+      \strng{bibnamehash}{8db382622d34aee4764c5143cba846cc}
+      \strng{authorbibnamehash}{8db382622d34aee4764c5143cba846cc}
+      \strng{authornamehash}{8db382622d34aee4764c5143cba846cc}
+      \strng{authorfullhash}{8db382622d34aee4764c5143cba846cc}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A General Framework for Object Detection}
+      \field{year}{1998}
+    \endentry
+    \entry{rennoetal}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=d55a7c92f84da05aaf6a8405ccc1faa9}{%
+           family={John-Paul\bibnamedelima Renno},
+           familyi={J\bibinithyphendelim P\bibinitperiod\bibinitdelim R\bibinitperiod},
+           given={Graeme\bibnamedelimb A.\bibnamedelimi Jones},
+           giveni={G\bibinitperiod\bibinitdelim A\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0,
+           suffix={Dimitrios\bibnamedelima Makris},
+           suffixi={D\bibinitperiod\bibinitdelim M\bibinitperiod},
+           suffixun=0}}%
+      }
+      \strng{namehash}{d55a7c92f84da05aaf6a8405ccc1faa9}
+      \strng{fullhash}{d55a7c92f84da05aaf6a8405ccc1faa9}
+      \strng{bibnamehash}{d55a7c92f84da05aaf6a8405ccc1faa9}
+      \strng{authorbibnamehash}{d55a7c92f84da05aaf6a8405ccc1faa9}
+      \strng{authornamehash}{d55a7c92f84da05aaf6a8405ccc1faa9}
+      \strng{authorfullhash}{d55a7c92f84da05aaf6a8405ccc1faa9}
+      \field{sortinit}{J}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Object Classification in Visual Surveillance Using Adaboost}
+      \field{year}{2007}
+    \endentry
+    \entry{KKP}{online}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=92ee9af2e9ba0214a4418a518203ceff}{%
+           family={KKP},
+           familyi={K\bibinitperiod}}}%
+      }
+      \strng{namehash}{92ee9af2e9ba0214a4418a518203ceff}
+      \strng{fullhash}{92ee9af2e9ba0214a4418a518203ceff}
+      \strng{bibnamehash}{92ee9af2e9ba0214a4418a518203ceff}
+      \strng{authorbibnamehash}{92ee9af2e9ba0214a4418a518203ceff}
+      \strng{authornamehash}{92ee9af2e9ba0214a4418a518203ceff}
+      \strng{authorfullhash}{92ee9af2e9ba0214a4418a518203ceff}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Data Statis Produksi}
+      \field{urlday}{9}
+      \field{urlmonth}{12}
+      \field{urlyear}{2022}
+      \field{year}{2022}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://statistik.kkp.go.id/home.php?m=prod_ikan_prov&i=2#panel-footer
+      \endverb
+      \verb{url}
+      \verb https://statistik.kkp.go.id/home.php?m=prod_ikan_prov&i=2#panel-footer
+      \endverb
+    \endentry
+    \entry{violaetal}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=0db2a025d62fc2ba6e42fcbe5223825d}{%
+           family={Paul\bibnamedelima Viola},
+           familyi={P\bibinitperiod\bibinitdelim V\bibinitperiod},
+           given={Michael\bibnamedelimb J.\bibnamedelimi Jones},
+           giveni={M\bibinitperiod\bibinitdelim J\bibinitperiod\bibinitdelim J\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{0db2a025d62fc2ba6e42fcbe5223825d}
+      \strng{fullhash}{0db2a025d62fc2ba6e42fcbe5223825d}
+      \strng{bibnamehash}{0db2a025d62fc2ba6e42fcbe5223825d}
+      \strng{authorbibnamehash}{0db2a025d62fc2ba6e42fcbe5223825d}
+      \strng{authornamehash}{0db2a025d62fc2ba6e42fcbe5223825d}
+      \strng{authorfullhash}{0db2a025d62fc2ba6e42fcbe5223825d}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Robust Real-Time Face Detection}
+      \field{year}{2004}
+    \endentry
+    \entry{diansarietal}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=2cbe9d2da2ff68fe559572c03eff9f1c}{%
+           family={RR.VR.\bibnamedelimi Diansari},
+           familyi={R\bibinitperiod\bibinitdelim D\bibinitperiod},
+           given={Tita\bibnamedelima Elfitasari},
+           giveni={T\bibinitperiod\bibinitdelim E\bibinitperiod},
+           givenun=0,
+           suffix={Endang\bibnamedelima Arini},
+           suffixi={E\bibinitperiod\bibinitdelim A\bibinitperiod},
+           suffixun=0}}%
+      }
+      \strng{namehash}{2cbe9d2da2ff68fe559572c03eff9f1c}
+      \strng{fullhash}{2cbe9d2da2ff68fe559572c03eff9f1c}
+      \strng{bibnamehash}{2cbe9d2da2ff68fe559572c03eff9f1c}
+      \strng{authorbibnamehash}{2cbe9d2da2ff68fe559572c03eff9f1c}
+      \strng{authornamehash}{2cbe9d2da2ff68fe559572c03eff9f1c}
+      \strng{authorfullhash}{2cbe9d2da2ff68fe559572c03eff9f1c}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Pengaruh Kepadatan Yang Berbeda Terhadap Kelulushidupan dan Pertumbuhan Ikan Nila (Oreochromis niloticus) Pada Sistem Resirkulasi Dengan Filter Zeolit}
+      \field{year}{2013}
+    \endentry
+    \entry{rusydi}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=e901d7a30da3d2263480d34747691883}{%
+           family={Rusydi},
+           familyi={R\bibinitperiod},
+           given={Muhammad\bibnamedelima Ilhamdi},
+           giveni={M\bibinitperiod\bibinitdelim I\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{e901d7a30da3d2263480d34747691883}
+      \strng{fullhash}{e901d7a30da3d2263480d34747691883}
+      \strng{bibnamehash}{e901d7a30da3d2263480d34747691883}
+      \strng{authorbibnamehash}{e901d7a30da3d2263480d34747691883}
+      \strng{authornamehash}{e901d7a30da3d2263480d34747691883}
+      \strng{authorfullhash}{e901d7a30da3d2263480d34747691883}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Perancangan Mesin Penghitung Benih Ikan Otomatis untuk Membantu Kinerja Peternak Ikan}
+      \field{year}{2019}
+    \endentry
+    \entry{weber}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=467188d1dc60c4030320c211ba1a79c3}{%
+           family={Weber},
+           familyi={W\bibinitperiod},
+           given={Ben},
+           giveni={B\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{467188d1dc60c4030320c211ba1a79c3}
+      \strng{fullhash}{467188d1dc60c4030320c211ba1a79c3}
+      \strng{bibnamehash}{467188d1dc60c4030320c211ba1a79c3}
+      \strng{authorbibnamehash}{467188d1dc60c4030320c211ba1a79c3}
+      \strng{authornamehash}{467188d1dc60c4030320c211ba1a79c3}
+      \strng{authorfullhash}{467188d1dc60c4030320c211ba1a79c3}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Generic Object Detection using AdaBoost}
+      \field{year}{2006}
+    \endentry
+    \entry{hoetal}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=f627fe83ab7296ce99c48af55f96918a}{%
+           family={Wing\bibnamedelimb Teng\bibnamedelima Ho},
+           familyi={W\bibinitperiod\bibinitdelim T\bibinitperiod\bibinitdelim H\bibinitperiod},
+           given={Yong\bibnamedelimb Haur\bibnamedelima Tay},
+           giveni={Y\bibinitperiod\bibinitdelim H\bibinitperiod\bibinitdelim T\bibinitperiod},
+           givenun=0,
+           suffix={Hao\bibnamedelimb Wooi\bibnamedelima Lim},
+           suffixi={H\bibinitperiod\bibinitdelim W\bibinitperiod\bibinitdelim L\bibinitperiod},
+           suffixun=0}}%
+      }
+      \strng{namehash}{f627fe83ab7296ce99c48af55f96918a}
+      \strng{fullhash}{f627fe83ab7296ce99c48af55f96918a}
+      \strng{bibnamehash}{f627fe83ab7296ce99c48af55f96918a}
+      \strng{authorbibnamehash}{f627fe83ab7296ce99c48af55f96918a}
+      \strng{authornamehash}{f627fe83ab7296ce99c48af55f96918a}
+      \strng{authorfullhash}{f627fe83ab7296ce99c48af55f96918a}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Two-stage License Plate Detection using Gentle Adaboost and SIFT-SVM}
+      \field{year}{2009}
+    \endentry
+    \entry{freundetal}{article}{}
+      \name{author}{1}{}{%
+        {{un=0,uniquepart=base,hash=a49833678ecfcee63dd045c59cf583e3}{%
+           family={Yoav\bibnamedelima Freund},
+           familyi={Y\bibinitperiod\bibinitdelim F\bibinitperiod},
+           given={Robert\bibnamedelimb E.\bibnamedelimi Schapire},
+           giveni={R\bibinitperiod\bibinitdelim E\bibinitperiod\bibinitdelim S\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{a49833678ecfcee63dd045c59cf583e3}
+      \strng{fullhash}{a49833678ecfcee63dd045c59cf583e3}
+      \strng{bibnamehash}{a49833678ecfcee63dd045c59cf583e3}
+      \strng{authorbibnamehash}{a49833678ecfcee63dd045c59cf583e3}
+      \strng{authornamehash}{a49833678ecfcee63dd045c59cf583e3}
+      \strng{authorfullhash}{a49833678ecfcee63dd045c59cf583e3}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{A Decision-Theoretic Generalization of On-Line Learning and an Application to Boosting}
+      \field{year}{1996}
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

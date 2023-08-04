@@ -32,7 +32,7 @@ yang besar di habitat aslinya. Permintaan untuk ikan sangat besar di
 Indonesia, hal ini menyebabkan besarnya nilai pasar dari industri ini. 
 Kementrian Kelautan dan Perikanan Indonesia mencatat bahwa 
 produksi ikan budidaya di Indonesia mencapai 14 juta ton pada tahun 
-2021 dengan nilai sebesar Rp. 196.000.000.000.000,- trilliun rupiah (KKP, 2021).
+2021 dengan nilai sebesar Rp. 196.000.000.000.000,- trilliun rupiah (\cite{KKP}).
 
 % Dasar problem permasalahan lapangan
 Budidaya ikan di Indonesia memiliki problem yang lumayan besar yaitu 
@@ -59,14 +59,14 @@ sangat besar. Namun jumlah bibit ikan tidaklah akurat dan hanya berupa perkiraan
 % Elaborasi lebih lanjut problem lapangan
 Problem perhitungan ikan ini akan sangat terasa pada industri budidaya ikan yang 
 sangat mementingkan kepadatan populasi dalam tempat budidaya ikan. Populasi ikan 
-yang berlebihan dapat memperlambat pertumbuhan ikan (Diansari et al, 2013), tapi 
+yang berlebihan dapat memperlambat pertumbuhan ikan (\cite{diansarietal}), tapi 
 di sisi lain populasi ikan yang terlalu kecil akan mengurangi efisiensi lahan 
-yang dimiliki peternak ikan. Dalam mengatasi problem Al-Amri (2020) menciptakan 
+yang dimiliki peternak ikan. Dalam mengatasi problem \cite{alamri} menciptakan 
 sebuah sistem penghitungan menggunakan sensor \emph{proximity}. Hasil uji coba mendapat 
 hasil yang baik dengan persentase error sebesar 4,07\% dengan penghitungan 
 memakan waktu 228 detik per 1000 ikan. Jauh lebih cepat dibanding kecepatan 
 hitung manual yang memakan waktu 20 menit per 1000 ikan. Cara lain dipakai 
-oleh Rusydi (2019) untuk mendeteksi ikan. Rusydi menciptakan sebuah alat 
+oleh \cite{rusydi} untuk mendeteksi ikan. Rusydi menciptakan sebuah alat 
 penghitungan dengan katup otomatis yang akan terbuka bilamana jumlah ikan 
 yang diinginkan telah tercapai. Alat tersebut mendeteksi ikan menggunakan 
 konsep \emph{through beam} di mana ikan akan terdeteksi ketika melewati pipa oleh 
@@ -74,21 +74,21 @@ inframerah dan photodioda. Alat tersebut dapat mendeteksi ikan dengan
 kecepatan 58 ms per ikan dengan tingkat akurasi 100\%.
 
 % Kelemahan metode penghitungan manual Al-Amri dan Rusydi
-Penggunaan alat deteksi fisik seperti yang digunakan Al-Amri (2020) maupun 
-Rusydi (2019) memiliki beberapa kekurangan, seperti ukuran ikan bergantung 
-kepada ukuran alat yang dipergunakan. Alat Rusyidi (2019) sangat bergantung 
+Penggunaan alat deteksi fisik seperti yang digunakan \cite{alamri} maupun 
+\cite{rusydi} memiliki beberapa kekurangan, seperti ukuran ikan bergantung 
+kepada ukuran alat yang dipergunakan. Alat Rusydi sangat bergantung 
 dengan kelandaian dan kecepatan lewat ikan yang melewati pipa sensor, mengganti 
 ukuran ikan yang akan dideteksi mengharuskan tes ulang untuk 
-mendapatkan pengaturan alat yang paling optimal (dalam tes, Rusyidi (2019) 
+mendapatkan pengaturan alat yang paling optimal (dalam tes, Rusyidi 
 menemukan bahwa kelandaian pipa 30° memberikan hasil paling akurat dalam 
-mendeteksi ikan). Sementara pada alat Al-Amri (2020), lubang keluar 
+mendeteksi ikan). Sementara pada alat Al-Amri, lubang keluar 
 ikan yang perlu dimodifikasi untuk mengamodasi ikan yang lebih besar. 
 Metode-metode tersebut sangatlah tidak fleksibel dalam industri peternakan 
 ikan yang tidak hanya menternakan satu jenis ikan saja.
 
 % Penjelasan Rapid Object Detection
 Deteksi Objek Cepat (\emph{Rapid Object Detection}) adalah sebuah algoritma yang 
-diciptakan untuk pendeteksian muka (Viola et al, 2001). Viola (2001) 
+diciptakan untuk pendeteksian muka \cite{violaetal}. Viola 
 menjelaskan kalau algoritma deteksi yang diciptakannya dapat mendeteksi 
 muka dari gambar berukuran 384 x 288 pixel dari kamera berkecepatan 15 
 \textit{frame} per detik. Deteksi objek dapat digunakan untuk berbagai hal seperti 
@@ -104,16 +104,16 @@ deteksi objek umumnya menggunakan pendekatan neural network dan
 berusaha dideteksi.
 
 % Metode Adaboost
-Adaboost (Freund et al, 1995) adalah sebuah pendekatan \textit{non-neural network} 
+Adaboost (\cite{freundetal}) adalah sebuah pendekatan \textit{non-neural network} 
 yang sering digunakan untuk mendefinisikan fitur dari objek yang ingin 
-dideteksi (Weber, 2005). Adaboost telah digunakan untuk deteksi berbagai objek 
-seperti deteksi plat nomor kendaraan bermotor (Ho et al, 2009), deteksi muka 
-(Viola et al, 2001), deteksi pesawat terbang (Weber, 2005) dan lain-lain. 
+dideteksi (\cite{weber}). Adaboost telah digunakan untuk deteksi berbagai objek 
+seperti deteksi plat nomor kendaraan bermotor (\cite{hoetal}), deteksi muka 
+(\cite{violaetal}), deteksi pesawat terbang (\cite{freundetal}) dan lain-lain. 
 Adaboost mencari fitur sebuah kelas objek dengan menggunakan sekumpulan 
 \emph{weak learner} untuk membuat sebuah \emph{strong learner}. 
 Kumpulan weak learner tersebut nantinya akan dinilai sesuai dengan akurasi 
 mereka, di mana weak learner yang secara konsisten benar menebak fitur sebuah 
-objek akan memiliki nilai lebih dalam keputusan klasifikasi akhir. Weber (1995) 
+objek akan memiliki nilai lebih dalam keputusan klasifikasi akhir. Freund 
 menjelaskan bahwa metode Adaboost dapat digambarkan selayaknya seorang pejudi 
 pacuan kuda yang kalah terus menerus. Pejudi tersebut lalu memutuskan untuk 
 menjadikan teman-teman penjudinya menjadi acuan untuk taruhan berikutnya. 
@@ -139,7 +139,7 @@ Dari uraian permasalahan di atas, perumusan masalah dalam penelitian ini adalah
 \section{Batasan Masalah}
 Batasan masalah pada penelitian ini adalah:
 \begin{enumerate}
-	\item Klasifikasi ikan menggunakan \textit{Viola-Jones Object Detection Framework} yang didapat dari penelitian Viola-Jones (Viola et al, 2004)
+	\item Klasifikasi ikan menggunakan \textit{Viola-Jones Object Detection Framework} yang didapat dari penelitian Viola-Jones (\cite{violaetal})
 	\item Program didesain untuk mengklasifikasi ikan saja
 	\item Klasifikasi dilakukan dengan gambar tampak samping ikan saja
 	\item Klasifikasi harus bisa melakukan deteksi tiga kelas genus ikan, Abudefduf, Amphiprion, Chaetodon, 

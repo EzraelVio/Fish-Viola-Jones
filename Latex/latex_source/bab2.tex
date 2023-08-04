@@ -17,11 +17,11 @@ Pelatihan dilakukan dengan secara data yang sudah dilabeli secara manual atau
 data yang belum dilabeli. Pelatihan otomatis umumnya menekankan distribusi dari 
 setiap kelas, dan melabeli setiap contoh dengan sesuai, Namun, isu yang umum 
 didalam kedua kasus adalah pilihan dari fitur-fitur yang akan digunakan untuk 
-klasifikasi objek (Renno et al, 2007).
+klasifikasi objek (\cite{rennoetal}).
 
 \section{\emph{Viola Jones Object Detection Framework}}
 
-Paul Viola dan Michael, J, Jones mempublikasikan sebuah makalah ilmiah dengan 
+Paul Viola dan Michael, J, Jones (\cite{rennoetal}) mempublikasikan sebuah makalah ilmiah dengan 
 judul “\emph{Robust Real-Time Face Detection}”. Makalah tersebut mendeskripsikan sebuah 
 framework pendeteksian wajah yang dapat memproses gambar secara cepat dengan 
 tingkat akurasi yang tinggi. Ada tiga kontribusi penting dari makalah tersebut: 
@@ -29,7 +29,7 @@ Pertama adalah pengenalan sebuah representasi gambar baru yang dipanggil
 \emph{Integral Image} yang memungkinkan penghitungan fitur yang dipakai oleh detektor 
 dilakukan dengan cepat. Yang kedua adalah sebuah classifier yang efisien dan 
 sederhana, yang dibuat menggunakan algoritma pembelajaran \emph{Adaboost} 
-(Freund et al, 1995) untuk memilih sejumlah fitur-fitur kritis dari 
+(\cite{freundetal}) untuk memilih sejumlah fitur-fitur kritis dari 
 fitur-fitur potensial. Yang ketiga adalah sebuah metode untuk menggabungkan 
 fitur-fitur tersebut dalam sebuah bentuk \emph{cascade} yang memungkinakan algoritma 
 untuk memfokuskan deteksi di area-area yang memiliki potensial saja.
@@ -50,7 +50,7 @@ ada alasan besar lainnya untuk penggunaan fitur yaitu sistem berbasis fitur bero
 daripada sistem yang berbasis nilai piksel.
 
 Fitur sederhana yang digunakan mirip dengan \emph{Haar Basis Function} yang 
-digunakan Papageorgiou et al. (1998). Lebih tepatnya, tiga jenis fitur. 
+digunakan \cite{papaetal}. Lebih tepatnya, tiga jenis fitur. 
 Nilai dari sebuah \emph{fitur dua persegi} adalah perbedaaan diantara 
 jumlah nilai piksel didalam dua area persegi. Area-area tersebut memiliki 
 ukuran dan bentuk yang sama, dan juga bersebelahan secara horizontal dan vertikal.
