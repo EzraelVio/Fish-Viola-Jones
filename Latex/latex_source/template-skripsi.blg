@@ -1,15 +1,15 @@
-[0] Config.pm:307> INFO - This is Biber 2.19
-[1] Config.pm:310> INFO - Logfile is 'template-skripsi.blg'
-[195] biber-MSWIN64:340> INFO - === 
-[271] Biber.pm:419> INFO - Reading 'template-skripsi.bcf'
-[484] Biber.pm:979> INFO - Found 10 citekeys in bib section 0
-[509] Biber.pm:4419> INFO - Processing section 0
-[529] Biber.pm:4610> INFO - Looking for bibtex file 'daftar-pustaka.bib' for section 0
-[612] bibtex.pm:1713> INFO - LaTeX decoding ...
-[627] bibtex.pm:1519> INFO - Found BibTeX data source 'daftar-pustaka.bib'
-[750] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
-[750] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
-[750] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
-[750] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
-[773] bbl.pm:660> INFO - Writing 'template-skripsi.bbl' with encoding 'UTF-8'
-[780] bbl.pm:763> INFO - Output to template-skripsi.bbl
+[0] Config.pm:306> INFO - This is Biber 2.18
+[0] Config.pm:309> INFO - Logfile is 'template-skripsi.blg'
+[236] biber-MSWIN64:340> INFO - === 
+[299] Biber.pm:418> INFO - Reading 'template-skripsi.bcf'
+[509] Biber.pm:978> INFO - Found 10 citekeys in bib section 0
+[538] Biber.pm:4401> INFO - Processing section 0
+[559] Biber.pm:4592> INFO - Looking for bibtex file 'daftar-pustaka.bib' for section 0
+[700] bibtex.pm:1713> INFO - LaTeX decoding ...
+[777] bibtex.pm:1518> INFO - Found BibTeX data source 'daftar-pustaka.bib'
+[943] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[943] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[943] Biber.pm:4221> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[943] Biber.pm:4227> INFO - No sort tailoring available for locale 'en-US'
+[970] bbl.pm:654> INFO - Writing 'template-skripsi.bbl' with encoding 'UTF-8'
+[982] bbl.pm:757> INFO - Output to template-skripsi.bbl

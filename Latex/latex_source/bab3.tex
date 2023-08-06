@@ -114,7 +114,7 @@ Pembuatan \emph{integral image} nantinya akan digunakan oleh fitur sebagai \text
   \caption{Gambaran \emph{integral image} dari gambar sebuah bidak catur.}
 \end{figure}
 
-\subsection{Pembuatan \textit{Features}}
+\subsection{Pembuatan \textit{like Features}}
 
 Fitur-fitur yang akan digunakan dalam klasifikasi dibuat 
 berdasarkan \emph{Haar-like Features} dan berisikan informasi 
@@ -142,24 +142,38 @@ fitur dengan rumus:
   \end{split}
 \end{equation}
 
-Pada tahap ini \emph{integral image} yang dipilih akan dibuat untuk semua 
+Pada tahap ini fitur yang dipilih akan dibuat untuk semua 
 posibilitas lokasi yang ada dan ukuran yang ada. Hal ini dilakukan dengan 
 membuat fitur dimulai dari kiri atas gambar dengan ukuran 20 x 20 piksel untuk fitur 
 dua persegi, dan 20 x 30 piksel untuk fitur tiga persegi, sampai pojok kanan bawah. 
-Hal ini juga dilakukan untuk ukuran-ukuran yang lebih besar sampai fitur lebih besar 
-dari \emph{sub-window} yang digunakan dan tidak bisa muat lagi didalan \emph{sub-window}. 
+Hal ini juga dilakukan sampai ukuran fitur lebih besar 
+dari \emph{sub-window} yang digunakan dan tidak bisa muat lagi didalannya. 
 Ukuran paling kecil dari fitur akan disesuaikan pada saat penelitian 
 bila ternyata fitur terlalu banyak dan memperlambat proses pelatihan. 
+Selain fitur dua persegi, akan juga dibuat beberapa fitur lainnya seperti, fitur 
+tiga persegi dan empat persegi diagonal.
 
 \subsection{Pembuatan \textit{Decision Tree}}
 
 Setiap \emph{weaklearner} adalah sebuah \emph{decision tree} yang mengambil nilai 
-dari \emph{Haar-like features} sebagai variabel klasifikasi.
-\emph{Haar-like features} dapat mengembalikan 
+dengan fitur sebagai variabel klasifikasi.
+fitur dapat digunakan untuk mengembalikan 
 sebuah nilai perbandingan intensitas cahaya dari suatu area pada gambar dan 
 mendeteksi keberadaan suatu \emph{fitur} seperti 
-perbedaan warna, garis, maupun perbedaan kontras pada gambar. 
+perbedaan warna, garis, maupun perbedaan kontras pada gambar. Hal ini 
+dilakukan dengan membaca nilai dari \emph{integral image}, yang merupakan 
+representasi gambar, dan menghitung nilai dari fitur tersebut.
 %(Jelasin step by step pembuatan decision tree pake algoritma).
+
+Nilai yang didapat dari membaca \emph{integral image} menggunakan fitur lalu 
+akan menjadi variabel pengetesan menggunakan \emph{decision tree}. Pada tahap ini 
+semua \emph{decision tree} akan dilatih untuk mencari nilai \textit{branch} yang 
+paling optimal, hal ini dilakukan dengan menggunakan gambar-gambar pada \textit{dataset} 
+pelatihan sebagai input. \emph{Decision tree} yang dihasilkan pada tahap ini, 
+bersamaan dengan fitur yang berhubungan dengannya, adalah \emph{weaklearner} 
+yang akan digunakan untuk pembuatan \emph{Strong Classifier} pada tahap 
+\emph{Boosting}.
+
 
 \subsection{\emph{Boosting}}
 
@@ -195,7 +209,7 @@ yang dihasilkan ronde ini dengan \emph{strong classifer} yang dihasilkan ronde
 sebelumnya. Bisa tingkat presisi ternyata semakin berkurang, maka \emph{Boosting} 
 akan dihentikan dan \emph{strong classifier} 
 %(ronde ini atau sebelumnya, cek lagi) 
-menjadi \emph{final strong classifier}.
+menjadi \emph{Strong Classifier}.
 
 \subsection{Pembuatan \emph{Attentional Cascade}}
 
@@ -206,7 +220,7 @@ menjadi \emph{final strong classifier}.
 \end{figure}
 
 Sebelum pembuatan \emph{attentional cascade}, \emph{weaklearner} yang kurang 
-diskriminatif akan dibuang. 
+diskriminatif akan dibuang dari \emph{Strong Classifier}. 
 %Hal ini dilakukan dengan (cari, karena bagian ini 
 %belum jelas dari kemarin). 
 \emph{Attentional cascade} akan dibuat dari \emph{weaklearner} 

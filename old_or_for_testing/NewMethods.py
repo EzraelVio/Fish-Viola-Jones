@@ -58,6 +58,7 @@ def GenerateFeatures():
         sacrifice_object = feature_list.pop(0)
         with open(output_file, "Features") as json_file:
             json.dumps(sacrifice_object.__dict__, json_file)
+    print("Feature generation finished")
 
 
         
