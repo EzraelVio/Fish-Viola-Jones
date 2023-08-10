@@ -21,16 +21,18 @@ def load_images(directory):
             labels.append(get_label(directory))
     return np.array(images), np.array(labels)
 
-# load datasets from directories
-# add class to get_label first or the class will be considered a negative example
-abudefduf_images, abudefduf_labels = load_images("fish_dataset\\abudefduf")
-amphiprion_images, amphiprion_labels = load_images("fish_dataset\\amphiprion")
-chaetodon_images, chaetodon_labels = load_images("fish_dataset\\chaetodon")
-negatives_images, negatives_labels = load_images("fish_dataset\\negatives_examples")
+def combine_dataset():
+    # load datasets from directories
+    # add class to get_label first or the class will be considered a negative example
+    abudefduf_images, abudefduf_labels = load_images("fish_dataset\\abudefduf")
+    amphiprion_images, amphiprion_labels = load_images("fish_dataset\\amphiprion")
+    chaetodon_images, chaetodon_labels = load_images("fish_dataset\\chaetodon")
+    negatives_images, negatives_labels = load_images("fish_dataset\\negatives_examples")
 
-# combining into a single dataset
-images = np.concatenate((abudefduf_images, amphiprion_images, chaetodon_images, negatives_images), axis = 0)
-labels = np.concatenate((abudefduf_labels, amphiprion_labels, chaetodon_labels, negatives_labels), axis = 0)
+    # combining into a single dataset
+    images = np.concatenate((abudefduf_images, amphiprion_images, chaetodon_images, negatives_images), axis = 0)
+    labels = np.concatenate((abudefduf_labels, amphiprion_labels, chaetodon_labels, negatives_labels), axis = 0)
+    # print("Shape of images array:", images.shape)
+    # print("Shape of labels array:", labels.shape)
 
-# print("Shape of images array:", images.shape)
-# print("Shape of labels array:", labels.shape)
+    return images, labels
