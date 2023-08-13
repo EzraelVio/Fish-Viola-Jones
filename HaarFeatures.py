@@ -29,7 +29,7 @@ def generate_features(image_height, image_width, feature_type):
 
 # using integral image
 def compute_square_value(integral_image, x, y, width, height):
-    return integral_image[width, height] + integral_image[x, y] - integral_image[width, y] - integral_image[x, height]
+    return integral_image[y + height, x + width] + integral_image[y, x] - integral_image[y, x + width] - integral_image[y + height, x]
 
 def compute_feature_value(integral_image, feature_type, feature):
     x, y, width, height = feature
@@ -50,6 +50,8 @@ def compute_feature_value(integral_image, feature_type, feature):
             white = compute_square_value(integral_image, x, y, int(width/2), int(height/2)) + compute_square_value(integral_image, x + int(width/2), y + int(height/2), int(width/2), int(height/2))
             black = compute_square_value(integral_image, x + int(width/2), y, int(width/2), int(height/2)) + compute_square_value(integral_image, x, y + int(height/2), int(width/2), int(height/2))
     return white - black
+    # return white
+    # return black
 
 # using Matrices
 # color channel BRG = 0, 1, 2
@@ -66,7 +68,7 @@ def compute_feature_with_matrix(image, color_channel, feature_type ,feature):
             black = np.sum(image[y + int(height/2):y + height + 1, x:x + width+1, color_channel])
         case "Three Horizontal":
             white = np.sum(image[y: y + height + 1, x:x + int(width/3) + 1, color_channel]) + np.sum(image[y: y + height + 1, x + int(width*2/3):x + width + 1, color_channel])
-            black = np.sum(image[y: y + height + 1, x + width/3:x + int(width*2/3) + 1, color_channel])
+            black = np.sum(image[y: y + height + 1, x + int(width/3):x + int(width*2/3) + 1, color_channel])
         case "Three Vertical":
             white = np.sum(image[y:y + int(height/3) + 1, x:x + width + 1, color_channel]) + np.sum(image[y + int(height*2/3):y + height + 1, x: x + width + 1, color_channel])
             black = np.sum(image[y + int(height/3):y + int(height*2/3) + 1, x:x + width + 1, color_channel])
@@ -82,7 +84,8 @@ def compute_feature_with_matrix(image, color_channel, feature_type ,feature):
             white = np.sum(np.tril(matrix))
             black = np.sum(np.triu(matrix))
     return int(white) - int(black)
-    
+    # return int(white)
+    # return int(black)
         
 
 
