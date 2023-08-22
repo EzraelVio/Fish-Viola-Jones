@@ -9,21 +9,21 @@ def generate_features(image_height, image_width, feature_type):
     # minimum feature heigth and width go here
     match feature_type:
         case "Two Horizontal" | "Two Vertical" | "Four Diagonal" | "Right Triangular" | "Left Triangular":
-            feature_height = 50
-            feature_width = 50
+            feature_height = 2
+            feature_width = 2
         case "Three Horizontal":
-            feature_height = 50
-            feature_width = 150
+            feature_height = 2
+            feature_width = 6
         case "Three Vertical":
-            feature_height = 150
-            feature_width = 50
+            feature_height = 6
+            feature_width = 2
         
     features = []
     for w in range (feature_width, image_width+1, feature_width):
         for h in range (feature_height, image_height+1, feature_height):
             for x in range (0, image_width - w):
                 for y in range (0, image_height - h):
-                    feature = (x, y, w, h)
+                    feature = (feature_type, x, y, w, h)
                     features.append(feature)
     return features
 
@@ -31,8 +31,8 @@ def generate_features(image_height, image_width, feature_type):
 def compute_square_value(integral_image, x, y, width, height):
     return integral_image[y + height, x + width] + integral_image[y, x] - integral_image[y, x + width] - integral_image[y + height, x]
 
-def compute_feature_value(integral_image, feature_type, feature):
-    x, y, width, height = feature
+def compute_feature_value(integral_image, feature):
+    feature_type, x, y, width, height = feature
     match feature_type:
         case "Two Horizontal":
             white = compute_square_value(integral_image, x, y, int(width/2), height)
@@ -55,8 +55,8 @@ def compute_feature_value(integral_image, feature_type, feature):
 
 # using Matrices
 # color channel BRG = 0, 1, 2
-def compute_feature_with_matrix(image, color_channel, feature_type ,feature):
-    x, y, width, height = feature
+def compute_feature_with_matrix(image, color_channel, feature):
+    feature_type, x, y, width, height = feature
     # image [y vertical:y vertical +1, x horizontal: x horizontal +1, color_channel]
     # +1 due to slicing paramter = start at:stop before
     match feature_type:
