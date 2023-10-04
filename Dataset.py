@@ -40,7 +40,7 @@ class Dataset:
         # self.window_3_features = self.Find_Feature_Value(image, feature_list, self.class_Window_offset_3[label][0], self.class_Window_offset_3[label][1])
 
     def Find_Feature_Value(self, image, feature_list, x_offset, y_offset):
-        features = []
+        features = np.zeros(len(feature_list))
         for i in range(len(feature_list)):
             feature_type, x, y, width, height = feature_list[i]
             x += x_offset
@@ -50,6 +50,6 @@ class Dataset:
             green_channel_feature_value = compute_feature_with_matrix(image, 1, updated_feature)
             red_channel_feature_value = compute_feature_with_matrix(image, 2, updated_feature)
             data_features = (blue_channel_feature_value, green_channel_feature_value, red_channel_feature_value)
-            features.append(data_features)
+            features[i] = data_features
         return features
         
