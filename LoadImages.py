@@ -4,9 +4,9 @@ import numpy as np
 
 def get_label(directory):
     # add more to add more class
-    if directory == "abudefduf": return 1
-    if directory == "amphiprion": return 2
-    if directory == "chaetodon": return 3
+    if directory == "fish_dataset\\abudefduf": return 1
+    if directory == "fish_dataset\\amphiprion": return 2
+    if directory == "fish_dataset\\chaetodon": return 3
     else: return 0
 
 def load_images(directory):

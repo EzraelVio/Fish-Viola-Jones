@@ -3,15 +3,14 @@ from LoadImages import *
 from HaarFeatures import *
 from IntegralImage import *
 from Dataset import *
-import time
-
-start_time = time.time()
+import pickle
 
 images, labels = combine_dataset()
 
 # for testing only
 features = generate_features(50, 50)
 print(len(features))
+print(labels[0])
 
 # testing matrix calculation
 # features = (235, 576, 50, 50)
@@ -21,16 +20,23 @@ print(len(features))
 # b, g, r = combine_integral_grb(images[0])
 # feature_value_integral = compute_feature_value(b, "Two Horizontal", features[94702])
 
-print("starting...")
-new_Data = Dataset(images[0], labels[0], features)
-print(new_Data.window_1_features[0])
+# print("starting...")
+# images_data = np.zeros(len(images), dtype=object)
+# for i in range (len(images)):
+#     if labels[i] == 1:
+#         new_Data = Dataset(images[i], labels[i], features)
+#         images_data[i] = new_Data
 
-toprint = images[0]
-np.savetxt('Feature_visualisation.txt', toprint[185:185+50, 61:61+50, 0], fmt='%d')
-# print(feature_value_matrice)
-# print(feature_value_integral)
-cv2.imwrite('ImageTest.png', images[0])
+# with open('data.fish', 'wb') as file:
+#     pickle.dump(images_data, file)
 
-end_time = time.time()
+with open('data.fish', 'rb') as file:
+    images_data = pickle.load(file)
+    test_image = images_data[0]
+print(test_image.window_1_features[520000])
 
-print("Execution time:", (end_time - start_time), "s")
+# toprint = images[0]
+# np.savetxt('Feature_visualisation.txt', toprint[185:185+50, 61:61+50, 0], fmt='%d')
+# # print(feature_value_matrice)
+# # print(feature_value_integral)
+# cv2.imwrite('ImageTest.png', images[0])

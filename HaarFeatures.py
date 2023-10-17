@@ -11,14 +11,14 @@ def generate_features(image_height, image_width):
         # minimum feature heigth and width go here
         match i:
             case "Two Horizontal" | "Two Vertical" | "Four Diagonal" | "Right Triangular" | "Left Triangular":
-                feature_height = 2
-                feature_width = 2
+                feature_height = 4
+                feature_width = 4
             case "Three Horizontal":
-                feature_height = 2
+                feature_height = 4
                 feature_width = 6
             case "Three Vertical":
                 feature_height = 6
-                feature_width = 2
+                feature_width = 4
         for w in range (feature_width, image_width+1, feature_width):
             for h in range (feature_height, image_height+1, feature_height):
                 for x in range (0, image_width - w):
