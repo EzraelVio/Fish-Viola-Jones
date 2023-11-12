@@ -30,10 +30,13 @@ print(labels[0])
 # with open('data.fish', 'wb') as file:
 #     pickle.dump(images_data, file)
 
-with open('data.fish', 'rb') as file:
-    images_data = pickle.load(file)
-    test_image = images_data[0]
-print(test_image.window_1_features[520000])
+# with open('data.fish', 'rb') as file:
+#     images_data = pickle.load(file)
+# for i in range (len(images_data)):
+#     if labels[i] == 1:
+#         test_image = images_data[i]
+#         print(i)
+#          print(test_image.window_1_features)
 
 # toprint = images[0]
 # np.savetxt('Feature_visualisation.txt', toprint[185:185+50, 61:61+50, 0], fmt='%d')

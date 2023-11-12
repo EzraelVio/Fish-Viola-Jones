@@ -15,7 +15,7 @@ def load_images(directory):
     for filename in os.listdir(directory):
         if filename.endswith(".png"):
             image_path = os.path.join(directory, filename)
-            image = cv2.imread(image_path, cv2.IMREAD_COLOR)
+            image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
             image = cv2.resize(image, (700, 400))
             images.append(image)
             labels.append(get_label(directory))
