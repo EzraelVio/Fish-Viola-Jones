@@ -46,10 +46,11 @@ class Dataset:
             x += x_offset
             y += y_offset
             updated_feature = (feature_type, x, y, width, height)
-            blue_channel_feature_value = compute_feature_with_matrix(image, 0, updated_feature)
-            green_channel_feature_value = compute_feature_with_matrix(image, 1, updated_feature)
-            red_channel_feature_value = compute_feature_with_matrix(image, 2, updated_feature)
-            data_features = (blue_channel_feature_value, green_channel_feature_value, red_channel_feature_value)
+            # blue_channel_feature_value = compute_feature_with_matrix(image, 0, updated_feature)
+            # green_channel_feature_value = compute_feature_with_matrix(image, 1, updated_feature)
+            # red_channel_feature_value = compute_feature_with_matrix(image, 2, updated_feature)
+            data_features = compute_feature_with_matrix(image, 0, updated_feature)
+            # data_features = (blue_channel_feature_value, green_channel_feature_value, red_channel_feature_value)
             features[i] = data_features
         return features
         
