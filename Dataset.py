@@ -4,30 +4,32 @@ from HaarFeatures import *
 from IntegralImage import *
 
 class Dataset:
+    # Note: ini offset buat daun sekarang, jangan lupa ganti buat ikan
+
     class_Window_offset_1 = [
         # order according to label's order in LoadImages
         # for searching mouth feature
-        (0, 0),
-        (61, 185), 
-        (0, 0),
+        (103, 0),
+        (106, 18), 
+        (106, 34),
         (0, 0)
     ]
 
     class_Window_offset_2 = [
         # order according to label's order in LoadImages
         # for searching fin feature
-        (0, 0),
-        (206, 50), 
-        (0, 0),
+        (106, 163),
+        (106, 178), 
+        (106, 171),
         (0, 0)
     ]
 
     class_Window_offset_3 = [
         # order according to label's order in LoadImages
         # for searching tail feature
-        (0, 0),
-        (562, 195), 
-        (0, 0),
+        (110, 300),
+        (106, 274), 
+        (106, 257),
         (0, 0)
     ]
 
@@ -36,8 +38,8 @@ class Dataset:
         self.label = label
         # self.blue_Channel, self.green_Channel, self.red_Channel = combine_integral_grb(image)
         self.window_1_features = self.Find_Feature_Value(image, feature_list, self.class_Window_offset_1[label][0], self.class_Window_offset_1[label][1])
-        # self.window_2_features = self.Find_Feature_Value(image, feature_list, self.class_Window_offset_2[label][0], self.class_Window_offset_2[label][1])
-        # self.window_3_features = self.Find_Feature_Value(image, feature_list, self.class_Window_offset_3[label][0], self.class_Window_offset_3[label][1])
+        self.window_2_features = self.Find_Feature_Value(image, feature_list, self.class_Window_offset_2[label][0], self.class_Window_offset_2[label][1])
+        self.window_3_features = self.Find_Feature_Value(image, feature_list, self.class_Window_offset_3[label][0], self.class_Window_offset_3[label][1])
 
     def Find_Feature_Value(self, image, feature_list, x_offset, y_offset):
         features = np.zeros(len(feature_list), dtype=object)

@@ -5,13 +5,26 @@ from LoadImages import *
 from HaarFeatures import *
 from IntegralImage import *
 from Dataset import *
+from Utilities import *
+from DecisionTree import *
 
 images, labels = combine_dataset()
 
 # for testing only
 features = generate_features(50, 50)
 print(len(features))
-print(labels[0])
+
+print("starting...")
+
+# csv_name = "leaves"
+# Utilities.write_csv(images, labels, features, csv_name)
+
+csv_name = "leaves_window_1"
+splits = DecisionTree.split_data(features, csv_name, labels)
+trees, accuracies = DecisionTree.build_all_tree(splits, features)
+
+window_1_decision_trees = PickleTree(features, trees, accuracies) 
+Utilities.dump_to_pickle('window_1_decision_trees', window_1_decision_trees)
 
 # testing matrix calculation
 # features = (235, 576, 50, 50)
@@ -21,50 +34,15 @@ print(labels[0])
 # b, g, r = combine_integral_grb(images[0])
 # feature_value_integral = compute_feature_value(b, "Two Horizontal", features[94702])
 
-print("starting...")
-# windows_1_value = [0] * len(images)
+# i = 1
+# temp_window_value1 = np.zeros(len(images), dtype=object)
+# new_Data = Dataset(images[i], labels[i], features)
+# temp_window_value1[i] = new_Data.window_1_features
 
-# for i in range (len(images)):
-#     if labels[i] == 1:
-#         new_Data = Dataset(images[i], labels[i], features)
-#         # images_data[i] = new_Data
-#         windows_1_value[i] = new_Data.window_1_features
-
-# initialize main Dataframe for keys, images, and labels
-# image_ids = np.arange(len(images))
-
-# final_dataset = {
-#     'image_ids' : image_ids,
-#     'images' : images,
-#     'labels' : labels,
-# }
-# final_table = pd.DataFrame(final_dataset)
-
-# initialize separate Dataframe for features list (Data gembrot)
-temp_window_value = np.zeros(len(images), dtype=object)
-temp_value = np.zeros(len(features))
-image_ids = np.arange(len(images))
-
-for i in range(len(images)):
-    new_Data = Dataset(images[i], labels[i], features)
-    temp_window_value[i] = new_Data.window_1_features
-
-window_1_feature = {
-    'image_ids' : image_ids,
-}
-for i in range(len(features)):
-    for j in range(len(images)):
-        temp_value[j] = temp_window_value[j][i]
-    column_name = f'win_1_feature_{i}'
-    window_1_feature[column_name] = temp_value
-
-print(window_1_feature.shape)
-print(len(image_ids))
-print(len(window_1_feature['win_1_feature_1']))
-print(len(window_1_feature['win_1_feature_2']))
-
-window_1_feature = pd.DataFrame(window_1_feature)
-window_1_feature.to_csv('Data/image_features.csv', index=False)
+# feat1 = str(temp_window_value1[i][0])
+# feat2 = str(temp_window_value1[i][520703])
+# print (feat1)
+# print (feat2)
 
 # with open('data.fish', 'wb') as file:
 #     pickle.dump(images_data, file)
