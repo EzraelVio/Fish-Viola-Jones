@@ -22,7 +22,7 @@ class DecisionTree:
             classifiers[i] = classifier
             Y_pred = classifier.predict(X_test)
             classifiers_accuracy[i] = accuracy_score(Y_test, Y_pred)
-        return classifier, classifiers_accuracy
+        return classifiers, classifiers_accuracy
 
     def split_data(features, csv_name, labels):
         data = DecisionTree.get_data(features, csv_name)

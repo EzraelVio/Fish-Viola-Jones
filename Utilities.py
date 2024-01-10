@@ -12,6 +12,7 @@ class PickelData:
 class PickleTree:
     def __init__(self, features, trees, accuracies):
         self.feature_num = np.arange(len(features))
+        self.trees = trees
         self.accuracies = accuracies
 
 
@@ -97,3 +98,8 @@ class Utilities:
         directory = "Data/" + file_name + ".pickle"
         with open(directory, 'wb') as file:
             pickle.dump(object, file)
+
+    def read_from_pickle(file_name):
+        directory = "Data/" + file_name + ".pickle"
+        with open(directory, 'rb') as file:
+            return pickle.load(file)

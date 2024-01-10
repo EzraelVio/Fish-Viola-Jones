@@ -7,6 +7,7 @@ from IntegralImage import *
 from Dataset import *
 from Utilities import *
 from DecisionTree import *
+from Boosting import *
 
 images, labels = combine_dataset()
 
@@ -21,10 +22,16 @@ print("starting...")
 
 csv_name = "leaves_window_1"
 splits = DecisionTree.split_data(features, csv_name, labels)
-trees, accuracies = DecisionTree.build_all_tree(splits, features)
+# trees, accuracies = DecisionTree.build_all_tree(splits, features)
 
-window_1_decision_trees = PickleTree(features, trees, accuracies) 
-Utilities.dump_to_pickle('window_1_decision_trees', window_1_decision_trees)
+# window_1_decision_trees = PickleTree(features, trees, accuracies) 
+# Utilities.dump_to_pickle('window_1_decision_trees', window_1_decision_trees)
+
+window_1_decision_trees = Utilities.read_from_pickle('window_1_decision_trees')
+trees = window_1_decision_trees.trees
+accuracies = window_1_decision_trees.accuracies
+
+Boosting.training_strong_classifier(trees, splits, accuracies)
 
 # testing matrix calculation
 # features = (235, 576, 50, 50)
