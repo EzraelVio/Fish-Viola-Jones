@@ -1,41 +1,59 @@
 import numpy as np
 from Boosting import *
 from DecisionTree import *
+from sklearn.metrics import accuracy_score
 
 class Cascade:
 
-    initial_fpr = 0.5 #fpr = false positive rate
-    initial_detection_rate = 0.99
-    min_acceptible_dr = 0.95
+    def __init__(self):
+        self.stages = []
 
-    # use trees and alpha_list that has been boosted
-    def evaluate_cascade(cascade, X_valid, Y_valid, trees, alpha_list):
-        number_of_example = len(X_valid)
-        false_positives = 0
-        detection = 0
+    def fill_cascade(self, features, trees, alpha_list, splits):
+        X_train, Y_train, X_test, Y_test, X_valid, Y_valid = splits
+        while not features:
+            new_cascade = CascadeStage()
+            new_cascade.train_stage(features, trees, alpha_list, X_valid, Y_valid)
+            self.stages.append(new_cascade)
 
-        for i in range(number_of_example):
-            sample = X_valid.iloc[i]
-            label = Y_valid.iloc[i]
+    def final_cascade_classification(self, image, x_offset, y_offset):
+        scoreboard = [0, 0, 0, 0]
+        for i in range(len(self.stages)):
+            stage_scoreboard = [0, 0, 0, 0]
+            stage_scoreboard = self.stages[i].stage_prediction(image, x_offset, y_offset, stage_scoreboard)
 
-            for stage_classifiers in cascade:
-                stage_decision = "positive"
+            # check whether the stage return false or a class. If a class then continue
+            if stage_scoreboard.index(max(stage_scoreboard)) == 0: break
+            else 
+            
+    
+class CascadeStage:
 
-                for trees, alpha_list in stage_classifiers:
-                    orderlist = np.arange(len(trees))
-                    prediction = Boosting.strong_prediction(trees, orderlist,  X_valid, alpha_list)[0]
+    def __init__(self):
+        self.features = []
+        self.trees = []
+        self.alpha_list = []
 
-                    if prediction == 0:
-                        stage_decision = "negative"
-                        break
+    def train_stage(self, features, trees, alpha_list, X_valid, Y_valid):
+        detection_rate = 0
+        while detection_rate < 0.5:
+            self.features.append(features.pop(0))
+            self.trees.append(trees.pop(0))
+            self.alpha_list.append(alpha_list.pop(0))
+            orderlist = np.arange(len(self.trees))
 
-                if stage_decision == "negative":
-                    break
-                else:
-                    detection += 1
+            validation_prediction = Boosting.strong_prediction(self.trees, orderlist, X_valid, self.alpha_list)
+            detection_rate = accuracy_score(Y_valid, validation_prediction)
+        
 
-            if stage_decision == "negative":
-                false_positives += 1
+    def stage_prediction(self, image, x_offset, y_offset, scoreboard):
+        for i in self.features:
+            feature_type, x, y, width, height = self.features[i]
+            x += x_offset
+            y += y_offset
+            updated_feature = (feature_type, x, y, width, height)
+            data_features = compute_feature_with_matrix(image, 0, updated_feature)
 
-        fpr = false_positives / number_of_example
-        detection_rate = detection / number_of_example
+            prediction = self.trees[i].predict(data_features)
+            scoreboard[prediction] += 1 * self.alpha_list[i]
+
+        return scoreboard
