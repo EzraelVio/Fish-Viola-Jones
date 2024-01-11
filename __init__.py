@@ -9,37 +9,47 @@ from Utilities import *
 from DecisionTree import *
 from Boosting import *
 
+# read image and assign appropriate labels
 images, labels = combine_dataset()
 
-# for testing only
+# initialize haar_like features. Change 50 x 50 according to neccesity
 features = generate_features(50, 50)
-print(len(features))
+print(f'Numbers of features generated: {len(features)}')
 
 print("starting...")
 
-# csv_name = "leaves"
-# Utilities.write_csv(images, labels, features, csv_name)
+# generate CSV of image feature values. Run if CSV have not been made
+# write_csv splits data into 3 dataframes. Image feature value depends on preassigned windows and class in Dataset.py
+csv_name = "fish" # change name accordingly
+Utilities.write_csv(images, labels, features, csv_name)
 
-csv_name = "leaves_window_1"
-splits = DecisionTree.split_data(features, csv_name, labels)
-# trees, accuracies = DecisionTree.build_all_tree(splits, features)
+# create weak classifiers (Decision Trees) for each window
+for i in range (3):
+    csv_name = f'{csv_name}_window_{i}'
+    # split data into 3 part for training and saving it inside splits:
+    # X_train and Y_train for creating trees
+    # X_test and Y_test for boosting
+    # X_valid and Y_valid for training final strong classifier and cascade
+    splits = DecisionTree.split_data(features, csv_name, labels)
 
-# window_1_decision_trees = PickleTree(features, trees, accuracies) 
-# Utilities.dump_to_pickle('window_1_decision_trees', window_1_decision_trees)
+    # create decision tree and saving it in pickle for later. Skip if Pickel has already been made
+    # Long ahh progress est. 2+ hours for all 3 window
+    trees, accuracies = DecisionTree.build_all_tree(splits, features)
+    decision_trees = PickleTree(features, trees, accuracies)
+    pickle_name = f'window_{i}_decision_trees'
+    Utilities.dump_to_pickle(pickle_name, decision_trees)
 
-window_1_decision_trees = Utilities.read_from_pickle('window_1_decision_trees')
-trees = window_1_decision_trees.trees
-accuracies = window_1_decision_trees.accuracies
+    # read pickle for further use in creating strong classifier.
+    # Run only if pickle for decision trees exist
+    '''
+    window_1_decision_trees = Utilities.read_from_pickle(pickle_name)
+    trees = window_1_decision_trees.trees
+    accuracies = window_1_decision_trees.accuracies
+    '''
 
-Boosting.training_strong_classifier(trees, splits, accuracies)
-
-# testing matrix calculation
-# features = (235, 576, 50, 50)
-# feature_value_matrice = compute_feature_with_matrix(images[0], 0, "Two Horizontal", features[94702])
-
-# testing integral image calculation
-# b, g, r = combine_integral_grb(images[0])
-# feature_value_integral = compute_feature_value(b, "Two Horizontal", features[94702])
+    # train strong classifier which also double as feature elimination. Saving it into another pickle
+    pickle_name = f'window_{i}_strong_classsifier'
+    Boosting.training_strong_classifier(features, trees, splits, accuracies, pickle_name)
 
 # i = 1
 # temp_window_value1 = np.zeros(len(images), dtype=object)
@@ -50,17 +60,6 @@ Boosting.training_strong_classifier(trees, splits, accuracies)
 # feat2 = str(temp_window_value1[i][520703])
 # print (feat1)
 # print (feat2)
-
-# with open('data.fish', 'wb') as file:
-#     pickle.dump(images_data, file)
-
-# with open('data.fish', 'rb') as file:
-#     images_data = pickle.load(file)
-# for i in range (len(images_data)):
-#     if labels[i] == 1:
-#         test_image = images_data[i]
-#         print(i)
-#          print(test_image.window_1_features)
 
 # toprint = images[0]
 # np.savetxt('Feature_visualisation.txt', toprint[185:185+50, 61:61+50, 0], fmt='%d')

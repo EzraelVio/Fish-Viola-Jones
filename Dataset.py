@@ -8,29 +8,29 @@ class Dataset:
 
     class_Window_offset_1 = [
         # order according to label's order in LoadImages
-        # for searching mouth feature
-        (103, 0),
-        (106, 18), 
-        (106, 34),
-        (0, 0)
+        # for searching mouth features
+        (0, 0),
+        (88, 0), 
+        (73, 0),
+        (100, 15)
     ]
 
     class_Window_offset_2 = [
         # order according to label's order in LoadImages
-        # for searching fin feature
-        (106, 163),
-        (106, 178), 
-        (106, 171),
-        (0, 0)
+        # for searching fin features
+        (0, 0),
+        (0, 116), 
+        (9, 153),
+        (0, 116)
     ]
 
     class_Window_offset_3 = [
         # order according to label's order in LoadImages
         # for searching tail feature
-        (110, 300),
-        (106, 274), 
-        (106, 257),
-        (0, 0)
+        (0, 0),
+        (89, 280), 
+        (67, 292),
+        (80, 283)
     ]
 
     def __init__(self, image, label, feature_list):

@@ -15,6 +15,11 @@ class PickleTree:
         self.trees = trees
         self.accuracies = accuracies
 
+class PickleTreeFinal:
+    def __init__(self, features, trees, alpha_list):
+        self.features = features
+        self.trees = trees
+        self.alpha_list = alpha_list
 
 class Utilities:
 
@@ -80,7 +85,7 @@ class Utilities:
 
         window_3_feature = pd.DataFrame(window_3_feature)
         window_3_feature.to_csv(directory, index=False)
-        print("write complete!")
+        print("csv write complete!")
 
     def read_csv(csv_name, col_names):
         # used to read all column
