@@ -21,16 +21,16 @@ print("starting...")
 # generate CSV of image feature values. Run if CSV have not been made
 # write_csv splits data into 3 dataframes. Image feature value depends on preassigned windows and class in Dataset.py
 csv_name = "fish" # change name accordingly
-Utilities.write_csv(images, labels, features, csv_name)
+# Utilities.write_csv(images, labels, features, csv_name)
 
 # create weak classifiers (Decision Trees) for each window
 for i in range (3):
-    csv_name = f'{csv_name}_window_{i}'
+    csv_name_loop = f'{csv_name}_window_{i}'
     # split data into 3 part for training and saving it inside splits:
     # X_train and Y_train for creating trees
     # X_test and Y_test for boosting
     # X_valid and Y_valid for training final strong classifier and cascade
-    splits = DecisionTree.split_data(features, csv_name, labels)
+    splits = DecisionTree.split_data(features, csv_name_loop, labels)
 
     # create decision tree and saving it in pickle for later. Skip if Pickel has already been made
     # Long ahh progress est. 2+ hours for all 3 window
