@@ -45,7 +45,7 @@ class Utilities:
             column_name = f'win_1_feature_{i}'
             window_1_feature[column_name] = temp_value
         
-        directory = "Data/" + csv_name + "_window_1.csv"
+        directory = "Data/" + csv_name + "_window_0.csv"
 
         window_1_feature = pd.DataFrame(window_1_feature)
         window_1_feature.to_csv(directory, index=False)
@@ -63,7 +63,7 @@ class Utilities:
             column_name = f'win_2_feature_{i}'
             window_2_feature[column_name] = temp_value
         
-        directory = "Data/" + csv_name + "_window_2.csv"
+        directory = "Data/" + csv_name + "_window_1.csv"
 
         window_2_feature = pd.DataFrame(window_2_feature)
         window_2_feature.to_csv(directory, index=False)
@@ -81,7 +81,7 @@ class Utilities:
             column_name = f'win_1_feature_{i}'
             window_3_feature[column_name] = temp_value
         
-        directory = "Data/" + csv_name + "_window_3.csv"
+        directory = "Data/" + csv_name + "_window_2.csv"
 
         window_3_feature = pd.DataFrame(window_3_feature)
         window_3_feature.to_csv(directory, index=False)
