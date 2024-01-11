@@ -22,7 +22,7 @@ def load_images(directory):
     images=[]
     labels=[]
     for filename in os.listdir(directory):
-        if filename.endswith(".jpg"):
+        if filename.endswith(".png"):
             image_path = os.path.join(directory, filename)
             image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
             # yg dikomen ini buat daun 700x524. Ikan pake 350x200
