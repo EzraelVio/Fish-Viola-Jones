@@ -15,7 +15,7 @@ class Boosting:
         initial_accuracy = float('-inf')
         current_accuracy = 0
         iteration = 0
-        limit = 100
+        limit = 100 #change according to needs
 
         # start boosting loop. Will stop when accuracy fell or iteration hit limit
         while current_accuracy > initial_accuracy or iteration > limit:
@@ -70,10 +70,12 @@ class Boosting:
             tree_index = orderlist[i]
             prediction = trees[tree_index].predict(X_valid)
 
+            # add score to scoreboard according to results and alpha value of tree
             for j in range(len(prediction)):
                 weak_learner_prediction = int(prediction[j])
                 scoreboard[j][weak_learner_prediction] += 1 * alpha_list[i]
         
+        # return score to the main scoreboard
         for k in range(len(prediction)):
                 predictions[k] = scoreboard[k].index(max(scoreboard[k]))
         return predictions

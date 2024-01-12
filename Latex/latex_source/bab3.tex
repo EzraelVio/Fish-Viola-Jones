@@ -30,34 +30,39 @@ Gambar \textit{flowchart} berikut mengilustrasikan proses pelatihan
 Dalam proses pembuatan \emph{classifier} perlu dilewati tahapan \textit{training}. 
 Tujuan \textit{training} adalah untuk menciptakan suatu \emph{strong classifier} 
 yang nantinya dapat digunakan untuk melakukan klasifikasi yang sebenarnya.
-Pertama, gambar yang akan menjadi \textit{set} latihan dianotasi sesuai kelasnya masing-masing, 
-\textit{set} latihan ini juga berisikan gambar-gambar yang tidak memiliki kelas yang benar, atau 
-\emph{false example}. Setelah itu gambar melalui proses \emph{pre-processing} dan disesuaikan 
-untuk mengoptimalkan proses pelatihan. Setiap gambar latihan nantinya akan 
-diubah menjadi \emph{integral image} untuk dapat diproses.
+Pertama, gambar yang akan menjadi contoh pelatihan dianotasi sesuai kelasnya masing-masing dengan 
+memberikan label yang sesuai dengan kelas mereka masing-masing, 
+vontoh latihan ini berisikan gambar-gambar yang tidak memiliki kelas yang benar, atau 
+\emph{false example} dan juga gambar-gambar yang memiliki kelas yang benar, atau 
+\emph{positive example}. Setelah itu gambar melalui proses \emph{pre-processing} dan disesuaikan 
+untuk mengoptimalkan proses pelatihan.
 
-Pertama algoritma akan mengkonstruksi sebuah \emph{decision tree} untuk setiap 
-\emph{weaklearn} dimana \emph{branch} untuk setiap kelas akan ditentukan. Lalu 
-\emph{Adaboost} akan menentukan bobot dari setiap \emph{weaklearn} dalam menentukan hasil akhir 
-klasifikasi gambar. Terakhir, \emph{Adaboost} akan membuat sebuah 
-\emph{strong classifier} dengan membuat sebuah \emph{Attentional Cascade}
+Pertama sebuah set \textit{features} akan dibuat dengan cara mencoba semua kemugnkinan 
+yang ada dengan bentuk fitur yang dimiliki. Set ini akan berisikan informasi fitur-fitur 
+yang nantinya akan dipakai untuk mendapatkan nilai fitur yang sesungguhnya. Set gambar latihan 
+lalu akan dibaca menggunakan semua fitur ini dan hasilnya akan dicatat dalam tabel csv. 
+Algoritma lalu akan mengkonstruksi sebuah \emph{decision tree} untuk setiap 
+\emph{feature} untuk menentukan nilai \textit{feature threshold} setiap kelas. 
+\emph{Decision tree} lalu akan di-\textit{boosting} untuk menentukan nilai bobot votingnya 
+pada \textit{strong clossifier}. Akhrinya dari sekumpulan \emph{decision tree} ini dibuatlah 
+sebuah \emph{final strong classifier} yang berbentuk \textit{cascade}.
 
-Dengan \emph{strong classifier}, klasifikasi objek yang sesungguhnya bisa dilakukan. 
-Pertama gambar yang akan dideteksi akan melalui \emph{pre-processing}. 
-Kemudian \emph{integral image} akan dihitung untuk 
-menghasilkan \emph{sub-window} pada gambar. setiap sub-window akan dicek menggunakan 
-\emph{strong classifier}. \emph{Sub-window} yang ditemukan memiliki objek yang 
-dicari akan dibuatkan \emph{bounding box} pada kelilingnya. Setelah semua 
-\emph{sub-window} diperiksa, semua \emph{bounding box} yang bertindihan akan 
-digabungkan sebelum gambar hasil dikembalikan ke pengguna.
+Dengan \emph{final strong classifier}, barulah klasifikasi objek yang sesungguhnya dapat dilakukan. 
+Pertama gambar yang akan dideteksi akan melalui \emph{pre-processing}. setiap sub-window akan dicek menggunakan 
+\emph{strong classifier} untuk menentukan kelasnya. Hal ini dilakukan pada tiga area: area kiri untuk 
+mengklasifikasi mulut dari ikan, area tengah untuk mengklasifikasi sirip dari ikan, dan terakhir area kanan 
+untuk mengklasifikasi bentuk ekor dari ikan. Hasil ketiga \textit{sub-window} ini nantinya juga akan ber-\textit{voting}
+dimana jika ada dua atau lebih \textit{sub window} berhasil mengklasifikasikan kelas yang sama, maka kelas itu 
+dipilih sebagai kelas dari objek pada gambar. Kelas dari objek lalu akan dituliskan di pojok kiri atas gambar.
 
 \section{Training \emph{Strong Classifier}}
 
 Pada \textit{Training} ada tiga tahapan yang perlu dijalankan 
 untuk menghasilkan sebuah \emph{Strong Classifier}, 
 yaitu penginputan \textit{dataset} pelatihan yang sudah dianotasi, 
-pembuatan \emph{decision tree} untuk setiap fitur, 
-\emph{Boosting }dan pemilihan fitur oleh Adaboost untuk membuat \emph{attentional cascade}.
+pembuatan \emph{features}, 
+pembuatan \emph{decision tree} untuk setiap \emph{features}, 
+\emph{Boosting }dan pemilihan fitur untuk pemebuatan \emph{attentional cascade}.
 
 \subsection{\textit{Input Dataset} Pelatihan}
 
@@ -67,149 +72,148 @@ pembuatan \emph{decision tree} untuk setiap fitur,
   \caption{Contoh gambar Abudefduf, Amphiprion, Chaetodon dan contoh gambar-gambar negatif}
 \end{figure}
 
-\textit{Dataset} yang akan dipakai diambil dari fishR (Dapat dilihat di https://github.com/mekas/fishR) yang 
-berisikan gambar ikan genus Abudefduf, Amphiprion dan Chaetodon. Selain itu 
+\textit{Dataset} yang akan dipakai diambil dari FishBase (Dapat dilihat di https://fishbase.mnhn.fr/) yang 
+berisikan berbagai gambar ikan termasuk dari genus Abudefduf, Amphiprion dan Chaetodon. 
+Ketiga genus ikan ini dipilih karena bentuknya yang berbeda satu-sama lain. Selain itu 
 \textit{dataset} juga akan ditambahkan dari hasil penelitian lapangan 
 secukupnya, dengan mempertimbangkan waktu komputasi pada tahap 
 pelatihan.
-Untuk contoh pelatihan kelas-kelas ikan adalah gambar berukuran 72x41 piksel, 
-dengan warna grayscale. Selain itu juga akan dipilih contoh 
+Untuk contoh pelatihan gambar dibuat berukuran 350x200 piksel, 
+dengan warna \textit{greyscale}. Selain itu juga akan dipilih contoh 
 pelatihan negatif atau kumpulan gambar yang tidak terdapat kelas 
 ikan dari http://www.vision.caltech.edu/datasets/ dengan jumlah yang sama, resolusi sama dan perlakuan 
-yang sama. Anotasi dilakukan dengan rumus $(x_1, y_1),...,(x_n, y_n)$ dimana 
-$y_i \in Y = {1,...,k}$, $k$ disini adalah kelas-kelas yang ada dimana $y_i = 0$ 
-direservasi untuk kelas negatif dan angka-angka setelahnya untuk kelas-kelas lainnya.
-\textit{Dataset} ini lalu 
-akan dibagi menjadi tiga yaitu \textit{training dataset}, 
-\textit{validation dataset}, dan \emph{test dataset} dengan jumlah yang sama.
-Nilai bobot pada tiap \textit{dataset} akan di inisialisasi dengan rumus:
-\begin{equation}
-  w^1_i = D(i) \text{ for } i=1,...,N
-\end{equation}
-dimana $w$ adalah bobot, $D$ Distribusi dan $N$ jumlah contoh pelatihan.
+yang sama. Anotasi dilakukan dengan menyimpan label dalam sebuah \textit{array}, label 
+diambil dari sumber folder gambar. Kelas 0 direservasi untuk kelas negatif, sementara kelas 
+1, 2 dan 3 direservasi untuk Abudefduf, Amphiprion dan Chaetodon.
+\textit{Dataset} ini lalu dibagi menjadi tiga yaitu \textit{training dataset}, 
+\textit{testing dataset}, dan \emph{validation dataset} dengan jumlah yang sama.
 
-\subsection{Pembuatan \textit{Integral Image}}
+% \subsection{Pembuatan \textit{Integral Image}}
 
-Untuk pembuatan \emph{Integral Image}, pertama perlu dicari nilai piksel
-baris pertama dan kolom pertama dari gambar. Nilai pada matriks \emph{Integral Image} 
-adalah median dari nilai RGB pada piksel tersebut, namun dikarenakan warna 
-gambar sudah dirubah menjadi \emph{greyscale} maka nilai pada setiap piksel 
-hanya akan berupa bilangan bulat dikisaran 0 sampai 255. Nilai pada kolom 
-pertama hanyalah penjumlahan nilai piksel dari piksel $(0, 0)$ sampai ke piksel 
-$(0, j)$, sementara nilai pada baris pertama juga hanya penjumlahan nilai 
-piksel dari $(0, 0)$ ke  $(i, 0)$. Nilai-nilai piksel lainnya lalu dapat 
-dihitung menggunakan rumus: 
-\begin{equation}
-  \begin{split}
-    \text{integral image } (i,j) = {} & \text{integral image } (i-1,j) + \text{integral image } (i,j-1) - \\
-    & \text{integral image } (i-1,j-1) + \text{nilai dari piksel } (i,j)
-  \end{split}
-\end{equation}
-Atau jumlah semua nilai piksel dari $(0, 0)$ sampai ke $(i, j)$.
-Pembuatan \emph{integral image} nantinya akan digunakan oleh fitur sebagai \textit{input}.
+% Untuk pembuatan \emph{Integral Image}, pertama perlu dicari nilai piksel
+% baris pertama dan kolom pertama dari gambar. Nilai pada matriks \emph{Integral Image} 
+% adalah median dari nilai RGB pada piksel tersebut, namun dikarenakan warna 
+% gambar sudah dirubah menjadi \emph{greyscale} maka nilai pada setiap piksel 
+% hanya akan berupa bilangan bulat dikisaran 0 sampai 255. Nilai pada kolom 
+% pertama hanyalah penjumlahan nilai piksel dari piksel $(0, 0)$ sampai ke piksel 
+% $(0, j)$, sementara nilai pada baris pertama juga hanya penjumlahan nilai 
+% piksel dari $(0, 0)$ ke  $(i, 0)$. Nilai-nilai piksel lainnya lalu dapat 
+% dihitung menggunakan rumus: 
+% \begin{equation}
+%   \begin{split}
+%     \text{integral image } (i,j) = {} & \text{integral image } (i-1,j) + \text{integral image } (i,j-1) - \\
+%     & \text{integral image } (i-1,j-1) + \text{nilai dari piksel } (i,j)
+%   \end{split}
+% \end{equation}
+% Atau jumlah semua nilai piksel dari $(0, 0)$ sampai ke $(i, j)$.
+% Pembuatan \emph{integral image} nantinya akan digunakan oleh fitur sebagai \textit{input}.
 
-\begin{figure}[H]
-  \centering{}
-	\includegraphics[width=0.6\textwidth]{gambar/integral\_image\_3}
-  \caption{Gambaran \emph{integral image} dari gambar sebuah bidak catur.}
-\end{figure}
+% \begin{figure}[H]
+%   \centering{}
+% 	\includegraphics[width=0.6\textwidth]{gambar/integral\_image\_3}
+%   \caption{Gambaran \emph{integral image} dari gambar sebuah bidak catur.}
+% \end{figure}
 
-\subsection{Pembuatan \textit{like Features}}
+\subsection{Pembuatan \textit{Haar like Features}}
 
 Fitur-fitur yang akan digunakan dalam klasifikasi dibuat 
-berdasarkan \emph{Haar-like Features} dan berisikan informasi 
-lokasinya pada \emph{sub-window} dan titik-titik \emph{integral image}. 
-Misalnya sebuah fitur dua persegi dengan persegi putih di 
-sebelah kiri, fitur tersebut memerlukan 
-nilai \emph{integral image} dari pojok kiri atas persegi putih, 
-pojok kiri bawah persegi putih,  
-pojok kanan atas persegi putih, 
-pojok kanan bawah persegi putih, 
-, pojok kanan atas persegi hitam, 
-dan pojok kanan bawah persegi hitam. 
+berdasarkan \emph{Haar-like Features} dan berisikan informasi penting yang dapat digunakan 
+untuk mencari nilai sebuah fitur. Sebuah fitur berisikan tipe fiturnya, lokasi fitur tersebut 
+didalam \textit{sub-window}, dan ukuran dari fitur tersebut.
+Misalnya ada sebuah fitur, ia bertipe dua persegi menghadap ke kiri, lokasi x-nya adalah 12 piksel, 
+dan lokasi y-nya adalah 10 piksel, dia memiliki ukuran 8 x 8 piksel.
+
 \begin{figure}[H]
   \centering{}
-	\includegraphics[width=0.6\textwidth]{gambar/integral\_image\_4}
-  \caption{Nilai yang diperlukan oleh fitur dua persegi, direpresentasi sebagai A, B, C, dan D}
+	\includegraphics[width=0.6\textwidth]{gambar/feature\_data\_1}
+  \caption{Sebuah fitur dua persegi menghadap ke kiri, lokasi x = 12 piksel, 
+  lokasi y = 10 piksel, dengan ukuran 8 x 8 piksel.}
 \end{figure} 
-Keenam nilai tersebut dapat digunakan untuk mencari nilai 
-fitur dengan rumus:
+Dengan informasi yang ada didalam sebuah fitur tersebut, nilai fitur dapat dicari dengan 
+mudah menggunakan rumus:
 
 \begin{equation}
   \begin{split}
-    &\text{integral image E} - \text{integral image B} - \text{integral image D} + \text{integral image A} \\
-    & - \text{integral image F} - \text{integral image C} - \text{integral image E} + \text{integral image B} \\    
+    \sum \text{nilai piksel area putih} -  \sum \text{nilai piksel area hitam} \\ 
   \end{split}
 \end{equation}
 
 Pada tahap ini fitur yang dipilih akan dibuat untuk semua 
 posibilitas lokasi yang ada dan ukuran yang ada. Hal ini dilakukan dengan 
-membuat fitur dimulai dari kiri atas gambar dengan ukuran 20 x 20 piksel untuk fitur 
-dua persegi, dan 20 x 30 piksel untuk fitur tiga persegi, sampai pojok kanan bawah. 
-Hal ini juga dilakukan sampai ukuran fitur lebih besar 
-dari \emph{sub-window} yang digunakan dan tidak bisa muat lagi didalannya. 
-Ukuran paling kecil dari fitur akan disesuaikan pada saat penelitian 
-bila ternyata fitur terlalu banyak dan memperlambat proses pelatihan. 
-Selain fitur dua persegi, akan juga dibuat beberapa fitur lainnya seperti, fitur 
-tiga persegi dan empat persegi diagonal.
+membuat fitur dimulai dari kiri atas gambar dengan ukuran 2 x 2 piksel untuk fitur 
+dua persegi, empat persegi dan diagonal. Dan fitur 1 x 3 piksel atau 3 x 1 piksel untuk fitur tiga persegi, 
+sampai pojok kanan bawah. Hal ini juga dilakukan sampai ukuran fitur lebih besar 
+dari \emph{sub-window} tidak bisa muat lagi.
 
 \subsection{Pembuatan \textit{Decision Tree}}
 
-Setiap \emph{weaklearner} adalah sebuah \emph{decision tree} yang mengambil nilai 
-dengan fitur sebagai variabel klasifikasi.
-fitur dapat digunakan untuk mengembalikan 
-sebuah nilai perbandingan intensitas cahaya dari suatu area pada gambar dan 
-mendeteksi keberadaan suatu \emph{fitur} seperti 
-perbedaan warna, garis, maupun perbedaan kontras pada gambar. Hal ini 
-dilakukan dengan membaca nilai dari \emph{integral image}, yang merupakan 
-representasi gambar, dan menghitung nilai dari fitur tersebut.
-%(Jelasin step by step pembuatan decision tree pake algoritma).
+\begin{figure}[H]
+  \centering{}
+	\includegraphics[width=0.6\textwidth]{gambar/decision\_tree\_1}
+  \caption{Contoh sebuah \textit{decision tree} dengan kelas 0, 1, 2 dan 3}
+\end{figure} 
 
-Nilai yang didapat dari membaca \emph{integral image} menggunakan fitur lalu 
-akan menjadi variabel pengetesan menggunakan \emph{decision tree}. Pada tahap ini 
-semua \emph{decision tree} akan dilatih untuk mencari nilai \textit{branch} yang 
-paling optimal, hal ini dilakukan dengan menggunakan gambar-gambar pada \textit{dataset} 
-pelatihan sebagai input. \emph{Decision tree} yang dihasilkan pada tahap ini, 
-bersamaan dengan fitur yang berhubungan dengannya, adalah \emph{weaklearner} 
-yang akan digunakan untuk pembuatan \emph{Strong Classifier} pada tahap 
-\emph{Boosting}.
+Setiap \emph{weak learner} adalah sebuah \emph{decision tree} yang akan mengambil nilai 
+dengan fitur untuk digunakan sebagai variabel klasifikasi.
+fitur dapat digunakan untuk mencari 
+sebuah nilai perbandingan intensitas cahaya dari dua area pada gambar dan 
+mendeteksi keberadaan suatu fitur seperti 
+perbedaan warna, garis, maupun perbedaan kontras pada gambar.
 
+\textit{Decision tree} pertama akan dibuat dari \textit{root} atau akar, yang lalu 
+akan bercabang hingga batas maksimum telah dicapai. \textit{threshold} yang digunakan 
+dalam pembuatan \textit{decision tree} adalah salah satu nilai fitur yang dibaca dari gambar. 
+Dengan cara ini, \textit{decision tree} tidak perlu mencoba semua nilai yang mungkin, dan 
+dengan demikian mempercepat proses pembuatan \textit{decision tree}.
+Batas maksimum tinggi \textit{decision tree }yang dipilih adalah tiga 
+tingkat, hal ini dikarenakan waktu komputasi yang memakan waktu bila \textit{decision tree} 
+memiliki lebih dari 3 tingkat. Di lain sisi, menggunakan tingkat kurang dari tiga tidak mungkin 
+memenuhi persyaratan klasifikasi empat kelas.
 
 \subsection{\emph{Boosting}}
 
-Algoritma \emph{Adaboost} akan mem-\emph{boosting} \emph{weaklearner} untuk 
-menciptakan sebuah \emph{strong classifier}. \emph{Boosting} dilakukan dari 
-\emph{weaklearner} yang memiliki tingkat akurasi paling tinggi, dan dengan 
-menggunakan \emph{dataset} latihan.
+\emph{Boosting} ditunjukan untuk memberikan nilai \emph{voting} untuk setiap \textit{weak classifier} 
+yang nantinya akan digunakan dalam klasifikasi akhir. Sebelum \emph{boosting} dimulai, 
+\textit{weak classifier} yang kurang diskriminatif akan dibuang. Hal ini dilakukan dengan 
+membandingkan hasil prediksi \textit{weak classifier} dengan label yang sebenarnya, dimana 
+\textit{weak classifier} yang gagak memprediksi 50\% dari set tes akan dibuang. Ini dilakukan 
+untuk mengurangi jumlah \textit{weak classifier} yang akan dipakai berikutnya.
 
-\emph{Adaboost} akan menjalankan \emph{weaklearner} terbaik untuk 
-mengklasifikasi seluruh contoh \emph{dataset} latihan dan mencatat contoh yang 
-gagal diklasifikasi oleh \emph{weaklearner} tersebut. 
-Nilai dari \emph{weaklearner} 
-tersebut dihitung dengan:
+Pada tahap ini \textit{boosting} 
+akan dijalankan dari \textit{decision tree} yang paling akurat ke yang paling tidak akurat. Penentuan 
+akurasi ini dilakukan dengan membandingkan label contoh validasi dengan hasil prediksi setiap \textit{weak classifier}. 
+\textit{Weak classifier} yang tidak akurat akan mendapat suara \textit{voting} yang lemah. Rumus untuk mencari 
+bobot voting \( \alpha \) dari sebuah \textit{weak classifier} adalah sebagai berikut:
+
 \begin{equation}
-  sum(N)(i=1) w^t_i.1(h(x_i)\ne y_i)
-\end{equation} 
-dimana $N$ adalah jumlah total contoh latihan, $D_t$ adalah distribusi bobot pada 
-iterasi $t$, $w^t_i$ adalah nilai bobot contoh ke-$i$ pada iterasi $t$, 
-$y_i$ adalah label yang benar untuk contoh latihan ke-$i$, dan $h(x_i)$ 
-adalah hasil dari \emph{weaklearn}. 
-Hasilnya juga akan dicatat untuk urutan \emph{Boosting} ronde berikutnya dan 
-juga sebagai nilai voting pada klasifikasi yang sebenarnya. 
-Nantinya bobot dari seluruh \emph{dataset} latihan akan dihitung ulang dengan menaikan bobot dari contoh 
-yang gagal diklasifikasi oleh \emph{weaklearner} sebelumnya. Proses ini dilakukan 
-untuk setiap \emph{weaklearner}. 
-%(Masukin rumus re-distribusi bobot contoh disini)
+  \begin{split}
+    \epsilon = \frac{\sum_{i} \text{{image weights}}_i \times \text{{indikator}}_i}{\sum_{i} \text{{image weights}}_i} \\
+   \alpha = 0.5 \times \log\left(\frac{1 - \epsilon}{\epsilon + 1e-10}\right) \\
+  \end{split}
+\end{equation}
 
-Ketika sebuah ronde \emph{Boosting} sudah selesai dan seluruh \emph{weaklearner} sudah  diurutkan sesuai dengan 
-nilai yang didapat dari ronde tersebut. \emph{Adaboost} akan melakukan validasi 
-tingkat akurasi \emph{strong classifier} yang sudah dibuat menggunakan \emph{dataset} validasi. 
-hal ini dilakukan dengan membandingkan tingkat presisi \emph{strong classifer} 
-yang dihasilkan ronde ini dengan \emph{strong classifer} yang dihasilkan ronde 
-sebelumnya. Bisa tingkat presisi ternyata semakin berkurang, maka \emph{Boosting} 
-akan dihentikan dan \emph{strong classifier} 
-%(ronde ini atau sebelumnya, cek lagi) 
-menjadi \emph{Strong Classifier}.
+\emph{weak classifier} terbaik akan mulai dan 
+mengklasifikasi seluruh contoh \emph{dataset} validasi dan mencatat contoh yang 
+gagal diklasifikasi oleh \emph{weak classifier} tersebut. Lalu bobot dari contoh tersebut akan 
+dinaikan, dengan maksud agar bobot \textit{voting} fitur yang paling akurat akan lebih tinggi daripada 
+fitur-fitur yang hanya mendekati menebak. Rumus menaikan bobot:
+
+\begin{equation}
+  \text{{image weights}} \times= \exp(\alpha \times \text{{indikator}})
+\end{equation}
+  
+\begin{equation}
+  \text{{image weights}} \div= \sum \text{{image weights}}
+\end{equation}
+
+\textit{weak classifier} berikutnya lalu akan melakukan prediksi dengan set yang sama, 
+namun dengan bobot gambar yang sudah berubah karena \textit{weak classifier}. Sementara 
+bobot \textit{voting weak classifier} sebelumnya akan disimpan ke array untuk digunakan nanti. 
+
+Ketika semua \textit{weak learner} sudah dicari bobot \textit{voting}-nya, akan dibandingkan 
+akurasi \textit{strong cloassifier} yang dibuat dengan iterasi sebelumnya. Bila didapat bahwa 
+ada penurunan akurasi, maupun tidak ada perubahan, maka iterasi Boosting akan disudahi dan 
+\textit{strong cloassifier} pada iterasi ini menjadi \textit{final strong classifier}.
 
 \subsection{Pembuatan \emph{Attentional Cascade}}
 
@@ -218,6 +222,31 @@ menjadi \emph{Strong Classifier}.
 	\includegraphics[width=0.6\textwidth]{gambar/cascade}
   \caption{\textit{Workflow} dari \emph{Attentional Cascade}}
 \end{figure}
+
+Karena bobot \textit{voting} dan urutan \textit{weak classifier} sudah ditentukan pada 
+tahap \textit{Boosting}, pada tahap ini hanya perlu membagi \textit{weak classifier} menjadi 
+beberapa \textit{stage} yang nantinya bisa dipanggil secara terpisah. Sebuah \textit{stage} 
+berlaku layaknya sebuah \textit{strong cloassifier} kecil yang ditargetkan hanya memiliki 
+tingkat akurasi paling tidak 50\% saja. Hal ini dilakukan agar pendeteksian seluruh \textit{sub-window} 
+dapat dilakukan tanpa harus memanggil keseluruhan dari \textit{strong cloassifier}. 
+Metode konstruksi sebuah \textit{stage cascade} adalah sebagai berikut:
+
+\begin{algorithm}
+  \caption{Cascade Train Stage}
+  \begin{algorithmic}[1]
+    \Function{Train\_stage}{}
+      \State detection\_rate $\gets$ 0
+      \While{detection\_rate $<$ 0.5}
+        \If{$\text{len(features)} == 0$}
+          \State \textbf{break}
+        \EndIf
+        \State self.features.append(features)
+
+        \State detection\_rate $\gets$ accuracy\_score()
+      \EndWhile
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
 
 Sebelum pembuatan \emph{attentional cascade}, \emph{weaklearner} yang kurang 
 diskriminatif akan dibuang dari \emph{Strong Classifier}. 

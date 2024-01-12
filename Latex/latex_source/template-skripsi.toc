@@ -23,14 +23,13 @@
 \contentsline {section}{\numberline {3.1}Tahapan Penelitian}{13}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Desain Sistem}{13}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Training \emph {Strong Classifier}}{14}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}\textit {Input Dataset} Pelatihan}{14}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Pembuatan \textit {Integral Image}}{15}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Pembuatan \textit {like Features}}{16}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}Pembuatan \textit {Decision Tree}}{17}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}\emph {Boosting}}{17}{subsection.3.3.5}%
-\contentsline {subsection}{\numberline {3.3.6}Pembuatan \emph {Attentional Cascade}}{18}{subsection.3.3.6}%
-\contentsline {section}{\numberline {3.4}Skenario Eksperimen dan Validasi}{19}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}\textit {Pre-processing} dan Penghitungan \emph {Integral Image}}{19}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Klasifikasi}{19}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Anotasi}{20}{subsection.3.4.3}%
-\contentsline {chapter}{DAFTAR PUSTAKA}{22}{figure.caption.16}%
+\contentsline {subsection}{\numberline {3.3.1}\textit {Input Dataset} Pelatihan}{15}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Pembuatan \textit {Haar like Features}}{15}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Pembuatan \textit {Decision Tree}}{17}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}\emph {Boosting}}{17}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Pembuatan \emph {Attentional Cascade}}{19}{subsection.3.3.5}%
+\contentsline {section}{\numberline {3.4}Skenario Eksperimen dan Validasi}{20}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}\textit {Pre-processing} dan Penghitungan \emph {Integral Image}}{20}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Klasifikasi}{20}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Anotasi}{22}{subsection.3.4.3}%
+\contentsline {chapter}{DAFTAR PUSTAKA}{23}{figure.caption.16}%

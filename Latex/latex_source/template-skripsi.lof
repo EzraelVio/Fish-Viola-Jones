@@ -10,9 +10,9 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Diagram alir untuk algoritma pelatihan klasifikasi objek\relax }}{13}{figure.caption.9}%
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Diagram alir untuk algoritma pendeteksian objek\relax }}{13}{figure.caption.10}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Contoh gambar Abudefduf, Amphiprion, Chaetodon dan contoh gambar-gambar negatif\relax }}{14}{figure.caption.11}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Gambaran \emph {integral image} dari gambar sebuah bidak catur.\relax }}{15}{figure.caption.12}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Nilai yang diperlukan oleh fitur dua persegi, direpresentasi sebagai A, B, C, dan D\relax }}{16}{figure.caption.13}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces \textit {Workflow} dari \emph {Attentional Cascade}\relax }}{18}{figure.caption.14}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Gambaran ukuran \emph {sub-window} 72x41 piksel pada gambar 300x220\relax }}{20}{figure.caption.15}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Gambaran \textit {sub-window} yang berhasil mengklasifikasi ikan didalam gambar\relax }}{20}{figure.caption.16}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Contoh gambar Abudefduf, Amphiprion, Chaetodon dan contoh gambar-gambar negatif\relax }}{15}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Sebuah fitur dua persegi menghadap ke kiri, lokasi x = 12 piksel, lokasi y = 10 piksel, dengan ukuran 8 x 8 piksel.\relax }}{16}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Contoh sebuah \textit {decision tree} dengan kelas 0, 1, 2 dan 3\relax }}{17}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces \textit {Workflow} dari \emph {Attentional Cascade}\relax }}{19}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Gambaran ukuran \emph {sub-window} 72x41 piksel pada gambar 300x220\relax }}{21}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Gambaran \textit {sub-window} yang berhasil mengklasifikasi ikan didalam gambar\relax }}{22}{figure.caption.16}%

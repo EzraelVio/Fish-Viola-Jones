@@ -11,12 +11,12 @@
 Fungsi dari klasifikasi objek adalah untuk memberikan deskripsi label ke 
 sebuah segmentasi objek. Bila dilihat dari representasi fitur objek, ini 
 dapat dicapai dengan melihat tanda-tanda keberadaan fitur yang mengindikasikan 
-kelas dari objek. Hal ini umumnya dicapai dengan menentukan batasan diantara 
-kelas-kelas yang direpresentasikan didalam \textit{training set} yang sudah diberi label. 
+kelas dari objek. Hal ini umumnya dicapai dengan menentukan \textit{threshold} diantara 
+kelas-kelas yang direpresentasikan oleh \textit{training set} yang sudah dilabeli. 
 Pelatihan dilakukan dengan secara data yang sudah dilabeli secara manual atau 
-data yang belum dilabeli. Pelatihan otomatis umumnya menekankan distribusi dari 
+data yang belum dilabeli. Pelatihan otomatis umumnya mementingkan distribusi dari 
 setiap kelas, dan melabeli setiap contoh dengan sesuai, Namun, isu yang umum 
-didalam kedua kasus adalah pilihan dari fitur-fitur yang akan digunakan untuk 
+didalam kedua kasus adalah pemilihan fitur-fitur yang akan digunakan untuk 
 klasifikasi objek (\cite{rennoetal}).
 
 \section{\emph{Viola Jones Object Detection Framework}}
@@ -116,34 +116,32 @@ tersebut.
 
 \begin{algorithm}
   \caption{Algoritma Adaboost}
-  \begin{algorithmic} [1]
-    \State Diberikan contoh gambar $(x_1, y_1),...,(x_n, y_n)$ dimana 
-    $y_i = 0$ untuk contoh negatif dan $y_i = 1$ untuk contoh positif
-    \State Inisialisasi bobot $w_1,_i = \frac{1}{2_m}, \frac{1}{2l}$ 
-    untuk $y_i = 0$ dan $y_i = 1$, dimana $m$ adalah angka negatif dan 
-    $l$ adalah angka positif
-    \State Untuk $t = 1,...,T$:
-      \begin{enumerate}
-        \item Normalisasi bobot, $w_t,_1 \gets \frac{w_t,_1}{\sum_{j=1}^{n} w_t,_j}$
-        \item Pilih $weak classifier$ terbaik dengan melihat error yang telah diberi bobot
-          \begin{equation}
-            \in_t = min_f,_p,_\theta \sum_i w_i|h(x_i,f,p,\theta) - y_i|.
-          \end{equation}
-        \item Definisikan $h_t(x) = h(x,f_t,p_t,\theta_t)$ dimana $f_t,p_t,$ dan $\theta_t$ adalah \textit{minimizer} dari $\in_t$.
-        \item Perbarui bobot:
-          \begin{equation}
-            w_t+1,i = w_t,i \beta{t}{1-e_i}
-          \end{equation}
-        dimana $e_i = 0$ bila contoh $x_i$ diklasifikasi secara benar, selainnya $e_i = 1$, dan $\beta_t = \frac{\in_t}{1-\in_t}$
-      \end{enumerate}
-      \State \textit{strong classifier} akhirnya adalah:
-        \begin{equation}
-          C(x) = \begin{cases}
-            1 & \sum\limits_{t=1}^T \alpha_t h_t (x) \geq \frac{1}{2} \sum\limits_{t=1}^T \alpha_t \\
-            0 & \text{selain itu}
-          \end{cases}
-        \end{equation}
-      dimana $\alpha_t$ = log $\frac{1}{\beta_t}$ 
+  \begin{algorithmic}[1]
+    \State Diberikan contoh gambar $(x_1, y_1), \ldots, (x_n, y_n)$ dimana 
+    $y_i = 0$ untuk contoh negatif dan $y_i = 1, \ldots, N$ untuk contoh kelas-kelas positif
+    \State Inisialisasi bobot $w_{i,1} = \frac{1}{\text{{total contoh}}}$
+    \State Untuk $t = 1, \ldots, T$:
+    \begin{enumerate}
+      \item Normalisasi bobot, $w_{t,1} \gets \frac{w_{t,1}}{\sum_{j=1}^{n} w_{t,j}}$
+      \item Pilih \textit{weak classifier} terbaik dengan melihat error yang telah diberi bobot
+      \begin{equation}
+        \in_t = \min_{f, p, \theta} \sum_i w_i |h(x_i, f, p, \theta) - y_i|.
+      \end{equation}
+      \item Definisikan $h_t(x) = h(x, f_t, p_t, \theta_t)$ dimana $f_t, p_t,$ dan $\theta_t$ adalah \textit{minimizer} dari $\in_t$.
+      \item Perbarui bobot:
+      \begin{equation}
+        w_{t+1,i} = w_{t,i} \beta_t^{1 - e_i}
+      \end{equation}
+      dimana $e_i = 0$ bila contoh $x_i$ diklasifikasi secara benar, selainnya $e_i = 1$, dan $\beta_t = \frac{\in_t}{1 - \in_t}$
+    \end{enumerate}
+    \State \textit{strong classifier} akhirnya adalah:
+    \begin{equation}
+      C(x) = \begin{cases}
+        1 & \sum_{t=1}^T \alpha_t h_t (x) \geq \frac{1}{2} \sum_{t=1}^T \alpha_t \\
+        0 & \text{selain itu}
+      \end{cases}
+    \end{equation}
+    dimana $\alpha_t = \log \frac{1}{\beta_t}$ 
   \end{algorithmic}
 \end{algorithm}
 
@@ -165,13 +163,6 @@ satu ronde pembelajaran selesai, contoh pembelajarannya akan dibobot ulang
 untuk menekankan problem yang salah diklasifikasi oleh \emph{weak learner} 
 sebelumnya. Bentuk \emph{final strong classifier} adalah \emph{perceptron}, 
 sebuah kombinasi \emph{weak learner} berbobot yang diikuti oleh \emph{threshold}.
-
-Dalam \emph{Framework Viola Jones}, \emph{Adaboost} yang digunakan hanya bekerja untuk 
-klasifikasi biner saja. Oleh karena itu perlu adanya modifikasi \emph{Adaboost} yang 
-dapat melakukan klasifikasi \emph{Multi-class}. Yang pertama adalah anotasi 
-contoh gambar $(x_1, y_1),...,(x_n, y_n)$ dimana $y_i \in Y = {1,...,k}$. 
-Maka dari itu distribusi $(D)$ nilai bobot $(w)$ akan berubah sesuai dengan 
-jumlah contoh $(N)$: $w^1_i = D(i) \text{ for } i=1,...,N$. %(harus dilanjutin)
 
 \subsection{\emph{Weaklearn}}
 
@@ -224,11 +215,25 @@ dideterminasi dan perhatian berubah ke akar dari \emph{subtree} sesuai
 dengan hasil tersebut. Ketika proses pada akhirnya (dan dengan pasti) 
 menuju ke sebuah daun, kelas dari kasus diprediksi sesuai yang ada di daun.
 
+% \subsection{\emph{Boosting}}
+
+% \emph{Boosting} adalah sebuah metode didalam ilmu komputer, yang digunakan untuk 
+% meningkatkan performa sekelompok \textit{weak learn} dengan menyatukan mereka menjadi 
+% sebuah \textit{strong classifier}. Hal ini dilakukan dengan cara mengiterasi sederet 
+% \textit{weak classifier} untuk menyelesaikan sebuat set data dan memberikan mereka 
+% bobot voting. Sebuah \textit{weak classifier} 
+% pertama memprediksi kelas dari sebuah set contoh data, yang kemudian hasilnya akan dibandingkan 
+% dengan label yang seseungguhnya. Contoh yang gagal diprediksi oleh \textit{weak classifier} 
+% yang pertama lalu akan dicatat dan akan ditingkatkan bobot nilainya, jadi \textit{weak classifier} 
+% berikutnya bisa mendapatkan nilai lebih bila berhasil mengklasifikasi contoh tersebut dengan benar. 
+% proses ini dijalankan hingga \textt{weak classifier} habis, dan dimulai lagi bila ditemukan 
+% bahwa hasil prediksi akhir meningkat daripada iterasi sebelumnya.
+
 \subsection{\emph{Attentional Cascade}}
 
 \emph{Attentional Cascade} adalah sebuah \emph{cascade} dari banyak 
 \emph{classifier} yang dibuat untuk meningkatkan performa deteksi dengan secara radikal mengurangi waktu 
-komputasi. Intinya \emph{classifier} kecil yang telah di-\emph{boost} dapat dibuat lebih 
+komputasi. Intinya \emph{weak classifier} yang telah di-\emph{boost} dapat dibuat lebih 
 kecil dan efisien, yang dapat menolak mayoritas \emph{sub-window} negatif dan 
 mendeteksi sebagian besar dari \emph{sub-window} positif. \emph{Classifier} yang lebih 
 sederhana digunakan untuk menolak mayoritas \emph{sub-window} sebelum \emph{classifier} 

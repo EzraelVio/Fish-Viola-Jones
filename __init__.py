@@ -8,13 +8,15 @@ from Dataset import *
 from Utilities import *
 from DecisionTree import *
 from Boosting import *
+from Cascade import *
 
 # read image and assign appropriate labels
 images, labels = combine_dataset()
 
 # initialize haar_like features. Change 50 x 50 according to neccesity
-features = generate_features(50, 50)
-print(f'Numbers of features generated: {len(features)}')
+initial_features = generate_features(50, 50)
+
+print(f'Numbers of features generated: {len(initial_features)}')
 
 print("starting...")
 
@@ -24,7 +26,8 @@ csv_name = "fish" # change name accordingly
 # Utilities.write_csv(images, labels, features, csv_name)
 
 # create weak classifiers (Decision Trees) for each window
-for i in range (3):
+for i in range(1, 3):
+    features = initial_features
     csv_name_loop = f'{csv_name}_window_{i}'
     # split data into 3 part for training and saving it inside splits:
     # X_train and Y_train for creating trees
@@ -50,6 +53,15 @@ for i in range (3):
     # train strong classifier which also double as feature elimination. Saving it into another pickle
     pickle_name = f'window_{i}_strong_classsifier'
     Boosting.training_strong_classifier(features, trees, splits, accuracies, pickle_name)
+
+
+for j in range (3):
+    strong_classifier = Utilities.read_from_pickle(pickle_name)
+    pickle_name = f'window_{j}_cascade'
+    cascade = Cascade()
+    cascade.fill_cascade(strong_classifier.features, strong_classifier.trees, strong_classifier.alpha_list, splits)
+    cascade.save_to_pickle(pickle_name)
+
 
 # i = 1
 # temp_window_value1 = np.zeros(len(images), dtype=object)

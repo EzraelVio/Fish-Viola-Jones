@@ -58,6 +58,7 @@ class Utilities:
             'image_ids' : image_ids,
         }
         for i in range(len(features)):
+            temp_value = np.zeros(len(images))
             for j in range(len(images)):
                 temp_value[j] = temp_window_value2[j][i]
             column_name = f'win_2_feature_{i}'
@@ -76,6 +77,7 @@ class Utilities:
             'image_ids' : image_ids,
         }
         for i in range(len(features)):
+            temp_value = np.zeros(len(images))
             for j in range(len(images)):
                 temp_value[j] = temp_window_value3[j][i]
             column_name = f'win_1_feature_{i}'
