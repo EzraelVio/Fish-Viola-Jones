@@ -15,21 +15,20 @@
 \contentsline {section}{\numberline {2.1}Pengertian Klasifikasi Objek}{5}{section.2.1}%
 \contentsline {section}{\numberline {2.2}\emph {Viola Jones Object Detection Framework}}{5}{section.2.2}%
 \contentsline {subsection}{\numberline {2.2.1}\emph {Features}}{6}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}\emph {Integral Image}}{7}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}\emph {Adaboost}}{9}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}\emph {Weaklearn}}{10}{subsection.2.2.4}%
-\contentsline {subsection}{\numberline {2.2.5}\emph {Attentional Cascade}}{11}{subsection.2.2.5}%
-\contentsline {chapter}{\numberline {III}METODOLOGI PENELITIAN}{13}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Tahapan Penelitian}{13}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Desain Sistem}{13}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Training \emph {Strong Classifier}}{14}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}\textit {Input Dataset} Pelatihan}{15}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Pembuatan \textit {Haar like Features}}{15}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Pembuatan \textit {Decision Tree}}{17}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}\emph {Boosting}}{17}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Pembuatan \emph {Attentional Cascade}}{19}{subsection.3.3.5}%
-\contentsline {section}{\numberline {3.4}Skenario Eksperimen dan Validasi}{20}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}\textit {Pre-processing} dan Penghitungan \emph {Integral Image}}{20}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Klasifikasi}{20}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Anotasi}{22}{subsection.3.4.3}%
-\contentsline {chapter}{DAFTAR PUSTAKA}{23}{figure.caption.16}%
+\contentsline {subsection}{\numberline {2.2.2}\emph {Adaboost}}{6}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}\emph {Weaklearn}}{8}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}\emph {Attentional Cascade}}{9}{subsection.2.2.4}%
+\contentsline {chapter}{\numberline {III}METODOLOGI PENELITIAN}{11}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Tahapan Penelitian}{11}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Desain Sistem}{11}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Training \emph {Strong Classifier}}{12}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}\textit {Input Dataset} Pelatihan}{13}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Pembuatan \textit {Haar like Features}}{14}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Pembuatan \textit {Decision Tree}}{16}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}\emph {Boosting}}{16}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Pembuatan \emph {Attentional Cascade}}{18}{subsection.3.3.5}%
+\contentsline {section}{\numberline {3.4}Skenario Eksperimen dan Validasi}{19}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}\textit {Pre-processing}}{19}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Klasifikasi}{19}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Anotasi}{21}{subsection.3.4.3}%
+\contentsline {chapter}{DAFTAR PUSTAKA}{22}{figure.caption.15}%

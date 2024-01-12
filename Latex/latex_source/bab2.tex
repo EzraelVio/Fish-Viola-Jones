@@ -59,58 +59,58 @@ di bagian luar dikurangi dengan jumlah nilai piksel persegi yang ada ditengah ke
 Yang terakhir \emph{fitur empat persegi} menghitung perbedaan nilai dari dua pasang 
 persegi diagonal.
 
-\subsection{\emph{Integral Image}}
+% \subsection{\emph{Integral Image}}
 
-\begin{figure}[H]
-  \centering{}
-	\includegraphics[width=0.6\textwidth]{gambar/integral\_image\_1}
-  \caption{Sebuah nilai \emph{Integral Image} $(x,y)$ dan area yang diwakilinyak}
-\end{figure}
+% \begin{figure}[H]
+%   \centering{}
+% 	\includegraphics[width=0.6\textwidth]{gambar/integral\_image\_1}
+%   \caption{Sebuah nilai \emph{Integral Image} $(x,y)$ dan area yang diwakilinyak}
+% \end{figure}
 
-Fitur-fitur persegi dapat dihitung secara cepat menggunakan 
-representasi tidak langsung dari gambar, hal ini diberi nama 
-\emph{integral image}. \emph{integral image} pada lokasi $x, y$ berisikan 
-penjumlahan di atas dan di kiri dari $x, y$ dan nilai $x, y$ itu sendiri:
-\begin{equation}
-  i i(x, y)=\sum_{x^{\prime} \leq x, y^{\prime} \leq y} i\left(x^{\prime}, y^{\prime}\right),
-\end{equation}
-Dimana $ii(x,y)$ adalah \emph{integral image} dan $i(x,y)$ 
-adalah nilai piksel dari gambar aslinya. Menggunakan kedua 
-pengulangan berikut ini:
-\begin{equation}
-  s(x, y)=s(x, y-1) + i(x, y)
-\end{equation}
-\begin{equation}
-  ii(x, y)=ii(x-1, y) + s(x, y)
-\end{equation}
-(Dimana \emph{s(x, y)} adalah nilai kumulatif dari baris, \emph{s(x, -1) = 0}, 
-dan \emph{ii(-1, y) = 0}) \emph{Integral Image} dari sebuah gambar dapat dihitung dalam sekali jalan.
+% Fitur-fitur persegi dapat dihitung secara cepat menggunakan 
+% representasi tidak langsung dari gambar, hal ini diberi nama 
+% \emph{integral image}. \emph{integral image} pada lokasi $x, y$ berisikan 
+% penjumlahan di atas dan di kiri dari $x, y$ dan nilai $x, y$ itu sendiri:
+% \begin{equation}
+%   i i(x, y)=\sum_{x^{\prime} \leq x, y^{\prime} \leq y} i\left(x^{\prime}, y^{\prime}\right),
+% \end{equation}
+% Dimana $ii(x,y)$ adalah \emph{integral image} dan $i(x,y)$ 
+% adalah nilai piksel dari gambar aslinya. Menggunakan kedua 
+% pengulangan berikut ini:
+% \begin{equation}
+%   s(x, y)=s(x, y-1) + i(x, y)
+% \end{equation}
+% \begin{equation}
+%   ii(x, y)=ii(x-1, y) + s(x, y)
+% \end{equation}
+% (Dimana \emph{s(x, y)} adalah nilai kumulatif dari baris, \emph{s(x, -1) = 0}, 
+% dan \emph{ii(-1, y) = 0}) \emph{Integral Image} dari sebuah gambar dapat dihitung dalam sekali jalan.
 
-\begin{figure}[H]
-  \centering{}
-	\includegraphics[width=0.6\textwidth]{gambar/integral\_image\_2}
-  \caption{Jumlah dari intensitas cahaya pada persegi D dapat dihitung dengan 4 referensi \textit{array}. Nilai dari 1 adalah jumlah intensitas cahaya pada persegi A, Nilai dari 2 adalah persegi A + B, nilai dari 3 adalah A + C dan nilai 4 adalah A + B + C + D.}
-\end{figure}
+% \begin{figure}[H]
+%   \centering{}
+% 	\includegraphics[width=0.6\textwidth]{gambar/integral\_image\_2}
+%   \caption{Jumlah dari intensitas cahaya pada persegi D dapat dihitung dengan 4 referensi \textit{array}. Nilai dari 1 adalah jumlah intensitas cahaya pada persegi A, Nilai dari 2 adalah persegi A + B, nilai dari 3 adalah A + C dan nilai 4 adalah A + B + C + D.}
+% \end{figure}
 
-Menggunakan \emph{integral image}, semua jumlah nilai pada persegi dapat 
-dihitung didalam 4 referensi \emph{array}. Jelas perbedaan 
-diantara kedua jumlah nilai-nilai persegi dapat dihitung 
-dengan delapan referensi. Karena peresegi dua fitur yang 
-didefinisikan diatas melibatkan juga nilai persegi disebelahnya, 
-mereka dapat dikomputasi dengan enam referensi \emph{array}, delapan referensi
-bilamana ia adalah persegi tiga fitur, dan sembilan referensi untuk 
-persegi empat fitur.
+% Menggunakan \emph{integral image}, semua jumlah nilai pada persegi dapat 
+% dihitung didalam 4 referensi \emph{array}. Jelas perbedaan 
+% diantara kedua jumlah nilai-nilai persegi dapat dihitung 
+% dengan delapan referensi. Karena peresegi dua fitur yang 
+% didefinisikan diatas melibatkan juga nilai persegi disebelahnya, 
+% mereka dapat dikomputasi dengan enam referensi \emph{array}, delapan referensi
+% bilamana ia adalah persegi tiga fitur, dan sembilan referensi untuk 
+% persegi empat fitur.
 
-Kecepatan yang didapat dari penghitungan \emph{Integral Image} ini dapat dijustifikasi 
-bila kita membandingkannya dengan perhitungan manual. Sebagai contoh, misalkan 
-kita sedang mencari jumlah total intensitas cahaya pada ukuran area 10x10 
-piksel. Cara manual mengharuskan kita menghitung sampai 100 kali untuk mendapat 
-jumlah intensitas cahaya pada area tersebut, belum lagi proses ini harus 
-diulang terus-menerus untuk ukuran dan lokasi yang berbeda. Dilain sisi, 
-perhitungan menggunakan \emph{Integral Image} hanya perlu mereferensi tabel yang 
-sudah dibuat sebelum semua usaha klasifikasi, dalam hal ini kita hanya perlu 
-melakukan perhitungan empat kali untuk menghitung intensitas cahaya dalam area 
-tersebut.
+% Kecepatan yang didapat dari penghitungan \emph{Integral Image} ini dapat dijustifikasi 
+% bila kita membandingkannya dengan perhitungan manual. Sebagai contoh, misalkan 
+% kita sedang mencari jumlah total intensitas cahaya pada ukuran area 10x10 
+% piksel. Cara manual mengharuskan kita menghitung sampai 100 kali untuk mendapat 
+% jumlah intensitas cahaya pada area tersebut, belum lagi proses ini harus 
+% diulang terus-menerus untuk ukuran dan lokasi yang berbeda. Dilain sisi, 
+% perhitungan menggunakan \emph{Integral Image} hanya perlu mereferensi tabel yang 
+% sudah dibuat sebelum semua usaha klasifikasi, dalam hal ini kita hanya perlu 
+% melakukan perhitungan empat kali untuk menghitung intensitas cahaya dalam area 
+% tersebut.
 
 \subsection{\emph{Adaboost}}
 

@@ -73,11 +73,12 @@ pembuatan \emph{decision tree} untuk setiap \emph{features},
 \end{figure}
 
 \textit{Dataset} yang akan dipakai diambil dari FishBase (Dapat dilihat di https://fishbase.mnhn.fr/) yang 
-berisikan berbagai gambar ikan termasuk dari genus Abudefduf, Amphiprion dan Chaetodon. 
-Ketiga genus ikan ini dipilih karena bentuknya yang berbeda satu-sama lain. Selain itu 
-\textit{dataset} juga akan ditambahkan dari hasil penelitian lapangan 
-secukupnya, dengan mempertimbangkan waktu komputasi pada tahap 
-pelatihan.
+berisikan berbagai gambar ikan termasuk 20 gambar dari spesies Abudefduf, 20 gambar dari spesies 
+Amphiprion dan 20 gambar dari spesies Chaetodon. 
+Ketiga spesies ikan ini dipilih karena bentuknya yang berbeda satu-sama lain. %Selain itu 
+% \textit{dataset} juga akan ditambahkan dari hasil penelitian lapangan 
+% secukupnya, dengan mempertimbangkan waktu komputasi pada tahap 
+% pelatihan.
 Untuk contoh pelatihan gambar dibuat berukuran 350x200 piksel, 
 dengan warna \textit{greyscale}. Selain itu juga akan dipilih contoh 
 pelatihan negatif atau kumpulan gambar yang tidak terdapat kelas 
@@ -87,6 +88,17 @@ diambil dari sumber folder gambar. Kelas 0 direservasi untuk kelas negatif, seme
 1, 2 dan 3 direservasi untuk Abudefduf, Amphiprion dan Chaetodon.
 \textit{Dataset} ini lalu dibagi menjadi tiga yaitu \textit{training dataset}, 
 \textit{testing dataset}, dan \emph{validation dataset} dengan jumlah yang sama.
+
+Selain itu untuk setiap kelas sudah dibuatkan \textit{sub-window} spesifik untuk diklasifikasi. 
+\textit{Sub-window} ini secara spesifik mengklasifikasi tiga bagian ikan yaitu, mulut, sirip dan ekor. 
+klasifikasi spesifik ini nantinya akan bekerja-sama dengan \textit{sliding window} dalam mengklasfikasi 
+gambar yang ada, dengan mencari mulut, sirip dan ekor ikan didalam gambar.0
+
+\begin{figure}[H]
+  \centering{}
+	\includegraphics[width=0.6\textwidth]{gambar/window\_compund}
+  \caption{\textit{sub-window} setiap kelas ikan yang akan dipelajari oleh \textit{classifier}}
+\end{figure}
 
 % \subsection{Pembuatan \textit{Integral Image}}
 
@@ -228,7 +240,7 @@ tahap \textit{Boosting}, pada tahap ini hanya perlu membagi \textit{weak classif
 beberapa \textit{stage} yang nantinya bisa dipanggil secara terpisah. Sebuah \textit{stage} 
 berlaku layaknya sebuah \textit{strong cloassifier} kecil yang ditargetkan hanya memiliki 
 tingkat akurasi paling tidak 50\% saja. Hal ini dilakukan agar pendeteksian seluruh \textit{sub-window} 
-dapat dilakukan tanpa harus memanggil keseluruhan dari \textit{strong cloassifier}. 
+dapat dilakukan tanpa harus memanggil keseluruhan dari \textit{strong classifier}. 
 Metode konstruksi sebuah \textit{stage cascade} adalah sebagai berikut:
 
 \begin{algorithm}
@@ -248,25 +260,19 @@ Metode konstruksi sebuah \textit{stage cascade} adalah sebagai berikut:
   \end{algorithmic}
 \end{algorithm}
 
-Sebelum pembuatan \emph{attentional cascade}, \emph{weaklearner} yang kurang 
-diskriminatif akan dibuang dari \emph{Strong Classifier}. 
-%Hal ini dilakukan dengan (cari, karena bagian ini 
-%belum jelas dari kemarin). 
-\emph{Attentional cascade} akan dibuat dari \emph{weaklearner} 
-yang tersisa secara bertahap. 
-Pertama, target \textit{false positive} pada setiap \emph{cascade} 
-harus ditentukan oleh pengguna. \emph{Framework VIola-Jones} menggunakan target 
-\textit{false positive} 50\% untuk \emph{cascade} pertama, dan 
-\textit{false positive} 80\% untuk semua \emph{cascade} setelahnya.
-Target \textit{false posiive} ini akan disesuaikan 
-saat penelitian lapangan, bila target akurasi tidak berhasil dicapai 
-dengan target \textit{false positive} sebelumnya.
-Pada setiap fase \emph{cascade}, \emph{weaklearner} akan 
-ditambahkan satu-persatu. Setiap sebuah \emph{weaklearner} ditambahkan, tes akan dilakukan 
-dengan \emph{dataset} tes. \emph{Weaklearner} akan terus ditambahkan hingga \emph{false positive rate} 
-yang ditentukan untuk fase itu dicapai. Fase akan terus bertambah hingga 
-akurasi sempurna dicapai, atau hingga \emph{weaklearner} sudah habis. 
-%(Ini periu dijabarin lagi dengan rumus per-step). 
+Nantinya dengan memanggil keseluruhan \textit{cascade} untuk melakukan 
+klasifikasi, \textit{stage} dengan satu persatu mengklasifikasi 
+\textit{sub-window} yang sedah dicek. Bila sebuah \textit{stage} 
+mem-\textit{voting} sebuah \textit{sub-window} sebagai kelas negatif 
+(Dalam hal ini voting seluruh \textit{weak classifier} didalam \textit{cascade} 
+mengembalikan kelas 0 atau negatif) maka \textit{stage} akan menghentikan 
+klasifikasi untuk \textit{sub-window} tersebut dan melanjutkan ke 
+\textit{sub-window} berikutnya. Sebaliknya bila \textit{stage} mengembalikan 
+kelas selain 0 (1, 2, maupun 3) maka klasifikasi akan dilanjutkan 
+untuk \textit{sub-window} tersebut sampai salah satu \textit{stage} lainnya 
+mem-\textit{voting} kelas negatif atau semua \textit{stage} habis. 
+Dalam situasi habis, \textit{voting} kelas akan mengambil suara dari semua 
+\textit{weak classifer} dari semua \textit{stage}.
 
 
 \section{Skenario Eksperimen dan Validasi}
@@ -275,47 +281,78 @@ Tahapan ini adalah penggunakaan \emph{classifier} yang sebenarnya dengan tujuan
 memvalidasi akurasi dari \emph{classifier} tersebut. 
 Gambar ikan yang akan dipakai dalam proses validasi akan 
 melalui beberapa langkah dalam tahap ini, 
-yaitu: \textit{Pre-processing} dalam bentuk \emph{grayscaling}, Penghitungan 
-\emph{Integral Image}, dan deteksi yang sesungguhnya menggunakan \emph{strong classsifier} 
-yang telah dibuat dengan metode Sliding Window.
+yaitu: \textit{Pre-processing} dalam bentuk \emph{grayscaling}, 
+dan deteksi yang sesungguhnya menggunakan \emph{cascade} 
+yang telah dibuat dengan metode Sliding Window. Terlebih, klasifikasi akan dilakukan di 
+tiga area berbeda pada gambar: area kiri untuk mendeteksi mulut, area tengah untuk mendeteksi sirip, 
+dan area kanan untuk mendeteksi ekor. Pada akhirnya ketiga \textit{cascade} 
+dari ketiga area tersebut akan mem-\textit{voting} kelas dari objek pada gambar. 
+Bila didapat bahwa ketiga \textit{cascade} tersebut mem-\textit{voting} tiga 
+kelas yang berbeda, maka kelas yang dipilih adalah 0 atau negatif. 
 
-\subsection{\textit{Pre-processing} dan Penghitungan \emph{Integral Image}}
+\subsection{\textit{Pre-processing}}
 
-Untuk klasifikasi sebenarnya, gambar \emph{input} akan diproses terlebih dahulu. 
-Gambar awalnya akan melakui proses \textit{pre-processing} dan dirubah kedalam warna 
-\emph{grayscale} %(Jelasin perubahan greyscale ini kayak gimana) 
-untuk mempermudah penghitungan dengan bantuan \emph{library OpenCV}. 
-Setelah tu sebuah matriks sebesar resolusi gambar akan dibuat untuk 
-penghitungan \emph{Integral Image} yang nantinya akan mempercepat proses 
-penghitungan fitur. Pembuatan \emph{integral image} pada tahap ini sama persis 
-dengan pembuatan pada tahap pelatihan.
+Untuk klasifikasi sebenarnya, gambar yang akan digunakan 
+akan diproses terlebih dahulu. 
+Gambar awalnya akan melakui proses \textit{pre-processing} dan dirubah ke dalam warna 
+\emph{grayscale}. %(Jelasin perubahan greyscale ini kayak gimana). 
+Selain itu resolusi gambar akan dirubah menjadi 350 x 200 piksel untuk mempercepat 
+proses klasifikasi.
 
-\subsection{Klasifikasi}
+\subsection{Klasifikasi} 
 
-Pada tahap ini, gambar yang sudah berubah dalam bentuk 
-\emph{integral image} akan diklasifikasi menggunakan 
-\emph{strong classifier}. \emph{Strong classifier} akan berjalan dari 
-pojok kiri atas gambar, atau piksel pertama, mencoba untuk mengklasifikasi 
-sebuah \emph{sub-window} berukuran 72x41 piksel. Bila posisi tersebut sudah 
-selesai diklasifikasi, terlepas hasilnya, \emph{sub-window} akan 
-bergerak ke kanan sebanyak satu piksel dan mengklasifikasi area baru tersebut. 
-Hal ini akan terus berlanjut hingga \emph{sub-window} bisa dibuat lagi ke kanan. 
-Bilama demikian \emph{sub-window} akan kembali ke ka kanan, namun kali ini 
-diturunkan sebanyak satu piksel. Pergerakan \emph{sliding window} ini 
-bertujuan agar seluruh bagian dari gambar dapat terklasifikasi.
+Pada tahap ini \textit{sliding window} akan mulai bergerak dari pojok kiri atas 
+untuk memulai klasifikasi pada area kiri menggunakan \textit{cascade} 
+yang sudah dilatih untuk mengklasifikasi mulut ikan. Hal ini dilakukan hingga 
+seluruh \textit{sub-window} sudah diklasifikasi dengan hasil negatif, 
+atau bila salah satu \textit{sub-window} mengklasfikasi salah satu kelas 
+positif. Setelah itu maka klasifikasi pada area tengah atau sirip akan dimulai, dan 
+setelahnya baru area kanan atau ekor.
+
+\textit{cascade} bekerja agak berbeda pada klasifikasi sebenarnya. 
+Melainkan daripada menhitung nilai intensitas cahaya dan fitur pada semua piksel 
+pada gambar, \textit{cascade} hanya menghitung nilai fitur yang berhubungan 
+dengan \textit{weak classifier} dalam \textit{stage cascade} sedang 
+melakukan klasifikasi.
+
+\begin{algorithm}
+  \caption{Final Cascade Classification}
+  \begin{algorithmic}[1]
+    \Function{FinalCascadeClassification}{$\text{image}, x_{\text{offset}}, y_{\text{offset}}$}
+      \State $\text{scoreboard} \gets$ array([0, 0, 0, 0])
+      \For{$i$ \textbf{in} range($\text{len}(\text{self.stages})$)}
+        \State $\text{stage\_scoreboard} \gets \text{self.stages}[i].\text{stage\_prediction}()$
+        \If{$\text{stage\_scoreboard}.\text{argmax}() == 0$} \textbf{break}
+        \Else \State $\text{scoreboard} \gets \text{scoreboard} + \text{stage\_scoreboard}$ \EndIf
+      \EndFor
+      \State \textbf{return} $\text{scoreboard}.\text{argmax}()$
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+  \caption{Stage Prediction}
+  \begin{algorithmic}[1]
+    \Function{StagePrediction}{$\text{image}, x_{\text{offset}}, y_{\text{offset}}, \text{scoreboard}$}
+      \For{$i$ \textbf{in} range($\text{len}(\text{self.features})$)}
+        \State $\text{feature\_type}, x, y, \text{width}, \text{height} \gets \text{self.features}[i]$
+        \State $x \gets x + x_{\text{offset}}$
+        \State $y \gets y + y_{\text{offset}}$
+        \State $\text{updated\_feature} \gets (\text{feature\_type}, x, y, \text{width}, \text{height})$
+        \State $\text{data\_features} \gets \text{compute\_feature\_with\_matrix}(\text{image}, 0, \text{updated\_feature})$
+        \State $\text{prediction} \gets \text{self.trees}[i].\text{predict}(\text{data\_features})$
+        \State $\text{scoreboard}[\text{prediction}] \gets \text{scoreboard}[\text{prediction}] + 1 \times \text{self.alpha\_list}[i]$
+      \EndFor
+      \State \textbf{return} $\text{scoreboard}$
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
 
 \begin{figure}[H]
   \centering{}
-	\includegraphics[width=0.6\textwidth]{gambar/sliding\_window\_1}
-  \caption{Gambaran ukuran \emph{sub-window} 72x41 piksel pada gambar 300x220}
+	\includegraphics[width=0.6\textwidth]{gambar/sliding\_window\_3}
+  \caption{titik awal \textit{sliding window} (kotak hijau) dan titik akhir (kotak kuning)}
 \end{figure}
-
-Jika \emph{sub-window} dengan ukuran 72x42 piksel sudah mengklasifikasi 
-seluruh bagian gambar hingga pojok kanan bawah, maka \emph{sub-window} 
-akan diperbesar dengan faktor 1.25 dan proses dimulai lagi dari pojok kiri atas. 
-Selain itu ukuran dan lokasi dari \emph{feature} akan disesuaikan untuk mangakomodasi 
-\emph{sub-window} yang sudah diperbesar. Hal ini dilakukan untuk mengklasifikasi 
-objek yang memiliki ukuran berbeda didalam gambar.
 
 \subsection{Anotasi}
 
