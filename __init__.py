@@ -26,7 +26,7 @@ csv_name = "fish" # change name accordingly
 # Utilities.write_csv(images, labels, features, csv_name)
 
 # create weak classifiers (Decision Trees) for each window
-for i in range(1, 3):
+for i in range(3):
     features = initial_features
     csv_name_loop = f'{csv_name}_window_{i}'
     # split data into 3 part for training and saving it inside splits:
@@ -55,12 +55,12 @@ for i in range(1, 3):
     Boosting.training_strong_classifier(features, trees, splits, accuracies, pickle_name)
 
 
-for j in range (3):
-    strong_classifier = Utilities.read_from_pickle(pickle_name)
-    pickle_name = f'window_{j}_cascade'
-    cascade = Cascade()
-    cascade.fill_cascade(strong_classifier.features, strong_classifier.trees, strong_classifier.alpha_list, splits)
-    cascade.save_to_pickle(pickle_name)
+# for j in range (3):
+#     strong_classifier = Utilities.read_from_pickle(pickle_name)
+#     pickle_name = f'window_{j}_cascade'
+#     cascade = Cascade()
+#     cascade.fill_cascade(strong_classifier.features, strong_classifier.trees, strong_classifier.alpha_list, splits)
+#     cascade.save_to_pickle(pickle_name)
 
 
 # i = 1

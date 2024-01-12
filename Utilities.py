@@ -25,68 +25,28 @@ class Utilities:
 
     def write_csv(images, labels, features, csv_name):
         print("starting write_csv")
-        # initialize separate Dataframe for features list (Data gembrot)
-        temp_window_value1 = np.zeros(len(images), dtype=object)
-        temp_window_value2 = np.zeros(len(images), dtype=object)
-        temp_window_value3 = np.zeros(len(images), dtype=object)
-        image_ids = np.arange(len(images))
+        for window_num in range(3):
+            temp_window_values = np.zeros((len(images), len(features)), dtype=object)
+            image_ids = np.arange(len(images))
 
-        for i in range(len(images)):
-            new_Data = Dataset(images[i], labels[i], features)
-            temp_window_value1[i] = new_Data.window_1_features
+            for i in range(len(images)):
+                new_data = Dataset(images[i], labels[i], features)
+                if window_num == 0:
+                    temp_window_values[i] = new_data.window_1_features
+                elif window_num == 1:
+                    temp_window_values[i] = new_data.window_2_features
+                elif window_num == 2:
+                    temp_window_values[i] = new_data.window_3_features
 
-        window_1_feature = {
-            'image_ids' : image_ids,
-        }
-        for i in range(len(features)):
-            temp_value = np.zeros(len(images))
-            for j in range(len(images)):
-                temp_value[j] = temp_window_value1[j][i]
-            column_name = f'win_1_feature_{i}'
-            window_1_feature[column_name] = temp_value
-        
-        directory = "Data/" + csv_name + "_window_0.csv"
+            window_feature = {'image_ids': image_ids}
+            for i in range(len(features)):
+                column_name = f'win_{window_num + 1}_feature_{i}'
+                window_feature[column_name] = temp_window_values[:, i]
 
-        window_1_feature = pd.DataFrame(window_1_feature)
-        window_1_feature.to_csv(directory, index=False)
+            directory = f"Data/{csv_name}_window_{window_num}.csv"
 
-        for i in range(len(images)):
-            new_Data = Dataset(images[i], labels[i], features)
-            temp_window_value2[i] = new_Data.window_2_features
-
-        window_2_feature = {
-            'image_ids' : image_ids,
-        }
-        for i in range(len(features)):
-            temp_value = np.zeros(len(images))
-            for j in range(len(images)):
-                temp_value[j] = temp_window_value2[j][i]
-            column_name = f'win_2_feature_{i}'
-            window_2_feature[column_name] = temp_value
-        
-        directory = "Data/" + csv_name + "_window_1.csv"
-
-        window_2_feature = pd.DataFrame(window_2_feature)
-        window_2_feature.to_csv(directory, index=False)
-
-        for i in range(len(images)):
-            new_Data = Dataset(images[i], labels[i], features)
-            temp_window_value3[i] = new_Data.window_3_features
-
-        window_3_feature = {
-            'image_ids' : image_ids,
-        }
-        for i in range(len(features)):
-            temp_value = np.zeros(len(images))
-            for j in range(len(images)):
-                temp_value[j] = temp_window_value3[j][i]
-            column_name = f'win_1_feature_{i}'
-            window_3_feature[column_name] = temp_value
-        
-        directory = "Data/" + csv_name + "_window_2.csv"
-
-        window_3_feature = pd.DataFrame(window_3_feature)
-        window_3_feature.to_csv(directory, index=False)
+            window_feature = pd.DataFrame(window_feature)
+            window_feature.to_csv(directory, index=False)
         print("csv write complete!")
 
     def read_csv(csv_name, col_names):
