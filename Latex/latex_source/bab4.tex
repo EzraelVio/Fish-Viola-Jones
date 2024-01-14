@@ -4,226 +4,587 @@
 %               		KESIMPULAN DAN SARAN
 %-------------------------------------------------------------------------------
 
-\chapter{UJI COBA DAN HASIL UJI COBA}
+\chapter{HASIL DAN PEMBAHASAN}
 
-\section{Uji Coba}
-Uji coba sistem dilakukan terhadap 30 responden anggota KOPMA UNJ dengan rincian, \textit{admin} yang terdiri dari 2 responden, pengawas yang terdiri dari 3 responden, dan anggota yang terdiri dari 25 responden. Setiap responden akan melakukan uji coba terhadap sistem yang dibuat berdasarkan peran masing-masing responden. Uji coba yang dilakukan menggunakan data dari hasil sebaran kuesioner \textit{User Acceptance Test}. \textit{User Acceptance Test} bertujuan untuk mengetahui perihal sistem yang dikembangkan apakah sudah sesuai dengan kebutuhan \textit{user} atau belum. Skala yang digunakan dalam penelitian ini adalah skala \textit{likert}.
+\section{\textit{Training Strong Classifier}}
+\subsection{\textit{Input} Gambar dan \textit{labeling}}
+	Langkah pertama dalam melatih \textit{classifier} adalah dengan memasukan 
+	\textit{dataset} untuk latihan berserta label-labelnya. Gambar pertama dimasukan 
+	ke dalam folder sesuai dengan kelasnya. Dalam situasi ini ada empat folder yaitu, 
+	untuk kelas satu: abudefduf, untuk kelas dua: amphiprion, untuk kelas tiga: chaetodon 
+	dan terakhir untuk kelas nol: negative\_examples. Gambar-gambar tersebut lalu akan dibaca 
+	menggunakan \textit{library} CV2 yang bertugas juga untuk mengubah gambar menjadi 
+	\textit{greyscale}. Berikut adalah \emph{source code} 
+	untuk membaca set latihan:
 
-Langkah-langkah pengujian sistem informasi Koperasi Mahasiswa Universitas Negeri Jakarta yang akan dilakukan adalah sebagai berikut:
-\begin{enumerate}
-	\item \textit{User} melakukan pendaftaran anggota.
-	\item \textit{Admin} melakukan verifikasi penerimaan anggota.
-	\item \textit Seluruh \textit{user} dapat mengelola biodata pribadi.
-	\item \textit{Admin} mengelola status keanggotaan setiap \textit{user} (\textit{admin}, pengawas, atau anggota biasa).
-	\item Anggota dan pengawas yang sudah memiliki akun dapat mengakses ke dalam sistem sesuai berandanya masing-masing.
-	\item \textit{Admin} menambahkan data barang, stok, simpanan, transaksi anggota, dan keuangan.
-	\item Data yang \textit{admin} tambahkan akan muncul dan dapat dilihat di beranda semua \textit{user}.
-	\item \textit{Admin} mengelola (sunting dan hapus) data barang, stok, simpanan, transaksi anggota, dan keuangan.
-	\item Data yang \textit{admin} kelola akan berubah dan dapat dilihat di beranda semua \textit{user}.	
-	\item Pengawas menambahkan data penilaian untuk KOPMA UNJ.
-	\item Data yang pengawas tambahkan akan muncul dan dapat dilihat di beranda  semua \textit{user}.
-	\item Pengawas mengelola (sunting dan hapus) data penilaian untuk KOPMA UNJ.
-	\item Data yang pengawas kelola akan berubah dan dapat dilihat di beranda semua \textit{user}.	
-\end{enumerate}
+	\begin{figure}[H]
+		\begin{lstlisting}[language=Python, basicstyle=\tiny]
+			def load_images(directory):
+				images=[]
+				labels=[]
+				for filename in os.listdir(directory):
+					if filename.endswith(".png"):
+						image_path = os.path.join(directory, filename)
+						image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+						image = cv2.resize(image, (350, 200))
+						images.append(image)
+						labels.append(get_label(directory))
+				return np.array(images), np.array(labels)
+		\end{lstlisting}
+		\caption{\emph{source code:} \textit{read} gambar, labelisasi, pengubahan ke \textit{greyscale}, 
+		dan memastikan ukuran gambar 350 x 200 piksel}
+		\label{code:pre-processing gambar}
+	\end{figure}
 
-Fitur milik setiap \textit{user} yang akan diuji pada sistem informasi Koperasi Mahasiswa Universitas Negeri Jakarta adalah sebagai berikut:
+	\begin{figure}[H]
+		\begin{lstlisting}[language=Python, basicstyle=\tiny]
+			def get_label(directory):
+				# add more to add more class
+				if directory == "fish_dataset\\abudefduf": return 1
+				if directory == "fish_dataset\\amphiprion": return 2
+				if directory == "fish_dataset\\chaetodon": return 3
+				else: return 0
+		\end{lstlisting}
+		\caption{\emph{source code:} labelisasi gambar sesuai dengan foldernya}
+		\label{code:labeling}
+	\end{figure}
 
-\begin{itemize}
-	\item \textit{Admin}
-	\begin{enumerate}
-		\item Masuk ke dalam sistem
-		\item Penyuntingan data pribadi
-		\item Pengelolaan anggota (tambah, kesesuaian \textit{id}, detail, pemutihan, sunting, \textit{reset password}, tambah periode, pengelompokan, pemulihan, keuangan anggota, dan cetak)
-		\item Pengelolaan barang (tambah, sunting, hapus, cetak, dan pengelompokan)
-		\item Pengelolaan stok (tambah, hapus, dan cetak)
-		\item Pengelolaan simpanan (tambah, hapus, cetak, dan pengelompokan)
-		\item Pengelolaan transaksi (tambah, hapus, dan cetak)
-		\item Transparansi penilaian
-		\item Pengelolaan dan kesesuaian arus keuangan (tambah dana tambahan dan beban lain)
-		\item Pengelolaan \textit{admin} (tambah dan hapus \textit{admin})
-		\item Pengelolaan pengawas (tambah dan hapus pengawas)
-		\item Pengelolaan penerimaan anggota (terima dan tolak anggota)
-		\item Keluar dari sistem
-	\end{enumerate}
+	Untuk memanggil kedua fungsi load\_images dan get\_label diperlukan sebuah fungsi lainnya 
+	yang berfungsi juga untuk menggabungkan semua gambar dan label menjadi dua buah \emph{array} 
+	images dan labels. Kedua \emph{array} ini nantinya akan menjadi \textit{dataset} utama 
+	dalam proses pelatihan. Berikut \emph{source code}-nya:
 
-	\item Anggota
-	\begin{enumerate}
-		\item Melakukan pendaftaran
-		\item Masuk ke dalam sistem
-		\item Penyuntingan data pribadi
-		\item Transparansi data (barang, stok, transaksi, penilaian, dan arus keuangan)
-		\item Keluar dari sistem
-	\end{enumerate}
+	\begin{figure}[H]
+		\begin{lstlisting}[language=Python, basicstyle=\tiny]
+			def combine_dataset():
+				# load datasets from directories
+				# add class to get_label first or the class will be considered a negative example
+				abudefduf_images, abudefduf_labels = load_images("fish_dataset\\abudefduf")
+				amphiprion_images, amphiprion_labels = load_images("fish_dataset\\amphiprion")
+				chaetodon_images, chaetodon_labels = load_images("fish_dataset\\chaetodon")
+				negatives_images, negatives_labels = load_images("fish_dataset\\negative_examples")
+
+				# combining into a single dataset
+				images = np.concatenate((abudefduf_images, amphiprion_images, chaetodon_images, negatives_images), axis = 0)
+				labels = np.concatenate((abudefduf_labels, amphiprion_labels, chaetodon_labels, negatives_labels), axis = 0)
+
+				return images, labels
+		\end{lstlisting}
+		\caption{\emph{source code:} \textit{load} gambar-gambar dari folder yang bersangkutan dan 
+		menggabungkannya}
+		\label{code:conc dataset}
+	\end{figure}
+
+\subsection{\textit{Generate Haar-like Features}}
+	Untuk melakukan \emph{generate feature} sebuah fungsi bernama generate\_features dipanggil 
+	dengan parameter lebar dan tinggi dari \emph{sub-window} yang akan digunakan. Fungsi ini akan 
+	menghasilkan kurang lebih sekitar 520000 fitur berbeda untuk \emph{sub-window} berukuran 
+	50 x 50 piksel. Berikut \emph{source code}-nya:
+
+	\begin{figure}[H]
+		\begin{lstlisting}[language=Python, basicstyle=\tiny]
+			def generate_features(image_height, image_width):
+				features = []
+				features_list = ["Two Horizontal", "Two Vertical", "Four Diagonal", "Right Triangular", "Left Triangular", "Three Horizontal", "Three Vertical"]
+				for i in features_list:
+					match i:
+						case "Two Horizontal" | "Two Vertical" | "Four Diagonal" | "Right Triangular" | "Left Triangular":
+							feature_height = 4
+							feature_width = 4
+						case "Three Horizontal":
+							feature_height = 4
+							feature_width = 6
+						case "Three Vertical":
+							feature_height = 6
+							feature_width = 4
+					for w in range (feature_width, image_width+1, feature_width):
+						for h in range (feature_height, image_height+1, feature_height):
+							for x in range (0, image_width - w):
+								for y in range (0, image_height - h):
+									feature = (i, x, y, w, h)
+									features.append(feature)
+    			return features
+		\end{lstlisting}
+		\caption{\emph{source code:} \textit{feature} memiliki semua informasi yang diperlukan 
+		untuk melakukan perhitungan. Tipe-tipe fitur akan menentukan rumus perhitungan fitur tersebut}
+		\label{code:generate features}
+	\end{figure}
+
+\subsection{\textit{Calculating all features of all images}}
+	Untuk mempermudah proses pembuatan \emph{Decision tree} nantinya, semua fitur 
+	pada semua \textit{sub-window}, pada semua gambar akan dihitung dan dimasukan 
+	kedalam sebuah dokumen .CSV mengunakan \textit{library} pandas. Fungsi yang dipakai untuk memulai proses ini adalah 
+	fungsi write\_csv pada Utilities.py. Berikut \emph{source code}-nya:
+
+	\begin{figure}[H]
+		\begin{lstlisting}[language=Python, basicstyle=\tiny]
+			def write_csv(images, labels, features, csv_name):
+				print("starting write_csv")
+				for window_num in range(3):
+					temp_window_values = np.zeros((len(images), len(features)), dtype=object)
+					image_ids = np.arange(len(images))
+
+					for i in range(len(images)):
+						new_data = Dataset(images[i], labels[i], features)
+						if window_num == 0:
+							temp_window_values[i] = new_data.window_1_features
+						elif window_num == 1:
+							temp_window_values[i] = new_data.window_2_features
+						elif window_num == 2:
+							temp_window_values[i] = new_data.window_3_features
+
+					window_feature = {'image_ids': image_ids}
+					for i in range(len(features)):
+						column_name = f'win_{window_num + 1}_feature_{i}'
+						window_feature[column_name] = temp_window_values[:, i]
+
+					directory = f"Data/{csv_name}_window_{window_num}.csv"
+
+					window_feature = pd.DataFrame(window_feature)
+					window_feature.to_csv(directory, index=False)
+				print("csv write complete!")
+		\end{lstlisting}
+		\caption{\emph{source code:} mengambil semua gambar, label, fitur dan mengkalkulasi 
+		semua fitur untuk ketiga \textit{sub-window}}
+		\label{code:calculate all features}
+	\end{figure}
+
+	Fungsi ini menghasilkan tiga buah dokumen .csv untuk setiap \textit{sub-window} dengan
+	baris mengikuti jumlah gambar didalam \textit{dataset} dan kolom mengikuti jumlah fitur yang ada. 
+	Maka dari itu untuk \emph{dataset} 80 gambar akan dihasilkan sebuah tabel .csv dengan 
+	bentuk 80 x 520.000.
+
+	Fungsi ini berjalan cukup lama dengan jumlah gambar 80 buah. Penulis menghitung rata-rata 
+	waktu yang diperlukan bagi fungsi untuk membuat sebuah dokumen .csv adalah 45 menit minimum. 
+	Dan proses ini dilakukan sampai tiga kali agar dapat menciptakan tiga dokumen .csv untuk ketiga 
+	\textit{sub-window}. Dokumen .csv ini nantinya akan diperlukan untuk proses pembuatan \emph{decision tree}.
+
+	Dataset() adalah sebuah \textit{class} yang digunakan awalnya untuk menyimpan seluruh fitur 
+	pada gambar tersebut. Nilai-nilai ini yang lalu akan diambil dan dimasukan kedalam dokumen .csv. 
+	berikut bentuk \textit{class Dataset} berserta fungsi bawaannya Find\_Feature\_Value:
+
+	\begin{figure}[H]
+		\begin{lstlisting}[language=Python, basicstyle=\tiny]
+			class Dataset:
+				def __init__(self, image, label, feature_list):
+					self.image = image
+					self.label = label
+					self.window_1_features = self.Find_Feature_Value(image, feature_list, self.class_Window_offset_1[label][0], self.class_Window_offset_1[label][1])
+					self.window_2_features = self.Find_Feature_Value(image, feature_list, self.class_Window_offset_2[label][0], self.class_Window_offset_2[label][1])
+					self.window_3_features = self.Find_Feature_Value(image, feature_list, self.class_Window_offset_3[label][0], self.class_Window_offset_3[label][1])
+
+				def Find_Feature_Value(self, image, feature_list, x_offset, y_offset):
+					features = np.zeros(len(feature_list), dtype=object)
+					for i in range(len(feature_list)):
+						feature_type, x, y, width, height = feature_list[i]
+						x += x_offset
+						y += y_offset
+						updated_feature = (feature_type, x, y, width, height)
+						data_features = compute_feature_with_matrix(image, 0, updated_feature)
+						features[i] = data_features
+					return features
+				
+		\end{lstlisting}
+		\caption{\emph{source code:} \textit{class Dataset}}
+		\label{code:Dataset class}
+	\end{figure}
+
+	Dataset untuk melakukan perhitungan fitur memerlukan \textit{offset} piksel yang penulis 
+	sebutkan pada Bab 3. \textit{Offset} digunakan karena untuk ketika kelas ikan, semuanya memeiliki 
+	mulut, sirip dan ekor yang sama satu dengan yang lainnya. Contohnya: Mulut dari spesies ikan Chaetodon 
+	agak lebih kebawah dibandingkan kedua kelas ikan lainnya. Berikut adalah \textit{offset} yang penulis gunakan 
+	untuk pelatihan:
+
+	\begin{figure}[H]
+		\begin{lstlisting}[language=Python, basicstyle=\tiny]
+			class_Window_offset_1 = [
+				# order according to label's order in LoadImages
+				# for searching mouth features
+				(0, 0),
+				(88, 0), 
+				(73, 0),
+				(100, 15)
+			]
+
+			class_Window_offset_2 = [
+				# order according to label's order in LoadImages
+				# for searching fin features
+				(0, 0),
+				(0, 116), 
+				(9, 153),
+				(0, 116)
+			]
+
+			class_Window_offset_3 = [
+				# order according to label's order in LoadImages
+				# for searching tail feature
+				(0, 0),
+				(89, 280), 
+				(47, 237),
+				(80, 277)
+    ]
+		\end{lstlisting}
+		\caption{\emph{source code:} \textit{offset} ini di-inisalisasi untuk setiap kelas Dataset 
+		sehingga bisa diakses langsung oleh fungsi Find\_Feature\_Value}
+		\label{code:Training sub-window offset}
+	\end{figure}
+
+	Untuk perhitungan fitur yang sebenernya digunakan fungsi compute\_feature\_with\_matrix. 
+	Pertama data fitur diubah dengan menambah lokasi x dan y dari fitur dengan x\_offset, y\_offset 
+	lalu fitur akan mengembalikan sebuah nilai float dari hasil perhitungan tersebut. Berikut \emph{source code} 
+	dari compute\_feature\_with\_matrix:
 	
-	\item Pengawas
-	\begin{enumerate}
-		\item Masuk ke dalam sistem
-		\item Penyuntingan data pribadi
-		\item Transparansi data (barang, stok, transaksi, dan arus keuangan)
-		\item Pengelolaan penilaian (tambah, sunting, hapus, dan cetak)
-		\item Keluar dari sistem
-		\end{enumerate}
-	\end{itemize}
+	\begin{figure}[H]
+		\begin{lstlisting}[language=Python, basicstyle=\tiny]
+			def compute_feature_with_matrix(image, feature):
+				feature_type, x, y, width, height = feature
+				# +1 due to slicing paramter = start at:stop before
+				match feature_type:
+					case "Two Horizontal":
+						white = np.sum(image[y:y + height + 1, x:x + int(width/2) + 1])
+						black = np.sum(image[y:y + height + 1, x + int(width/2):x + width + 1])
+					case "Two Vertical":
+						white = np.sum(image[y:y + int(height/2) + 1, x:x + width+1])
+						black = np.sum(image[y + int(height/2):y + height + 1, x:x + width+1])
+					case "Three Horizontal":
+						white = np.sum(image[y: y + height + 1, x:x + int(width/3) + 1]) + np.sum(image[y: y + height + 1, x + int(width*2/3):x + width + 1])
+						black = np.sum(image[y: y + height + 1, x + int(width/3):x + int(width*2/3) + 1])
+					case "Three Vertical":
+						white = np.sum(image[y:y + int(height/3) + 1, x:x + width + 1]) + np.sum(image[y + int(height*2/3):y + height + 1, x: x + width + 1])
+						black = np.sum(image[y + int(height/3):y + int(height*2/3) + 1, x:x + width + 1])
+					case "Four Diagonal":
+						white = np.sum(image[y:y + int(height/2) + 1, x + int(width/2): x + width + 1]) + np.sum(image[y + int(height/2):y + height + 1, x: x + int(width/2) + 1])
+						black = np.sum(image[y:y + int(height/2) + 1, x:x + int(width/2) + 1]) + np.sum(image[y + int(height/2): y + height + 1, x + int(width/2):x + width + 1])
+					case "Right Triangular":
+						matrix = image[y:y + height + 1, x:x + width + 1]
+						white = np.sum(np.tril(matrix))
+						black = np.sum(np.triu(matrix))
+					case "Left Triangular":
+						matrix = np.rot90(image[y:y + height + 1, x:x + width + 1], k=3)
+						white = np.sum(np.tril(matrix))
+						black = np.sum(np.triu(matrix))
+				return int(white) - int(black)
+		\end{lstlisting}
+		\caption{\emph{source code:} \textit{offset} ini di-inisalisasi untuk setiap kelas Dataset 
+		sehingga bisa diakses langsung oleh fungsi Find\_Feature\_Value}
+		\label{code: feature calculation}
+	\end{figure}
 
-Semua fitur yang diuji memiliki penilaian yang dirincikan menjadi beberapa kategori. Data kuantitatif akan dianalisis dengan menggunakan skala \textit{ likert}. Berikut kategori dan skor penilaian dalam tahap pengujian\textit{ User Acceptance Test} pada sistem informasi Koperasi Mahasiswa Universitas Negeri Jakarta dengan menggunakan skala \textit{likert}:\\
+	\subsection{\textit{Create Decision Tree for each Feature}}
+		Setelah semua nilai fitur sudah dihitung dan dimasukan kedalam dokumen .csv, 
+		selanjutnya bisa dimulai proses pembuatan \emph{decision tree} atau \emph{weak classifier}. 
+		Proses ini dimulai dengan pertama membagi contoh menjadi tiga kelompok, yaitu data \emph{training}, 
+		data \emph{testing} dan data \emph{validation}. Hal ini dilakukan dengan menggunakan fungsi 
+		split\_data dibantu dengan fungsi train\_test\_split dari \textit{library} sklearn:
 
-\begin{tabular}{lll}
-SS& = Sangat Setuju& diberikan nilai 5\\
-S& = Setuju& diberikan nilai 4\\
-C& = Cukup& diberikan nilai 3\\
-TS& = Tidak Setuju& diberikan nilai 2\\
-STS& = Sangat Tidak Setuju& diberikan nilai 1\\
-\\
-\end{tabular}
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+				def split_data(features, csv_name, labels):
+					data = DecisionTree.get_data(features, csv_name)
+					labels_df = pd.DataFrame({'Label' : labels})
+					data = pd.concat([data, labels_df], axis=1)
 
-Kemudian hasil pendataan yang telah didapatkan dengan teknik penyebaran angket dikalkulasikan dengan menggunakan sistem penilaian sebagai berikut:
+					X = data.iloc[:, :-1].values 
+					Y = data.iloc[:, -1].values.reshape(-1, 1)
 
-\begin{itemize}
-	\item Nilai total
-	
-	Nilai total merupakan nilai dari hasil perhitungan antara responden kuesioner angket dengan nilai di setiap poin pertanyaan. Berikut merupakan rumus nilai total:
-	
-	\textit{Nilai total = jumlah nilai setiap soal}
-	
-	\item Nilai rata-rata
-	
-	Nilai rata-rata merupakan nilai dari hasil perhitungan antara nilai total dengan jumlah responden yang mengisi kuesioner angket. Berikut merupakan rumus dari nilai rata-rata:
+					X_temp, X_train, Y_temp, Y_train = train_test_split(X, Y, test_size=0.3, random_state=42)
+					X_valid, X_test, Y_valid, Y_test = train_test_split(X_temp, Y_temp, test_size=0.5, random_state=42)
 
-	\textit{Nilai rata-rata = nilai total / jumlah responden}
-	
-\end{itemize}
+					print(type(X_train))
+					splits = [X_train, Y_train, X_test, Y_test, X_valid, Y_valid]
+					return splits
+			\end{lstlisting}
+			\caption{\emph{source code:} \textit{offset} ini di-inisalisasi untuk setiap kelas Dataset 
+			sehingga bisa diakses langsung oleh fungsi Find\_Feature\_Value}
+			\label{code: spliting dataset}
+		\end{figure}
 
-Untuk mengetahui kualitas produk yang dikembangkan layak atau tidak, maka perlu ditentukan dengan menghitung seluruh nilai rata-rata dari setiap pertanyaan. Nilai tersebut kemudian akan dibandingkan dengan interpretasi skor pada skala \textit{likert}. Analisis data yang disajikan ke distribusi skor dan persentase terhadap kategori menggunakan interpretasi skor untuk skala \textit{likert}. Berikut rentang interpretasi skor untuk skala \textit{likert}:\\
+		Label baru ditambahkan sekarang agar tidak menggangu proses penulisan kolom .csv yang dinamis 
+		yang bergantung pada jumlah fitur yang ada. Hasilnya adalah sebuah \textit{object} bernama splits 
+		yang memiliki \textit{dataframe}: X\_train, Y\_train, X\_test, Y\_test, X\_valid, Y\_valid. \textit{Dataframe} 
+		dengan data awalan X berisikan nilai-nilai fitur yang sudah dikalkulasi di tahap sebelumnya. 
+		Sementara data awalan Y berisikan label untuk data X.
 
-\begin{tabular}{lll}
-	Nilai& = 0\% - 20\%& Sangat Kurang Sesuai \\
-	Nilai& = 21\% - 40\%& Kurang Sesuai\\
-	Nilai& = 41\% - 60\%& Cukup Sesuai\\
-	Nilai& = 61\% - 80\%& Sesuai\\
-	Nilai& = 81\% - 100\%& Sangat Sesuai\\
-\end{tabular}
+		split\_data mengambil data dari .csv menggunakan fungsi bernama get\_data. Fungsi ini 
+		hanya bertugas untuk membaca .csv saja dengan bantuan fungsi read\_csv:
+		
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+				def get_data(features, csv_name):
+					col_names = ['image_ids']
+					for i in range(len(features)):
+						temp_column_name = f'win_1_feature_{i}'
+						col_names.append(temp_column_name)
+					return Utilities.read_csv(csv_name, col_names)
 
-\section{Hasil Uji Coba}
-Berdasarkan hasil uji coba \textit{User Acceptance Test} yang dilakukan terhadap 30 anggota KOPMA UNJ, yakni \textit{admin} yang terdiri dari 2 responden, pengawas terdiri dari 3 responden, dan anggota terdiri dari 25 responden, diperoleh hasil uji coba sebagai berikut:
+				def read_csv(csv_name, col_names):
+					# used to read all column
+					directory = "Data/" + csv_name + ".csv"
+					data = pd.read_csv(directory, skiprows=1, header=None, names = col_names)
+					return data
+			\end{lstlisting}
+			\caption{\emph{source code:} get data dan readcsv yang digunakan oleh split data}
+			\label{code: get data and read csv}
+		\end{figure}
 
-\subsection{\textit{Admin}}
-Berikut merupakan daftar pertanyaan \textit{User Acceptance Test} pada \textit{Admin}:
+		setelah data di-\textit{split}, barulah \emph{decision tree} bisa deibuat dengan menggunakan 
+		fungsi build\_all\_tree:
 
-\begin{table}[H]
-	\centering
-	\caption{Daftar Pertanyaan \textit{User Acceptance Test} pada \textit{Admin}}
-	\includegraphics[width=1.0\textwidth]{gambar/Tabel_Admin1}
-\end{table}
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+				def build_all_tree(splits, features):
+					classifiers = [None] * len(features)
+					classifiers_accuracy = [0] * len(features)
+					X_train, Y_train, X_test, Y_test, X_valid, Y_valid = splits
+					for i in range(len(features)):
+						if i % 1000 == 0: print (f'starting tree {i}')
+						temp_X_train = X_train[:, i].reshape(-1, 1)
+						# print(temp_X_train)
+						# print(Y_train)
+						classifier = DecisionTreeClassifier(min_samples_split=3, max_depth=3)
+						classifier.fit(temp_X_train, Y_train)
+						# classifier.print_tree()
 
-\begin{table}[H]
-	\centering
-	\caption{Daftar Pertanyaan \textit{User Acceptance Test} pada \textit{Admin}}
-	\includegraphics[width=1.0\textwidth]{gambar/Tabel_Admin2}
-\end{table}
+						classifiers[i] = classifier
+						Y_pred = classifier.predict(X_test)
+						classifiers_accuracy[i] = accuracy_score(Y_test, Y_pred)
+					return classifiers, classifiers_accuracy
+			\end{lstlisting}
+			\caption{\emph{source code:} untuk membuat semua decision tree untuk setiap fitur}
+			\label{code: make all decision tree}
+		\end{figure}
 
-Setelah kuisioner \textit{admin} diberikan kepada responden, kemudian data kuesioner diolah untuk mendapatkan hasil penilaian \textit{user acceptance test}. Adapun hasil penilaian \textit{user acceptance test} tersebut yaitu:
+		Pada tahap ini build\_all\_tree mengisolasi kolom nilai fitur yang berhubungan 
+		dengan menyimpannya pada temp\_X\_train, yang nantinya akan digunakan saat pembuatan 
+		\emph{decision tree}. \emph{Decision tree} di-inisialisais menggunakan fungsi
+		DecisionTreeClassifier dan disimpan menjadi classifier. 
+		Classifier lalu dilatih menggunakan fungsi fit. Hasil dari pelatihan ini lalu langsung dites menggunakan 
+		fungsi accuracy\_score dari \textit{library} sklearn. classifiers\_accuracy ini nantinya 
+		akan dipakai dalam proses \emph{Boosting}. Untuk keseluruhan \textit{class} DecisionTreeClassifier 
+		dan fungsi-fungsinya bisa dilihat berkut ini:
 
-\begin{table}[H]
-	\centering
-	\caption{Data Hasil Penyebaran Kuesioner \textit{User Acceptance Test} pada \textit{Admin}}
-	\includegraphics[width=1\textwidth]{gambar/Hasil_Admin}
-\end{table}
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+				class Node():
+					def __init__(self, feature_index=None, threshold=None, left=None, right=None, info_gain=None, value=None):
+						self.feature_index = feature_index
+						self.threshold = threshold
+						self.left = left
+						self.right = right
+						self.info_gain = info_gain
 
-Dari hasil penilaian pengujian \textit{user acceptance test} dapat diambil kesimpulan yaitu:
+						self.value = value
+			\end{lstlisting}
+			\caption{\emph{source code: class} node digunakan untuk menyimpan informasi cabang dan
+			\textit{threshold} pada \emph{node decision tree}}
+			\label{code: node class}
+		\end{figure}	
 
-\begin{enumerate}
-	\item Pengguna sistem yang telah memilih Sangat Tidak Setuju (STS) memiliki persentase 0\%
-	\item Pengguna sistem yang telah memilih Tidak Setuju (TS) memiliki persentase 0\%
-	\item Pengguna sistem yang telah memilih Cukup (C) memiliki persentase 8\%.
-	\item Pengguna sistem yang telah memilih Setuju (S) memiliki persentase 57\%.
-	\item Pengguna sistem yang telah memilih Sangat Setuju (SS) memiliki persentase 35\%.
-	\item Rata-rata penerimaan \textit{user} adalah 4,27 dari 5 atau sekitar 85\%.
-\end{enumerate}
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\textwidth]{gambar/Grafik_Admin}
-	\caption{Grafik Hasil Penyebaran Kuesioner \textit{User Acceptance Test} pada \textit{Admin}}
-\end{figure}
+				class DecisionTreeClassifier():
+					def __init__(self, min_samples_split=2, max_depth=2):
+						self.root = None
+						# stopping condition
+						self.min_samples_split = min_samples_split
+						self.max_depth = max_depth
 
-Berdasarkan hasil pengujian \textit{user acceptance test} yang diujikan kepada 2 responden \textit{admin}, dapat dilihat bahwa secara keseluruhan 35\% menjawab sangat setuju, 57\% menjawab setuju, 8\% menjawab cukup, serta rata-rata penerimaan \textit{user} terhadap kesesuaian sistem dengan kebutuhan adalah 4,27 dari 5 atau sekitar 85\%, oleh karena itu dapat diambil kesimpulan bahwa fitur yang \textit{admin} butuhkan dalam sistem informasi yang dirancang sudah sangat sesuai dengan kebutuhan dan berjalan dengan baik.  
+			\end{lstlisting}
+			\caption{\emph{source code: class} digunakan untuk menyimpan tinggi maksimal dan minimal 
+			\textit{split} pada \emph{decision tree}. Semua data lainnya disimpan pada node}
+			\label{code: DecisionTreeClassifier class}
+		\end{figure}
 
-\subsection{\textit{Anggota}}
-Berikut merupakan daftar pertanyaan \textit{User Acceptance Test} pada Anggota
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+						
+					def build_tree(self, dataset, current_depth = 0):
+						X, Y = dataset[:,:-1], dataset[:,-1]
+						num_samples, num_features = np.shape(X)
 
-\begin{table}[H]
-	\centering
-	\caption{Daftar Pertanyaan \textit{User Acceptance Test} pada Anggota}
-	\includegraphics[width=1\textwidth]{gambar/Tabel_Anggota}
-\end{table}
+						# split until conditons are met
+						if num_samples >= self.min_samples_split and current_depth <= self.max_depth:
+							# find best split
+							best_split = self.get_best_split(dataset, num_samples, num_features)
+							# check if information gain is positive
+							if best_split["info_gain"]>0:
+								left_subtree = self.build_tree(best_split["dataset_left"], current_depth+1)
+								right_subtree = self.build_tree(best_split["dataset_right"], current_depth+1)
+								return Node(best_split["feature_index"], best_split["threshold"], left_subtree, right_subtree, best_split["info_gain"])
+							
+						leaf_value = self.calculate_leaf_value(Y)
+						return Node(value=leaf_value)
+					
+			\end{lstlisting}
+			\caption{\emph{source code:} fungsi utama dari \emph{class} DecisionTreeClassifier}
+			\label{code: build tree function}
+		\end{figure}
 
-Setelah kuisioner anggota diberikan kepada responden, kemudian data kuesioner diolah untuk mendapatkan hasil penilaian \textit{user acceptance test}. Adapun hasil penilaian \textit{user acceptance test} tersebut yaitu:
+		Fungsi build\_tree adalah fungsi utama untuk pelatihan \emph{decision tree} yang berjalan secara 
+		rekursif sampai sebuah daun sudah didapat, atau kedalaman maksimum sudah dicapai. 
+		Sebuah daun sudah didapat bilamana \textit{info gain} dari fungsi get\_best\_split 0, atau \textit{node} 
+		sudah tidak perlu dipecah lagi.
 
-\begin{table}[H]
-	\centering
-	\caption{Data Hasil Penyebaran Kuesioner \textit{User Acceptance Test} pada Anggota}
-	\includegraphics[width=1\textwidth]{gambar/Hasil_Anggota}
-\end{table}
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
 
-Dari hasil pengujian \textit{user acceptance test} dapat diambil kesimpulan yaitu:
+					def get_best_split(self, dataset, num_samples, num_features):
+						# dictionary to save data
+						best_split = {
+						"info_gain": -float("inf")  # Initialize info_gain to a very small value
+						} 
+						max_info_gain = -float("inf")
 
-\begin{enumerate}
-	\item Pengguna sistem yang telah memilih Sangat Tidak Setuju (STS) memiliki persentase 0\%
-	\item Pengguna sistem yang telah memilih Tidak Setuju (TS) memiliki persentase 0\%
-	\item Pengguna sistem yang telah memilih Cukup (C) memiliki persentase 23\%.
-	\item Pengguna sistem yang telah memilih Setuju (S) memiliki persentase 58\%.
-	\item Pengguna sistem yang telah memilih Sangat Setuju (SS) memiliki persentase 19\%.
-	\item Rata-rata penerimaan \textit{user} adalah 3,96 dari 5 atau sekitar 79\%.
-\end{enumerate}
+						for feature_index in range(num_features):
+							feature_values = dataset[:, feature_index]
+							possible_thresholds = np.unique(feature_values)
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\textwidth]{gambar/Grafik_Anggota}
-	\caption{Grafik Hasil Penyebaran Kuesioner \textit{User Acceptance Test} pada Anggota}
-\end{figure}
+							for threshold in possible_thresholds:
+								# get curent split
+								dataset_left, dataset_right = self.split(dataset, feature_index, threshold)
+								# check if child not null
+								if len(dataset_left) > 0 and len(dataset_right) > 0:
+									y, left_y, rigth_y = dataset[:,-1], dataset_left[:,-1], dataset_right[:, -1]
+									# compute information gain
+									current_info_gain = self.information_gain(y, left_y, rigth_y, "gini")
+									# update best split if needed
+									if current_info_gain > max_info_gain:
+										best_split["feature_index"] = feature_index
+										best_split["threshold"] = threshold
+										best_split["dataset_left"] = dataset_left
+										best_split["dataset_right"] = dataset_right
+										best_split["info_gain"] = current_info_gain
+										max_info_gain = current_info_gain
 
-Berdasarkan hasil pengujian \textit{user acceptance test} yang diujikan kepada 25 responden anggota, dapat dilihat bahwa secara keseluruhan 19\% menjawab sangat setuju, 58\% menjawab setuju, 23\% menjawab cukup, serta rata-rata penerimaan \textit{user} terhadap kesesuaian sistem dengan kebutuhan adalah 3,96 dari 5 atau sekitar 79\%, oleh karena itu dapat diambil kesimpulan bahwa fitur yang anggota butuhkan dalam sistem informasi yang dirancang sudah sesuai dengan kebutuhan dan berjalan dengan baik. 
-\\
-\\
-\\
-\\
-\\
+						return best_split
 
-\subsection{\textit{Pengawas}}
-Berikut merupakan daftar pertanyaan \textit{User Acceptance Test} pada Pengawas
+			\end{lstlisting}
+			\caption{\emph{source code:} fungsi get\_best\_split}
+			\label{code: get split function}
+		\end{figure}
 
-\begin{table}[H]
-	\centering
-	\caption{Daftar Pertanyaan \textit{User Acceptance Test} pada Pengawas}
-	\includegraphics[width=1\textwidth]{gambar/Tabel_Pengawas}
-\end{table}
+		Fungsi get\_best\_split bertugas untuk mencari \textit{threshold} paling sesuai 
+		untuk memecah cabang suatu \textit{node} dengan mengetes satu-persatu atribut nilai 
+		atribut data latihan. Atribut disini adalah nilai \textit{feature} yang sedang dilatih 
+		dari semua gambar dari set \textit{train}. Untuk mencari \textit{info gain}, \textit{gini purity} 
+		akan dicari menggunakan fungsi information\_gain.
 
-Setelah kuisioner pengawas diberikan kepada responden, kemudian data kuesioner diolah untuk mendapatkan hasil penilaian \textit{user acceptance test}. Adapun hasil penilaian \textit{user acceptance test tersebut} tersebut yaitu:
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
 
-\begin{table}[H]
-	\centering
-	\caption{Data Hasil Penyebaran Kuesioner \textit{User Acceptance Test} pada Pengawas}
-	\includegraphics[width=1\textwidth]{gambar/Hasil_Pengawas}
-\end{table}
+					def split(self, dataset, feature_index, threshold):
+						# fuction to split data 
+						dataset_left = np.array([row for row in dataset if row[feature_index] <= threshold])
+						dataset_rigth = np.array([row for row in dataset if row[feature_index] > threshold])
+						return dataset_left, dataset_rigth
+			
+			\end{lstlisting}
+			\caption{\emph{source code:} fungsi split hanya bertugas membagi berdasarkan \textit{threshold} 
+			yang sudah ditemukan}
+			\label{code: split function}
+		\end{figure}
 
-Dari hasil penilaian pengujian \textit{user acceptance test} dapat diambil kesimpulan yaitu:
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+					
+					def information_gain(self, parent, left_child, right_child, mode="entropy"):
+						weight_left = len(left_child) / len(parent)
+						weight_rigth = len(right_child) / len(parent)
+						if mode == "gini":
+							gain = self.gini_index(parent) - (weight_left * self.gini_index(left_child) + weight_rigth * self.gini_index(right_child))
+						else:
+							gain = self.entropy(parent) - (weight_left * self.entropy(left_child) + weight_rigth * self.entropy(right_child))
+						return gain
+					
+			\end{lstlisting}
+			\caption{\emph{source code:} information\_gain mencari data dengan menghitung \emph{gini purity}}
+			\label{code: split function}
+		\end{figure}
+		
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
 
-\begin{enumerate}
-	\item Pengguna sistem yang telah memilih Sangat Tidak Setuju (STS) memiliki persentase 0\%
-	\item Pengguna sistem yang telah memilih Tidak Setuju (TS) memiliki persentase 0\%
-	\item Pengguna sistem yang telah memilih Cukup (C) memiliki persentase 2\%.
-	\item Pengguna sistem yang telah memilih Setuju (S) memiliki persentase 42\%.
-	\item Pengguna sistem yang telah memilih Sangat Setuju (SS) memiliki persentase 56\%.
-	\item Rata-rata penerimaan \textit{user} adalah 4,53 dari 5 atau sekitar 91\%.
-\end{enumerate}
+					def entropy(self, y):
+						# fuction to count entropy
+						class_labels = np.unique(y)
+						entropy = 0
+						for cls in class_labels:
+							p_cls = len(y[y == cls]) / len(y)
+							entropy += -p_cls * np.log2(p_cls)
+						return entropy
+					
+			\end{lstlisting}
+			\caption{\emph{source code:} mencari data dengan menghitung \emph{entrophy}}
+			\label{code: entrophy calculation function}
+		\end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=1\textwidth]{gambar/Grafik_Pengawas}
-	\caption{Grafik Hasil Penyebaran Kuesioner \textit{User Acceptance Test} pada Pengawas}
-\end{figure}
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
 
-Berdasarkan hasil pengujian \textit{user acceptance test} yang diujikan kepada 3 responden pengawas, dapat dilihat bahwa secara keseluruhan 56\% menjawab sangat setuju, 42\% menjawab setuju, 2\% menjawab cukup, serta rata-rata penerimaan \textit{user} terhadap kesesuaian sistem dengan kebutuhan adalah 4,53 dari 5 atau sekitar 91\%, oleh karena itu dapat diambil kesimpulan bahwa fitur yang pengawas butuhkan dalam sistem informasi yang dirancang sudah sangat sesuai dengan kebutuhan dan berjalan dengan baik. 
+					def gini_index(self, y):
+						# function to count gini index (lebih cepet aja karna gak pake log)
+						class_labels = np.unique(y)
+						gini = 0
+						for cls in class_labels:
+							p_cls = len(y[y == cls]) / len(y)
+							gini += p_cls**2
+						return 1 - gini
+
+			\end{lstlisting}
+			\caption{\emph{source code:} mencari data dengan menghitung \emph{gini}}
+			\label{code: gini calculation function}
+		\end{figure}
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+
+					def calculate_leaf_value(self, Y):
+
+						Y = list(Y)
+						return max(Y, key = Y.count)
+
+			\end{lstlisting}
+			\caption{\emph{source code:} fungsi untuk mencari mayoritas 
+			kelas pada \textit{leaf node}}
+			\label{code: find majority class in node function}
+		\end{figure}
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+
+					def fit(self, X, Y):
+						# fuction to train tree 
+						dataset = np.concatenate((X, Y), axis = 1)
+						self.root = self.build_tree(dataset)
+
+			\end{lstlisting}
+			\caption{\emph{source code:} fungsi fit adalah fungsi yang dipanggil untuk mulai membangun \emph{decision tree}
+			setelah dibuat}
+			\label{code: fit function}
+		\end{figure}
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+
+					def predict(self, X):
+						# fuction to predict new dataset 
+						predictions = [self.make_prediction(x, self.root) for x in X]
+						return predictions
+					
+					def make_prediction(self, x, tree):
+						# fuction to detect single datapoint
+						if tree.value!=None: return tree.value
+						feature_val = x[tree.feature_index]
+						if feature_val <= tree.threshold:
+							return self.make_prediction(x, tree.left)
+						else:
+							return self.make_prediction(x, tree.right)
+			\end{lstlisting}
+			\caption{\emph{source code:} predict digunakan untuk melakukan prodeiksi 
+			dengan \emph{decision tree} yang sudah dibuat}
+			\label{code: predict function}
+		\end{figure}
 
 % Baris ini digunakan untuk membantu dalam melakukan sitasi
 % Karena diapit dengan comment, maka baris ini akan diabaikan

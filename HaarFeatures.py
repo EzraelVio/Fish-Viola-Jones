@@ -4,11 +4,10 @@ import numpy as np
 # 2 rectangle feature and 4 rectangle feature minimum size is: 2x2
 # while a 3 rectangle feature minimum size is either: 1x3 or 3x1
 
-def generate_features(image_height, image_width):
+def generate_features(image_height, image_width): #need to change to window_height and window_width, later!. Don't risk creating bugs now
     features = []
     features_list = ["Two Horizontal", "Two Vertical", "Four Diagonal", "Right Triangular", "Left Triangular", "Three Horizontal", "Three Vertical"]
     for i in features_list:
-        # minimum feature heigth and width go here
         match i:
             case "Two Horizontal" | "Two Vertical" | "Four Diagonal" | "Right Triangular" | "Left Triangular":
                 feature_height = 4
@@ -54,45 +53,31 @@ def compute_feature_value(integral_image, feature):
     # return black
 
 # using Matrices
-# color channel BRG = 0, 1, 2
-def compute_feature_with_matrix(image, color_channel, feature):
+def compute_feature_with_matrix(image, feature):
     feature_type, x, y, width, height = feature
-    # image [y vertical:y vertical +1, x horizontal: x horizontal +1, color_channel]
     # +1 due to slicing paramter = start at:stop before
     match feature_type:
         case "Two Horizontal":
             white = np.sum(image[y:y + height + 1, x:x + int(width/2) + 1])
             black = np.sum(image[y:y + height + 1, x + int(width/2):x + width + 1])
-            # white = np.sum(image[y:y + height + 1, x:x + int(width/2) + 1, color_channel])
-            # black = np.sum(image[y:y + height + 1, x + int(width/2):x + width + 1, color_channel])
         case "Two Vertical":
             white = np.sum(image[y:y + int(height/2) + 1, x:x + width+1])
             black = np.sum(image[y + int(height/2):y + height + 1, x:x + width+1])
-            # white = np.sum(image[y:y + int(height/2) + 1, x:x + width+1, color_channel])
-            # black = np.sum(image[y + int(height/2):y + height + 1, x:x + width+1, color_channel])
         case "Three Horizontal":
             white = np.sum(image[y: y + height + 1, x:x + int(width/3) + 1]) + np.sum(image[y: y + height + 1, x + int(width*2/3):x + width + 1])
             black = np.sum(image[y: y + height + 1, x + int(width/3):x + int(width*2/3) + 1])
-            # white = np.sum(image[y: y + height + 1, x:x + int(width/3) + 1, color_channel]) + np.sum(image[y: y + height + 1, x + int(width*2/3):x + width + 1, color_channel])
-            # black = np.sum(image[y: y + height + 1, x + int(width/3):x + int(width*2/3) + 1, color_channel])
         case "Three Vertical":
             white = np.sum(image[y:y + int(height/3) + 1, x:x + width + 1]) + np.sum(image[y + int(height*2/3):y + height + 1, x: x + width + 1])
             black = np.sum(image[y + int(height/3):y + int(height*2/3) + 1, x:x + width + 1])
-            # white = np.sum(image[y:y + int(height/3) + 1, x:x + width + 1, color_channel]) + np.sum(image[y + int(height*2/3):y + height + 1, x: x + width + 1, color_channel])
-            # black = np.sum(image[y + int(height/3):y + int(height*2/3) + 1, x:x + width + 1, color_channel])
         case "Four Diagonal":
             white = np.sum(image[y:y + int(height/2) + 1, x + int(width/2): x + width + 1]) + np.sum(image[y + int(height/2):y + height + 1, x: x + int(width/2) + 1])
             black = np.sum(image[y:y + int(height/2) + 1, x:x + int(width/2) + 1]) + np.sum(image[y + int(height/2): y + height + 1, x + int(width/2):x + width + 1])
-            # white = np.sum(image[y:y + int(height/2) + 1, x + int(width/2): x + width + 1, color_channel]) + np.sum(image[y + int(height/2):y + height + 1, x: x + int(width/2) + 1, color_channel])
-            # black = np.sum(image[y:y + int(height/2) + 1, x:x + int(width/2) + 1, color_channel]) + np.sum(image[y + int(height/2): y + height + 1, x + int(width/2):x + width + 1, color_channel])
         case "Right Triangular":
             matrix = image[y:y + height + 1, x:x + width + 1]
-            # matrix = image[y:y + height + 1, x:x + width + 1, color_channel]
             white = np.sum(np.tril(matrix))
             black = np.sum(np.triu(matrix))
         case "Left Triangular":
             matrix = np.rot90(image[y:y + height + 1, x:x + width + 1], k=3)
-            # matrix = np.rot90(image[y:y + height + 1, x:x + width + 1, color_channel], k=3)
             white = np.sum(np.tril(matrix))
             black = np.sum(np.triu(matrix))
     return int(white) - int(black)

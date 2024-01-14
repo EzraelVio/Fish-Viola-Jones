@@ -7,10 +7,10 @@ class Boosting:
 
     def training_strong_classifier(features, trees, splits, accuracy, pickle_name):
         X_train, Y_train, X_test, Y_test, X_valid, Y_valid = splits
-
+        image_weights = Boosting.initialize_weight(Y_test)
+        print(np.sum(image_weights))
         orderlist = np.arange(len(accuracy))
         orderlist = Boosting.get_initial_sorted_accuracy(accuracy, orderlist)
-        image_weights = Boosting.initialize_weight(Y_test)
 
         initial_accuracy = float('-inf')
         current_accuracy = 0
@@ -18,17 +18,28 @@ class Boosting:
         limit = 100 #change according to needs
 
         # start boosting loop. Will stop when accuracy fell or iteration hit limit
-        while current_accuracy > initial_accuracy or iteration > limit:
+        while True:
             alpha_list = Boosting.start_boosting(trees, X_test, Y_test, image_weights, orderlist)
             validation_prediction = Boosting.strong_prediction(trees, orderlist, X_valid, alpha_list)
 
             initial_accuracy = current_accuracy
+            print(f'current initial accuracy: {initial_accuracy}')
             current_accuracy = accuracy_score(Y_valid, validation_prediction)
-            # print(Y_valid)
-            # print(validation_prediction)
-            print(f'current accuracy: {current_accuracy}')
-            orderlist = Boosting.get_sorted_accuracy(alpha_list, orderlist)
+            print(f'current after boosting accuracy: {current_accuracy}')
+            
+            # check whether accruacy deteriorate or limit hit
+            if current_accuracy <= initial_accuracy or iteration >= limit:
+                print('final accuracy deteriorate, rolling back to last iteration...')
+                alpha_list = last_iteration_alpha_list
+                orderlist = last_iteration_orderlist
+                break
+            
+            print('starting over. Saving alpha...')
+            alpha_list, orderlist = Boosting.get_sorted_accuracy(alpha_list, orderlist)
+            last_iteration_alpha_list = alpha_list
+            last_iteration_orderlist = orderlist
             iteration += 1
+
 
         # saving trees, related features and its order in pickle
         final_trees = np.empty(len(orderlist), dtype=object)
@@ -43,6 +54,7 @@ class Boosting:
 
 
     def start_boosting(trees, X_test, Y_test, image_weights, orderlist):
+        print('Boosting...')
         alpha_list = np.zeros(len(orderlist))
         for i in range(len(orderlist)):
             # make prediction with i-th tree
@@ -54,12 +66,15 @@ class Boosting:
             epsilon = np.sum(image_weights * indicator) / np.sum(image_weights)
 
             # calculate the weight of the tree
-            alpha = 0.5 * np.log((1 - epsilon) / (epsilon + 1e-10)) #1e-10 const added to prevent div by 0
+            alpha = 0.5 * np.log((1 - epsilon) / (epsilon + 1e-10)) + np.log(4 - 1) #1e-10 const added to prevent div by 0. 4 is number of class
+            if alpha < 1e-10: alpha = 1e-10 #1e-10 const added to prevent alpha getting too small in np.exp(alpha * indicator) later
             alpha_list[i] = alpha
 
-            # update the weight for the samples
+            # update the weight for the samples so the sum of image_weight will be close to 1 for the next iteration
             image_weights *= np.exp(alpha * indicator)
-            image_weights /= np.sum(image_weights) #normalize weight so it is closer to 1
+            image_weights /= np.sum(image_weights)
+        
+        print(np.sum(image_weights))
 
         return alpha_list
     
@@ -77,6 +92,7 @@ class Boosting:
         
         # return score to the main scoreboard
         for k in range(len(prediction)):
+                print(f'scoreboard {k}: {scoreboard[k]}')
                 predictions[k] = scoreboard[k].index(max(scoreboard[k]))
         return predictions
 
@@ -86,20 +102,19 @@ class Boosting:
     # accuracy can be either from SKlearn comparison or alpha_list
     def get_initial_sorted_accuracy(accuracy, orderlist):
         print(f'initial feature count: {np.shape(orderlist)}')
-        accuracy_threshold = 0.5 # change 0.5 to whatever needed. 0.5 seems logical enough considering the random guessing concept
+        accuracy_threshold = 0.4 # change 0.5 to whatever needed. 0.5 seems logical enough considering the random guessing concept
         accuracy, orderlist = zip(*sorted(zip(accuracy, orderlist), reverse = True))
         orderlist = [classifier for accuracy, classifier in zip(accuracy, orderlist) if accuracy >= accuracy_threshold]
         print(f'after elimination feature count: {np.shape(orderlist)}')
-        print(f'first then features: {orderlist[:10]}')
+        print(f'first ten features: {orderlist[:10]}')
         return orderlist
     
     # accuracy test without feature elimination, used in Boosting loop
     def get_sorted_accuracy(accuracy, orderlist):
         accuracy, orderlist = zip(*sorted(zip(accuracy, orderlist), reverse = True))
-        return orderlist
+        return accuracy, orderlist
 
     # just assign weight according to numbers of image used. Use Y_test as input
-    # ini harus diubah ntar sih, karena berantakan aja kalo disini dan gak jelas
     def initialize_weight(test_images):
         image_weights = np.ones(len(test_images)) / len(test_images)
         return image_weights

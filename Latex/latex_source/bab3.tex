@@ -32,7 +32,7 @@ Tujuan \textit{training} adalah untuk menciptakan suatu \emph{strong classifier}
 yang nantinya dapat digunakan untuk melakukan klasifikasi yang sebenarnya.
 Pertama, gambar yang akan menjadi contoh pelatihan dianotasi sesuai kelasnya masing-masing dengan 
 memberikan label yang sesuai dengan kelas mereka masing-masing, 
-vontoh latihan ini berisikan gambar-gambar yang tidak memiliki kelas yang benar, atau 
+contoh latihan ini berisikan gambar-gambar yang tidak memiliki kelas yang benar, atau 
 \emph{false example} dan juga gambar-gambar yang memiliki kelas yang benar, atau 
 \emph{positive example}. Setelah itu gambar melalui proses \emph{pre-processing} dan disesuaikan 
 untuk mengoptimalkan proses pelatihan.
@@ -73,8 +73,8 @@ pembuatan \emph{decision tree} untuk setiap \emph{features},
 \end{figure}
 
 \textit{Dataset} yang akan dipakai diambil dari FishBase (Dapat dilihat di https://fishbase.mnhn.fr/) yang 
-berisikan berbagai gambar ikan termasuk 20 gambar dari spesies Abudefduf, 20 gambar dari spesies 
-Amphiprion dan 20 gambar dari spesies Chaetodon. 
+berisikan berbagai gambar ikan termasuk gambar dari spesies Abudefduf, gambar dari spesies 
+Amphiprion dan gambar dari spesies Chaetodon. 
 Ketiga spesies ikan ini dipilih karena bentuknya yang berbeda satu-sama lain. %Selain itu 
 % \textit{dataset} juga akan ditambahkan dari hasil penelitian lapangan 
 % secukupnya, dengan mempertimbangkan waktu komputasi pada tahap 
@@ -92,13 +92,40 @@ diambil dari sumber folder gambar. Kelas 0 direservasi untuk kelas negatif, seme
 Selain itu untuk setiap kelas sudah dibuatkan \textit{sub-window} spesifik untuk diklasifikasi. 
 \textit{Sub-window} ini secara spesifik mengklasifikasi tiga bagian ikan yaitu, mulut, sirip dan ekor. 
 klasifikasi spesifik ini nantinya akan bekerja-sama dengan \textit{sliding window} dalam mengklasfikasi 
-gambar yang ada, dengan mencari mulut, sirip dan ekor ikan didalam gambar.0
+gambar yang ada, dengan mencari mulut, sirip dan ekor ikan didalam gambar.
 
 \begin{figure}[H]
   \centering{}
 	\includegraphics[width=0.6\textwidth]{gambar/window\_compund}
   \caption{\textit{sub-window} setiap kelas ikan yang akan dipelajari oleh \textit{classifier}}
 \end{figure}
+
+\begin{algorithm}
+  \caption{offset \textit{sub-window} untuk training setiap kelas}
+  \begin{algorithmic}[1]
+    \State $\text{{class\_Window\_offset\_1}} \gets$ [
+      \Comment{For searching mouth features}
+      (0, 0),
+      (88, 0), 
+      (73, 0),
+      (100, 15)
+    ]
+    \State $\text{{class\_Window\_offset\_2}} \gets$ [
+      \Comment{For searching fin features}
+      (0, 0),
+      (0, 116), 
+      (9, 153),
+      (0, 116)
+    ]
+    \State $\text{{class\_Window\_offset\_3}} \gets$ [
+      \Comment{For searching tail features}
+      (0, 0),
+      (89, 280), 
+      (47, 237),
+      (80, 277)
+    ]
+  \end{algorithmic}
+\end{algorithm}
 
 % \subsection{Pembuatan \textit{Integral Image}}
 
@@ -153,9 +180,13 @@ mudah menggunakan rumus:
 Pada tahap ini fitur yang dipilih akan dibuat untuk semua 
 posibilitas lokasi yang ada dan ukuran yang ada. Hal ini dilakukan dengan 
 membuat fitur dimulai dari kiri atas gambar dengan ukuran 2 x 2 piksel untuk fitur 
-dua persegi, empat persegi dan diagonal. Dan fitur 1 x 3 piksel atau 3 x 1 piksel untuk fitur tiga persegi, 
-sampai pojok kanan bawah. Hal ini juga dilakukan sampai ukuran fitur lebih besar 
-dari \emph{sub-window} tidak bisa muat lagi.
+dua persegi, empat persegi dan diagonal. Dan fitur 1 x 3 piksel atau 3 x 1 piksel untuk 
+fitur tiga persegi. Hal ini juga dilakukan sampai ukuran fitur lebih besar 
+dari \emph{sub-window} dan tidak bisa muat lagi.
+
+Beberapa jenis \textit{feature} yang digunakan adalah 2 persegi horizontal, 
+2 persegi vertikal, 4 persegi diagonal, 2 segitiga hadap kiri, 2 segitiga hadap kanan, 
+3 persegi horizontal, dan 3 persegi vertikal.
 
 \subsection{Pembuatan \textit{Decision Tree}}
 
@@ -188,7 +219,7 @@ memenuhi persyaratan klasifikasi empat kelas.
 yang nantinya akan digunakan dalam klasifikasi akhir. Sebelum \emph{boosting} dimulai, 
 \textit{weak classifier} yang kurang diskriminatif akan dibuang. Hal ini dilakukan dengan 
 membandingkan hasil prediksi \textit{weak classifier} dengan label yang sebenarnya, dimana 
-\textit{weak classifier} yang gagak memprediksi 50\% dari set tes akan dibuang. Ini dilakukan 
+\textit{weak classifier} yang gagal memprediksi 25\% dari set tes akan dibuang. Ini dilakukan 
 untuk mengurangi jumlah \textit{weak classifier} yang akan dipakai berikutnya.
 
 Pada tahap ini \textit{boosting} 
@@ -228,12 +259,6 @@ ada penurunan akurasi, maupun tidak ada perubahan, maka iterasi Boosting akan di
 \textit{strong cloassifier} pada iterasi ini menjadi \textit{final strong classifier}.
 
 \subsection{Pembuatan \emph{Attentional Cascade}}
-
-\begin{figure}[H]
-  \centering{}
-	\includegraphics[width=0.6\textwidth]{gambar/cascade}
-  \caption{\textit{Workflow} dari \emph{Attentional Cascade}}
-\end{figure}
 
 Karena bobot \textit{voting} dan urutan \textit{weak classifier} sudah ditentukan pada 
 tahap \textit{Boosting}, pada tahap ini hanya perlu membagi \textit{weak classifier} menjadi 

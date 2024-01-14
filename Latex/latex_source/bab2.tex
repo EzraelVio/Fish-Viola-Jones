@@ -13,11 +13,11 @@ sebuah segmentasi objek. Bila dilihat dari representasi fitur objek, ini
 dapat dicapai dengan melihat tanda-tanda keberadaan fitur yang mengindikasikan 
 kelas dari objek. Hal ini umumnya dicapai dengan menentukan \textit{threshold} diantara 
 kelas-kelas yang direpresentasikan oleh \textit{training set} yang sudah dilabeli. 
-Pelatihan dilakukan dengan secara data yang sudah dilabeli secara manual atau 
-data yang belum dilabeli. Pelatihan otomatis umumnya mementingkan distribusi dari 
-setiap kelas, dan melabeli setiap contoh dengan sesuai, Namun, isu yang umum 
-didalam kedua kasus adalah pemilihan fitur-fitur yang akan digunakan untuk 
-klasifikasi objek (\cite{rennoetal}).
+ Pelatihan otomatis umumnya mementingkan distribusi dari 
+setiap kelas (distribusi harus setara), dan melabeli setiap contoh dengan benar, 
+Namun, isu yang umum didalam cara ini pemilihan fitur-fitur yang akan digunakan untuk 
+klasifikasi objek kadang kurang sesuai dan sering kali bergantung terhadap 
+keberuntungan untuk mendapat hasil sangat akurat (\cite{rennoetal}).
 
 \section{\emph{Viola Jones Object Detection Framework}}
 
@@ -50,9 +50,10 @@ ada alasan besar lainnya untuk penggunaan fitur yaitu sistem berbasis fitur bero
 daripada sistem yang berbasis nilai piksel.
 
 Fitur sederhana yang digunakan mirip dengan \emph{Haar Basis Function} yang 
-digunakan \cite{papaetal}. Lebih tepatnya, tiga jenis fitur. 
+digunakan \cite{papaetal}. Lebih tepatnya ada tiga jenis fitur: dua persegi, tiga persegi dan 
+empat persegi diagonal. 
 Nilai dari sebuah \emph{fitur dua persegi} adalah perbedaaan diantara 
-jumlah nilai piksel didalam dua area persegi. Area-area tersebut memiliki 
+jumlah nilai piksel didalam dua atau lebih area persegi. Area-area tersebut memiliki 
 ukuran dan bentuk yang sama, dan juga bersebelahan secara horizontal dan vertikal.
 Subuah \emph{fitur tiga persegi} menghitung jumlah piksel dua area persegi 
 di bagian luar dikurangi dengan jumlah nilai piksel persegi yang ada ditengah keduanya. 
@@ -159,10 +160,10 @@ lemah karena kita tidak berharap \emph{classifier} terbaik untuk mengklasifikasi
 data dengan benar. Nyatanya, \emph{perceptron} terbaik mungkin 
 hanya memiliki tingkat akurasi 51\%. Agar \emph{weak learner} dapat di-\textit{boost}, 
 ia akan dipanggil untuk menyelesaikan sederet problem pembelajaran. Setelah 
-satu ronde pembelajaran selesai, contoh pembelajarannya akan dibobot ulang 
+satu ronde pembelajaran selesai, setiap contoh pembelajarannya akan dibobot ulang 
 untuk menekankan problem yang salah diklasifikasi oleh \emph{weak learner} 
-sebelumnya. Bentuk \emph{final strong classifier} adalah \emph{perceptron}, 
-sebuah kombinasi \emph{weak learner} berbobot yang diikuti oleh \emph{threshold}.
+sebelumnya. Bentuk \emph{final strong classifier} adalah 
+sebuah kombinasi \emph{weak learner} berbobot. 
 
 \subsection{\emph{Weaklearn}}
 
@@ -187,9 +188,9 @@ sebuah kombinasi \emph{weak learner} berbobot yang diikuti oleh \emph{threshold}
     \end{itemize}
     %Masukin IGR kalo perlu (Information Gain Ratio)
     \State \textit{split} pohon ke \textit{node} turunan sesuai atribut yang dipilih 
-    \State tentukan apabila seluruh contoh sudah jatuh ke kelas yang benar, bila tidak 
-    maka ulangi langkah 2 dan 3. Hal ini dilakukan dengan memvalidasi pohon  yang 
-    sudah dibuat
+    \State tentukan apabila seluruh contoh sudah jatuh ke kelas yang benar(\textit(information gain) = 0) 
+    atau tidak bila tinggi maksimum sudah dicapai, bila tidak 
+    maka ulangi langkah 2 dan 3.
   \end{algorithmic}
 \end{algorithm}
 
@@ -211,9 +212,9 @@ pilihan, sebuah struktur yang berbentuk:
 Sebuah \emph{Decision Tree} dapat digunakan untuk mengkasifikasi sebuah kasus 
 dengan memulai dari akar pohon dan bergerak sampai sebuah daun ditemukan. 
 Pada setiap \emph{node} yang bukan merupakan daun, hasil dari tes kasus 
-dideterminasi dan perhatian berubah ke akar dari \emph{subtree} sesuai 
-dengan hasil tersebut. Ketika proses pada akhirnya (dan dengan pasti) 
-menuju ke sebuah daun, kelas dari kasus diprediksi sesuai yang ada di daun.
+dideterminasi dan tes berlanjut ke \emph{node} berikutnya sesuai dengan 
+hasil tes tersebut. Ketika proses pada akhirnya (dan dengan pasti) 
+menuju ke sebuah daun, kelas dari kasus diprediksi sesuai label yang ada pada daun.
 
 % \subsection{\emph{Boosting}}
 
@@ -231,8 +232,14 @@ menuju ke sebuah daun, kelas dari kasus diprediksi sesuai yang ada di daun.
 
 \subsection{\emph{Attentional Cascade}}
 
+\begin{figure}[H]
+  \centering{}
+	\includegraphics[width=0.6\textwidth]{gambar/cascade}
+  \caption{\textit{Workflow} dari \emph{Attentional Cascade}}
+\end{figure}
+
 \emph{Attentional Cascade} adalah sebuah \emph{cascade} dari banyak 
-\emph{classifier} yang dibuat untuk meningkatkan performa deteksi dengan secara radikal mengurangi waktu 
+\emph{classifier} yang dibuat untuk meningkatkan performa deteksi dengan secara radikal mengurangi jumlah 
 komputasi. Intinya \emph{weak classifier} yang telah di-\emph{boost} dapat dibuat lebih 
 kecil dan efisien, yang dapat menolak mayoritas \emph{sub-window} negatif dan 
 mendeteksi sebagian besar dari \emph{sub-window} positif. \emph{Classifier} yang lebih 
@@ -249,38 +256,42 @@ hal ini sangatlah langka.
 Layaknya sebuah \emph{Decision Tree}, sebuah \emph{classifier} dilatih menggunakan 
 contoh-contoh yang telah berhasil melewati tahap sebelumnya. Oleh karenanya, 
 \emph{classifier} pada tahap kedua menghadapi tantangan yang jauh lebih sulit 
-daripada yang pertama. Contoh yang semakin sulit yang dihadapi \emph{classifier} 
-di tahap-tahap yang semakin jauh menekan seluruh \emph{receiver operating characteristic} (ROC) 
-kebawah.
+daripada yang pertama.
 
-\begin{algorithm}
-  \caption{Algoritma Pelatihan Untuk Pembuatan \textit{Cascaded Detector}}
-  \begin{algorithmic} [1]
-    \State Pengguna memilih nilai dari \textit{f}, nilai maksimum \emph{false positive} 
-    pada setiap tahap yang dapat diterima, dan \textit{d}, nilai minimum \emph{detection rate} 
-    per tahap yang dapat diterima
-    \State Pengguna memilih target keseluruhan \emph{false positive rate}, $F_{target}$
-    \State \textit{P} = kumpulan contoh positif
-    \State \textit{N} = kumpulan contoh negatif
-    \State $F_0 = 1.0; D_0 - 1.0$
-    \State $i = 0$
-    \State $while F_i > F_{target}$
-    \Statex $-i \leftarrow i + 1$
-    \Statex $-n_i = 0; F_i = F_i-_1$
-    \Statex -while $F_i > f x F_i-_1$
-    \begin{itemize}
-      \item $n_i \leftarrow n_i + 1$
-      \item Gunakan \textit{P} dan \textit{N} untuk melatih sebuah \emph{classifier}
-      dengan fitur $n_i$ menggunakan \emph{Adaboost} 
-      \item Evaluasi \emph{cascade classifier} dengan \textit{set} validasi
-      untuk menentukan $F_i$ dan $D_i$. 
-      \item kurangi \textit{threshold} untuk \emph{classifier} ke-$i$ sampai 
-      \emph{cascade classifier} memiliki tingkat deteksi paling tidak $d x D_i-_1$ 
-      (hal ini juga akan mempengaruhi $F_i$)
-    \end{itemize}
-    \Statex $-N \leftarrow$ {\O}
-    \Statex -if $F_i > F_target$ evaluasi \emph{cascade detector} menggunakan 
-    \textit{set} negatif dan masukan semua deteksi gagal ke \textit{set} N
-  \end{algorithmic}
-\end{algorithm}
+\emph{Cascade} dimulai dengan membuat sebuah \textit{stage} awal, dimana \textit{weak classifier} 
+ditambahkan secara perlahan hingga \emph{detection rate} yang dituju sampai. \emph{Detection rate} 
+ini harus disesuaikan oleh pengguna sesuai dengan keperluannya, tujuannya tetap untuk mengurangi 
+waktu komputasi tapi juga mencoba agar tidak terlalu banyak kasus \emph{false positive} yang dapat 
+lewat.
+
+% \begin{algorithm}
+%   \caption{Algoritma Pelatihan Untuk Pembuatan \textit{Cascaded Detector}}
+%   \begin{algorithmic} [1]
+%     \State Pengguna memilih nilai dari \textit{f}, nilai maksimum \emph{false positive} 
+%     pada setiap tahap yang dapat diterima, dan \textit{d}, nilai minimum \emph{detection rate} 
+%     per tahap yang dapat diterima
+%     \State Pengguna memilih target keseluruhan \emph{false positive rate}, $F_{target}$
+%     \State \textit{P} = kumpulan contoh positif
+%     \State \textit{N} = kumpulan contoh negatif
+%     \State $F_0 = 1.0; D_0 - 1.0$
+%     \State $i = 0$
+%     \State $while F_i > F_{target}$
+%     \Statex $-i \leftarrow i + 1$
+%     \Statex $-n_i = 0; F_i = F_i-_1$
+%     \Statex -while $F_i > f x F_i-_1$
+%     \begin{itemize}
+%       \item $n_i \leftarrow n_i + 1$
+%       \item Gunakan \textit{P} dan \textit{N} untuk melatih sebuah \emph{classifier}
+%       dengan fitur $n_i$ menggunakan \emph{Adaboost} 
+%       \item Evaluasi \emph{cascade classifier} dengan \textit{set} validasi
+%       untuk menentukan $F_i$ dan $D_i$. 
+%       \item kurangi \textit{threshold} untuk \emph{classifier} ke-$i$ sampai 
+%       \emph{cascade classifier} memiliki tingkat deteksi paling tidak $d x D_i-_1$ 
+%       (hal ini juga akan mempengaruhi $F_i$)
+%     \end{itemize}
+%     \Statex $-N \leftarrow$ {\O}
+%     \Statex -if $F_i > F_target$ evaluasi \emph{cascade detector} menggunakan 
+%     \textit{set} negatif dan masukan semua deteksi gagal ke \textit{set} N
+%   \end{algorithmic}
+% \end{algorithm}
 

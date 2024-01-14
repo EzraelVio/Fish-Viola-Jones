@@ -5,13 +5,36 @@
 \babel@toc {bahasa}{}\relax 
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Beberapa \emph {Haar-like features} yang digunakan framework Viola-Jones.\relax }}{6}{figure.caption.6}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces \textit {Workflow} dari \emph {Attentional Cascade}\relax }}{9}{figure.caption.7}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagram alir untuk algoritma pelatihan klasifikasi objek\relax }}{11}{figure.caption.7}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagram alir untuk algoritma pendeteksian objek\relax }}{11}{figure.caption.8}%
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Contoh gambar Abudefduf, Amphiprion, Chaetodon dan contoh gambar-gambar negatif\relax }}{13}{figure.caption.9}%
-\contentsline {figure}{\numberline {3.4}{\ignorespaces \textit {sub-window} setiap kelas ikan yang akan dipelajari oleh \textit {classifier}\relax }}{14}{figure.caption.10}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Sebuah fitur dua persegi menghadap ke kiri, lokasi x = 12 piksel, lokasi y = 10 piksel, dengan ukuran 8 x 8 piksel.\relax }}{15}{figure.caption.11}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Contoh sebuah \textit {decision tree} dengan kelas 0, 1, 2 dan 3\relax }}{16}{figure.caption.12}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces \textit {Workflow} dari \emph {Attentional Cascade}\relax }}{18}{figure.caption.13}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces titik awal \textit {sliding window} (kotak hijau) dan titik akhir (kotak kuning)\relax }}{21}{figure.caption.14}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Gambaran \textit {sub-window} yang berhasil mengklasifikasi ikan didalam gambar\relax }}{21}{figure.caption.15}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Diagram alir untuk algoritma pelatihan klasifikasi objek\relax }}{11}{figure.caption.8}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Diagram alir untuk algoritma pendeteksian objek\relax }}{11}{figure.caption.9}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Contoh gambar Abudefduf, Amphiprion, Chaetodon dan contoh gambar-gambar negatif\relax }}{13}{figure.caption.10}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces \textit {sub-window} setiap kelas ikan yang akan dipelajari oleh \textit {classifier}\relax }}{14}{figure.caption.11}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Sebuah fitur dua persegi menghadap ke kiri, lokasi x = 12 piksel, lokasi y = 10 piksel, dengan ukuran 8 x 8 piksel.\relax }}{15}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Contoh sebuah \textit {decision tree} dengan kelas 0, 1, 2 dan 3\relax }}{16}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces titik awal \textit {sliding window} (kotak hijau) dan titik akhir (kotak kuning)\relax }}{21}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Gambaran \textit {sub-window} yang berhasil mengklasifikasi ikan didalam gambar\relax }}{21}{figure.caption.15}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces \emph {source code:} \textit {read} gambar, labelisasi, pengubahan ke \textit {greyscale}, dan memastikan ukuran gambar 350 x 200 piksel\relax }}{22}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces \emph {source code:} labelisasi gambar sesuai dengan foldernya\relax }}{22}{figure.caption.17}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces \emph {source code:} \textit {load} gambar-gambar dari folder yang bersangkutan dan menggabungkannya\relax }}{23}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces \emph {source code:} \textit {feature} memiliki semua informasi yang diperlukan untuk melakukan perhitungan. Tipe-tipe fitur akan menentukan rumus perhitungan fitur tersebut\relax }}{23}{figure.caption.19}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces \emph {source code:} mengambil semua gambar, label, fitur dan mengkalkulasi semua fitur untuk ketiga \textit {sub-window}\relax }}{24}{figure.caption.20}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces \emph {source code:} \textit {class Dataset}\relax }}{25}{figure.caption.21}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces \emph {source code:} \textit {offset} ini di-inisalisasi untuk setiap kelas Dataset sehingga bisa diakses langsung oleh fungsi Find\_Feature\_Value\relax }}{26}{figure.caption.22}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces \emph {source code:} \textit {offset} ini di-inisalisasi untuk setiap kelas Dataset sehingga bisa diakses langsung oleh fungsi Find\_Feature\_Value\relax }}{27}{figure.caption.23}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces \emph {source code:} \textit {offset} ini di-inisalisasi untuk setiap kelas Dataset sehingga bisa diakses langsung oleh fungsi Find\_Feature\_Value\relax }}{28}{figure.caption.24}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces \emph {source code:} get data dan readcsv yang digunakan oleh split data\relax }}{28}{figure.caption.25}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces \emph {source code:} untuk membuat semua decision tree untuk setiap fitur\relax }}{29}{figure.caption.26}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces \emph {source code: class} node digunakan untuk menyimpan informasi cabang dan \textit {threshold} pada \emph {node decision tree}\relax }}{29}{figure.caption.27}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces \emph {source code: class} digunakan untuk menyimpan tinggi maksimal dan minimal \textit {split} pada \emph {decision tree}. Semua data lainnya disimpan pada node\relax }}{30}{figure.caption.28}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces \emph {source code:} fungsi utama dari \emph {class} DecisionTreeClassifier\relax }}{30}{figure.caption.29}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces \emph {source code:} fungsi get\_best\_split\relax }}{31}{figure.caption.30}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces \emph {source code:} fungsi split hanya bertugas membagi berdasarkan \textit {threshold} yang sudah ditemukan\relax }}{31}{figure.caption.31}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces \emph {source code:} information\_gain mencari data dengan menghitung \emph {gini purity}\relax }}{32}{figure.caption.32}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces \emph {source code:} mencari data dengan menghitung \emph {entrophy}\relax }}{32}{figure.caption.33}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces \emph {source code:} mencari data dengan menghitung \emph {gini}\relax }}{32}{figure.caption.34}%
+\contentsline {figure}{\numberline {4.20}{\ignorespaces \emph {source code:} fungsi untuk mencari mayoritas kelas pada \textit {leaf node}\relax }}{32}{figure.caption.35}%
+\contentsline {figure}{\numberline {4.21}{\ignorespaces \emph {source code:} fungsi fit adalah fungsi yang dipanggil untuk mulai membangun \emph {decision tree} setelah dibuat\relax }}{33}{figure.caption.36}%
+\contentsline {figure}{\numberline {4.22}{\ignorespaces \emph {source code:} predict digunakan untuk melakukan prodeiksi dengan \emph {decision tree} yang sudah dibuat\relax }}{33}{figure.caption.37}%
