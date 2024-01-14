@@ -92,7 +92,7 @@ class Boosting:
         
         # return score to the main scoreboard
         for k in range(len(prediction)):
-                print(f'scoreboard {k}: {scoreboard[k]}')
+                # print(f'scoreboard {k}: {scoreboard[k]}')
                 predictions[k] = scoreboard[k].index(max(scoreboard[k]))
         return predictions
 

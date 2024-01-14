@@ -161,7 +161,7 @@
 
 	Dataset() adalah sebuah \textit{class} yang digunakan awalnya untuk menyimpan seluruh fitur 
 	pada gambar tersebut. Nilai-nilai ini yang lalu akan diambil dan dimasukan kedalam dokumen .csv. 
-	berikut bentuk \textit{class Dataset} berserta fungsi bawaannya Find\_Feature\_Value:
+	berikut bentuk \textit{class} Dataset berserta fungsi bawaannya Find\_Feature\_Value:
 
 	\begin{figure}[H]
 		\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -190,9 +190,13 @@
 	\end{figure}
 
 	Dataset untuk melakukan perhitungan fitur memerlukan \textit{offset} piksel yang penulis 
-	sebutkan pada Bab 3. \textit{Offset} digunakan karena untuk ketika kelas ikan, semuanya memeiliki 
-	mulut, sirip dan ekor yang sama satu dengan yang lainnya. Contohnya: Mulut dari spesies ikan Chaetodon 
-	agak lebih kebawah dibandingkan kedua kelas ikan lainnya. Berikut adalah \textit{offset} yang penulis gunakan 
+	sebutkan pada Bab 3. \textit{Offset} digunakan karena masing-masing kelas ikan semuanya memiliki 
+	mulut, sirip dan ekor yang berlokasi berbeda satu dengan yang lainnya. Contohnya: Mulut dari spesies ikan Chaetodon 
+	agak lebih kebawah dibandingkan kedua kelas ikan lainnya. Selain itu juga untuk setiap bagian 
+	ikan yang akan diklasifikasi akan dicari lokasi yang paling terlihat unik daripada kelas-kelas lainnya. Contohnya 
+	pada kelas spesies ikan Abudefduf diambil bagian ekor yang memberntuk huruf "V" 
+	sementara pada kelas spesies Amphiprion bagian kelas yang dipelajari adalah 
+	bagian melengkung bagian atas diantara ekor dan badan. Berikut adalah \textit{offset} yang penulis gunakan 
 	untuk pelatihan:
 
 	\begin{figure}[H]
@@ -201,27 +205,28 @@
 				# order according to label's order in LoadImages
 				# for searching mouth features
 				(0, 0),
-				(88, 0), 
-				(73, 0),
-				(100, 15)
+				(0, 88),
+				(0, 73),
+				(15, 100)
 			]
 
 			class_Window_offset_2 = [
 				# order according to label's order in LoadImages
 				# for searching fin features
 				(0, 0),
-				(0, 116), 
-				(9, 153),
-				(0, 116)
+				(116, 0),
+				(153, 9),
+				(116, 0)
+    
 			]
 
 			class_Window_offset_3 = [
 				# order according to label's order in LoadImages
 				# for searching tail feature
 				(0, 0),
-				(89, 280), 
-				(47, 237),
-				(80, 277)
+				(280, 89),
+				(237, 47),
+				(277, 80)
     ]
 		\end{lstlisting}
 		\caption{\emph{source code:} \textit{offset} ini di-inisalisasi untuk setiap kelas Dataset 
@@ -548,7 +553,7 @@
 			\caption{\emph{source code:} fungsi untuk mencari mayoritas 
 			kelas pada \textit{leaf node}}
 			\label{code: find majority class in node function}
-		\end{figure}
+		\end{figure} 
 
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -563,6 +568,13 @@
 			setelah dibuat}
 			\label{code: fit function}
 		\end{figure}
+
+		Terakhir, fungsi Predict digunakan untuk klasifikasi yang sebenarnya. Dalam fugnsi ini 
+		fit mengambil X atau \textit{dataset} X\_test untuk mengetes akurasi dari \emph{decision tree} 
+		tersebut yang lalu akan dikomparasi dengan Y\_test menggunakan fungsi sklearn accurac\_score. 
+		Pencarian accuracy\_score setiap \emph{decision tree} disini dilakukan untuk 
+		mempercepat proses \emph{boosting} di tahap berikutnya karena \emph{decision tree} 
+		dapat langsung diurutkan dari yang terkuat ke yang terlemah.
 
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -585,6 +597,468 @@
 			dengan \emph{decision tree} yang sudah dibuat}
 			\label{code: predict function}
 		\end{figure}
+
+		Setelah semua \emph{decision tree} dan akurasinya sudah dicari dan disimpan kedalam 
+		\textit{array} classifiers dan classifiers\_accuracy. Keduanya akan disimpan kedalam 
+		dokumen pickle untuk direferensi kedepannya. Penyimpanan kedalam dokumen pickle ini bertujuan 
+		agar proses pelatihan tidak perlu diulangi berulang kali bila ada masalah di tahapan berikutnya. 
+		Berikut \textit{source code} penyimpanan \emph{decision tree} kedalam pickle:
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+
+				class PickleTree:
+					def __init__(self, features, trees, accuracies):
+						self.feature_num = np.arange(len(features))
+						self.trees = trees
+						self.accuracies = accuracies
+					
+				def dump_to_pickle(file_name, object):
+					directory = "Data/" + file_name + ".pickle"
+					with open(directory, 'wb') as file:
+						pickle.dump(object, file)
+			\end{lstlisting}
+			\caption{\emph{source code:} penyimpanan \emph{decision tree} kedalam pickle}
+			\label{code: save decision tree}
+		\end{figure}
+
+		Untuk menyimpan \emph{decision tree} kedalam pickle, pertama semua \emph{decision tree} 
+		dan akurasinya disimpan kedalam \textit{class} bernama PickleTree yang lalu akan di \textit{dump} 
+		menggunakan fungsi dunp\_to\_pickle kedalam \textit{directory} yang sudah ditentukan.
+
+	\subsection{\textit{Boosting}}
+
+		Setelah dokumen pickle dari semua \emph{decision tree} atau \emph{weak classifier} 
+		dibuat. Semua \emph{weak classifier} akan di-\emph{boosting} untuk memberikan bobot \textit{voting} 
+		untuk semuanya. Hal ini dilakukan dengan mengetes \emph{weak classifier} secara berurutan dari 
+		yang terkuat ke yang terlemah. Contoh-contoh latihan yang sulit untuk diklasifikasi 
+		\emph{weak learner} sebelumnya akan diberikan nilai lebih bila berhasil diklasifikasi 
+		\emph{weak learner} berikutnya. Proses ini kita mulai dengan memanggil fungsi 
+		training\_strong\_classifier():
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+
+				def training_strong_classifier(features, trees, splits, accuracy, pickle_name):
+					X_train, Y_train, X_test, Y_test, X_valid, Y_valid = splits
+					image_weights = Boosting.initialize_weight(Y_test)
+					orderlist = np.arange(len(accuracy))
+					orderlist = Boosting.get_initial_sorted_accuracy(accuracy, orderlist)
+
+					initial_accuracy = float('-inf')
+					current_accuracy = 0
+					iteration = 0
+					limit = 100 #change according to needs
+
+					# start boosting loop. Will stop when accuracy fell or iteration hit limit
+					while True:
+						alpha_list = Boosting.start_boosting(trees, X_test, Y_test, image_weights, orderlist)
+						validation_prediction = Boosting.strong_prediction(trees, orderlist, X_valid, alpha_list)
+
+						initial_accuracy = current_accuracy
+						print(f'current initial accuracy: {initial_accuracy}')
+						current_accuracy = accuracy_score(Y_valid, validation_prediction)
+						print(f'current after boosting accuracy: {current_accuracy}')
+						
+						# check whether accruacy deteriorate or limit hit
+						if current_accuracy <= initial_accuracy or iteration >= limit:
+							print('final accuracy deteriorate, rolling back to last iteration...')
+							alpha_list = last_iteration_alpha_list
+							orderlist = last_iteration_orderlist
+							break
+						
+						print('starting over. Saving alpha...')
+						alpha_list, orderlist = Boosting.get_sorted_accuracy(alpha_list, orderlist)
+						last_iteration_alpha_list = alpha_list
+						last_iteration_orderlist = orderlist
+						iteration += 1
+
+
+					# saving trees, related features and its order in pickle
+					final_trees = np.empty(len(orderlist), dtype=object)
+					final_features = np.empty(len(orderlist), dtype=object)
+					for i in range(len(orderlist)):
+						final_trees[i] = trees[orderlist[i]]
+						final_features[i] = features[orderlist[i]]
+
+					pickle_this = PickleTreeFinal(final_features, final_trees, alpha_list)
+					Utilities.dump_to_pickle(f'{pickle_name}', pickle_this)
+			\end{lstlisting}
+			\caption{\emph{source code:} training\_strong\_classifier}
+			\label{code: training strong classifier}
+		\end{figure}
+
+		Pertama dalam fungsi ini harus dicari bobot nilai dari setiap contoh latihan, 
+		bobot nilai ini berbeda dari bobot \emph{voting weak learner}. Fungsi bobot nilai 
+		adalah memberikan nilai bila \emph{weak learner} berhasil mengklasifikasi sebuah 
+		contoh latihan dengan benar, oleh karena itu jumlah nilai total dari bobot 
+		latihan atau image\_weights haruslah kurang lebih satu. image\_weights di-inisialisasi 
+		menggunakan fungsi initialize\_weights() berikut:
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+
+				def initialize_weight(test_images):
+					image_weights = np.ones(len(test_images)) / len(test_images)
+					return image_weights
+			\end{lstlisting}
+			\caption{\emph{source code:} pencarian bobot gambar}
+			\label{code: initialize image weights}
+		\end{figure}
+
+		Bisa dilihat proses penghitungan bobot dari image\_weights hanyalah pembagian 
+		satu dengan jumlah total contoh latihan (disini len(test\_images)). Untuk proses 
+		pelatihan menggunakan 80 contoh gambar latihan, fungsi split() telah mengalokasikan 
+		28 contoh untuk digunakan dalam tahap \emph{Boosting}, yang disimpan dalam X\_valid 
+		dan Y\_valid. Berikutnya fungsi get\_initial\_sorted\_accuracy() dipanggil untuk 
+		mengurutkan \emph{weak classifier} berdasarkan akurasi yang sudah didapat ditahap sebelumnya:
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+
+				def get_initial_sorted_accuracy(accuracy, orderlist):
+					accuracy_threshold = 0.4
+					accuracy, orderlist = zip(*sorted(zip(accuracy, orderlist), reverse = True))
+					orderlist = [classifier for accuracy, classifier in zip(accuracy, orderlist) if accuracy >= accuracy_threshold]
+					return orderlist
+
+			\end{lstlisting}
+			\caption{\emph{source code:} pengurutan \emph{weak classifier} berdasarkan akurasi}
+			\label{code: initial sorted accyracy}
+		\end{figure}
+
+		Pada tahap \textit{sorting} ini juga dilakukan elimanasi \emph{weak classifier} yang terlalu lemah. 
+		Awalnya penulis mengeliminasi \emph{weak classifier} yang memiliki nilai akurasi dibawah 50\% 
+		namun karena takut jumlah \emph{weak classifier} terlalu sedikit, maka penulis menurunkan \textit{threshold} 
+		menjadi 40\%. Eliminasi ini secara signifikan mengurangi jumlah \emph{classifier} yang awalnya berjumlah 
+		sekitar 520.000 menjadi: 6742 \emph{weak classifier} pada \emph{classifier} jendela kiri, 
+		8231 \emph{weak classifier} pada \emph{classifier} jendela tengah, dan 
+		10588 \emph{weak classifier} pada \emph{classifier} jendela kanan. Eliminasi yang besar ini 
+		mengimplikasikan bahwa mayoritas \emph{weak classifier} yang dibuat dengan mencoba 
+		semua probabilitas yang ada memiliki akurasi dibawah 40\% dan mungkin hanya akan berkontribusi 
+		saja kepada klasifikasi akhir. Selanjutnya proses \emph{Boosting dilanjutkan} dengan 
+		mencari alpha\_list atau bobot voting setiap \emph{weak classifier} menggunakan fungsi 
+		start\_boosting(). Berikut adalah \textit{source code}-nya:
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+
+				def start_boosting(trees, X_test, Y_test, image_weights, orderlist):
+					print('Boosting...')
+					alpha_list = np.zeros(len(orderlist))
+					for i in range(len(orderlist)):
+						# make prediction with i-th tree
+						treeN = orderlist[i]
+						prediction  = trees[treeN].predict(X_test)
+
+						# calculate error of the tree
+						indicator = np.array(np.array(prediction).astype(int) != Y_test.flatten(), dtype = float)
+						epsilon = np.sum(image_weights * indicator) / np.sum(image_weights)
+
+						# calculate the weight of the tree
+						alpha = 0.5 * np.log((1 - epsilon) / (epsilon + 1e-10)) + np.log(4 - 1) #1e-10 const added to prevent div by 0. 4 is number of class
+						if alpha < 1e-10: alpha = 1e-10 #1e-10 const added to prevent alpha getting too small in np.exp(alpha * indicator) later
+						alpha_list[i] = alpha
+
+						# update the weight for the samples so the sum of image_weight will be close to 1 for the next iteration
+						image_weights *= np.exp(alpha * indicator)
+						image_weights /= np.sum(image_weights)
+
+					return alpha_list
+
+			\end{lstlisting}
+			\caption{\emph{source code:} pencarian nilai bobot voting menggunakan fungsi 
+			start\_boosting()}
+			\label{code: start boosting}
+		\end{figure}
+
+		Disini hasil klasifikasi yang dilakukan oleh \emph{weak classifier} akan dibandingkan 
+		dengan label aslinya yang tersimpan di Y\_valid dan disimpan pada array \emph{indidcator} 
+		dalam nilai 0 bila klasifikasi dilakukan secara benar, dan 1 bila klasifikasi dilakukan 
+		secara salah. Kemudian \textit{alpha} atau bobot voting sang \emph{weak classifier} 
+		akan dihitung. Para perhitungan ini, \emph{epsilon} akan ditambahkan dengan 1e-10 
+		untuk mencegah pembagian dengan angka 0 bilamana \emph{weak classifier} benar mengklasifikasi 
+		semua contoh dan menghasilnya \emph{indicator} yang hanya berisi angka 0 saja. np.log(4 - 1) 
+		disini digunakan agar \emph{alpha} tidak negatif, 4 pada formula ini adalah jumlah kelas 
+		yang sedang diklasifikasi yaitu kelas negatuf, Abudefduf, Amphiprion, dan Chaetodon. Berikutnya 
+		\emph{alpha} dicek supaya tidak lebih kecil daripada 1e-10 agar tidak menyebabkan normalisasi 
+		bobot gambar yang salah di bagian berikutnya. terakhir image\_weight diupdate, dimana gambar 
+		yang salah diklasifikasi akan dinaikan nilainya, baru setelahnya nilai dinormalisasi lagi 
+		agar kurang lebih berjumlah 1. Setelah bobot \textit{voting} sudah dicari, seluruh 
+		\emph{weak learner} pada tahap ini akan dites layaknya klasifikasi yang sebeneranya, dimana 
+		nilai \textit{voting} setiap \emph{weak classifier} akan diperhitungkan untuk memilih 
+		hasil klasifikasi. Klasifikasi pada tahap ini dilakukan oleh fungsi strong\_prediciton:
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+
+				def strong_prediction(trees, orderlist, X_valid, alpha_list):
+					predictions = [0] * len(X_valid)
+					scoreboard = [[0, 0, 0, 0] for _ in range(len(X_valid))]
+					for i in range(len(orderlist)):
+						tree_index = orderlist[i]
+						prediction = trees[tree_index].predict(X_valid)
+
+						# add score to scoreboard according to results and alpha value of tree
+						for j in range(len(prediction)):
+							weak_learner_prediction = int(prediction[j])
+							scoreboard[j][weak_learner_prediction] += 1 * alpha_list[i]
+					
+					# return score to the main scoreboard
+					for k in range(len(prediction)):
+							# print(f'scoreboard {k}: {scoreboard[k]}')
+							predictions[k] = scoreboard[k].index(max(scoreboard[k]))
+					return predictions
+
+			\end{lstlisting}
+			\caption{\emph{source code:} klasifikasi yang dilakukan setelah setiap iterasi \emph{boosting}}
+			\label{code: strong prediction}
+		\end{figure}
+
+		Saat klasifikasi akan dibuatkan sebuah \emph{scoreboard} untuk mencatat total bobot voting 
+		suatu kelas. Contohnya suatu \emph{weak classifier} dengan bobot \textit{voting} 0.67 
+		mengklasifkasi suatu fitur sebagai kelas 1 atau Abudefduf. maka \emph{scoreboard} akan 
+		berubah manjadi [0, 0.67, 0, 0]. Lalu misalnya \emph{weak classifier} lain dengan bobot 
+		\textit{voting} 0.2 memilih kelas 3 atau Amphiprion, maka \emph{scoreboard} akan menjadi 
+		[0, 0.67, 0.2, 0]. Klasifikasi akan diakhiri ketika semua \emph{weak learner} sudah 
+		dipakai. Setelah itu kelas dengan nilai \textit{voting} paling tinggi akan dipilih sebagai 
+		hasil dari klasifikasi. Yang lalu akan dibandingkan dengan Y\_valid untuk dicari akurasinya.
+
+		Proses iterasi \emph{boositng} ini akan diulang terus menerus hingga tingkat akurasi klasfikasi 
+		menggunakan \emph{weak classifier} berbobot mulai mengalami penurunan. Dalam situasi ini 
+		nilai bobot voting dan urutan voting pada iterasi sebelumnya akan diambil dan disimpan 
+		kedalam dokumen pickle, kali ini dalam \emph{class PickleTreeFinal} dengan fungsi 
+		dump\_to\_pickle sebelumnya:
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+
+				class PickleTreeFinal:
+					def __init__(self, features, trees, alpha_list):
+						self.features = features
+						self.trees = trees
+						self.alpha_list = alpha_list
+
+			\end{lstlisting}
+			\caption{\emph{source code:} bentuk \textit{class PickleTreeFinal}}
+			\label{code: PickleTreeFinal class}
+		\end{figure}
+
+		Perbedaan pickle ini dengan pickle yang menyimpan seluruh fungsi pada tahap sebelumnya 
+		adalah pada pickle ini juga disimpan info \emph{feature} juga sesuai dengan urutan dari 
+		\emph{weak classifier} yang berhubungan. Hal ini dilakukan agar pada tahapan berikutnya, 
+		\emph{cascade}, juga akan digunakan untuk klasifikasi sebenarnya, sehingga memerlukan info 
+		\emph{features} untuk dapat langsung membaca nilai fitur langsung dari gambar.
+
+	\subsection{\textit{Training Cascade}}
+		
+		Pelatihan pickle dimulai dengan pertama membuat \textit{class} Cascade yang 
+		nantinya akan diisi dengan \emph{stage} yang berisikan \emph{weak classsifier} 
+		dengan bobot voting mereka. Berikut bentuk \textit{class} Cascade:
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+
+				class Cascade:
+
+					def __init__(self):
+						self.stages = []
+
+			\end{lstlisting}
+			\caption{\emph{source code:} bentuk \textit{class Cascade}}
+			\label{code: Cascade class}
+		\end{figure}
+
+		Selanjutnya \emph{stages} akan diisi dengan fungsi fill\_cascade() dengan 
+		\textit{source code} sebagai berikut:
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+
+				def fill_cascade(self, features, trees, alpha_list, splits):
+					print(f'starting to fill cascade...')
+					X_train, Y_train, X_test, Y_test, X_valid, Y_valid = splits
+					used_features = 0
+					print(f'number of used_features: {used_features}')
+					while True:
+						if used_features >= len(features): break
+						new_cascade = CascadeStage()
+						new_cascade.train_stage(features, trees, alpha_list, X_valid, Y_valid, used_features)
+						used_features += len(new_cascade.trees) #check the total number of features used
+						self.stages.append(new_cascade)
+						print(f'finished filling stage: {len(self.stages)}')
+					print(f'cascade is finished!')
+
+			\end{lstlisting}
+			\caption{\emph{source code:} fungsi untuk mengisi \emph{stages} pada 
+			\emph{Cascade}}
+			\label{code: fill cascade function}
+		\end{figure}
+
+		Fungsi fill\_cascade disini mengambil \textit{features, trees} dan \textit{alpha\_list} 
+		yang sudah diurutkan dan di-\emph{boosting} pada tahap sebelumya. Lalu sebuah \textit{class} 
+		baru dibuat untuk menyimpan ketiganya pada sebuah \emph{stage}, \textit{class} itu adalah 
+		CascadeStage dengan \textit{source code} sebagai berikut:
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+
+				class CascadeStage:
+					def __init__(self):
+						self.features = []
+						self.trees = []
+						self.alpha_list = []
+
+			\end{lstlisting}
+			\caption{\emph{source code: class} CascadeStage}
+			\label{code: Cascade Class}
+		\end{figure}
+
+		yang lalu diisi dengan menggunakan fungsi train\_stage() sebagai berikut:
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+
+				def train_stage(self, features, trees, alpha_list, X_valid, Y_valid, used_features):
+					detection_rate = 0
+					while detection_rate < 0.5:
+						if used_features >= len(features): break
+						# append weak classifier into stage one by one
+						self.features.append(features[used_features])
+						self.trees.append(trees[used_features])
+						self.alpha_list.append(alpha_list[used_features])
+
+						orderlist = np.arange(len(self.trees))
+						validation_prediction = Boosting.strong_prediction(self.trees, orderlist, X_valid, self.alpha_list)
+						detection_rate = accuracy_score(Y_valid, validation_prediction)
+						used_features += 1
+					print(f'features used in this stage: {used_features}')
+
+			\end{lstlisting}
+			\caption{\emph{source code: } pelatihan \emph{stage} dalam \emph{Cascade}}
+			\label{code: train stage function}
+		\end{figure}
+
+		Pada fungsi ini \emph{weak classifier} ditambah satu persatu berserta bobot dan 
+		\emph{feature}-nya, lalu \emph{stage} akan dites menggunakan fungsi strong\_prediction 
+		yang dipakai juga di tahap \emph{boosting}. Penggunaan fungsi ini dapat dilakukan 
+		karena struktur dan cara klasifikasi dari \emph{stage} mirip dengan sederet \emph{weak classifier} 
+		pada tahap sebelumnya. Iterasi ini lalu diteruskan hingga akurasi \emph{stage} mencapai 50\% 
+		atau sampai \emph{weak classifier} habis. Setelah itu \emph{stage} yang sudah dibuat 
+		akan di-append() kedalam \textit{array stages} dan proses yang sama diulangi hingga 
+		semua \emph{weak classifer} sudah habis terpakai. Terakhir \emph{Cascade} lalu disimpan 
+		kedalam pickle untuk digunakan dalam klasifikasi yang sebenarnya. Berikut fungsi yang 
+		digunakan untuk menyimpan \emph{cascade} kedalam pickle:
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+
+				def save_to_pickle(self, pickle_name):
+					print(f'saving to Pickle...')
+					Utilities.dump_to_pickle(f'{pickle_name}', self)
+					print(f'complete!')
+
+			\end{lstlisting}
+			\caption{\emph{source code: } fungsi penyimpanan \emph{Cascade} ke pickle 
+			dengan menggunakan fungsi dump\_to\_pickle lagi}
+			\label{code: save Cascade to pickle}
+		\end{figure}
+
+\section{Validasi}
+
+		Untuk proses validasi atau penggunaan, penulis telah membuat sebuah \textit{file} 
+		python baru untuk mengklasifikasi menggunakan \emph{cascade} yang telah dibuat. Untuk gambar 
+		yang akan diklasifikasi harus memiliki ukuran 350 x 200 piksel, bertipekan \textit{Portable Network Graphics} 
+		atau PNG, dan dengan latar belakang sudah dihilangkan. Gambar-gambar yang akan diklasifikasi harus 
+		dimasukan kedalam \textit{folder} bernama \emph{classification\_target}, dan pengguna juga 
+		membuat satu \textit{folder} lain bernama \emph{classification\_results} untuk hasil klasifikasi. 
+		Berikut \textit{source code} dari predict.py:
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
+
+				import numpy as np
+					import os
+					import cv2
+					from Cascade import *
+					from Utilities import *
+
+					# load cascades for each window
+					window_cascade = [None, None, None]
+					window_prediction = np.zeros(3)
+					window_cascade[0] = Utilities.read_from_pickle('window_0_cascade') #for left side/mouth detection
+					window_cascade[1] = Utilities.read_from_pickle('window_1_cascade') #for mid side/fin detection
+					window_cascade[2] = Utilities.read_from_pickle('window_2_cascade') #for right side/tail detection
+
+					directory = "classification_target"
+
+					for filename in os.listdir(directory):
+						if filename.endswith(".png"):
+							image_path = os.path.join(directory, filename)
+							image_name = filename
+
+							#load target image for classification
+							image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
+							image_unedited = cv2.imread(image_path, cv2.IMREAD_UNCHANGED)
+							image = cv2.resize(image, (350, 200))
+							image_width = 350
+							image_height = 200
+
+							# scan for the whole image using sliding windows
+							for i in range(len(window_cascade)):
+								# offset for different part all 3 window 
+								match i:
+									case 0: left_window_width = 0
+									case 1: left_window_width = int(image_width / 3)
+									case 2: left_window_width = int(image_width / 3 * 2)
+								for y in range(0, image_height - 50 + 1):
+									for x in range(0, int(image_width / 3) - 50 +1):
+										prediction = window_cascade[0].final_cascade_classification(image, x + left_window_width, y)
+										if prediction != 0: break
+									
+									if prediction != 0: break
+								# print(f'classification result for window {i}: {prediction}')
+								window_prediction[i] = prediction
+
+							# count majority vote and predict class
+							print(f'result of {image_name} classification: {window_prediction}')
+							unique_elements, counts = np.unique(window_prediction, return_counts=True)
+							max_count_index = np.argmax(counts)
+
+							if counts[max_count_index] > len(window_prediction) // 2:
+								image_class = unique_elements[max_count_index]
+							else:
+								image_class = 0
+
+							match image_class:
+								case 0: image_class = 'None'
+								case 1: image_class = 'Abudefduf'
+								case 2: image_class = 'Amphiprion'
+								case 3: image_class = 'Chaetodon'
+
+							position = (10, 30)
+							font = cv2.FONT_HERSHEY_SIMPLEX
+							font_scale = 1
+							font_thickness = 2
+							font_color = (0, 0, 255)
+
+							output_image_path = os.path.join('classification_results\\', os.path.splitext(filename)[0] + '.jpg')
+							cv2.putText(image_unedited, image_class, position, font, font_scale, font_color, font_thickness)
+							cv2.imwrite(output_image_path, image_unedited)
+							print('anotated image completed!')
+
+			\end{lstlisting}
+			\caption{\emph{source code: } predict.py untuk melakukan klasifikasi sebenarnya}
+			\label{code: predict.py}
+		\end{figure}
+
+		\textit{Source code} selengkapnya termasuk dengan \textit{source code training} 
+		bisa dilihat di \url(https://github.com/EzraelVio/Fish-Viola-Jones) dibawah lisense 
+		\textit{GNU General Public License v3.0.} \textit{Prototype System} Pendeteksi 
+		Spesies Ikan Menggunakan \textit{Viola-Jones Featues Extraction} dan \textit{Boosting} 
+		berbasis \textit{Decision Tree}. Rincian yang lebih lengkap soal hasil klasifikasi 
+		bisa diliat di lampiran.
+
 
 % Baris ini digunakan untuk membantu dalam melakukan sitasi
 % Karena diapit dengan comment, maka baris ini akan diabaikan

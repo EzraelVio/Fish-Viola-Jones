@@ -31,7 +31,7 @@ from Dataset import *
 # cv2.putText(image_unedited, 'contoh', position, font, font_scale, font_color, font_thickness)
 # cv2.imwrite('hasil.jpg', image_unedited)
 
-# # === GROUP B ===
+# === GROUP B ===
 # images, labels = combine_dataset()
 # initial_features = generate_features(50, 50)
 # csv_name_loop = f'fish_window_1'
@@ -51,11 +51,12 @@ from Dataset import *
 # print(np.shape(testing))
 # print(testing[:10])
 
-# pickle_name = f'window_1_strong_classsifier'
-# strong_classifier = Utilities.read_from_pickle(pickle_name)
-# # print(strong_classifier.trees[:10])
-# print(np.shape(strong_classifier.features))
-# print(strong_classifier.alpha_list[:10])
+for i in range(3):
+    pickle_name = f'window_{i}_strong_classsifier'
+    strong_classifier = Utilities.read_from_pickle(pickle_name)
+    # print(strong_classifier.trees[:10])
+    print(np.shape(strong_classifier.features))
+    print(strong_classifier.alpha_list[:10])
 
 # orderlist = np.arange(len(strong_classifier.trees))
 # prediction = Boosting.strong_prediction(strong_classifier.trees, orderlist, X_test, strong_classifier.alpha_list)
@@ -65,63 +66,63 @@ from Dataset import *
 # print(prediction)
 # print(classifiers_accuracy)
 
-# === GROUP C ===
-# read image and assign appropriate labels
-images, labels = combine_dataset()
+# # === GROUP C ===
+# # read image and assign appropriate labels
+# images, labels = combine_dataset()
 
-# initialize haar_like features. Change 50 x 50 according to neccesity
-initial_features = generate_features(50, 50)
+# # initialize haar_like features. Change 50 x 50 according to neccesity
+# initial_features = generate_features(50, 50)
 
-print(f'Numbers of features generated: {len(initial_features)}')
+# print(f'Numbers of features generated: {len(initial_features)}')
 
-print("starting...")
+# print("starting...")
 
-# generate CSV of image feature values. Run if CSV have not been made
-# write_csv splits data into 3 dataframes. Image feature value depends on preassigned windows and class in Dataset.py
-csv_name = "fish" # change name accordingly
-# Utilities.write_csv(images, labels, initial_features, csv_name)
-# temp_window_values = np.zeros((len(images), len(initial_features)), dtype=object)
-# image_ids = np.arange(len(images))
-# for i in range(len(images)):
-#     new_data = Dataset(images[i], labels[i], initial_features)
-#     temp_window_values[i] = new_data.window_3_features
+# # generate CSV of image feature values. Run if CSV have not been made
+# # write_csv splits data into 3 dataframes. Image feature value depends on preassigned windows and class in Dataset.py
+# csv_name = "fish" # change name accordingly
+# # Utilities.write_csv(images, labels, initial_features, csv_name)
+# # temp_window_values = np.zeros((len(images), len(initial_features)), dtype=object)
+# # image_ids = np.arange(len(images))
+# # for i in range(len(images)):
+# #     new_data = Dataset(images[i], labels[i], initial_features)
+# #     temp_window_values[i] = new_data.window_3_features
 
-# window_feature = {'image_ids': image_ids}
-# for i in range(len(initial_features)):
-#     column_name = f'win_{2 + 1}_feature_{i}'
-#     window_feature[column_name] = temp_window_values[:, i]
+# # window_feature = {'image_ids': image_ids}
+# # for i in range(len(initial_features)):
+# #     column_name = f'win_{2 + 1}_feature_{i}'
+# #     window_feature[column_name] = temp_window_values[:, i]
 
-# directory = f"Data/{csv_name}_window_2.csv"
+# # directory = f"Data/{csv_name}_window_2.csv"
 
-# window_feature = pd.DataFrame(window_feature)
-# window_feature.to_csv(directory, index=False)
+# # window_feature = pd.DataFrame(window_feature)
+# # window_feature.to_csv(directory, index=False)
 
-# create weak classifiers (Decision Trees) for each window
+# # create weak classifiers (Decision Trees) for each window
 
-splits = []
-trees = []
-accuracies = []
-features = initial_features
-csv_name_loop = f'{csv_name}_window_0'
-# split data into 3 part for training and saving it inside splits:
-# X_train and Y_train for creating trees
-# X_test and Y_test for boosting
-# X_valid and Y_valid for training final strong classifier and cascade
-splits = DecisionTree.split_data(features, csv_name_loop, labels)
+# splits = []
+# trees = []
+# accuracies = []
+# features = initial_features
+# csv_name_loop = f'{csv_name}_window_0'
+# # split data into 3 part for training and saving it inside splits:
+# # X_train and Y_train for creating trees
+# # X_test and Y_test for boosting
+# # X_valid and Y_valid for training final strong classifier and cascade
+# splits = DecisionTree.split_data(features, csv_name_loop, labels)
 
-# create decision tree and saving it in pickle for later. Skip if Pickel has already been made
-# Long ahh progress est. 2+ hours for all 3 window
-# trees, accuracies = DecisionTree.build_all_tree(splits, features)
-# decision_trees = PickleTree(features, trees, accuracies)
-# pickle_name = f'window_2_decision_trees'
-# Utilities.dump_to_pickle(pickle_name, decision_trees)
+# # create decision tree and saving it in pickle for later. Skip if Pickel has already been made
+# # Long ahh progress est. 2+ hours for all 3 window
+# # trees, accuracies = DecisionTree.build_all_tree(splits, features)
+# # decision_trees = PickleTree(features, trees, accuracies)
+# # pickle_name = f'window_2_decision_trees'
+# # Utilities.dump_to_pickle(pickle_name, decision_trees)
 
-pickle_name = f'window_0_decision_trees'
-window_1_decision_trees = Utilities.read_from_pickle(pickle_name)
-trees = window_1_decision_trees.trees
-accuracies = window_1_decision_trees.accuracies
+# pickle_name = f'window_0_decision_trees'
+# window_1_decision_trees = Utilities.read_from_pickle(pickle_name)
+# trees = window_1_decision_trees.trees
+# accuracies = window_1_decision_trees.accuracies
     
 
-# train strong classifier which also double as feature elimination. Saving it into another pickle
-pickle_name = f'window_0_strong_classsifier'
-Boosting.training_strong_classifier(features, trees, splits, accuracies, pickle_name)
+# # train strong classifier which also double as feature elimination. Saving it into another pickle
+# pickle_name = f'window_0_strong_classsifier'
+# Boosting.training_strong_classifier(features, trees, splits, accuracies, pickle_name)

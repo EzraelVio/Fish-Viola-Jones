@@ -7,26 +7,32 @@
 \chapter{KESIMPULAN DAN SARAN}
 
 \section{Kesimpulan}
-Berdasarkan hasil implementasi dan pengujian fitur sistem informasi yang telah dirancang, maka diperoleh kesimpulan sebagai berikut:
+Berdasarkan hasil implementasi yang telah dilakukan penulis serta pengujian fitur klasifikasi yang 
+telah penulis rancang, maka didapatkan kesimpulan sebagai berikut:
 
 \begin{enumerate}
-	\item Perancangan sistem informasi operasi serba usaha berbasis \emph{website} pada lembaga Koperasi Mahasiswa Universitas Negeri Jakarta menggunakan metode pengembangan perangkat lunak \textit{System Development Life Cycle} dengan \textit{spiral model} yang memiliki beberapa tahapan, yaitu analisis kebutuhan, perancangan desain sistem \textit{(prototype)}, pengimplementasian (\textit{coding \& testing-unit}), dan \textit{maintenance} (umpan balik dan tanggapan).
+	\item Dibuatnya \textit{classifier} spesies ikan berbasis Viola-Jones Feature Extraction dan Boosting
+	Berbasis Decision Tree. Adapun perancangan \textit{classifier} ini dikerjakan dalam 
+	waktu kurang lebih satu tahun.
+
+	\item Berdasarkan hasil pengetesan akurasi yang didapat dari \textit{classifier} jendela 1 adalah: 
+	x \%, \textit{classifier} jendela 2 adalah: x \% dan \textit{classifier} jendela 3 adalah: x \%.
+
+	\item Dari hasil percobaan mengklasifikasi 100 gambar dengan persebaran kelas: ... 
+	\textit{classifier} akhir berhasil mengklasifikasi x gambar.
 	
-	\item Sistem informasi Koperasi Mahasiswa Universitas Negeri Jakarta dibangun dengan menggunakan \textit{framework codeigniter} dan \textit{framework bootstrap}. \textit{Codeigniter} untuk membangun sisi dalam \textit{back-end} dan \textit{Bootstrap} yang mempercantik bagian luar \textit{front-end}. Berdasarkan pengolahan data hasil kuesioner \textit{user acceptance test}, didapatkan rata-rata persentase mencapai angka 4,27 dari 5 atau sekitar 85\% untuk \textit{admin} yang berarti sistem sudah sangat sesuai, 3,96 dari 5 atau sekitar 79\% untuk anggota yang berarti sistem sudah sesuai, dan 4,53 dari 5 atau sekitar 91\% pada sistem pengawas yang berarti sistem sudah sangat sesuai.
-	
-	\item Sistem informasi Koperasi Mahasiswa Universitas Negeri Jakarta berbasis \textit{website} dibangun agar sistem pengelolaan data di KOPMA UNJ dapat menjadi lebih efektif dan efisian, serta agar kemungkinan adanya \textit{human error} dapat diatasi. Data yang dikelola berupa data anggota, barang, stok (pergudangan), simpanan, transaksi, penilaian, dan keuangan.
-	
-	\item Sistem informasi Koperasi Mahasiswa Universitas Negeri Jakarta berbasis \textit{website} mempermudah \textit{admin} dalam melakukan pengelolaan data yang ada di KOPMA UNJ, mempermudah pengawas dalam melakukan pengelolaan data penilan, dan membuat anggota dapat mengetahui transparansi simpanan yang mereka bayarkan hingga mengetahui transparansi sisa hasil usaha yang mereka dapatkan.
 \end{enumerate}
 
 \section{Saran}
-Adapun saran untuk penelitian selanjutnya adalah:
-\begin{enumerate} 
-	\item Mengintegrasikan sistem informasi KOPMA UNJ dengan aplikasi dan sistem \textit{scanning barcode} agar proses transaksi semakin efektif dan efisien.
-	\item Menambahkan dan mengintegrasikan sistem informasi KOPMA UNJ dengan aplikasi untuk \textit{scanning barcode} pada kartu anggota agar proses kebutuhan simpanan dan transaksi untuk anggota dapat semakin efektif dan efisien.
-	\item Menambahkan sistem pengelolaan kegiatan keorganisasian KOPMA UNJ yang merupakan bagian dari peran KOPMA UNJ sebagai Organisasi Kemahasiswaan di UNJ.
-	\item Membuat pengembangan sistem informasi KOPMA UNJ berbasis \textit{mobile} (\textit{android}).
-\end{enumerate}
+	Klasifikasi ikan dengan menggunakan metode \textit{framework Viola-Jones} dengan 
+	\textit{decision tree boosting}membuka peluang untuk melanjutkan penelitian 
+	dalam klasifikasi ikan menggunakan metode tersebut. Ada beberapa perubahan yang mungkin 
+	bisa dilakukan untuk memutakhirkan metode ini, salah satunya adalah penambahan 
+	\textit{object extraction} untuk mempermudah \textit{pre-processing}. Mungkin 
+	juga memodifikasi model agar dapat bekerja dengan gambar yang tidak selalu berukuran 
+	350 x 200 piksel. Dan terakhir, mengimplementasikan \textit{multi processing} untuk 
+	mempercepat proses pelatihan yang cukup lama, yang dapat kedepannya memungkinkan pengguna 
+	untuk melatih \textit{classifier} dengan lebih banyak data latihan dengan waktu yang jauh lebih singkat.
 
 
 % Baris ini digunakan untuk membantu dalam melakukan sitasi

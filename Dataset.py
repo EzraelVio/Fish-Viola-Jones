@@ -16,7 +16,7 @@ class Dataset:
         (0, 0),
         (0, 88),
         (0, 73),
-        (15,100)
+        (15, 100)
     ]
 
     class_Window_offset_2 = [

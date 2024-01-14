@@ -38,3 +38,17 @@
 \contentsline {figure}{\numberline {4.20}{\ignorespaces \emph {source code:} fungsi untuk mencari mayoritas kelas pada \textit {leaf node}\relax }}{32}{figure.caption.35}%
 \contentsline {figure}{\numberline {4.21}{\ignorespaces \emph {source code:} fungsi fit adalah fungsi yang dipanggil untuk mulai membangun \emph {decision tree} setelah dibuat\relax }}{33}{figure.caption.36}%
 \contentsline {figure}{\numberline {4.22}{\ignorespaces \emph {source code:} predict digunakan untuk melakukan prodeiksi dengan \emph {decision tree} yang sudah dibuat\relax }}{33}{figure.caption.37}%
+\contentsline {figure}{\numberline {4.23}{\ignorespaces \emph {source code:} penyimpanan \emph {decision tree} kedalam pickle\relax }}{34}{figure.caption.38}%
+\contentsline {figure}{\numberline {4.24}{\ignorespaces \emph {source code:} training\_strong\_classifier\relax }}{35}{figure.caption.39}%
+\contentsline {figure}{\numberline {4.25}{\ignorespaces \emph {source code:} pencarian bobot gambar\relax }}{36}{figure.caption.40}%
+\contentsline {figure}{\numberline {4.26}{\ignorespaces \emph {source code:} pengurutan \emph {weak classifier} berdasarkan akurasi\relax }}{36}{figure.caption.41}%
+\contentsline {figure}{\numberline {4.27}{\ignorespaces \emph {source code:} pencarian nilai bobot voting menggunakan fungsi start\_boosting()\relax }}{37}{figure.caption.42}%
+\contentsline {figure}{\numberline {4.28}{\ignorespaces \emph {source code:} klasifikasi yang dilakukan setelah setiap iterasi \emph {boosting}\relax }}{38}{figure.caption.43}%
+\contentsline {figure}{\numberline {4.29}{\ignorespaces \emph {source code:} bentuk \textit {class PickleTreeFinal}\relax }}{38}{figure.caption.44}%
+\contentsline {figure}{\numberline {4.30}{\ignorespaces \emph {source code:} bentuk \textit {class Cascade}\relax }}{39}{figure.caption.45}%
+\contentsline {figure}{\numberline {4.31}{\ignorespaces \emph {source code:} fungsi untuk mengisi \emph {stages} pada \emph {Cascade}\relax }}{39}{figure.caption.46}%
+\contentsline {figure}{\numberline {4.32}{\ignorespaces \emph {source code: class} CascadeStage\relax }}{40}{figure.caption.47}%
+\contentsline {figure}{\numberline {4.33}{\ignorespaces \emph {source code: } pelatihan \emph {stage} dalam \emph {Cascade}\relax }}{40}{figure.caption.48}%
+\contentsline {figure}{\numberline {4.34}{\ignorespaces \emph {source code: } fungsi penyimpanan \emph {Cascade} ke pickle dengan menggunakan fungsi dump\_to\_pickle lagi\relax }}{41}{figure.caption.49}%
+\contentsline {figure}{\numberline {4.35}{\ignorespaces \emph {source code: } predict.py untuk melakukan klasifikasi sebenarnya\relax }}{42}{figure.caption.50}%
+\addvspace {10\p@ }
