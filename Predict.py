@@ -39,7 +39,7 @@ for filename in os.listdir(directory):
                 
                 if prediction != 0: break
             # print(f'classification result for window {i}: {prediction}')
-            print(f'classified in x: {i}, y: {y}')
+            print(f'classified in x: {x}, y: {y}')
             window_prediction[i] = prediction
 
         # count majority vote and predict class
