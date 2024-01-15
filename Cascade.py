@@ -33,7 +33,9 @@ class Cascade:
             stage_scoreboard = self.stages[i].stage_prediction(image, x_offset, y_offset, stage_scoreboard)
 
             # check whether the stage return false or a class. If a class then continue
-            if stage_scoreboard.index(max(stage_scoreboard)) == 0: break
+            if stage_scoreboard.index(max(stage_scoreboard)) == 0:
+                scoreboard = [1, 0, 0, 0]
+                break
             else: scoreboard = [scoreboard + stage_scoreboard for scoreboard, stage_scoreboard in zip(scoreboard, stage_scoreboard)]
 
         return scoreboard.index(max(scoreboard))

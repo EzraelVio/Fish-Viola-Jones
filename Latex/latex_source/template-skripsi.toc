@@ -34,7 +34,7 @@
 \contentsline {section}{\numberline {3.4}Skenario Eksperimen dan Validasi}{15}{section.3.4}%
 \contentsline {subsection}{\numberline {3.4.1}\textit {Pre-processing}}{16}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Klasifikasi}{16}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Anotasi}{18}{subsection.3.4.3}%
+\contentsline {subsection}{\numberline {3.4.3}Anotasi}{17}{subsection.3.4.3}%
 \contentsline {chapter}{\numberline {IV}HASIL DAN PEMBAHASAN}{19}{chapter.4}%
 \contentsline {section}{\numberline {4.1}\textit {Training Strong Classifier}}{19}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}\textit {Input} Gambar dan \textit {labeling}}{19}{subsection.4.1.1}%

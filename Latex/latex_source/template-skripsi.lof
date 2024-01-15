@@ -14,7 +14,7 @@
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Sebuah fitur dua persegi menghadap ke kiri, lokasi x = 12 piksel, lokasi y = 10 piksel, dengan ukuran 8 x 8 piksel.\relax }}{12}{figure.caption.14}%
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Contoh sebuah \textit {decision tree} dengan kelas 0, 1, 2 dan 3\relax }}{13}{figure.caption.15}%
 \contentsline {figure}{\numberline {3.7}{\ignorespaces titik awal \textit {sliding window} (kotak hijau) dan titik akhir (kotak kuning)\relax }}{17}{figure.caption.16}%
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Gambaran \textit {sub-window} yang berhasil mengklasifikasi ikan didalam gambar\relax }}{18}{figure.caption.17}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Gambaran \textit {sub-window} yang berhasil mengklasifikasi ikan didalam gambar\relax }}{17}{figure.caption.17}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces \emph {source code:} \textit {read} gambar, labelisasi, pengubahan ke \textit {greyscale}, dan memastikan ukuran gambar 350 x 200 piksel\relax }}{19}{figure.caption.18}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces \emph {source code:} labelisasi gambar sesuai dengan foldernya\relax }}{19}{figure.caption.19}%
