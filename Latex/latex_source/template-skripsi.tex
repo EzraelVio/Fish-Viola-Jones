@@ -176,8 +176,16 @@
 %Disini akhir masukan untuk muka skripsi
 %-----------------------------------------------------------------
 
-\include{pengesahan}
+\phantomsection
+% \include{pengesahan}
+\includepdf[pages=-]{Lembar_Pengesahan_Skripsi.pdf}
+\addcontentsline{toc}{chapter}{LEMBAR PENGESAHAN}
 \include{kata-pengantar}
+\addcontentsline{toc}{chapter}{KATA PENGANTAR}
+\include{abstrak}
+\addcontentsline{toc}{chapter}{ABSTRAK}
+\include{abstract}
+\addcontentsline{toc}{chapter}{\emph{ABSTRACT}}
 %\singlespacing{}
 \tableofcontents{}
 \addcontentsline{toc}{chapter}{DAFTAR ISI}

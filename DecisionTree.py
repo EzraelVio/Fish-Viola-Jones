@@ -10,14 +10,13 @@ class DecisionTree:
         classifiers = [None] * len(features)
         classifiers_accuracy = [0] * len(features)
         X_train, Y_train, X_test, Y_test, X_valid, Y_valid = splits
+        minimum_splits = 3
+        maximum_depth = 3
         for i in range(len(features)):
             if i % 1000 == 0: print (f'starting tree {i}')
             temp_X_train = X_train[:, i].reshape(-1, 1)
-            # print(temp_X_train)
-            # print(Y_train)
-            classifier = DecisionTreeClassifier(min_samples_split=3, max_depth=3)
+            classifier = DecisionTreeClassifier(minimum_splits, maximum_depth)
             classifier.fit(temp_X_train, Y_train)
-            # classifier.print_tree()
 
             classifiers[i] = classifier
             Y_pred = classifier.predict(X_test)
@@ -61,21 +60,22 @@ class Node():
         self.value = value
 
 class DecisionTreeClassifier():
-    def __init__(self, min_samples_split=2, max_depth=2):
+    def __init__(self, minimum_splits = 2, maximum_depth = 2):
         self.root = None
 
         # stopping condition
-        self.min_samples_split = min_samples_split
-        self.max_depth = max_depth
+        self.minimum_splits = minimum_splits
+        self.maximum_depth = maximum_depth
     
-    def build_tree(self, dataset, current_depth = 0):
-        X, Y = dataset[:,:-1], dataset[:,-1]
+    def build_tree(self, training_dataset, current_depth = 0):
+
+        X, Y = training_dataset[:,:-1], training_dataset[:,-1]
         num_samples, num_features = np.shape(X)
 
         # split until conditons are met
-        if num_samples >= self.min_samples_split and current_depth <= self.max_depth:
+        if num_samples >= self.minimum_splits and current_depth <= self.maximum_depth:
             # find best split
-            best_split = self.get_best_split(dataset, num_samples, num_features)
+            best_split = self.get_best_split(dataset, num_features)
             # check if information gain is positive
             if best_split["info_gain"]>0:
                 left_subtree = self.build_tree(best_split["dataset_left"], current_depth+1)
@@ -85,7 +85,7 @@ class DecisionTreeClassifier():
         leaf_value = self.calculate_leaf_value(Y)
         return Node(value=leaf_value)
     
-    def get_best_split(self, dataset, num_samples, num_features):
+    def get_best_split(self, dataset, num_features):
         # dictionary to save data
         best_split = {
         "info_gain": -float("inf")  # Initialize info_gain to a very small value
@@ -96,9 +96,9 @@ class DecisionTreeClassifier():
 
         for feature_index in range(num_features):
             feature_values = dataset[:, feature_index]
-            possible_thresholds = np.unique(feature_values)
+            potential_thresholds = np.unique(feature_values)
 
-            for threshold in possible_thresholds:
+            for threshold in potential_thresholds:
                 # get curent split
                 dataset_left, dataset_right = self.split(dataset, feature_index, threshold)
                 # check if child not null
@@ -185,8 +185,6 @@ class DecisionTreeClassifier():
         # fuction to detect single datapoint
         if tree.value!=None: return tree.value
         feature_val = x[tree.feature_index]
-        if feature_val <= tree.threshold:
-            return self.make_prediction(x, tree.left)
-        else:
-            return self.make_prediction(x, tree.right)
+        if feature_val <= tree.threshold: return self.make_prediction(x, tree.left)
+        else: return self.make_prediction(x, tree.right)
 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.12)  15 JAN 2024 05:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.12) (preloaded format=pdflatex 2022.12.12)  15 JAN 2024 06:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -767,7 +767,7 @@ Package biblatex Warning: Conflicting options.
 LaTeX Font Info:    Trying to load font information for T1+ptm on input line 170.
 (C:\Users\ezrae\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1ptm.fd
 File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
-) (template-skripsi.aux (pengesahan.aux) (kata-pengantar.aux) (bab1.aux) (bab2.aux) (bab3.aux) (bab4.aux
+) (template-skripsi.aux (kata-pengantar.aux) (abstrak.aux) (abstract.aux) (bab1.aux) (bab2.aux) (bab3.aux) (bab4.aux
 
 LaTeX Warning: Label `code: split function' multiply defined.
 
@@ -884,37 +884,83 @@ Package biblatex Info: ... file 'template-skripsi.bbl' found.
 Package biblatex Info: Reference section=0 on input line 170.
 Package biblatex Info: Reference segment=0 on input line 170.
 \c@lstlisting=\count465
-<gambar/logounj.png, id=170, 186.38052pt x 186.38052pt>
+<gambar/logounj.png, id=186, 186.38052pt x 186.38052pt>
 File: gambar/logounj.png Graphic file (type png)
 <use gambar/logounj.png>
 Package pdftex.def Info: gambar/logounj.png  used on input line 172.
 (pdftex.def)             Requested size: 162.7473pt x 162.7498pt.
- [1
+
+
+pdfTeX warning: pdflatex (file ./Lembar_Pengesahan_Skripsi.pdf.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<Lembar_Pengesahan_Skripsi.pdf.pdf, id=188, 597.23125pt x 845.1575pt>
+File: Lembar_Pengesahan_Skripsi.pdf.pdf Graphic file (type pdf)
+<use Lembar_Pengesahan_Skripsi.pdf.pdf>
+Package pdftex.def Info: Lembar_Pengesahan_Skripsi.pdf.pdf  used on input line 181.
+(pdftex.def)             Requested size: 597.22978pt x 845.15544pt.
+
+
+pdfTeX warning: pdflatex (file ./Lembar_Pengesahan_Skripsi.pdf.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+File: Lembar_Pengesahan_Skripsi.pdf.pdf Graphic file (type pdf)
+<use Lembar_Pengesahan_Skripsi.pdf.pdf>
+Package pdftex.def Info: Lembar_Pengesahan_Skripsi.pdf.pdf  used on input line 181.
+(pdftex.def)             Requested size: 597.22978pt x 845.15544pt.
+
+
+pdfTeX warning: pdflatex (file ./Lembar_Pengesahan_Skripsi.pdf.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+
+
+pdfTeX warning: pdflatex (file ./Lembar_Pengesahan_Skripsi.pdf.pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
+<Lembar_Pengesahan_Skripsi.pdf.pdf, id=191, page=1, 597.23125pt x 845.1575pt>
+File: Lembar_Pengesahan_Skripsi.pdf.pdf Graphic file (type pdf)
+<use Lembar_Pengesahan_Skripsi.pdf.pdf, page 1>
+Package pdftex.def Info: Lembar_Pengesahan_Skripsi.pdf.pdf , page1 used on input line 181.
+(pdftex.def)             Requested size: 597.22978pt x 845.15544pt.
+File: Lembar_Pengesahan_Skripsi.pdf.pdf Graphic file (type pdf)
+<use Lembar_Pengesahan_Skripsi.pdf.pdf, page 1>
+Package pdftex.def Info: Lembar_Pengesahan_Skripsi.pdf.pdf , page1 used on input line 181.
+(pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
+[1
 
 {C:/Users/ezrae/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map} <./gambar/logounj.png>]
-\openout2 = `pengesahan.aux'.
+File: Lembar_Pengesahan_Skripsi.pdf.pdf Graphic file (type pdf)
+<use Lembar_Pengesahan_Skripsi.pdf.pdf, page 1>
+Package pdftex.def Info: Lembar_Pengesahan_Skripsi.pdf.pdf , page1 used on input line 181.
+(pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
+File: Lembar_Pengesahan_Skripsi.pdf.pdf Graphic file (type pdf)
+<use Lembar_Pengesahan_Skripsi.pdf.pdf, page 1>
+Package pdftex.def Info: Lembar_Pengesahan_Skripsi.pdf.pdf , page1 used on input line 181.
+(pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
+File: Lembar_Pengesahan_Skripsi.pdf.pdf Graphic file (type pdf)
+<use Lembar_Pengesahan_Skripsi.pdf.pdf, page 1>
+Package pdftex.def Info: Lembar_Pengesahan_Skripsi.pdf.pdf , page1 used on input line 181.
+(pdftex.def)             Requested size: 597.25711pt x 845.19412pt.
+ [2 <./Lembar_Pengesahan_Skripsi.pdf.pdf>]
+\openout2 = `kata-pengantar.aux'.
 
- (pengesahan.tex
-LaTeX Font Info:    Trying to load font information for U+lasy on input line 7.
+ (kata-pengantar.tex
+LaTeX Font Info:    Trying to load font information for U+lasy on input line 44.
  (C:\Users\ezrae\AppData\Local\Programs\MiKTeX\tex/latex/base\ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-)
-Overfull \hbox (22.07805pt too wide) in paragraph at lines 33--44
- [][] 
- []
+)) [3
 
-) [2
+
+] [4]
+\openout2 = `abstrak.aux'.
+
+ (abstrak.tex) [5
+
+
 
 
 ]
-\openout2 = `kata-pengantar.aux'.
+\openout2 = `abstract.aux'.
 
- (kata-pengantar.tex [3
-
-
+ (abstract.tex) [6
 
 
-]) [4] (template-skripsi.toc [5
+
+
+] (template-skripsi.toc [7
 
 
 
@@ -922,17 +968,17 @@ Overfull \hbox (22.07805pt too wide) in paragraph at lines 33--44
 \tf@toc=\write5
 \openout5 = `template-skripsi.toc'.
 
- [6] (template-skripsi.lof [7
+ [8] (template-skripsi.lof [9
 
-] [8])
+])
 \tf@lof=\write6
 \openout6 = `template-skripsi.lof'.
 
- [9] (template-skripsi.lot)
+ [10] (template-skripsi.lot)
 \tf@lot=\write7
 \openout7 = `template-skripsi.lot'.
 
- [10
+ [11
 
 ]
 \openout2 = `bab1.aux'.
@@ -947,144 +993,141 @@ BAB I.
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 64.
  (C:\Users\ezrae\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [2] [3]) [4]
+) [2]) [3]
 \openout2 = `bab2.aux'.
 
  (bab2.tex
 BAB II.
-<gambar/haar_features.png, id=438, 429.85594pt x 118.19156pt>
+<gambar/haar_features.png, id=462, 429.85594pt x 118.19156pt>
 File: gambar/haar_features.png Graphic file (type png)
 <use gambar/haar_features.png>
 Package pdftex.def Info: gambar/haar_features.png  used on input line 41.
 (pdftex.def)             Requested size: 244.12717pt x 67.12462pt.
-[5
+[4
 
 
 
 
-]
+ <./gambar/haar_features.png>]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 119.
- [6 <./gambar/haar_features.png>] [7] [8]
-<gambar/cascade.png, id=479, 223.58531pt x 150.5625pt>
+ [5] [6]
+<gambar/cascade.png, id=499, 223.58531pt x 150.5625pt>
 File: gambar/cascade.png Graphic file (type png)
 <use gambar/cascade.png>
 Package pdftex.def Info: gambar/cascade.png  used on input line 237.
 (pdftex.def)             Requested size: 244.12717pt x 164.39932pt.
- [9 <./gambar/cascade.png>]) [10]
+ [7 <./gambar/cascade.png>]) [8]
 \openout2 = `bab3.aux'.
 
  (bab3.tex
 BAB III.
-<gambar/flowchart_1_1.png, id=490, 604.2575pt x 252.945pt>
+<gambar/flowchart_1_1.png, id=510, 604.2575pt x 252.945pt>
 File: gambar/flowchart_1_1.png Graphic file (type png)
 <use gambar/flowchart_1_1.png>
 Package pdftex.def Info: gambar/flowchart_1_1.png  used on input line 16.
 (pdftex.def)             Requested size: 244.12717pt x 102.19128pt.
-<gambar/flowchart_2.png, id=491, 573.14125pt x 251.94125pt>
+<gambar/flowchart_2.png, id=511, 573.14125pt x 251.94125pt>
 File: gambar/flowchart_2.png Graphic file (type png)
 <use gambar/flowchart_2.png>
 Package pdftex.def Info: gambar/flowchart_2.png  used on input line 22.
 (pdftex.def)             Requested size: 244.12717pt x 107.31387pt.
-[11
+[9
 
 
 
 
  <./gambar/flowchart_1_1.png> <./gambar/flowchart_2.png>]
-<gambar/dataset_2.png, id=498, 1716.4125pt x 584.1825pt>
+<gambar/dataset_2.png, id=518, 1716.4125pt x 584.1825pt>
 File: gambar/dataset_2.png Graphic file (type png)
 <use gambar/dataset_2.png>
 Package pdftex.def Info: gambar/dataset_2.png  used on input line 71.
 (pdftex.def)             Requested size: 244.12717pt x 83.08641pt.
- [12]
-<gambar/window_compund.png, id=503, 351.3125pt x 602.25pt>
+ [10 <./gambar/dataset_2.png>]
+<gambar/window_compund.png, id=523, 351.3125pt x 602.25pt>
 File: gambar/window_compund.png Graphic file (type png)
 <use gambar/window_compund.png>
 Package pdftex.def Info: gambar/window_compund.png  used on input line 99.
 (pdftex.def)             Requested size: 244.12717pt x 418.52118pt.
- [13 <./gambar/dataset_2.png>] [14 <./gambar/window_compund.png>]
-<gambar/feature_data_1.png, id=513, 542.025pt x 542.025pt>
+ [11 <./gambar/window_compund.png>]
+<gambar/feature_data_1.png, id=528, 542.025pt x 542.025pt>
 File: gambar/feature_data_1.png Graphic file (type png)
 <use gambar/feature_data_1.png>
 Package pdftex.def Info: gambar/feature_data_1.png  used on input line 167.
 (pdftex.def)             Requested size: 244.12717pt x 244.12402pt.
- [15 <./gambar/feature_data_1.png>]
-<gambar/decision_tree_1.png, id=521, 452.69125pt x 402.50375pt>
+ [12 <./gambar/feature_data_1.png>]
+<gambar/decision_tree_1.png, id=536, 452.69125pt x 402.50375pt>
 File: gambar/decision_tree_1.png Graphic file (type png)
 <use gambar/decision_tree_1.png>
 Package pdftex.def Info: gambar/decision_tree_1.png  used on input line 195.
 (pdftex.def)             Requested size: 244.12717pt x 217.06012pt.
- [16 <./gambar/decision_tree_1.png>] [17] [18]
+ [13 <./gambar/decision_tree_1.png>] [14] [15]
 Overfull \hbox (9.64194pt too wide) in paragraph at lines 367--368
 [] $[] \OMS/cmsy/m/n/12   []\OT1/cmr/m/n/12 ([]\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 )$ 
  []
 
-<gambar/sliding_window_3.png, id=539, 351.3125pt x 200.75pt>
+<gambar/sliding_window_3.png, id=555, 351.3125pt x 200.75pt>
 File: gambar/sliding_window_3.png Graphic file (type png)
 <use gambar/sliding_window_3.png>
 Package pdftex.def Info: gambar/sliding_window_3.png  used on input line 378.
 (pdftex.def)             Requested size: 244.12717pt x 139.50705pt.
-[19] [20]
-<gambar/sliding_window_2.png, id=550, 120.45pt x 88.33pt>
+[16]
+<gambar/sliding_window_2.png, id=561, 120.45pt x 88.33pt>
 File: gambar/sliding_window_2.png Graphic file (type png)
 <use gambar/sliding_window_2.png>
 Package pdftex.def Info: gambar/sliding_window_2.png  used on input line 386.
 (pdftex.def)             Requested size: 244.12717pt x 179.04381pt.
-) [21 <./gambar/sliding_window_3.png> <./gambar/sliding_window_2.png>]
+ [17 <./gambar/sliding_window_3.png>]) [18 <./gambar/sliding_window_2.png>]
 \openout2 = `bab4.aux'.
 
  (bab4.tex
 BAB IV.
 (C:\Users\ezrae\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) [22
+) [19
 
 
 
 
-] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39] [40] [41]
-Overfull \vbox (47.20088pt too high) has occurred while \output is active []
-
- [42]
-LaTeX Font Info:    Trying to load font information for T1+pcr on input line 1056.
+] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35]
+LaTeX Font Info:    Trying to load font information for T1+pcr on input line 1055.
  (C:\Users\ezrae\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)) [43]
+)) [36] [37]
 \openout2 = `bab5.aux'.
 
  (bab5.tex
 BAB V.
-) [44
+) [38
 
 
 
 
-] [45
+] [39
 
 
 
-] (template-skripsi.aux (pengesahan.aux) (kata-pengantar.aux) (bab1.aux) (bab2.aux) (bab3.aux) (bab4.aux) (bab5.aux))
+] (template-skripsi.aux (kata-pengantar.aux) (abstrak.aux) (abstract.aux) (bab1.aux) (bab2.aux) (bab3.aux) (bab4.aux) (bab5.aux))
 
 LaTeX Warning: There were multiply-defined labels.
 
 Package rerunfilecheck Info: File `template-skripsi.out' has not changed.
-(rerunfilecheck)             Checksum: 1C7DB9B5053859A41807D568A177EA95;6324.
+(rerunfilecheck)             Checksum: 8F6BB287000DDA8FD8E7892BABE656B1;6736.
 Package logreq Info: Writing requests to 'template-skripsi.run.xml'.
 \openout1 = `template-skripsi.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 26019 strings out of 475281
- 455016 string characters out of 2774064
- 1953539 words of memory out of 3000000
- 46267 multiletter control sequences out of 15000+600000
- 510854 words of font info for 72 fonts, out of 8000000 for 9000
+ 26061 strings out of 475281
+ 456388 string characters out of 2774064
+ 1957309 words of memory out of 3000000
+ 46305 multiletter control sequences out of 15000+600000
+ 513622 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,18n,77p,757b,2214s stack positions out of 10000i,1000n,20000p,200000b,80000s
+ 72i,18n,77p,757b,2212s stack positions out of 10000i,1000n,20000p,200000b,80000s
 {C:/Users/ezrae/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Users/ezrae/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/ezrae/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/ezrae/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/ezrae/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/ezrae/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/ezrae/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/ezrae/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/ezrae/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/ezrae/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/ezrae/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/ezrae/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/ezrae/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/ezrae/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/ezrae/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/ezrae/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on template-skripsi.pdf (55 pages, 2695241 bytes).
+Output written on template-skripsi.pdf (50 pages, 2749958 bytes).
 PDF statistics:
- 1527 PDF objects out of 1728 (max. 8388607)
- 817 named destinations out of 1000 (max. 500000)
- 392 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1528 PDF objects out of 1728 (max. 8388607)
+ 813 named destinations out of 1000 (max. 500000)
+ 444 words of extra memory for PDF output out of 10000 (max. 10000000)
 
