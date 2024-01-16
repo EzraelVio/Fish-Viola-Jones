@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.21)  15 JAN 2024 13:33
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.5) (preloaded format=pdflatex 2023.7.21)  16 JAN 2024 14:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -995,90 +995,90 @@ BAB I.
 LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 64.
  (C:\Users\USER\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
-) [2]) [3]
+) [2] [3]) [4]
 \openout2 = `bab2.aux'.
 
  (bab2.tex
 BAB II.
-<gambar/haar_features.png, id=462, 429.85594pt x 118.19156pt>
+<gambar/haar_features.png, id=467, 429.85594pt x 118.19156pt>
 File: gambar/haar_features.png Graphic file (type png)
 <use gambar/haar_features.png>
 Package pdftex.def Info: gambar/haar_features.png  used on input line 41.
 (pdftex.def)             Requested size: 244.12717pt x 67.12462pt.
-[4
+[5
 
 
 
 
  <./gambar/haar_features.png>]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 119.
- [5] [6]
-<gambar/cascade.png, id=499, 223.58531pt x 150.5625pt>
+ [6] [7]
+<gambar/cascade.png, id=504, 223.58531pt x 150.5625pt>
 File: gambar/cascade.png Graphic file (type png)
 <use gambar/cascade.png>
 Package pdftex.def Info: gambar/cascade.png  used on input line 237.
 (pdftex.def)             Requested size: 244.12717pt x 164.39932pt.
- [7 <./gambar/cascade.png>]) [8]
+ [8 <./gambar/cascade.png>]) [9]
 \openout2 = `bab3.aux'.
 
  (bab3.tex
 BAB III.
-<gambar/flowchart_1_1.png, id=510, 604.2575pt x 252.945pt>
-File: gambar/flowchart_1_1.png Graphic file (type png)
-<use gambar/flowchart_1_1.png>
-Package pdftex.def Info: gambar/flowchart_1_1.png  used on input line 16.
-(pdftex.def)             Requested size: 244.12717pt x 102.19128pt.
-<gambar/flowchart_2.png, id=511, 573.14125pt x 251.94125pt>
-File: gambar/flowchart_2.png Graphic file (type png)
-<use gambar/flowchart_2.png>
-Package pdftex.def Info: gambar/flowchart_2.png  used on input line 22.
-(pdftex.def)             Requested size: 244.12717pt x 107.31387pt.
-[9
+<gambar/training_flowchart_riil.png, id=515, 563.10374pt x 231.86626pt>
+File: gambar/training_flowchart_riil.png Graphic file (type png)
+<use gambar/training_flowchart_riil.png>
+Package pdftex.def Info: gambar/training_flowchart_riil.png  used on input line 16.
+(pdftex.def)             Requested size: 244.12717pt x 100.52135pt.
+<gambar/use_flochart_riil.png, id=516, 553.06625pt x 151.56625pt>
+File: gambar/use_flochart_riil.png Graphic file (type png)
+<use gambar/use_flochart_riil.png>
+Package pdftex.def Info: gambar/use_flochart_riil.png  used on input line 22.
+(pdftex.def)             Requested size: 244.12717pt x 66.90211pt.
+[10
 
 
 
 
- <./gambar/flowchart_1_1.png> <./gambar/flowchart_2.png>]
-<gambar/dataset_2.png, id=518, 1716.4125pt x 584.1825pt>
+ <./gambar/training_flowchart_riil.png> <./gambar/use_flochart_riil.png>]
+<gambar/dataset_2.png, id=523, 1716.4125pt x 584.1825pt>
 File: gambar/dataset_2.png Graphic file (type png)
 <use gambar/dataset_2.png>
 Package pdftex.def Info: gambar/dataset_2.png  used on input line 71.
 (pdftex.def)             Requested size: 244.12717pt x 83.08641pt.
- [10 <./gambar/dataset_2.png>]
-<gambar/window_compund.png, id=523, 351.3125pt x 602.25pt>
+ [11 <./gambar/dataset_2.png>]
+<gambar/window_compund.png, id=528, 351.3125pt x 602.25pt>
 File: gambar/window_compund.png Graphic file (type png)
 <use gambar/window_compund.png>
 Package pdftex.def Info: gambar/window_compund.png  used on input line 99.
 (pdftex.def)             Requested size: 244.12717pt x 418.52118pt.
- [11 <./gambar/window_compund.png>]
-<gambar/feature_data_1.png, id=528, 542.025pt x 542.025pt>
+ [12 <./gambar/window_compund.png>]
+<gambar/feature_data_1.png, id=533, 542.025pt x 542.025pt>
 File: gambar/feature_data_1.png Graphic file (type png)
 <use gambar/feature_data_1.png>
 Package pdftex.def Info: gambar/feature_data_1.png  used on input line 167.
 (pdftex.def)             Requested size: 244.12717pt x 244.12402pt.
- [12 <./gambar/feature_data_1.png>]
-<gambar/decision_tree_1.png, id=536, 452.69125pt x 402.50375pt>
+ [13 <./gambar/feature_data_1.png>]
+<gambar/decision_tree_1.png, id=541, 452.69125pt x 402.50375pt>
 File: gambar/decision_tree_1.png Graphic file (type png)
 <use gambar/decision_tree_1.png>
 Package pdftex.def Info: gambar/decision_tree_1.png  used on input line 195.
 (pdftex.def)             Requested size: 244.12717pt x 217.06012pt.
- [13 <./gambar/decision_tree_1.png>] [14] [15]
+ [14 <./gambar/decision_tree_1.png>] [15] [16]
 Overfull \hbox (9.64194pt too wide) in paragraph at lines 367--368
 [] $[] \OMS/cmsy/m/n/12   []\OT1/cmr/m/n/12 ([]\OML/cmm/m/it/12 ; \OT1/cmr/m/n/12 0\OML/cmm/m/it/12 ; []\OT1/cmr/m/n/12 )$ 
  []
 
-<gambar/sliding_window_3.png, id=555, 351.3125pt x 200.75pt>
+<gambar/sliding_window_3.png, id=560, 351.3125pt x 200.75pt>
 File: gambar/sliding_window_3.png Graphic file (type png)
 <use gambar/sliding_window_3.png>
 Package pdftex.def Info: gambar/sliding_window_3.png  used on input line 378.
-(pdftex.def)             Requested size: 244.12717pt x 139.50705pt.
-[16]
-<gambar/sliding_window_2.png, id=561, 120.45pt x 88.33pt>
-File: gambar/sliding_window_2.png Graphic file (type png)
-<use gambar/sliding_window_2.png>
-Package pdftex.def Info: gambar/sliding_window_2.png  used on input line 386.
-(pdftex.def)             Requested size: 162.7473pt x 119.35895pt.
- [17 <./gambar/sliding_window_3.png> <./gambar/sliding_window_2.png>]) [18]
+(pdftex.def)             Requested size: 162.7473pt x 93.00163pt.
+[17]
+<gambar/hasil_klasifikasi.jpg, id=566, 351.3125pt x 200.75pt>
+File: gambar/hasil_klasifikasi.jpg Graphic file (type jpg)
+<use gambar/hasil_klasifikasi.jpg>
+Package pdftex.def Info: gambar/hasil_klasifikasi.jpg  used on input line 386.
+(pdftex.def)             Requested size: 162.7473pt x 93.00163pt.
+) [18 <./gambar/sliding_window_3.png> <./gambar/hasil_klasifikasi.jpg>]
 \openout2 = `bab4.aux'.
 
  (bab4.tex
@@ -1124,17 +1124,17 @@ Package logreq Info: Writing requests to 'template-skripsi.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 25958 strings out of 475550
- 449608 string characters out of 5763005
+ 25962 strings out of 475550
+ 449877 string characters out of 5763005
  2668238 words of memory out of 5000000
- 45965 multiletter control sequences out of 15000+600000
+ 45967 multiletter control sequences out of 15000+600000
  602432 words of font info for 82 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,18n,81p,756b,2214s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cmextra/cmex8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/courier/ucrr8a.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmb8a.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.pfb><C:/Users/USER/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.pfb>
-Output written on template-skripsi.pdf (50 pages, 2750091 bytes).
+Output written on template-skripsi.pdf (50 pages, 2748626 bytes).
 PDF statistics:
- 1528 PDF objects out of 1728 (max. 8388607)
- 813 named destinations out of 1000 (max. 500000)
+ 1529 PDF objects out of 1728 (max. 8388607)
+ 815 named destinations out of 1000 (max. 500000)
  444 words of extra memory for PDF output out of 10000 (max. 10000000)
 

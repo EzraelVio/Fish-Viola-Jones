@@ -25,6 +25,43 @@ for filename in os.listdir(directory):
         image_width = 350
         image_height = 200
 
+        # prediction0 = 0
+        # prediction1 = 0
+        # prediction2 = 0
+
+        # # window 0 sliding window, starts top left -> bottom left, end bottom right
+        # for x in range(0, int(image_width / 3) - 50 +1):
+        #     for y in range(0, image_height - 50 + 1):
+        #         prediction0 = window_cascade[0].final_cascade_classification(image, x, y)
+        #         print(f' window: 0, x: {x}, y: {y} complete! class: {prediction0}')
+        #         if prediction0 != 0: 
+        #             break
+                
+        #     if prediction0 != 0: break
+        # window_prediction[0] = prediction0
+
+        # # window 1 sliding window, starts top right -> top left, end bottom left
+        # for y in range(0, image_height - 50 + 1):
+        #     for x in range(int((image_width - image_width/2) * 2 / 3) - 50 + 1 , (image_width - int(image_width / 3)), -1):
+        #         prediction1 = window_cascade[1].final_cascade_classification(image, x + int(image_width / 3), y)
+        #         print(f' window: 1, x: {x}, y: {y} complete! class: {prediction1}')
+        #         if prediction1 != 0: 
+        #             break
+                
+        #     if prediction1 != 0: break
+        # window_prediction[1] = prediction1
+
+        # # window 2 sliding window, starts top right -> top left, end bottom left
+        # for y in range(0, image_height - 50 + 1):
+        #     for x in range(image_width - int(image_width / 3), image_width - 50 +1):
+        #         prediction2 = window_cascade[2].final_cascade_classification(image, x + int(image_width / 3 * 2), y)
+        #         print(f' window: 2, x: {x}, y: {y} complete! class: {prediction2}')
+        #         if prediction2 != 0: 
+        #             break
+                
+        #     if prediction2 != 0: break
+        # window_prediction[2] = prediction2
+ 
         # scan for the whole image using sliding windows
         for i in range(len(window_cascade)):
             # offset for different part all 3 window 

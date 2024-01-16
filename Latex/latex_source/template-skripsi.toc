@@ -15,26 +15,26 @@
 \contentsline {section}{\numberline {1.4}Tujuan Penelitian}{3}{section.1.4}%
 \contentsline {section}{\numberline {1.5}Manfaat Penelitian}{3}{section.1.5}%
 \babel@toc {bahasa}{}\relax 
-\contentsline {chapter}{\numberline {II}KAJIAN PUSTAKA}{4}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Pengertian Klasifikasi Objek}{4}{section.2.1}%
-\contentsline {section}{\numberline {2.2}\emph {Viola Jones Object Detection Framework}}{4}{section.2.2}%
-\contentsline {subsection}{\numberline {2.2.1}\emph {Features}}{4}{subsection.2.2.1}%
-\contentsline {subsection}{\numberline {2.2.2}\emph {Adaboost}}{5}{subsection.2.2.2}%
-\contentsline {subsection}{\numberline {2.2.3}\emph {Weaklearn}}{6}{subsection.2.2.3}%
-\contentsline {subsection}{\numberline {2.2.4}\emph {Attentional Cascade}}{7}{subsection.2.2.4}%
-\contentsline {chapter}{\numberline {III}METODOLOGI PENELITIAN}{9}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Tahapan Penelitian}{9}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Desain Sistem}{9}{section.3.2}%
-\contentsline {section}{\numberline {3.3}Training \emph {Strong Classifier}}{10}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}\textit {Input Dataset} Pelatihan}{10}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Pembuatan \textit {Haar like Features}}{12}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Pembuatan \textit {Decision Tree}}{13}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}\emph {Boosting}}{14}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Pembuatan \emph {Attentional Cascade}}{15}{subsection.3.3.5}%
-\contentsline {section}{\numberline {3.4}Skenario Eksperimen dan Validasi}{15}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}\textit {Pre-processing}}{16}{subsection.3.4.1}%
-\contentsline {subsection}{\numberline {3.4.2}Klasifikasi}{16}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Anotasi}{17}{subsection.3.4.3}%
+\contentsline {chapter}{\numberline {II}KAJIAN PUSTAKA}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Pengertian Klasifikasi Objek}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}\emph {Viola Jones Object Detection Framework}}{5}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}\emph {Features}}{5}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}\emph {Adaboost}}{6}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}\emph {Weaklearn}}{7}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}\emph {Attentional Cascade}}{8}{subsection.2.2.4}%
+\contentsline {chapter}{\numberline {III}METODOLOGI PENELITIAN}{10}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Tahapan Penelitian}{10}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Desain Sistem}{10}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Training \emph {Strong Classifier}}{11}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}\textit {Input Dataset} Pelatihan}{11}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Pembuatan \textit {Haar like Features}}{13}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Pembuatan \textit {Decision Tree}}{14}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}\emph {Boosting}}{15}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Pembuatan \emph {Attentional Cascade}}{16}{subsection.3.3.5}%
+\contentsline {section}{\numberline {3.4}Skenario Eksperimen dan Validasi}{16}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}\textit {Pre-processing}}{17}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Klasifikasi}{17}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Anotasi}{18}{subsection.3.4.3}%
 \contentsline {chapter}{\numberline {IV}HASIL DAN PEMBAHASAN}{19}{chapter.4}%
 \contentsline {section}{\numberline {4.1}\textit {Training Strong Classifier}}{19}{section.4.1}%
 \contentsline {subsection}{\numberline {4.1.1}\textit {Input} Gambar dan \textit {labeling}}{19}{subsection.4.1.1}%

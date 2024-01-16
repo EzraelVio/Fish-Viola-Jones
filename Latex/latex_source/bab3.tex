@@ -13,13 +13,13 @@ Gambar \textit{flowchart} berikut mengilustrasikan proses pelatihan
 
 \begin{figure}[H]
   \centering{}
-	\includegraphics[width=0.6\textwidth]{gambar/flowchart\_1\_1}
+	\includegraphics[width=0.6\textwidth]{gambar/training\_flowchart\_riil}
   \caption{Diagram alir untuk algoritma pelatihan klasifikasi objek}
 \end{figure}
 
 \begin{figure}[H]
   \centering{}
-	\includegraphics[width=0.6\textwidth]{gambar/flowchart\_2}
+	\includegraphics[width=0.6\textwidth]{gambar/use\_flochart\_riil}
   \caption{Diagram alir untuk algoritma pendeteksian objek}
 \end{figure}
 
@@ -375,7 +375,7 @@ melakukan klasifikasi.
 
 \begin{figure}[H]
   \centering{}
-	\includegraphics[width=0.6\textwidth]{gambar/sliding\_window\_3}
+	\includegraphics[width=0.4\textwidth]{gambar/sliding\_window\_3}
   \caption{titik awal \textit{sliding window} (kotak hijau) dan titik akhir (kotak kuning)}
 \end{figure}
 
@@ -383,14 +383,13 @@ melakukan klasifikasi.
 
 \begin{figure}[H]
   \centering{}
-	\includegraphics[width=0.4\textwidth]{gambar/sliding\_window\_2}
-  \caption{Gambaran \textit{sub-window} yang berhasil mengklasifikasi ikan didalam gambar}
+	\includegraphics[width=0.4\textwidth]{gambar/hasil\_klasifikasi}
+  \caption{Anotasi gambar ikan yang sudah diklasifikasi}
 \end{figure}
 
-Setelah semua \textit{sub-window} sudah diklasifikasi dengan menggunakan 
-\emph{strong classifier}. Algoritma akan menggambarkan di lokasi \textit{sub-window} 
-yang positif terklasifikasi (Memiliki salah satu kelas ikan yang telah dilatih ke \emph{strong classifier}), 
-\emph{bounding box} untuk menganotasi kelasnya. Pengguna lalu dapat menentukan 
-dari hasil anotasi bilamana target akurasi sudah tercapai.
+Setelah ketiga \textit{window} sudah dideteksi oleh \emph{cascade classifer} 
+menggunakan \textit{sliding window}, masing-masing hasilnya akan dipakai 
+untuk menentukan kelas dari objek pada gambar. Setelahnya nama 
+spesies ikan akan ditulis pada kiri atas gambar pada gambar hasil.
 
 
