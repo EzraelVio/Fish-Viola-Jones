@@ -23,10 +23,11 @@ print("starting...")
 # generate CSV of image feature values. Run if CSV have not been made
 # write_csv splits data into 3 dataframes. Image feature value depends on preassigned windows and class in Dataset.py
 csv_name = "fish" # change name accordingly
-Utilities.write_csv(images, labels, initial_features, csv_name)
+# Utilities.write_csv(images, labels, initial_features, csv_name)
 
 # create weak classifiers (Decision Trees) for each window
-for i in range(3):
+for i in range(2, 3):
+    csv_name_loop = f'{csv_name}_window_{i}'
     splits = []
     trees = []
     accuracies = []

@@ -75,7 +75,7 @@ class DecisionTreeClassifier():
         # split until conditons are met
         if num_samples >= self.minimum_splits and current_depth <= self.maximum_depth:
             # find best split
-            best_split = self.get_best_split(dataset, num_features)
+            best_split = self.get_best_split(training_dataset, num_features)
             # check if information gain is positive
             if best_split["info_gain"]>0:
                 left_subtree = self.build_tree(best_split["dataset_left"], current_depth+1)

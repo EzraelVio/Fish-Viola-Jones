@@ -36,10 +36,11 @@ class Cascade:
             if stage_scoreboard.index(max(stage_scoreboard)) == 0:
                 scoreboard = [scoreboard + stage_scoreboard for scoreboard, stage_scoreboard in zip(scoreboard, stage_scoreboard)]
                 if scoreboard[0] > sum(scoreboard)/2:
+                    # print(f'Majority vote 0! Breaking cascade {i}')
                     scoreboard = [1, 0, 0, 0]
                     break
             else: scoreboard = [scoreboard + stage_scoreboard for scoreboard, stage_scoreboard in zip(scoreboard, stage_scoreboard)]
-
+        # print(f'iteration {i} completed')
         return scoreboard.index(max(scoreboard))
     
     def save_to_pickle(self, pickle_name):

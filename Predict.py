@@ -32,10 +32,12 @@ for filename in os.listdir(directory):
                 case 0: left_window_width = 0
                 case 1: left_window_width = int(image_width / 3)
                 case 2: left_window_width = int(image_width / 3 * 2)
-            for y in range(0, image_height - 50 + 1):
-                for x in range(0, int(image_width / 3) - 50 +1):
+            for x in range(0, int(image_width / 3) - 50 +1):
+                for y in range(0, image_height - 50 + 1):
                     prediction = window_cascade[i].final_cascade_classification(image, x + left_window_width, y)
-                    if prediction != 0: break
+                    print(f' window: {i}, x: {x}, y: {y} complete! class: {prediction}')
+                    if prediction != 0: 
+                        break
                 
                 if prediction != 0: break
             # print(f'classification result for window {i}: {prediction}')
