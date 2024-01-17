@@ -25,7 +25,7 @@ class Utilities:
 
     def write_csv(images, labels, features, csv_name):
         print("starting write_csv")
-        for window_num in range(2, 3):
+        for window_num in range(3):
             temp_window_values = np.zeros((len(images), len(features)), dtype=object)
             image_ids = np.arange(len(images))
 

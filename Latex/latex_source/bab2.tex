@@ -116,34 +116,21 @@ persegi diagonal.
 \subsection{\emph{Adaboost}}
 
 \begin{algorithm}
-  \caption{Algoritma Adaboost}
-  \begin{algorithmic}[1]
-    \State Diberikan contoh gambar $(x_1, y_1), \ldots, (x_n, y_n)$ dimana 
-    $y_i = 0$ untuk contoh negatif dan $y_i = 1, \ldots, N$ untuk contoh kelas-kelas positif
-    \State Inisialisasi bobot $w_{i,1} = \frac{1}{\text{{total contoh}}}$
-    \State Untuk $t = 1, \ldots, T$:
-    \begin{enumerate}
-      \item Normalisasi bobot, $w_{t,1} \gets \frac{w_{t,1}}{\sum_{j=1}^{n} w_{t,j}}$
-      \item Pilih \textit{weak classifier} terbaik dengan melihat error yang telah diberi bobot
-      \begin{equation}
-        \in_t = \min_{f, p, \theta} \sum_i w_i |h(x_i, f, p, \theta) - y_i|.
-      \end{equation}
-      \item Definisikan $h_t(x) = h(x, f_t, p_t, \theta_t)$ dimana $f_t, p_t,$ dan $\theta_t$ adalah \textit{minimizer} dari $\in_t$.
-      \item Perbarui bobot:
-      \begin{equation}
-        w_{t+1,i} = w_{t,i} \beta_t^{1 - e_i}
-      \end{equation}
-      dimana $e_i = 0$ bila contoh $x_i$ diklasifikasi secara benar, selainnya $e_i = 1$, dan $\beta_t = \frac{\in_t}{1 - \in_t}$
-    \end{enumerate}
-    \State \textit{strong classifier} akhirnya adalah:
-    \begin{equation}
-      C(x) = \begin{cases}
-        1 & \sum_{t=1}^T \alpha_t h_t (x) \geq \frac{1}{2} \sum_{t=1}^T \alpha_t \\
-        0 & \text{selain itu}
-      \end{cases}
-    \end{equation}
-    dimana $\alpha_t = \log \frac{1}{\beta_t}$ 
-  \end{algorithmic}
+\caption{SAMME Adaboost Algorithm}
+\begin{algorithmic}[1]
+\State \textbf{Input:} Set latihan $\{(x_i, y_i)\}_{i=1}^N$ dimana $x_i$ adalah sampel ke-$i$ dan $y_i$ adalah labelnya, jumlah \textit{weak classifiers} $M$
+\State \textbf{Output:} Urutan \textit{classifier} $H(x)$
+\State Inisiasi bobot gambar: $w_i^{(1)} = \frac{1}{N}, i=1,2,\ldots,N$
+\For{$m=1$ to $M$}
+    \State latih \textit{weak classifier} $h_m(x)$ dengan distribusi $w_i^{(m)}$
+    \State Hitung error pada klasifikasi: $\epsilon_m = \sum_{i=1}^N w_i^{(m)} \cdot \text{I}(h_m(x_i) \neq y_i)$
+    \State Hitung bobot \textit{weak classifier}: $\alpha_m = \frac{1}{2} \log\left(\frac{1 - \epsilon_m}{\epsilon_m}\right)$
+    \State Ubah bobot gambar sesuai error pada klasifikasi:
+    \State \hspace{\algorithmicindent} For $i=1,2,\ldots,N$: $w_i^{(m+1)} = w_i^{(m)} \cdot \exp(-\alpha_m \cdot \text{I}(h_m(x_i) \neq y_i))$
+    \State Normalisasi bobot gambar: $w_i^{(m+1)} = \frac{w_i^{(m+1)}}{\sum_{i=1}^N w_i^{(m+1)}}$
+\EndFor
+\State Hasil \textit{strong classifier}: $H(x) = \text{sign}\left(\sum_{m=1}^M \alpha_m \cdot h_m(x)\right)$
+\end{algorithmic}
 \end{algorithm}
 
 Dalam \emph{framework Viola-Jones} sebuah varian dari \emph{Adaboost} 

@@ -8,14 +8,21 @@
 
 \section{\textit{Training Strong Classifier}}
 \subsection{\textit{Input} Gambar dan \textit{labeling}}
+
+	\begin{figure}[H]
+		\centering{}
+		\includegraphics[width=0.6\textwidth]{gambar/training\_data}
+		\caption{Gambar-gambar yang akan dipakai untuk training}
+	\end{figure}
+
 	Langkah pertama dalam melatih \textit{classifier} adalah dengan memasukan 
 	\textit{dataset} untuk latihan berserta label-labelnya. Gambar pertama dimasukan 
 	ke dalam folder sesuai dengan kelasnya. Dalam situasi ini ada empat folder yaitu, 
 	untuk kelas satu: abudefduf, untuk kelas dua: amphiprion, untuk kelas tiga: chaetodon 
 	dan terakhir untuk kelas nol: negative\_examples. Gambar-gambar tersebut lalu akan dibaca 
 	menggunakan \textit{library} CV2 yang bertugas juga untuk mengubah gambar menjadi 
-	\textit{greyscale}. Berikut adalah \emph{source code} 
-	untuk membaca set latihan:
+	\textit{greyscale}. Berikut adalah \emph{source code} \texttt{load\_images()}
+	yang digunakan untuk membaca set gambar latihan:
 
 	\begin{figure}[H]
 		\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -49,10 +56,11 @@
 		\label{code:labeling}
 	\end{figure}
 
-	Untuk memanggil kedua fungsi load\_images dan get\_label diperlukan sebuah fungsi lainnya 
+	Untuk memanggil kedua fungsi \texttt{load\_images} dan \texttt{get\_label} diperlukan sebuah fungsi lainnya 
 	yang berfungsi juga untuk menggabungkan semua gambar dan label menjadi dua buah \emph{array} 
-	images dan labels. Kedua \emph{array} ini nantinya akan menjadi \textit{dataset} utama 
-	dalam proses pelatihan. Berikut \emph{source code}-nya:
+	\texttt{images} dan \texttt{labels}. Kedua \emph{array} ini nantinya akan menjadi \textit{dataset} utama 
+	dalam proses pelatihan. Berikut \emph{source code} dari \texttt{combine\_dataset} yang 
+	digunakan untuk membuat \textit{array} \texttt{images} dan \texttt{labels}:
 
 	\begin{figure}[H]
 		\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -76,7 +84,7 @@
 	\end{figure}
 
 \subsection{\textit{Generate Haar-like Features}}
-	Untuk melakukan \emph{generate feature} sebuah fungsi bernama generate\_features dipanggil 
+	Untuk melakukan \emph{generate feature} sebuah fungsi bernama \texttt{generate\_features()} dipanggil 
 	dengan parameter lebar dan tinggi dari \emph{sub-window} yang akan digunakan. Fungsi ini akan 
 	menghasilkan kurang lebih sekitar 520000 fitur berbeda untuk \emph{sub-window} berukuran 
 	50 x 50 piksel. Berikut \emph{source code}-nya:
@@ -105,16 +113,16 @@
 									features.append(feature)
     			return features
 		\end{lstlisting}
-		\caption{\emph{source code:} \textit{feature} memiliki semua informasi yang diperlukan 
-		untuk melakukan perhitungan. Tipe-tipe fitur akan menentukan rumus perhitungan fitur tersebut}
+		\caption{\emph{source code:} sebuah data dalam \textit{features} memiliki semua informasi yang diperlukan 
+		untuk melakukan perhitungan nilai sebuah fitur. Tipe-tipe fitur akan menentukan rumus perhitungan fitur tersebut}
 		\label{code:generate features}
 	\end{figure}
 
 \subsection{\textit{Calculating all features of all images}}
 	Untuk mempermudah proses pembuatan \emph{Decision tree} nantinya, semua fitur 
 	pada semua \textit{sub-window}, pada semua gambar akan dihitung dan dimasukan 
-	kedalam sebuah dokumen .CSV mengunakan \textit{library} pandas. Fungsi yang dipakai untuk memulai proses ini adalah 
-	fungsi write\_csv pada Utilities.py. Berikut \emph{source code}-nya:
+	kedalam sebuah dokumen .CSV mengunakan \textit{library} Pandas. Fungsi yang dipakai untuk memulai proses ini adalah 
+	fungsi \texttt{write\_csv()} pada Utilities.py. Berikut \emph{source code}-nya:
 
 	\begin{figure}[H]
 		\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -144,12 +152,12 @@
 					window_feature.to_csv(directory, index=False)
 				print("csv write complete!")
 		\end{lstlisting}
-		\caption{\emph{source code:} mengambil semua gambar, label, fitur dan mengkalkulasi 
-		semua fitur untuk ketiga \textit{sub-window}}
+		\caption{\emph{source code:} \texttt{write\_csv()} mengambil semua gambar, 
+		label, fitur dan mengkalkulasi semua fitur untuk ketiga \textit{sub-window}}
 		\label{code:calculate all features}
 	\end{figure}
 
-	Fungsi ini menghasilkan tiga buah dokumen .csv untuk setiap \textit{sub-window} dengan
+	Fungsi ini menghasilkan sebuah dokumen .csv untuk setiap \textit{sub-window} dengan
 	baris mengikuti jumlah gambar didalam \textit{dataset} dan kolom mengikuti jumlah fitur yang ada. 
 	Maka dari itu untuk \emph{dataset} 80 gambar akan dihasilkan sebuah tabel .csv dengan 
 	bentuk 80 x 520.000.
@@ -159,9 +167,10 @@
 	Dan proses ini dilakukan sampai tiga kali agar dapat menciptakan tiga dokumen .csv untuk ketiga 
 	\textit{sub-window}. Dokumen .csv ini nantinya akan diperlukan untuk proses pembuatan \emph{decision tree}.
 
-	Dataset() adalah sebuah \textit{class} yang digunakan awalnya untuk menyimpan seluruh fitur 
-	pada gambar tersebut. Nilai-nilai ini yang lalu akan diambil dan dimasukan kedalam dokumen .csv. 
-	berikut bentuk \textit{class} Dataset berserta fungsi bawaannya Find\_Feature\_Value:
+	\texttt{Dataset} adalah sebuah \textit{class} yang digunakan untuk menyimpan seluruh nilai fitur 
+	dari sebuah gambar sebelum dimasukan kedalam dokumen .csv .  
+	Berikut adalah bentuk \textit{class} \texttt{Dataset} berserta 
+	fungsi bawaannya \texttt{Find\_Feature\_Value}:
 
 	\begin{figure}[H]
 		\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -189,15 +198,16 @@
 		\label{code:Dataset class}
 	\end{figure}
 
-	Dataset untuk melakukan perhitungan fitur memerlukan \textit{offset} piksel yang penulis 
-	sebutkan pada Bab 3. \textit{Offset} digunakan karena masing-masing kelas ikan semuanya memiliki 
-	mulut, sirip dan ekor yang berlokasi berbeda satu dengan yang lainnya. Contohnya: Mulut dari spesies ikan Chaetodon 
+	\texttt{Dataset}, untuk melakukan perhitungan fitur, digunakan \textit{Offset} 
+	menspesifikasi lokasi mulut, sirip dan ekor ikan pada gambar. Hal ini dilakukan 
+	karena masing-masing kelas ikan semuanya memiliki 
+	mulut, sirip dan ekor dengan lokasi yang berbeda satu dengan yang lainnya. Contohnya: Mulut dari spesies ikan Chaetodon 
 	agak lebih kebawah dibandingkan kedua kelas ikan lainnya. Selain itu juga untuk setiap bagian 
 	ikan yang akan diklasifikasi akan dicari lokasi yang paling terlihat unik daripada kelas-kelas lainnya. Contohnya 
 	pada kelas spesies ikan Abudefduf diambil bagian ekor yang memberntuk huruf "V" 
 	sementara pada kelas spesies Amphiprion bagian kelas yang dipelajari adalah 
-	bagian melengkung bagian atas diantara ekor dan badan. Berikut adalah \textit{offset} yang penulis gunakan 
-	untuk pelatihan:
+	bagian melengkung bagian atas diantara ekor dan badan. Berikut adalah 
+	\textit{offset} yang penulis gunakan untuk pelatihan:
 
 	\begin{figure}[H]
 		\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -230,14 +240,14 @@
     ]
 		\end{lstlisting}
 		\caption{\emph{source code:} \textit{offset} ini di-inisalisasi untuk setiap kelas Dataset 
-		sehingga bisa diakses langsung oleh fungsi Find\_Feature\_Value}
+		sehingga bisa diakses langsung oleh fungsi \texttt{Find\_Feature\_Value}}
 		\label{code:Training sub-window offset}
 	\end{figure}
 
-	Untuk perhitungan fitur yang sebenernya digunakan fungsi compute\_feature\_with\_matrix. 
-	Pertama data fitur diubah dengan menambah lokasi x dan y dari fitur dengan x\_offset, y\_offset 
+	Untuk perhitungan nilai fitur dari gambar digunakan fungsi \texttt{compute\_feature\_with\_matrix()}. 
+	Pertama data fitur diubah dengan menambah lokasi x dan y dari fitur dengan \texttt{x\_offset}, dan  \texttt{y\_offset} 
 	lalu fitur akan mengembalikan sebuah nilai float dari hasil perhitungan tersebut. Berikut \emph{source code} 
-	dari compute\_feature\_with\_matrix:
+	dari \texttt{compute\_feature\_with\_matrix}:
 	
 	\begin{figure}[H]
 		\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -271,7 +281,7 @@
 				return int(white) - int(black)
 		\end{lstlisting}
 		\caption{\emph{source code:} \textit{offset} ini di-inisalisasi untuk setiap kelas Dataset 
-		sehingga bisa diakses langsung oleh fungsi Find\_Feature\_Value}
+		sehingga bisa diakses langsung oleh fungsi \texttt{Find\_Feature\_Value()}}
 		\label{code: feature calculation}
 	\end{figure}
 
@@ -280,7 +290,7 @@
 		selanjutnya bisa dimulai proses pembuatan \emph{decision tree} atau \emph{weak classifier}. 
 		Proses ini dimulai dengan pertama membagi contoh menjadi tiga kelompok, yaitu data \emph{training}, 
 		data \emph{testing} dan data \emph{validation}. Hal ini dilakukan dengan menggunakan fungsi 
-		split\_data dibantu dengan fungsi train\_test\_split dari \textit{library} sklearn:
+		\texttt{split\_data} dibantu dengan fungsi \texttt{train\_test\_split()} dari \textit{library} sklearn:
 
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -299,19 +309,20 @@
 					splits = [X_train, Y_train, X_test, Y_test, X_valid, Y_valid]
 					return splits
 			\end{lstlisting}
-			\caption{\emph{source code:} \textit{offset} ini di-inisalisasi untuk setiap kelas Dataset 
-			sehingga bisa diakses langsung oleh fungsi Find\_Feature\_Value}
+			\caption{\emph{source code:} data \emph{training}, data \emph{testing} dan data \emph{validation} 
+			disimpan kedalam \textit{array} \texttt{X\_train, Y\_train, X\_test, Y\_test, X\_valid, Y\_valid}. 
+			Yang lalu disimpan kedalam \texttt{splits}}
 			\label{code: spliting dataset}
 		\end{figure}
 
 		Label baru ditambahkan sekarang agar tidak menggangu proses penulisan kolom .csv yang dinamis 
-		yang bergantung pada jumlah fitur yang ada. Hasilnya adalah sebuah \textit{object} bernama splits 
-		yang memiliki \textit{dataframe}: X\_train, Y\_train, X\_test, Y\_test, X\_valid, Y\_valid. \textit{Dataframe} 
+		mengikuti jumlah fitur yang ada. Hasilnya adalah sebuah \textit{object} bernama \texttt{splits} 
+		yang memiliki \textit{dataframe}: \texttt{X\_train, Y\_train, X\_test, Y\_test, X\_valid, Y\_valid}. \textit{Dataframe} 
 		dengan data awalan X berisikan nilai-nilai fitur yang sudah dikalkulasi di tahap sebelumnya. 
 		Sementara data awalan Y berisikan label untuk data X.
 
-		split\_data mengambil data dari .csv menggunakan fungsi bernama get\_data. Fungsi ini 
-		hanya bertugas untuk membaca .csv saja dengan bantuan fungsi read\_csv:
+		\texttt{split\_data()} mengambil data dari .csv menggunakan fungsi bernama \texttt{get\_data}. Fungsi ini 
+		hanya bertugas untuk membaca .csv saja dengan bantuan fungsi \texttt{read\_csv} dari \textit{library} Pandas:
 		
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -333,7 +344,7 @@
 		\end{figure}
 
 		setelah data di-\textit{split}, barulah \emph{decision tree} bisa deibuat dengan menggunakan 
-		fungsi build\_all\_tree:
+		fungsi \texttt{build\_all\_tree}:
 
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -354,17 +365,17 @@
 						classifiers_accuracy[i] = accuracy_score(Y_test, Y_pred)
 					return classifiers, classifiers_accuracy
 			\end{lstlisting}
-			\caption{\emph{source code:} untuk membuat semua decision tree untuk setiap fitur}
+			\caption{\emph{source code:} \texttt{build\_all\_tree} untuk membuat semua decision tree untuk setiap fitur}
 			\label{code: make all decision tree}
 		\end{figure}
 
-		Pada tahap ini build\_all\_tree mengisolasi kolom nilai fitur yang berhubungan 
-		dengan menyimpannya pada temp\_X\_train, yang nantinya akan digunakan saat pembuatan 
-		\emph{decision tree}. \emph{Decision tree} di-inisialisais menggunakan fungsi
-		DecisionTreeClassifier dan disimpan menjadi classifier. 
-		Classifier lalu dilatih menggunakan fungsi fit. Hasil dari pelatihan ini lalu langsung dites menggunakan 
-		fungsi accuracy\_score dari \textit{library} sklearn. classifiers\_accuracy ini nantinya 
-		akan dipakai dalam proses \emph{Boosting}. Untuk keseluruhan \textit{class} DecisionTreeClassifier 
+		Pada tahap ini \texttt{build\_all\_tree} mengisolasi kolom nilai fitur yang berhubungan 
+		dan menyimpannya pada \texttt{temp\_X\_train}, yang nantinya akan digunakan saat pembuatan 
+		\emph{decision tree}. \emph{Decision tree} di-inisialisais membuat \textit{class}
+		\texttt{DecisionTreeClassifier} dan disimpan menjadi \texttt{classifier}. 
+		\texttt{Classifier} lalu dilatih menggunakan fungsi \texttt{fit()}. Hasil dari pelatihan ini lalu langsung dites menggunakan 
+		fungsi \texttt{accuracy\_score()} dari \textit{library} Sklearn. Variabel \texttt{classifiers\_accuracy} ini nantinya 
+		akan dipakai dalam proses \emph{Boosting}. Untuk keseluruhan \textit{class} \texttt{DecisionTreeClassifier} 
 		dan fungsi-fungsinya bisa dilihat berkut ini:
 
 		\begin{figure}[H]
@@ -379,7 +390,7 @@
 
 						self.value = value
 			\end{lstlisting}
-			\caption{\emph{source code: class} node digunakan untuk menyimpan informasi cabang dan
+			\caption{\emph{source code: class} \texttt{node} digunakan untuk menyimpan informasi cabang dan
 			\textit{threshold} pada \emph{node decision tree}}
 			\label{code: node class}
 		\end{figure}	
@@ -397,84 +408,85 @@
 
 			\end{lstlisting}
 			\caption{\emph{source code: class} digunakan untuk menyimpan tinggi maksimal dan minimal 
-			\textit{split} pada \emph{decision tree}. Semua data lainnya disimpan pada node}
+			\textit{split} pada \emph{decision tree}. Semua data lainnya disimpan pada \texttt{node}}
 			\label{code: DecisionTreeClassifier class}
 		\end{figure}
 
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
 						
-					def build_tree(self, training_dataset, current_depth = 0):
+				def build_tree(self, training_dataset, current_depth = 0):
 
-						X, Y = training_dataset[:,:-1], training_dataset[:,-1]
-						num_samples, num_features = np.shape(X)
-
-						# split until conditons are met
-						if num_samples >= self.min_samples_split and current_depth <= self.max_depth:
-							# find best split
-							best_split = self.get_best_split(dataset, num_samples, num_features)
-							# check if information gain is positive
-							if best_split["info_gain"]>0:
-								left_subtree = self.build_tree(best_split["dataset_left"], current_depth+1)
-								right_subtree = self.build_tree(best_split["dataset_right"], current_depth+1)
-								return Node(best_split["feature_index"], best_split["threshold"], left_subtree, right_subtree, best_split["info_gain"])
-							
-						leaf_value = self.calculate_leaf_value(Y)
-						return Node(value=leaf_value)
+					X, Y = training_dataset[:,:-1], training_dataset[:,-1]
+					num_samples, num_features = np.shape(X)
+			
+					# split until conditons are met
+					if num_samples >= self.minimum_splits and current_depth <= self.maximum_depth:
+						# find best split
+						best_split = self.get_best_split(training_dataset, num_features)
+						# check if information gain is positive
+						if best_split["info_gain"]>0:
+							left_subtree = self.build_tree(best_split["dataset_left"], current_depth+1)
+							right_subtree = self.build_tree(best_split["dataset_right"], current_depth+1)
+							return Node(best_split["feature_index"], best_split["threshold"], left_subtree, right_subtree, best_split["info_gain"])
+						
+					leaf_value = self.calculate_leaf_value(Y)
+					return Node(value=leaf_value)
 					
 			\end{lstlisting}
 			\caption{\emph{source code:} fungsi utama dari \emph{class} DecisionTreeClassifier}
 			\label{code: build tree function}
 		\end{figure}
 
-		Fungsi build\_tree adalah fungsi utama untuk pelatihan \emph{decision tree} yang berjalan secara 
+		Fungsi \texttt{build\_tree()} adalah fungsi utama untuk pelatihan \emph{decision tree} yang berjalan secara 
 		rekursif sampai sebuah daun sudah didapat, atau kedalaman maksimum sudah dicapai. 
-		Sebuah daun sudah didapat bilamana \textit{info gain} dari fungsi get\_best\_split 0, atau \textit{node} 
-		sudah tidak perlu dipecah lagi.
+		Sebuah daun sudah didapat bilamana \texttt{info gain} dari fungsi \texttt{get\_best\_split} adalah 0, 
+		atau \textit{node} sudah tidak perlu dipecah lagi karena mencapai potensi maksimum \textit{decision tree}.
 
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
 
-					def get_best_split(self, dataset, num_samples, num_features):
-						# dictionary to save data
-						best_split = {
-						"info_gain": -float("inf")  # Initialize info_gain to a very small value
-						} 
-						max_info_gain = -float("inf")
+				def get_best_split(self, dataset, num_features):
+					# dictionary to save data
+					best_split = {
+					"info_gain": -float("inf")  # Initialize info_gain to a very small value
+					} 
+					max_info_gain = -float("inf")
 
-						for feature_index in range(num_features):
-							feature_values = dataset[:, feature_index]
-							possible_thresholds = np.unique(feature_values)
+					for feature_index in range(num_features):
+						feature_values = dataset[:, feature_index]
+						potential_thresholds = np.unique(feature_values)
 
-							for threshold in possible_thresholds:
-								# get curent split
-								dataset_left, dataset_right = self.split(dataset, feature_index, threshold)
-								# check if child not null
-								if len(dataset_left) > 0 and len(dataset_right) > 0:
-									y, left_y, rigth_y = dataset[:,-1], dataset_left[:,-1], dataset_right[:, -1]
-									# compute information gain
-									current_info_gain = self.information_gain(y, left_y, rigth_y, "gini")
-									# update best split if needed
-									if current_info_gain > max_info_gain:
-										best_split["feature_index"] = feature_index
-										best_split["threshold"] = threshold
-										best_split["dataset_left"] = dataset_left
-										best_split["dataset_right"] = dataset_right
-										best_split["info_gain"] = current_info_gain
-										max_info_gain = current_info_gain
+						for threshold in potential_thresholds:
+							# get curent split
+							dataset_left, dataset_right = self.split(dataset, feature_index, threshold)
+							# check if child not null
+							if len(dataset_left) > 0 and len(dataset_right) > 0:
+								y, left_y, rigth_y = dataset[:,-1], dataset_left[:,-1], dataset_right[:, -1]
+								# compute information gain
+								current_info_gain = self.information_gain(y, left_y, rigth_y, "gini")
+								# update best split if needed
+								if current_info_gain > max_info_gain:
+									best_split["feature_index"] = feature_index
+									best_split["threshold"] = threshold
+									best_split["dataset_left"] = dataset_left
+									best_split["dataset_right"] = dataset_right
+									best_split["info_gain"] = current_info_gain
+									max_info_gain = current_info_gain
 
-						return best_split
+        			return best_split
 
 			\end{lstlisting}
 			\caption{\emph{source code:} fungsi get\_best\_split}
 			\label{code: get split function}
 		\end{figure}
 
-		Fungsi get\_best\_split bertugas untuk mencari \textit{threshold} paling sesuai 
-		untuk memecah cabang suatu \textit{node} dengan mengetes satu-persatu atribut nilai 
-		atribut data latihan. Atribut disini adalah nilai \textit{feature} yang sedang dilatih 
-		dari semua gambar dari set \textit{train}. Untuk mencari \textit{info gain}, \textit{gini purity} 
-		akan dicari menggunakan fungsi information\_gain.
+		Fungsi \texttt{get\_best\_split()} bertugas untuk mencari \textit{threshold} paling sesuai 
+		untuk memecah cabang suatu \textit{node} dengan mengetes satu-persatu nilai 
+		atribut dari data latihan. Atribut disini adalah nilai \textit{feature} yang sedang dilatih 
+		dari semua gambar dari set \textit{train}. Untuk mencari \textit{info gain}, \textit{gini} 
+		akan dihitung menggunakan fungsi \texttt{information\_gain}. Selain \textit{gini}, 
+		menghitung \texttt{information gain} juga dapat dilakukan dengan menggunakan \textit{entropy}.
 
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -486,8 +498,8 @@
 						return dataset_left, dataset_rigth
 			
 			\end{lstlisting}
-			\caption{\emph{source code:} fungsi split hanya bertugas membagi berdasarkan \textit{threshold} 
-			yang sudah ditemukan}
+			\caption{\emph{source code:} fungsi split hanya bertugas membagi \texttt{node} 
+			berdasarkan \textit{threshold} yang sudah ditemukan}
 			\label{code: split function}
 		\end{figure}
 
@@ -504,7 +516,8 @@
 						return gain
 					
 			\end{lstlisting}
-			\caption{\emph{source code:} information\_gain mencari data dengan menghitung \emph{gini purity}}
+			\caption{\emph{source code:} \texttt{information\_gain()} mencari data dengan menghitung \emph{gini} 
+			atau \textit{entropy}}
 			\label{code: split function}
 		\end{figure}
 		
@@ -521,7 +534,7 @@
 						return entropy
 					
 			\end{lstlisting}
-			\caption{\emph{source code:} mencari data dengan menghitung \emph{entrophy}}
+			\caption{\emph{source code:} perhitungan \emph{entrophy}}
 			\label{code: entrophy calculation function}
 		\end{figure}
 
@@ -538,7 +551,7 @@
 						return 1 - gini
 
 			\end{lstlisting}
-			\caption{\emph{source code:} mencari data dengan menghitung \emph{gini}}
+			\caption{\emph{source code:} perhitungan \emph{gini}}
 			\label{code: gini calculation function}
 		\end{figure}
 
@@ -565,15 +578,15 @@
 						self.root = self.build_tree(dataset)
 
 			\end{lstlisting}
-			\caption{\emph{source code:} fungsi fit adalah fungsi yang dipanggil untuk mulai membangun \emph{decision tree}
-			setelah dibuat}
+			\caption{\emph{source code:} fungsi \texttt{fit()} adalah fungsi 
+			yang dipanggil untuk mulai membangun \emph{decision tree} setelah dibuat}
 			\label{code: fit function}
 		\end{figure}
 
-		Terakhir, fungsi Predict digunakan untuk klasifikasi yang sebenarnya. Dalam fugnsi ini 
-		fit mengambil X atau \textit{dataset} X\_test untuk mengetes akurasi dari \emph{decision tree} 
-		tersebut yang lalu akan dikomparasi dengan Y\_test menggunakan fungsi sklearn accurac\_score. 
-		Pencarian accuracy\_score setiap \emph{decision tree} disini dilakukan untuk 
+		Terakhir, fungsi \texttt{Predict()} akan digunakan untuk klasifikasi yang sebenarnya. Dalam fugnsi ini 
+		fit mengambil X atau \textit{dataset} \texttt{X\_test} untuk mengetes akurasi dari \emph{decision tree} 
+		tersebut yang lalu akan dikomparasi dengan \texttt{Y\_test} menggunakan fungsi sklearn \texttt{accurac\_score()}. 
+		Pencarian \texttt{accurac\_score()} setiap \emph{decision tree} disini dilakukan untuk 
 		mempercepat proses \emph{boosting} di tahap berikutnya karena \emph{decision tree} 
 		dapat langsung diurutkan dari yang terkuat ke yang terlemah.
 
@@ -592,16 +605,16 @@
 						if feature_val <= tree.threshold: return self.make_prediction(x, tree.left)
 						else: return self.make_prediction(x, tree.right)
 			\end{lstlisting}
-			\caption{\emph{source code:} predict digunakan untuk melakukan prodeiksi 
+			\caption{\emph{source code:} \texttt{Predict()} digunakan untuk melakukan prediksi 
 			dengan \emph{decision tree} yang sudah dibuat}
 			\label{code: predict function}
 		\end{figure}
 
 		Setelah semua \emph{decision tree} dan akurasinya sudah dicari dan disimpan kedalam 
 		\textit{array} classifiers dan classifiers\_accuracy. Keduanya akan disimpan kedalam 
-		dokumen pickle untuk direferensi kedepannya. Penyimpanan kedalam dokumen pickle ini bertujuan 
+		dokumen Pickle untuk direferensi kedepannya. Penyimpanan kedalam dokumen pickle ini bertujuan 
 		agar proses pelatihan tidak perlu diulangi berulang kali bila ada masalah di tahapan berikutnya. 
-		Berikut \textit{source code} penyimpanan \emph{decision tree} kedalam pickle:
+		Berikut \textit{source code} penyimpanan \emph{decision tree} kedalam Pickle:
 
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -622,8 +635,8 @@
 		\end{figure}
 
 		Untuk menyimpan \emph{decision tree} kedalam pickle, pertama semua \emph{decision tree} 
-		dan akurasinya disimpan kedalam \textit{class} bernama PickleTree yang lalu akan di \textit{dump} 
-		menggunakan fungsi dunp\_to\_pickle kedalam \textit{directory} yang sudah ditentukan.
+		dan akurasinya disimpan kedalam \textit{class} bernama \texttt{PickleTree} yang lalu akan di \textit{dump} 
+		menggunakan fungsi \texttt{dunp\_to\_pickle()} kedalam \textit{directory} yang sudah ditentukan.
 
 	\subsection{\textit{Boosting}}
 
@@ -633,7 +646,7 @@
 		yang terkuat ke yang terlemah. Contoh-contoh latihan yang sulit untuk diklasifikasi 
 		\emph{weak learner} sebelumnya akan diberikan nilai lebih bila berhasil diklasifikasi 
 		\emph{weak learner} berikutnya. Proses ini kita mulai dengan memanggil fungsi 
-		training\_strong\_classifier():
+		\texttt{training\_strong\_classifier()}:
 
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -641,6 +654,7 @@
 				def training_strong_classifier(features, trees, splits, accuracy, pickle_name):
 					X_train, Y_train, X_test, Y_test, X_valid, Y_valid = splits
 					image_weights = Boosting.initialize_weight(Y_test)
+					print(np.sum(image_weights))
 					orderlist = np.arange(len(accuracy))
 					orderlist = Boosting.get_initial_sorted_accuracy(accuracy, orderlist)
 
@@ -689,10 +703,11 @@
 
 		Pertama dalam fungsi ini harus dicari bobot nilai dari setiap contoh latihan, 
 		bobot nilai ini berbeda dari bobot \emph{voting weak learner}. Fungsi bobot nilai 
-		adalah memberikan nilai bila \emph{weak learner} berhasil mengklasifikasi sebuah 
+		adalah menaikan kuatnya \textit{voting} sebuah \textit{weak classifier} 
+		bila \emph{weak learner} berhasil mengklasifikasi sebuah 
 		contoh latihan dengan benar, oleh karena itu jumlah nilai total dari bobot 
-		latihan atau image\_weights haruslah kurang lebih satu. image\_weights di-inisialisasi 
-		menggunakan fungsi initialize\_weights() berikut:
+		latihan atau image\_weights haruslah kurang lebih satu. \texttt{image\_weights} di-inisialisasi 
+		menggunakan fungsi \texttt{initialize\_weights()} berikut:
 
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -701,16 +716,16 @@
 					image_weights = np.ones(len(test_images)) / len(test_images)
 					return image_weights
 			\end{lstlisting}
-			\caption{\emph{source code:} pencarian bobot gambar}
+			\caption{\emph{source code:} inisialisasi bobot gambar sebelum /emph{Boosting}}
 			\label{code: initialize image weights}
 		\end{figure}
 
-		Bisa dilihat proses penghitungan bobot dari image\_weights hanyalah pembagian 
-		satu dengan jumlah total contoh latihan (disini len(test\_images)). Untuk proses 
-		pelatihan menggunakan 80 contoh gambar latihan, fungsi split() telah mengalokasikan 
-		28 contoh untuk digunakan dalam tahap \emph{Boosting}, yang disimpan dalam X\_valid 
-		dan Y\_valid. Berikutnya fungsi get\_initial\_sorted\_accuracy() dipanggil untuk 
-		mengurutkan \emph{weak classifier} berdasarkan akurasi yang sudah didapat ditahap sebelumnya:
+		Bisa dilihat proses penghitungan bobot dari \texttt{image\_weights} hanyalah pembagian 
+		satu dengan jumlah total contoh latihan (disini len(\texttt{test\_images})). Untuk proses 
+		pelatihan menggunakan 80 contoh gambar latihan, fungsi \texttt{split()} telah mengalokasikan 
+		28 contoh untuk digunakan dalam tahap \emph{Boosting}, yang disimpan dalam \texttt{X\_valid} 
+		dan \texttt{Y\_valid}. Berikutnya fungsi \texttt{get\_initial\_sorted\_accuracy()} dipanggil untuk 
+		mengurutkan \emph{weak classifier} berdasarkan akurasi yang sudah didapat pada tahap sebelumnya:
 
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -739,6 +754,8 @@
 		mencari alpha\_list atau bobot voting setiap \emph{weak classifier} menggunakan fungsi 
 		start\_boosting(). Berikut adalah \textit{source code}-nya:
 
+		% ini harus diganti pas model baru kelar
+
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
 
@@ -766,27 +783,27 @@
 					return alpha_list
 
 			\end{lstlisting}
-			\caption{\emph{source code:} pencarian nilai bobot voting menggunakan fungsi 
-			start\_boosting()}
+			\caption{\emph{source code:} pencarian nilai bobot \emph{boosting} menggunakan fungsi 
+			\texttt{start\_boosting()}}
 			\label{code: start boosting}
 		\end{figure}
 
 		Disini hasil klasifikasi yang dilakukan oleh \emph{weak classifier} akan dibandingkan 
-		dengan label aslinya yang tersimpan di Y\_valid dan disimpan pada array \emph{indidcator} 
+		dengan label aslinya yang tersimpan di \texttt{Y\_valid} dan disimpan pada array \texttt{indicator} 
 		dalam nilai 0 bila klasifikasi dilakukan secara benar, dan 1 bila klasifikasi dilakukan 
-		secara salah. Kemudian \textit{alpha} atau bobot voting sang \emph{weak classifier} 
-		akan dihitung. Para perhitungan ini, \emph{epsilon} akan ditambahkan dengan 1e-10 
+		secara salah. Kemudian \texttt{alpha} atau bobot voting sang \emph{weak classifier} 
+		akan dihitung. Para perhitungan ini, \texttt{epsilon} akan ditambahkan dengan 1e-10 
 		untuk mencegah pembagian dengan angka 0 bilamana \emph{weak classifier} benar mengklasifikasi 
-		semua contoh dan menghasilnya \emph{indicator} yang hanya berisi angka 0 saja. np.log(4 - 1) 
-		disini digunakan agar \emph{alpha} tidak negatif, 4 pada formula ini adalah jumlah kelas 
-		yang sedang diklasifikasi yaitu kelas negatuf, Abudefduf, Amphiprion, dan Chaetodon. Berikutnya 
-		\emph{alpha} dicek supaya tidak lebih kecil daripada 1e-10 agar tidak menyebabkan normalisasi 
-		bobot gambar yang salah di bagian berikutnya. terakhir image\_weight diupdate, dimana gambar 
+		semua contoh dan menghasilnya \texttt{indicator} yang hanya berisi angka 0 saja. np.log(4 - 1) 
+		disini digunakan agar \texttt{alpha} tidak negatif, 4 pada formula ini adalah jumlah kelas 
+		yang sedang diklasifikasi yaitu kelas negatif, Abudefduf, Amphiprion, dan Chaetodon. Berikutnya 
+		\texttt{alpha} dicek supaya tidak lebih kecil daripada 1e-10 agar tidak menyebabkan normalisasi 
+		bobot gambar yang salah di bagian berikutnya. terakhir \texttt{image\_weight} diupdate, dimana gambar 
 		yang salah diklasifikasi akan dinaikan nilainya, baru setelahnya nilai dinormalisasi lagi 
 		agar kurang lebih berjumlah 1. Setelah bobot \textit{voting} sudah dicari, seluruh 
 		\emph{weak learner} pada tahap ini akan dites layaknya klasifikasi yang sebeneranya, dimana 
 		nilai \textit{voting} setiap \emph{weak classifier} akan diperhitungkan untuk memilih 
-		hasil klasifikasi. Klasifikasi pada tahap ini dilakukan oleh fungsi strong\_prediciton:
+		hasil klasifikasi. Klasifikasi pada tahap ini dilakukan oleh fungsi \texttt{strong\_prediciton}:
 
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -814,20 +831,20 @@
 			\label{code: strong prediction}
 		\end{figure}
 
-		Saat klasifikasi akan dibuatkan sebuah \emph{scoreboard} untuk mencatat total bobot voting 
-		suatu kelas. Contohnya suatu \emph{weak classifier} dengan bobot \textit{voting} 0.67 
+		Saat klasifikasi. akan dibuatkan variabel \texttt{scoreboard} untuk mencatat total nilai voting 
+		setiap kelas. Contohnya suatu \emph{weak classifier} dengan bobot \textit{voting} 0.67 
 		mengklasifkasi suatu fitur sebagai kelas 1 atau Abudefduf. maka \emph{scoreboard} akan 
 		berubah manjadi [0, 0.67, 0, 0]. Lalu misalnya \emph{weak classifier} lain dengan bobot 
 		\textit{voting} 0.2 memilih kelas 3 atau Amphiprion, maka \emph{scoreboard} akan menjadi 
 		[0, 0.67, 0.2, 0]. Klasifikasi akan diakhiri ketika semua \emph{weak learner} sudah 
 		dipakai. Setelah itu kelas dengan nilai \textit{voting} paling tinggi akan dipilih sebagai 
-		hasil dari klasifikasi. Yang lalu akan dibandingkan dengan Y\_valid untuk dicari akurasinya.
+		hasil dari klasifikasi. Yang lalu akan dibandingkan dengan \texttt{Y\_valid} untuk dicari akurasinya.
 
 		Proses iterasi \emph{boositng} ini akan diulang terus menerus hingga tingkat akurasi klasfikasi 
 		menggunakan \emph{weak classifier} berbobot mulai mengalami penurunan. Dalam situasi ini 
-		nilai bobot voting dan urutan voting pada iterasi sebelumnya akan diambil dan disimpan 
-		kedalam dokumen pickle, kali ini dalam \emph{class PickleTreeFinal} dengan fungsi 
-		dump\_to\_pickle sebelumnya:
+		nilai bobot \textit{voting} dan urutan \textit{voting} pada iterasi sebelumnya akan diambil dan disimpan 
+		kedalam dokumen pickle, kali ini dalam \textit{class} \texttt{PickleTreeFinal} dengan fungsi 
+		\texttt{dump\_to\_pickle()} sebelumnya:
 
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -846,13 +863,17 @@
 		Perbedaan pickle ini dengan pickle yang menyimpan seluruh fungsi pada tahap sebelumnya 
 		adalah pada pickle ini juga disimpan info \emph{feature} juga sesuai dengan urutan dari 
 		\emph{weak classifier} yang berhubungan. Hal ini dilakukan agar pada tahapan berikutnya, 
-		\emph{cascade}, juga akan digunakan untuk klasifikasi sebenarnya, sehingga memerlukan info 
-		\emph{features} untuk dapat langsung membaca nilai fitur langsung dari gambar.
+		\emph{cascade} dapat langsung digunakan untuk klasifikasi sebenarnya, yang memerlukan info 
+		\emph{features} untuk dapat langsung membaca nilai fitur langsung dari gambar. Hasil dari \emph{boosting} untuk ketiga \emph{strong classifier} cukup memuaskan 
+		dengan akurasi 71\% untuk ketiga \emph{strong classifier}.
+		
+		% Adapula didapatkan 5 fitur 
+		% paling atas dari ketiga \emph{classiffier}. Berikut adalah gambaran dari fitur-fitur tersebut:
 
 	\subsection{\textit{Training Cascade}}
 		
-		Pelatihan pickle dimulai dengan pertama membuat \textit{class} Cascade yang 
-		nantinya akan diisi dengan \emph{stage} yang berisikan \emph{weak classsifier} 
+		Pelatihan pickle dimulai dengan pertama membuat \textit{class} \texttt{Cascade} yang 
+		nantinya akan diisi dengan \textit{class} \texttt{stage} yang berisikan \emph{weak classsifier} 
 		dengan bobot voting mereka. Berikut bentuk \textit{class} Cascade:
 
 		\begin{figure}[H]
@@ -868,7 +889,7 @@
 			\label{code: Cascade class}
 		\end{figure}
 
-		Selanjutnya \emph{stages} akan diisi dengan fungsi fill\_cascade() dengan 
+		Selanjutnya \texttt{stages} akan diisi dengan fungsi \texttt{fill\_cascade()} dengan 
 		\textit{source code} sebagai berikut:
 
 		\begin{figure}[H]
@@ -885,19 +906,18 @@
 						new_cascade.train_stage(features, trees, alpha_list, X_valid, Y_valid, used_features)
 						used_features += len(new_cascade.trees) #check the total number of features used
 						self.stages.append(new_cascade)
-						print(f'finished filling stage: {len(self.stages)}')
 					print(f'cascade is finished!')
 
 			\end{lstlisting}
-			\caption{\emph{source code:} fungsi untuk mengisi \emph{stages} pada 
+			\caption{\emph{source code:} fungsi untuk mengisi \texttt{stages} pada 
 			\emph{Cascade}}
 			\label{code: fill cascade function}
 		\end{figure}
 
-		Fungsi fill\_cascade disini mengambil \textit{features, trees} dan \textit{alpha\_list} 
+		Fungsi \texttt{fill\_cascade} disini mengambil \texttt{features, trees} dan \texttt{alpha\_list} 
 		yang sudah diurutkan dan di-\emph{boosting} pada tahap sebelumya. Lalu sebuah \textit{class} 
 		baru dibuat untuk menyimpan ketiganya pada sebuah \emph{stage}, \textit{class} itu adalah 
-		CascadeStage dengan \textit{source code} sebagai berikut:
+		\texttt{CascadeStage} dengan \textit{source code} sebagai berikut:
 
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -913,7 +933,7 @@
 			\label{code: Cascade Class}
 		\end{figure}
 
-		yang lalu diisi dengan menggunakan fungsi train\_stage() sebagai berikut:
+		yang lalu diisi dengan menggunakan fungsi \texttt{train\_stage()} sebagai berikut:
 
 		\begin{figure}[H]
 			\begin{lstlisting}[language=Python, basicstyle=\tiny]
@@ -939,12 +959,12 @@
 		\end{figure}
 
 		Pada fungsi ini \emph{weak classifier} ditambah satu persatu berserta bobot dan 
-		\emph{feature}-nya, lalu \emph{stage} akan dites menggunakan fungsi strong\_prediction 
+		\emph{feature}-nya, lalu \emph{stage} akan dites menggunakan fungsi \texttt{strong\_prediction} 
 		yang dipakai juga di tahap \emph{boosting}. Penggunaan fungsi ini dapat dilakukan 
 		karena struktur dan cara klasifikasi dari \emph{stage} mirip dengan sederet \emph{weak classifier} 
 		pada tahap sebelumnya. Iterasi ini lalu diteruskan hingga akurasi \emph{stage} mencapai 50\% 
 		atau sampai \emph{weak classifier} habis. Setelah itu \emph{stage} yang sudah dibuat 
-		akan di-append() kedalam \textit{array stages} dan proses yang sama diulangi hingga 
+		akan di-\texttt{append()} kedalam \textit{array stages} dan proses yang sama diulangi hingga 
 		semua \emph{weak classifer} sudah habis terpakai. Terakhir \emph{Cascade} lalu disimpan 
 		kedalam pickle untuk digunakan dalam klasifikasi yang sebenarnya. Berikut fungsi yang 
 		digunakan untuk menyimpan \emph{cascade} kedalam pickle:
@@ -959,7 +979,7 @@
 
 			\end{lstlisting}
 			\caption{\emph{source code: } fungsi penyimpanan \emph{Cascade} ke pickle 
-			dengan menggunakan fungsi dump\_to\_pickle lagi}
+			dengan menggunakan fungsi \texttt{dump\_to\_pickle} lagi}
 			\label{code: save Cascade to pickle}
 		\end{figure}
 
@@ -971,6 +991,7 @@
 		atau PNG, dan dengan latar belakang sudah dihilangkan. Gambar-gambar yang akan diklasifikasi harus 
 		dimasukan kedalam \textit{folder} bernama \emph{classification\_target}, dan pengguna juga 
 		membuat satu \textit{folder} lain bernama \emph{classification\_results} untuk hasil klasifikasi. 
+		Totalnya penulis telah mengumpulkan 75 gambar ikan baru dengan jumlah tiap kelas 25 gambar.
 		Berikut \textit{source code} dari predict.py:
 
 		\begin{figure}[H]
@@ -1058,6 +1079,36 @@
 		berbasis \textit{Decision Tree}. Rincian yang lebih lengkap soal hasil klasifikasi 
 		bisa diliat di lampiran.
 
+\section{Analisa Hasil}
+		Setelah prediksi menggunakan \textit{sliding window} dilakukan, ditemukan bahwa hanya 
+		12 dari 75 gambar yang berhasil diklasifikasikan dengan benar. Hasil ini jelas bertolak 
+		belangan dengan akurasi yang ditunjukan pada tahap \emph{boosting} dimana ketiga \emph{strong classifier} 
+		memiliki skor akurasi diatas 70\%.
+
+		Klasifikasi ikan menggunakan metode \emph{sliding window} menunjukan sebuah problem baru 
+		yaitu salahnya prediksi pada lokasi \textit{sub-window} yang tidak seharusnya. \emph{Sliding window} 
+		memulai deteksi dari pojok kiri atas area deteksi dan bergerak kebawah menuju pojok kiri bawah, dengan 
+		lokasi akhir deteksi pojok kanan bawah. Dalam pergerakannya ini ia akan menolak mayoritas \textit{sub-window} 
+		yang tidak memiliki nilai, atau \textit{background}, namun ketika ia menemukan sedikit saja piksel dalam 
+		\textit{sub-window}-nya ia akan melakukan klasifikasi. 
+		
+		\begin{figure}[H]
+			\centering{}
+			  \includegraphics[width=0.4\textwidth]{gambar/result\_analysis\_2}
+			\caption{Gambar tes Amphiprion23. Kotak merah menunjukan ekspektasi klasifikasi 
+			yang benar untuk kelas Amphiprion, karena \textit{offset} diletakan disitu. Kotak 
+			hijau menunjukan lokasi klasifikasi yang dilakukan \emph{sliding window} ketika mengklasifikasi 
+			gambar Amphiprion23}
+		\end{figure}
+		
+		Problem baru lainnya juga keluar pada klasifikasi ini, yaitu 
+		bias \emph{weak classifier} yang lebih kuat pada awal \emph{cascade} terhadap beberapa kelas tertentu, dalam 
+		banyak kasus bias-nya adalah ke kelas ikan Abudefduf. Umumnya \emph{weak classifier} yang paling awal 
+		didalam \emph{cascade} memiliki bobot \textit{voting} yang terlalu kuat, sehingga ketika mereka mem-\textit{voting} 
+		suatu kelas jumlah total bobot \textit{voting weak classifier} setelahnya tidak dapat mengalahkan 
+		\textit{voting weak classifier} paling awal.
+		
+		
 
 % Baris ini digunakan untuk membantu dalam melakukan sitasi
 % Karena diapit dengan comment, maka baris ini akan diabaikan

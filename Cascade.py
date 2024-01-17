@@ -21,26 +21,30 @@ class Cascade:
             new_cascade.train_stage(features, trees, alpha_list, X_valid, Y_valid, used_features)
             used_features += len(new_cascade.trees) #check the total number of features used
             self.stages.append(new_cascade)
-            print(f'finished filling stage: {len(self.stages)}')
         print(f'cascade is finished!')
 
     # final ultimate strongest cascade classifier! Used in the actual detection to scan sub-windows
     # x_offset and y_offset is the location of the sliding window
     def final_cascade_classification(self, image, x_offset, y_offset):
+        # print(f'{x_offset} {y_offset}')
         scoreboard = [0, 0, 0, 0]
         for i in range(len(self.stages)):
             stage_scoreboard = [0, 0, 0, 0]
             stage_scoreboard = self.stages[i].stage_prediction(image, x_offset, y_offset, stage_scoreboard)
+            # print(scoreboard)
+            # print(stage_scoreboard.index(max(stage_scoreboard)))
 
             # check whether the stage return false or a class. If a class then continue
             if stage_scoreboard.index(max(stage_scoreboard)) == 0:
+                # scoreboard = [1, 0, 0, 0]
+                # break
                 scoreboard = [scoreboard + stage_scoreboard for scoreboard, stage_scoreboard in zip(scoreboard, stage_scoreboard)]
-                if scoreboard[0] > sum(scoreboard)/2:
-                    # print(f'Majority vote 0! Breaking cascade {i}')
+                # print(f'check start: {scoreboard[0]} vs {sum(scoreboard)/2}')
+                if scoreboard[0] > sum(scoreboard)/5:
                     scoreboard = [1, 0, 0, 0]
                     break
             else: scoreboard = [scoreboard + stage_scoreboard for scoreboard, stage_scoreboard in zip(scoreboard, stage_scoreboard)]
-        # print(f'iteration {i} completed')
+        # print(scoreboard)
         return scoreboard.index(max(scoreboard))
     
     def save_to_pickle(self, pickle_name):
@@ -74,15 +78,24 @@ class CascadeStage:
     def stage_prediction(self, image, x_offset, y_offset, scoreboard):
         for i in range(len(self.features)):
             feature_type, x, y, width, height = self.features[i]
+            # print(f'feature x = {x}, feature y = {y}')
+            # print(f'x offset = {x_offset}, y offset = {y_offset}')
             x += x_offset
             y += y_offset
+            # print(f'x after = {x}, y after = {y}')
+
             updated_feature = (feature_type, x, y, width, height)
             feature_value = compute_feature_with_matrix(image, updated_feature)
+            # print(f'this feature value: {feature_value}')
 
-            data_features = [[feature_value]]
-
-            prediction = self.trees[i].predict(data_features)
-            prediction = prediction[0]
+            if feature_value == 0:
+                prediction = 0
+            else:    
+                data_features = [[feature_value]]
+                prediction = self.trees[i].predict(data_features)
+                prediction = prediction[0]
+            # print(f'this is the prediction result: {prediction}')
             scoreboard[prediction] += 1 * self.alpha_list[i]
 
+        # print(scoreboard)
         return scoreboard

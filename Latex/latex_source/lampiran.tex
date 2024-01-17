@@ -1,711 +1,153 @@
-\addcontentsline{toc}{chapter}{LAMPIRAN}
-\appendix 
-\chapter{Analisis Kebutuhan (\textit{User Requirement})}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{gambar/UR-1}	
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{gambar/UR-2}	
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{gambar/UR-3}	
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{gambar/UR-4}	
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{gambar/UR-5}	
-\end{figure}
+\appendix
 
-\chapter{Kuesioener \textit{User Accpetance Test} pada \textit{Admin}}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{gambar/surat_awal}	
-\end{figure}
+% \chapter{\emph{Source code} program}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{gambar/surat_awal2}	
-\end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{gambar/surat_admin1}	
-\end{figure}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{gambar/surat_admin2}	
-\end{figure}
+\chapter{Tabel pengolahan data citra input}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{gambar/surat_admin3}	
-\end{figure}
+\begin{longtable}{|c|c|c|c|c|}
+	\hline
+	\textbf{Image} & \textbf{Window 1} & \textbf{Window 2} & \textbf{Window 3} & \textbf{Final Result} \\
+	\hline
+	\endfirsthead
+	\multicolumn{5}{c}{{\tablename\ \thetable{} -- continued from previous page}} \\
+	\hline
+	\textbf{Image} & \textbf{Window 1} & \textbf{Window 2} & \textbf{Window 3} & \textbf{Final Result} \\
+	\hline
+	\endhead
+	\hline \multicolumn{5}{|r|}{{Continued on next page}} \\ \hline
+	\endfoot
+	\hline
+	\endlastfoot
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf01}
+	& [6,110] class: 1 & [116,25] class: 1 & [233,41] class: 1 & Abudefduf \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf02}
+	& [1,109] class: 3 & [116,30] class: 2 & [233,41] class: 1 & None \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf03}
+	& [7,102] class: 3 & [116,33] class: 2 & [233,55] class: 2 & Abudefduf \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf04}
+	& [5,105] class: 3 & [116,44] class: 3 & [233,55] class: 1 & Chaetodon \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf05}
+	& [5,102] class: 2 & [116,39] class: 1 & [233,64] class: 2 & Amphiprion \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf06}
+	& [8,107] class: 1 & [116,23] class: 1 & [233,40] class: 1 & Abudefduf \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf07}
+	& [3,108] class: 1 & [116,36] class: 2 & [233,55] class: 1 & Chaetodon \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf08}
+	& [23,110] class: 1 & [116,10] class: 2 & [233,35] class: 2 & Amphiprion \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf09}
+	& [7,103] class: 2 & [116,22] class: 3 & [233,45] class: 1 & None \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf10}
+	& [24,111] class: 1 & [116,11] class: 1 & [233,22] class: 1 & Abudefduf \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf11}
+	& [10,102] class: 2 & [116,17] class: 2 & [233,40] class: 3 & Abudefduf \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf12}
+	& [3,108] class: 1 & [116,29] class: 2 & [233,40] class: 3 & None \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf13}
+	& [6,108] class: 1 & [116,42] class: 1 & [233,54] class: 1 & Abudefduf \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf14}
+	& [6,108] class: 1 & [116,42] class: 3 & [233,54] class: 3 & Chaetodon \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf15}
+	& [3,103] class: 1 & [116,33] class: 3 & [233,51] class: 3 & Chaetodon \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf16}
+	& [0,110] class: 1 & [116,26] class: 2 & [233,59] class: 3 & None \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf17}
+	& [6,102] class: 1 & [116,32] class: 2 & [233,50] class: 1 & Abudefduf \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf18}
+	& [5,109] class: 1 & [116,28] class: 1 & [233,44] class: 1 & Abudefduf \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf19}
+	& [8,99] class: 1 & [116,30] class: 1 & [233,59] class: 1 & Abudefduf \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf20}
+	& [5,106] class: 1 & [116,27] class: 2 & [233,35] class: 1 & Abudefduf \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf21}
+	& [8,102] class: 3 & [117,69] class: 3 & [233,54] class: 1 & Chaetodon \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf22}
+	& [16,106] class: 1 & [116,23] class: 1 & [233,28] class: 1 & Abudefduf \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf23}
+	& [7,112] class: 1 & [116,33] class: 2 & [233,58] class: 3 & None \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf24}
+	& [10,108] class: 1 & [116,31] class: 3 & [233,42] class: 1 & Abudefduf \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Abudefduf25}
+	& [3,106] class: 3 & [116,29] class: 1 & [233,47] class: 2 & None \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion01} & [13,89] class: 1 & [116,12] class: 2 & [233,30] class: 2 & Amphiprion \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion02} & [18,98] class: 1 & [116,26] class: 2 & [233,35] class: 3 & None \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion03} & [15,95] class: 1 & [116,13] class: 2 & [233,27] class: 3 & None \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion04} & [16,91] class: 1 & [116,0] class: 1 & [233,71] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion05} & [16,95] class: 2 & [116,23] class: 2 & [233,43] class: 3 & Amphiprion \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion06} & [10,87] class: 1 & [116,9] class: 1 & [233,41] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion07} & [19,94] class: 1 & [116,31] class: 1 & [233,43] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion08} & [17,91] class: 1 & [116,0] class: 1 & [233,73] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion09} & [21,86] class: 1 & [116,17] class: 2 & [233,35] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion10} & [20,89] class: 2 & [116,20] class: 2 & [233,34] class: 2 & Amphiprion \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion11} & [15,91] class: 1 & [116,10] class: 1 & [233,34] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion12} & [10,55] class: 1 & [116,17] class: 2 & [233,39] class: 3 & None \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion13} & [17,93] class: 2 & [116,25] class: 2 & [233,46] class: 1 & Amphiprion \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion14} & [18,89] class: 1 & [116,10] class: 1 & [233,28] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion15} & [14,93] class: 1 & [116,25] class: 2 & [233,33] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion16} & [21,94] class: 2 & [116,9] class: 1 & [233,19] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion17} & [15,96] class: 2 & [116,22] class: 2 & [233,37] class: 3 & Amphiprion \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion18} & [16,91] class: 1 & [116,25] class: 2 & [233,37] class: 3 & None \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion19} & [21,98] class: 3 & [116,10] class: 1 & [233,36] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion20} & [18,92] class: 1 & [116,8] class: 1 & [233,60] class: 2 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion21} & [19,95] class: 1 & [116,0] class: 1 & [233,11] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion22} & [14,97] class: 3 & [116,32] class: 2 & [233,33] class: 1 & None \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion23} & [19,88] class: 2 & [116,15] class: 2 & [233,28] class: 1 & Amphiprion \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion24} & [12,89] class: 3 & [116,23] class: 1 & [233,72] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Amphiprion25} & [14,87] class: 2 & [116,12] class: 1 & [233,36] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon01} & [32,116] class: 2 & [116,19] class: 1 & [233,19] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon02} & [35,118] class: 2 & [116,29] class: 1 & [233,40] class: 3 & None \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon03} & [32,115] class: 1 & [116,30] class: 1 & [233,40] class: 3 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon04} & [66,150] class: 0 & [116,57] class: 1 & [233,28] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon05} & [37,115] class: 1 & [116,28] class: 2 & [233,31] class: 2 & Amphiprion \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon06} & [32,119] class: 2 & [116,26] class: 2 & [233,32] class: 1 & Amphiprion \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon07} & [30,117] class: 1 & [116,24] class: 2 & [233,31] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon08} & [36,116] class: 2 & [116,17] class: 2 & [233,21] class: 3 & Amphiprion \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon09} & [31,119] class: 1 & [116,18] class: 1 & [233,14] class: 2 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon10} & [32,115] class: 1 & [116,27] class: 2 & [233,30] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon11} & [32,119] class: 1 & [116,23] class: 1 & [233,15] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon12} & [34,113] class: 1 & [116,21] class: 1 & [233,40] class: 3 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon13} & [20,110] class: 1 & [116,21] class: 1 & [233,20] class: 2 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon14} & [33,115] class: 2 & [116,33] class: 2 & [233,30] class: 1 & Amphiprion \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon15} & [35,117] class: 1 & [116,26] class: 2 & [233,31] class: 2 & Amphiprion \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon16} & [34,114] class: 1 & [116,28] class: 1 & [233,38] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon17} & [43,115] class: 1 & [116,23] class: 1 & [233,41] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon18} & [36,117] class: 1 & [116,23] class: 1 & [233,42] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon19} & [34,116] class: 1 & [116,21] class: 1 & [233,18] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon20} & [32,117] class: 2 & [116,40] class: 2 & [233,28] class: 1 & Amphiprion \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon21} & [29,115] class: 1 & [116,30] class: 1 & [233,22] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon22} & [35,117] class: 2 & [116,22] class: 1 & [233,41] class: 1 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon23} & [34,116] class: 1 & [116,24] class: 2 & [233,20] class: 2 & Amphiprion \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon24} & [40,118] class: 1 & [116,22] class: 1 & [233,34] class: 2 & Abudefduf \\ \hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/Chaetodon25} & [40,118] class: 1 & [116,12] class: 1 & [233,67] class: 1 & Abudefduf \\ \hline
 
-\chapter{Kuesioener \textit{User Accpetance Test} pada Anggota}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{gambar/surat_awal}	
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{gambar/surat_awal2}	
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{gambar/surat_anggota}	
-\end{figure}
-
-\chapter{Kuesioener \textit{User Accpetance Test} pada Pengawas}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{gambar/surat_awal}	
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{gambar/surat_awal2}	
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.95\textwidth]{gambar/surat_pengawas}	
-\end{figure}
-
-\chapter{Sampel Kode \textit{Controller Admin} pada Anggota}
-\begin{verbatim}
-		<?php		
-		defined('BASEPATH') OR 
-		exit('No direct script access allowed');
-				
-		class Anggota extends CI_Controller
-		{
-			public function __construct()
-			{
-				parent::__construct();
-				$this->load->model("anggota_model");
-				$this->load->library('form_validation');
-				if ($this->session->userdata('level') != 'admin') 
-				{
-					redirect(site_url('login'));
-				}
-			}
-			
-			public function index()
-			{
-				$id_anggota = $this->session->userdata("id_anggota");
-				$data["anggota"] = $this->anggota_model->getAll();
-				$this->load->view("admin/anggota/list", $data);
-			}
-			
-			public function cetak()
-			{
-				$this->load->library('excel');
-				$objPHPExcel=new PHPExcel();
-				$data["anggota"] = $this->anggota_model->getAll();
-				$this->load->view("admin/anggota/list_cetak", $data);
-				new PHPExcel_Writer_Excel2007($objPHPExcel);
-				header("Content-type: application/vnd-ms-excel");
-				header("Content-Disposition: attachment; 
-				filename=Laporan Anggota.xls");
-			}
-			
-			public function detail($id_anggota = null)
-			{
-				if (!isset($id_anggota)) redirect('admin/anggota/anggota');
-				$anggota = $this->anggota_model;
-				$data["anggota"] = $anggota->getById($id_anggota);
-				$this->load->view("admin/anggota/data_anggota", $data);
-			}
-				
-			public function add()
-			{
-				$anggota = $this->anggota_model;
-				$validation = $this->form_validation;
-				$validation->set_rules($anggota->rules());
-				if ($validation->run()) 
-				{
-					$anggota->save();
-					$this->session->set_flashdata('success', 'Berhasil disimpan');
-				}
-				$this->load->view("admin/anggota/tambah");
-			}
-			
-			public function edit($id_anggota = null)
-			{
-				if (!isset($id_anggota)) redirect('admin/anggota/anggota');		
-				$anggota = $this->anggota_model;
-				$validation = $this->form_validation;
-				$validation->set_rules($anggota->rules());
-				if ($validation->run()) 
-				{
-					$anggota->update();
-					$this->session->set_flashdata('success', 'Berhasil disimpan');
-				}
-				$data["anggota"] = $anggota->getById($id_anggota);
-				if (!$data["anggota"]) show_404();
-				$this->load->view("admin/anggota/edit", $data);
-			}
-			
-			public function putih($id_anggota)
-			{
-				$this->anggota_model->ganti_status($id_anggota);
-				redirect('admin/anggota/anggota');
-			}
-			
-			public function ganti($id_anggota)
-			{
-				$this->anggota_model->hapus_admin($id_anggota);
-				redirect('admin/anggota/kelola');
-			}
-			
-			public function gantiP($id_anggota)
-			{
-				$this->anggota_model->hapus_pengawas($id_anggota);
-				redirect('admin/anggota/kelolaP');
-			}
-			
-			public function terima($id_anggota)
-			{
-				$this->anggota_model->terima_status($id_anggota);
-				redirect('admin/anggota/anggota');
-			}
-			
-			public function baru($id_anggota)
-			{
-				$this->anggota_model->lanjut_periode($id_anggota);
-				redirect('admin/anggota/anggota');
-			}
-			
-			public function tambah_admin($id_anggota)
-			{
-				$this->anggota_model->NewAdmin($id_anggota);
-				redirect('admin/anggota/add_admin');
-			}
-			
-			public function tambah_pengawas($id_anggota)
-			{
-				$this->anggota_model->NewPengawas($id_anggota);
-				redirect('admin/anggota/add_pengawas');
-			}
-			
-			public function reset_pass($id_anggota)
-			{
-				$this->anggota_model->resetPass($id_anggota);
-				redirect('admin/anggota/anggota');
-			}
-			
-			public function delete($id_anggota=null)
-			{
-				if (!isset($id_anggota)) show_404();
-				
-				if ($this->anggota_model->delete($id_anggota)) 
-				{
-					redirect(site_url('admin/anggota/anggota'));
-				}
-			}
-			
-			public function pendaftar($status_user=0)
-			{
-				$this->load->model('anggota_model');
-				$data['anggota'] = 
-				$this->anggota_model->getByPendaftar($status_user);
-				$this->load->view('admin/anggota/pendaftar',$data);
-			}
-			
-			public function anggota($status_user=1)
-			{
-				$this->load->model('anggota_model');
-				$data['anggota'] =
-				 $this->anggota_model->getByAnggota($status_user);
-				$this->load->view('admin/anggota/list',$data);
-			}
-			
-			public function anggota_putih($status_user=2)
-			{
-				$this->load->model('anggota_model');
-				$data['anggota'] = 
-				$this->anggota_model->getByAP($status_user);
-				$this->load->view('admin/anggota/list_putih',$data);
-			}
-			
-			public function kelola($level='admin')
-			{
-				$this->load->model('anggota_model');
-				$data['anggota'] = 
-				$this->anggota_model->getByKelola($level);
-				$this->load->view('admin/anggota/data_admin',$data);
-			}
-			
-			public function kelolaP($level='pengawas')
-			{
-				$this->load->model('anggota_model');
-				$data['anggota'] = 
-				$this->anggota_model->getByKelolaP($level);
-				$this->load->view('admin/anggota/data_pengawas',$data);
-			}
-			
-			public function kelolasemua()
-			{
-				$this->load->view('admin/anggota/adminpengawas');
-			}
-			
-			public function add_admin($level = 'anggota', 
-			$status_user = 1)
-			{
-				$this->load->model('anggota_model');
-				$data['anggota'] = 
-				$this->anggota_model->getByNonAdmin($level,$status_user);
-				$this->load->view('admin/anggota/calon_admin',$data);
-			}
-			
-			public function add_pengawas($level = 'anggota', 
-			$status_user = 1)
-			{
-				$this->load->model('anggota_model');
-				$data['anggota'] = 
-				$this->anggota_model->getByNonPengawas($level,$status_user);
-				$this->load->view('admin/anggota/calon_pengawas',$data);
-			}
-		}
-\end{verbatim}
-
-\chapter{Sampel Kode Model \textit{Admin} pada Anggota}
-\begin{verbatim}
-		<?php 
-		defined('BASEPATH') OR 
-		exit('No direct script access allowed');
-		
-		class Anggota_model extends CI_Model
-		{
-			private $_table = "anggota";
-			public $id_anggota;
-			public $nama;
-			public $tgl_daftar;
-			public $nim;
-			public $tgl_lahir;
-			public $jabatan;
-			public $bagian;
-			public $fakultas;
-			public $prodi;
-			public $angkatan;
-			public $no_telp;
-			public $username;
-			public $email;
-			public $pass;
-			public $periode;
-		
-			public function rules()
-			{
-				return [
-				['field' => 'nama',
-				'label' => 'Nama',
-				'rules' => 'required'],
-				
-				['field' => 'tgl_daftar',
-				'label' => 'Tanggal Daftar',
-				'rules' => 'required'],
-				
-				['field' => 'nim',
-				'label' => 'NIM',
-				'rules' => 'numeric'],
-				
-				['field' => 'tgl_lahir',
-				'label' => 'Tanggal Lahir',
-				'rules' => 'required'],
-				
-				['field' => 'fakultas',
-				'label' => 'Fakultas',
-				'rules' => 'required'],
-				
-				['field' => 'prodi',
-				'label' => 'Program Studi',
-				'rules' => 'required'],
-				
-				['field' => 'angkatan',
-				'label' => 'Angkatan',
-				'rules' => 'required'],
-				
-				['field' => 'no_telp',
-				'label' => 'Nomor Telepon',
-				'rules' => 'numeric'],
-				
-				['field' => 'username',
-				'label' => 'Username',
-				'rules' => 'required'],
-				
-				['field' => 'email',
-				'label' => 'E-mail',
-				'rules' => 'required']
-				];
-			}
-			
-			public function getAll()
-			{
-				return $this->db->get($this->_table)->result();
-			}
-			
-			public function getById($id_anggota)
-			{
-				return $this->db->get_where($this->_table, 
-				["id_anggota" => $id_anggota])->row();
-			}
-			
-			public function save()
-			{
-				$post = $this->input->post();
-				$query = $this->db->get('anggota');
-				$kode1 = $query->num_rows()+1;
-				if($post["fakultas"] == 'Fakultas Ilmu Pendidikan' ) {
-					$kode2 = 'I';
-				}
-				elseif($post["fakultas"] == 
-				'Fakultas Bahasa dan Seni' ) {
-					$kode2 = 'II';
-				}
-				elseif($post["fakultas"] == 
-				'Fakultas Matematika dan Ilmu Pengetahuan Alam' ) {
-					$kode2 = 'III';
-				}
-				elseif($post["fakultas"] == 
-				'Fakultas Ilmu Sosial' ) {
-					$kode2 = 'IV';
-				}
-				elseif($post["fakultas"] == 
-				'Fakultas Teknik' ) {
-					$kode2 = 'V';
-				}
-				elseif($post["fakultas"] == 
-				'Fakultas Ilmu Keolahragaan' ) {
-					$kode2 = 'VI';
-				}
-				elseif($post["fakultas"] == 
-				'Fakultas Ekonomi' ) {
-					$kode2 = 'VII';
-				}
-				elseif($post["fakultas"] == 
-				'Fakultas Pendidikan Psikologi' ) {
-					$kode2 = 'VIII';
-				}
-				$kode4 = date('y', strtotime($post["tgl_daftar"]));
-				$this->id_anggota = $kode1.$kode2."KOPMA".$kode4;
-				$this->nama = $post["nama"];
-				$this->tgl_daftar = $post["tgl_daftar"];
-				$this->nim = $post["nim"];
-				$this->tgl_lahir = $post["tgl_lahir"];
-				$this->fakultas = $post["fakultas"];
-				$this->prodi = $post["prodi"];
-				$this->angkatan = $post["angkatan"];
-				$this->no_telp = $post["no_telp"];
-				$this->username = $post["username"];
-				$this->email = $post["email"];
-				$this->pass = $kode1.$kode2."KOPMA".$kode4;
-				$tahun = date('Y', strtotime($post["tgl_daftar"]));
-				$this->periode = $tahun;
-				$this->db->insert($this->_table, $this);
-			}
-				
-			public function ganti_status($id_anggota)
-			{
-				$data = array(
-				'status_user' => 2
-				);
-				$this->db->where('id_anggota', $id_anggota);
-				return $this->db->update('anggota',$data);
-			}
-			
-			public function terima_status($id_anggota)
-			{
-				$data = array(
-				'status_user' => 1
-				);
-				$this->db->where('id_anggota', $id_anggota);
-				return $this->db->update('anggota',$data);
-			}
-			
-			public function hapus_admin($id_anggota)
-			{
-				$data = array(
-				'level' => anggota
-				);
-				$this->db->where('id_anggota', $id_anggota);
-				return $this->db->update('anggota',$data);
-			}
-			
-			public function hapus_pengawas($id_anggota)
-			{
-				$data = array(
-				'level' => anggota
-				);
-				$this->db->where('id_anggota', $id_anggota);
-				return $this->db->update('anggota',$data);
-			}
-			
-			public function NewAdmin($id_anggota)
-			{
-			$data = array(
-			'level' => admin
-			);
-			
-			$this->db->where('id_anggota', $id_anggota);
-			return $this->db->update('anggota',$data);
-			}
-			
-			public function NewPengawas($id_anggota)
-			{
-				$data = array(
-				'level' => pengawas
-				);
-				$this->db->where('id_anggota', $id_anggota);
-				return $this->db->update('anggota',$data);
-			}
-			
-			public function resetPass($id_anggota)
-			{
-				$data = array(
-				'pass' => $id_anggota
-				);
-				$this->db->where('id_anggota', $id_anggota);
-				return $this->db->update('anggota',$data);
-			}
-			
-			public function lanjut_periode($id_anggota)
-			{
-				$anggota = $this->db->get_where("anggota", 
-				["id_anggota" => $id_anggota])->row();
-				$data = array(
-				'keuangan' => $anggota->keuangan + $anggota->simpanan_anggota,
-				'simpanan_anggota' => 0,
-				'total_transaksi' => 0,
-				'shu_transaksi' => 0,
-				'shu_simpanan' => 0,
-				'periode' => $anggota->periode + 1
-				);
-				$this->db->where('id_anggota', $id_anggota);
-				return $this->db->update('anggota',$data);
-			}
-			
-			public function update()
-			{
-				$post = $this->input->post();
-				$this->id_anggota = $post["id_anggota"];
-				$this->nama = $post["nama"];
-				$this->tgl_daftar = $post["tgl_daftar"];
-				$this->nim = $post["nim"];
-				$this->tgl_lahir = $post["tgl_lahir"];
-				$this->jabatan = $post["jabatan"];
-				$this->bagian = $post["bagian"];
-				$this->fakultas = $post["fakultas"];
-				$this->prodi = $post["prodi"];
-				$this->angkatan = $post["angkatan"];
-				$this->no_telp = $post["no_telp"];
-				$this->username = $post["username"];
-				$this->email = $post["email"];
-				$this->pass = $post["pass"];
-				$this->periode = $post["periode"];
-				$this->db->update($this->_table, $this, 
-				array('id_anggota' => $post['id_anggota']));
-			}
-			
-			public function delete($id_anggota)
-			{
-				return $this->db->delete($this->_table, 
-				array("id_anggota" => $id_anggota));
-			}
-			
-			public function getByPendaftar($status_user=0)
-			{
-				return $this->db->get_where($this->_table, 
-				["status_user" => $status_user])->result();
-			}
-			
-			public function getByAnggota($status_user=1)
-			{
-				return $this->db->get_where($this->_table, 
-				["status_user" => $status_user])->result();
-			}
-			
-			public function getByAP($status_user=2)
-			{
-				return $this->db->get_where($this->_table, 
-				["status_user" => $status_user])->result();
-			}
-			
-			public function getByKelola($level='admin')
-			{
-				return $this->db->get_where($this->_table, 
-				["level" => $level])->result();
-			}
-			
-			public function getByKelolaP($level='pengawass')
-			{
-				return $this->db->get_where($this->_table, 
-				["level" => $level])->result();
-			}
-			
-			public function getByNonAdmin($level='anggota', 
-			$status_user=1)
-			{
-				return $this->db->get_where($this->_table, 
-				["level" => $level, "status_user" => $status_user])->result();
-			}
-			
-			
-			
-			
-			
-			
-			public function getByNonPengawas($level='anggota', 
-			$status_user=1)
-			{
-				return $this->db->get_where($this->_table, 
-				["level" => $level, "status_user" => $status_user])->result();
-			}
-		}	
-\end{verbatim}
-
-\chapter{Sampel Kode \textit{View Admin} pada Daftar Anggota}
-\begin{verbatim}
-		<!DOCTYPE html>
-		<html lang="en">
-		<head>
-			<?php $this->load->view("admin/_partials/head.php") ?>
-		</head>
-		<body id="page-top">
-			<?php $this->load->view("admin/_partials/navbar.php") ?>
-		<div id="wrapper">
-			<?php $this->load->view("admin/_partials/sidebar.php") ?>		
-			<div id="content-wrapper">		
-				<div class="container-fluid">		
-					<?php //$this->load->view("admin/_partials/breadcrumb.php") ?>		
-					<div class="card mb-3">
-						<div class="card-header">
-							<a href="<?php echo site_url('admin/anggota/add') ?>">
-							<i class="fas fa-plus"></i> Tambah Anggota</a>
-							<strong>|</strong>
-							<a href="<?php echo site_url('admin/anggota/cetak') ?>">
-							<i class="fas fa-print"></i> Cetak Data</a>
-						</div>
-							<div class="card-body">		
-								<div class="table-responsive">
-									<table class="table table-hover" id="dataTable" 
-									width="100%" cellspacing="0">
-										<thead>
-											<tr>
-											<th>Nama</th>
-											<th>Jabatan</th>
-											<th>Bagian</th>
-											<th>Prodi</th>
-											<th>Simpanan</th>
-											<th>Transaksi</th>
-											<th>Periode</th>
-											<th>Action</th>
-											</tr>
-										</thead>
-											<tbody>
-												<?php foreach ($anggota as $anggota):?>
-											<tr>
-											<td>
-												<?php echo $anggota->nama ?>
-											</td>
-											<td>
-												<?php echo $anggota->jabatan ?>
-											</td>
-											<td>
-												<?php echo $anggota->bagian ?>
-											</td>
-											<td>
-												<?php echo $anggota->prodi ?>
-											</td>
-												<?php echo $anggota->no_telp ?>
-											</td>
-											<td>
-												<?php echo $anggota->username ?>
-											</td>
-											<td>
-												<?php echo $anggota->email ?>
-												<?php echo $anggota->pass ?>
-											<td style="text-align:right;">
-												<?php echo $anggota->simpanan_anggota ?>
-											</td>
-											<td style="text-align:right;">
-												<?php echo $anggota->total_transaksi ?>
-											</td>
-											<td style="text-align:right;">
-												<?php echo $anggota->periode?>
-											</td>
-											<td>
-												<a href="<?php echo 
-												site_url('admin/anggota/detail/'.$anggota->id_anggota) ?>"
-												class="btn btn-small"><i class="fas fa-list-ul" 
-												data-toggle="tooltip" title="Detail"></i></a>
-												<a onclick="putihConfirm('<?php echo 
-												site_url('admin/anggota/putih/'.$anggota->id_anggota) ?>')"
-												href="#1!" class="btn btn-small text-success">
-												<i class="fas fa-hand-paper" data-toggle="tooltip" 
-												title="Putihkan"></i></a>
-												<a href="<?php echo 
-												site_url('admin/anggota/edit/'.$anggota->id_anggota
-												) ?>"
-												class="btn btn-small"><i class="fas fa-edit" 
-												data-toggle="tooltip" title="Sunting"></i></a>
-												<a onclick="resetConfirm('<?php 
-												echo site_url('admin/anggota/reset_pass/'.$anggota->id_anggota)
-												 ?>')"
-												href="#2!" class="btn btn-small text-warning">
-												<i class="fas fa-sync" data-toggle="tooltip" 
-												title="Reset Password"></i></a>
-												<a onclick="baruConfirm('<?php echo 
-												site_url('admin/anggota/baru/'.$anggota->id_anggota) ?>')"
-												href="#2!" class="btn btn-small text-success">
-												<i class="fas fa-external-link-square-alt" 
-												data-toggle="tooltip" title="Lanjut Periode"></i></a>
-												<a onclick="deleteConfirm('<?php echo 
-												site_url('admin/anggota/delete/'.$anggota->id_anggota) ?>')"
-												href="#!" class="btn btn-small text-danger">
-												<i class="fas fa-trash" data-toggle="tooltip" 
-												title="Hapus"></i></a>
-											</td>
-											</tr>
-												<?php endforeach; ?>
-												</tbody>
-									</table>
-								</div>
-							</div>
-						</div>		
-					</div>
-		<?php $this->load->view("admin/_partials/scrolltop.php") ?>
-		<?php $this->load->view("admin/_partials/modal.php") ?>
-		<?php $this->load->view("admin/_partials/js.php") ?>
-		<script>
-			function deleteConfirm(url){
-				$('#btn-delete').attr('href', url);
-				$('#deleteModal').modal();
-			}
-			function putihConfirm(url){
-				$('#btn-putih').attr('href', url);
-				$('#putihModal').modal();
-			}
-			function resetConfirm(url){
-				$('#btn-reset').attr('href', url);
-				$('#resetModal').modal();
-			}
-			function baruConfirm(url){
-				$('#btn-baru').attr('href', url);
-				$('#baruModal').modal();
-			}
-				$(document).ready(function(){
-				$('[data-toggle="tooltip"]').tooltip();
-			});
-			</script>		
-		</body>		
-		</html>		
-\end{verbatim}
+	
+	% Add more rows as needed
+	\caption{Hasil prediksi menggunakan \emph{cascade} dan \emph{sliding window}}
+	\label{tab: Classification result}
+  \end{longtable}

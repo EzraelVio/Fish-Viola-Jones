@@ -15,25 +15,27 @@ telah penulis rancang, maka didapatkan kesimpulan sebagai berikut:
 	Berbasis Decision Tree. Adapun perancangan \textit{classifier} ini dikerjakan dalam 
 	waktu kurang lebih satu tahun.
 
-	\item Berdasarkan hasil pengetesan akurasi yang didapat dari \textit{classifier} jendela 1 adalah: 
-	x \%, \textit{classifier} jendela 2 adalah: x \% dan \textit{classifier} jendela 3 adalah: x \%.
+	\item Berdasarkan hasil pengetesan akurasi yang dilakukan pada saat validasi, metode ini 
+	berhasil mengklasifikasi 12 dari 75 gambar, atau memiliki akurasi 16\%.
 
-	\item Dari hasil percobaan mengklasifikasi 100 gambar dengan persebaran kelas: ... 
-	\textit{classifier} akhir berhasil mengklasifikasi x gambar.
-	
+	\item Klasifikasi memiliki akurasi rendah dikarenakan dua faktor, yaitu tidak 
+	sesuainya lokasi \emph{sub-window} yang diklasifikasi dan juga bias bobot \textit{voting} 
+	\emph{weak classifier} awal pada \emph{cascade}. Bias nampaknya ditunjukan kepada kelas 
+	ikan Abudefduf.
+
 \end{enumerate}
 
 \section{Saran}
-	Klasifikasi ikan dengan menggunakan metode \textit{framework Viola-Jones} dengan 
-	\textit{decision tree boosting}membuka peluang untuk melanjutkan penelitian 
-	dalam klasifikasi ikan menggunakan metode tersebut. Ada beberapa perubahan yang mungkin 
-	bisa dilakukan untuk memutakhirkan metode ini, salah satunya adalah penambahan 
-	\textit{object extraction} untuk mempermudah \textit{pre-processing}. Mungkin 
-	juga memodifikasi model agar dapat bekerja dengan gambar yang tidak selalu berukuran 
-	350 x 200 piksel. Dan terakhir, mengimplementasikan \textit{multi processing} untuk 
-	mempercepat proses pelatihan yang cukup lama, yang dapat kedepannya memungkinkan pengguna 
-	untuk melatih \textit{classifier} dengan lebih banyak data latihan dengan waktu yang jauh lebih singkat.
-
+\begin{enumerate}
+	\item Penelitian ini masih belum bisa secara akurat mengklasifikasi jenis ikan. Oleh 
+	karena itu perlu ada penelitian lanjutan yang menyempurnakan tingkat akurasi klasifikasi 
+	dengan mengganti atau merombak metode yang ada, terutama metode \emph{sliding window} 
+	dan bias klasifikasi ke kelas tertentu.
+	\item Pemutakhiran dapat dilakukan agar dapat menerima gambar dengan ukuran yang 
+	dinamis 
+	\item Pengimplementasian \textit{multiprocessing} untuk mempercepat proses 
+	\textit{training} agar memungkinkan training dengan data yang lebih besar.
+\end{enumerate}
 
 % Baris ini digunakan untuk membantu dalam melakukan sitasi
 % Karena diapit dengan comment, maka baris ini akan diabaikan

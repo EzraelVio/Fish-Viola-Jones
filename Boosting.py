@@ -16,6 +16,8 @@ class Boosting:
         current_accuracy = 0
         iteration = 0
         limit = 100 #change according to needs
+        last_iteration_alpha_list = None
+        last_iteration_orderlist = None
 
         # start boosting loop. Will stop when accuracy fell or iteration hit limit
         while True:
@@ -56,6 +58,7 @@ class Boosting:
     def start_boosting(trees, X_test, Y_test, image_weights, orderlist):
         print('Boosting...')
         alpha_list = np.zeros(len(orderlist))
+        image_weights = image_weights.copy()
         for i in range(len(orderlist)):
             # make prediction with i-th tree
             treeN = orderlist[i]

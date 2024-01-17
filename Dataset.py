@@ -8,10 +8,6 @@ class Dataset:
     class_Window_offset_1 = [
         # order according to label's order in LoadImages
         # for searching mouth features
-        # (0, 0),
-        # (88, 0), 
-        # (73, 0),
-        # (100, 15)
 
         (0, 0),
         (0, 88),
@@ -22,10 +18,6 @@ class Dataset:
     class_Window_offset_2 = [
         # order according to label's order in LoadImages
         # for searching fin features
-        # (0, 0),
-        # (0, 116), 
-        # (9, 153),
-        # (0, 116)
 
         (0, 0),
         (116, 0),
@@ -36,10 +28,6 @@ class Dataset:
     class_Window_offset_3 = [
         # order according to label's order in LoadImages
         # for searching tail feature
-        # (0, 0),
-        # (89, 280), 
-        # (47, 237),
-        # (80, 277)
 
         (0, 0),
         (280, 89),
