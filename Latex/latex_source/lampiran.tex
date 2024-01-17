@@ -1,10 +1,74 @@
 \appendix
 
-% \chapter{\emph{Source code} program}
+\chapter{\textit{Source Code}}
+	\textit{Source code} selengkapnya termasuk dengan \textit{data} 
+	bisa dilihat di \url(https://github.com/EzraelVio/Fish-Viola-Jones) dibawah lisense 
+	\textit{GNU General Public License v3.0.} \textit{Prototype System} Pendeteksi 
+	Spesies Ikan Menggunakan \textit{Viola-Jones Featues Extraction} dan \textit{Boosting} 
+	berbasis \textit{Decision Tree}.
 
+\chapter{Tabel data \textit{training}}
 
+\begin{longtable}{|c|c|c|c|c|}
+    \hline
+    \textbf{No.} & \textbf{Abudefduf} & \textbf{Amphiprion} & \textbf{Chaetodon} & \textbf{Negative} \\
+    \hline
+    \endfirsthead
+    \multicolumn{5}{c}{{\tablename\ \thetable{} -- continued from previous page}} \\
+    \hline
+    \textbf{No.} & \textbf{Abudefduf} & \textbf{Amphiprion} & \textbf{Chaetodon} & \textbf{Negative} \\
+    \hline
+    \endhead
+    \hline \multicolumn{5}{|r|}{{Continued on next page}} \\ \hline
+    \endfoot
+    \hline
+    \endlastfoot
 
-\chapter{Tabel pengolahan data citra input}
+    1 & \includegraphics[width=3cm]{gambar/abudefduf/A1} & \includegraphics[width=3cm]{gambar/amphiprion/A1} & \includegraphics[width=3cm]{gambar/chaetodon/C1} & \includegraphics[width=3cm]{gambar/negative_examples/N1} \\
+    \hline
+    2 & \includegraphics[width=3cm]{gambar/abudefduf/A2} & \includegraphics[width=3cm]{gambar/amphiprion/A2} & \includegraphics[width=3cm]{gambar/chaetodon/C2} & \includegraphics[width=3cm]{gambar/negative_examples/N2} \\
+    \hline
+    3 & \includegraphics[width=3cm]{gambar/abudefduf/A3} & \includegraphics[width=3cm]{gambar/amphiprion/A3} & \includegraphics[width=3cm]{gambar/chaetodon/C3} & \includegraphics[width=3cm]{gambar/negative_examples/N3} \\
+    \hline
+    4 & \includegraphics[width=3cm]{gambar/abudefduf/A4} & \includegraphics[width=3cm]{gambar/amphiprion/A4} & \includegraphics[width=3cm]{gambar/chaetodon/C4} & \includegraphics[width=3cm]{gambar/negative_examples/N4} \\
+    \hline
+    5 & \includegraphics[width=3cm]{gambar/abudefduf/A5} & \includegraphics[width=3cm]{gambar/amphiprion/A5} & \includegraphics[width=3cm]{gambar/chaetodon/C5} & \includegraphics[width=3cm]{gambar/negative_examples/N5} \\
+    \hline
+    6 & \includegraphics[width=3cm]{gambar/abudefduf/A6} & \includegraphics[width=3cm]{gambar/amphiprion/A6} & \includegraphics[width=3cm]{gambar/chaetodon/C6} & \includegraphics[width=3cm]{gambar/negative_examples/N6} \\
+    \hline
+    7 & \includegraphics[width=3cm]{gambar/abudefduf/A7} & \includegraphics[width=3cm]{gambar/amphiprion/A7} & \includegraphics[width=3cm]{gambar/chaetodon/C7} & \includegraphics[width=3cm]{gambar/negative_examples/N7} \\
+    \hline
+    8 & \includegraphics[width=3cm]{gambar/abudefduf/A8} & \includegraphics[width=3cm]{gambar/amphiprion/A8} & \includegraphics[width=3cm]{gambar/chaetodon/C8} & \includegraphics[width=3cm]{gambar/negative_examples/N8} \\
+    \hline
+    9 & \includegraphics[width=3cm]{gambar/abudefduf/A9} & \includegraphics[width=3cm]{gambar/amphiprion/A9} & \includegraphics[width=3cm]{gambar/chaetodon/C9} & \includegraphics[width=3cm]{gambar/negative_examples/N9} \\
+    \hline
+    10 & \includegraphics[width=3cm]{gambar/abudefduf/A10} & \includegraphics[width=3cm]{gambar/amphiprion/A10} & \includegraphics[width=3cm]{gambar/chaetodon/C10} & \includegraphics[width=3cm]{gambar/negative_examples/N10} \\
+    \hline
+    11 & \includegraphics[width=3cm]{gambar/abudefduf/A11} & \includegraphics[width=3cm]{gambar/amphiprion/A11} & \includegraphics[width=3cm]{gambar/chaetodon/C11} & \includegraphics[width=3cm]{gambar/negative_examples/N11} \\
+    \hline
+    12 & \includegraphics[width=3cm]{gambar/abudefduf/A12} & \includegraphics[width=3cm]{gambar/amphiprion/A12} & \includegraphics[width=3cm]{gambar/chaetodon/C12} & \includegraphics[width=3cm]{gambar/negative_examples/N12} \\
+    \hline
+    13 & \includegraphics[width=3cm]{gambar/abudefduf/A13} & \includegraphics[width=3cm]{gambar/amphiprion/A13} & \includegraphics[width=3cm]{gambar/chaetodon/C13} & \includegraphics[width=3cm]{gambar/negative_examples/N13} \\
+    \hline
+    14 & \includegraphics[width=3cm]{gambar/abudefduf/A14} & \includegraphics[width=3cm]{gambar/amphiprion/A14} & \includegraphics[width=3cm]{gambar/chaetodon/C14} & \includegraphics[width=3cm]{gambar/negative_examples/N14} \\
+    \hline
+    15 & \includegraphics[width=3cm]{gambar/abudefduf/A15} & \includegraphics[width=3cm]{gambar/amphiprion/A15} & \includegraphics[width=3cm]{gambar/chaetodon/C15} & \includegraphics[width=3cm]{gambar/negative_examples/N15} \\
+    \hline
+    16 & \includegraphics[width=3cm]{gambar/abudefduf/A16} & \includegraphics[width=3cm]{gambar/amphiprion/A16} & \includegraphics[width=3cm]{gambar/chaetodon/C16} & \includegraphics[width=3cm]{gambar/negative_examples/N16} \\
+    \hline
+    17 & \includegraphics[width=3cm]{gambar/abudefduf/A17} & \includegraphics[width=3cm]{gambar/amphiprion/A17} & \includegraphics[width=3cm]{gambar/chaetodon/C17} & \includegraphics[width=3cm]{gambar/negative_examples/N17} \\
+    \hline
+    18 & \includegraphics[width=3cm]{gambar/abudefduf/A18} & \includegraphics[width=3cm]{gambar/amphiprion/A18} & \includegraphics[width=3cm]{gambar/chaetodon/C18} & \includegraphics[width=3cm]{gambar/negative_examples/N18} \\
+    \hline
+    19 & \includegraphics[width=3cm]{gambar/abudefduf/A19} & \includegraphics[width=3cm]{gambar/amphiprion/A19} & \includegraphics[width=3cm]{gambar/chaetodon/C19} & \includegraphics[width=3cm]{gambar/negative_examples/N19} \\
+    \hline
+    20 & \includegraphics[width=3cm]{gambar/abudefduf/A20} & \includegraphics[width=3cm]{gambar/amphiprion/A20} & \includegraphics[width=3cm]{gambar/chaetodon/C20} & \includegraphics[width=3cm]{gambar/negative_examples/N20} \\
+    \hline
+\end{longtable}
+
+\chapter{Tabel pengolahan data gambar validasi}
+Pada kolom \textit{Window} terdapat koordinat klasifikasi dan hasil klasifikasi. [6,110] class: 1 
+berarti, 'dikasifikasikan di x = 6, y = 110 dengan hasil klasifikasi 1'.
 
 \begin{longtable}{|c|c|c|c|c|}
 	\hline

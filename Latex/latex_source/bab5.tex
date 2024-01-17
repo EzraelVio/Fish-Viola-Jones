@@ -16,12 +16,14 @@ telah penulis rancang, maka didapatkan kesimpulan sebagai berikut:
 	waktu kurang lebih satu tahun.
 
 	\item Berdasarkan hasil pengetesan akurasi yang dilakukan pada saat validasi, metode ini 
-	berhasil mengklasifikasi 12 dari 75 gambar, atau memiliki akurasi 16\%.
+	berhasil mengklasifikasi 12 dari 75 gambar, atau memiliki akurasi 16\%. Akurasi ini 
+	sangat rendah bila ingin digunakan untuk mengklasifikasi, apalagi untuk menghitung ikan.
 
 	\item Klasifikasi memiliki akurasi rendah dikarenakan dua faktor, yaitu tidak 
 	sesuainya lokasi \emph{sub-window} yang diklasifikasi dan juga bias bobot \textit{voting} 
 	\emph{weak classifier} awal pada \emph{cascade}. Bias nampaknya ditunjukan kepada kelas 
-	ikan Abudefduf.
+	ikan Abudefduf karena dari 50 hasil yang bukan kelas Abudefdu, 32-nya diklasifikasikan 
+	sebagai Abudefduf.
 
 \end{enumerate}
 

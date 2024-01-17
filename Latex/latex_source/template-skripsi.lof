@@ -47,12 +47,16 @@
 \contentsline {figure}{\numberline {4.28}{\ignorespaces \emph {source code:} pencarian nilai bobot \emph {boosting} menggunakan fungsi \texttt {start\_boosting()}\relax }}{31}{figure.caption.46}%
 \contentsline {figure}{\numberline {4.29}{\ignorespaces \emph {source code:} klasifikasi yang dilakukan setelah setiap iterasi \emph {boosting}\relax }}{32}{figure.caption.47}%
 \contentsline {figure}{\numberline {4.30}{\ignorespaces \emph {source code:} bentuk \textit {class PickleTreeFinal}\relax }}{32}{figure.caption.48}%
-\contentsline {figure}{\numberline {4.31}{\ignorespaces \emph {source code:} bentuk \textit {class Cascade}\relax }}{33}{figure.caption.49}%
-\contentsline {figure}{\numberline {4.32}{\ignorespaces \emph {source code:} fungsi untuk mengisi \texttt {stages} pada \emph {Cascade}\relax }}{33}{figure.caption.50}%
-\contentsline {figure}{\numberline {4.33}{\ignorespaces \emph {source code: class} CascadeStage\relax }}{33}{figure.caption.51}%
-\contentsline {figure}{\numberline {4.34}{\ignorespaces \emph {source code: } pelatihan \emph {stage} dalam \emph {Cascade}\relax }}{34}{figure.caption.52}%
-\contentsline {figure}{\numberline {4.35}{\ignorespaces \emph {source code: } fungsi penyimpanan \emph {Cascade} ke pickle dengan menggunakan fungsi \texttt {dump\_to\_pickle} lagi\relax }}{34}{figure.caption.53}%
-\contentsline {figure}{\numberline {4.36}{\ignorespaces \emph {source code: } predict.py untuk melakukan klasifikasi sebenarnya\relax }}{35}{figure.caption.54}%
-\contentsline {figure}{\numberline {4.37}{\ignorespaces Gambar tes Amphiprion23. Kotak merah menunjukan ekspektasi klasifikasi yang benar untuk kelas Amphiprion, karena \textit {offset} diletakan disitu. Kotak hijau menunjukan lokasi klasifikasi yang dilakukan \emph {sliding window} ketika mengklasifikasi gambar Amphiprion23\relax }}{36}{figure.caption.55}%
+\contentsline {figure}{\numberline {4.31}{\ignorespaces \emph {source code:} bentuk \textit {class Cascade}\relax }}{33}{figure.caption.50}%
+\contentsline {figure}{\numberline {4.32}{\ignorespaces \emph {source code:} fungsi untuk mengisi \texttt {stages} pada \emph {Cascade}\relax }}{33}{figure.caption.51}%
+\contentsline {figure}{\numberline {4.33}{\ignorespaces \emph {source code: class} CascadeStage\relax }}{34}{figure.caption.52}%
+\contentsline {figure}{\numberline {4.34}{\ignorespaces \emph {source code: } pelatihan \emph {stage} dalam \emph {Cascade}\relax }}{34}{figure.caption.53}%
+\contentsline {figure}{\numberline {4.35}{\ignorespaces \emph {source code: } fungsi penyimpanan \emph {Cascade} ke pickle dengan menggunakan fungsi \texttt {dump\_to\_pickle} lagi\relax }}{34}{figure.caption.54}%
+\contentsline {figure}{\numberline {4.36}{\ignorespaces Gambaran \textit {cascade} window 1 (kiri) dan cara kerjanya\relax }}{35}{figure.caption.55}%
+\contentsline {figure}{\numberline {4.37}{\ignorespaces \emph {source code: } predict.py untuk melakukan klasifikasi sebenarnya\relax }}{36}{figure.caption.56}%
+\contentsline {figure}{\numberline {4.38}{\ignorespaces Ketiga kelas ikan\relax }}{37}{figure.caption.57}%
+\contentsline {figure}{\numberline {4.39}{\ignorespaces Gambar tes Amphiprion23. Kotak merah menunjukan ekspektasi klasifikasi yang benar untuk kelas Amphiprion, karena \textit {offset} diletakan disitu. Kotak hijau menunjukan lokasi klasifikasi yang dilakukan \emph {sliding window} ketika mengklasifikasi gambar Amphiprion23\relax }}{38}{figure.caption.58}%
+\addvspace {10\p@ }
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

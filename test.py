@@ -61,15 +61,15 @@ for i in range(3):
     print(strong_classifier.features[:5])
     print(strong_classifier.alpha_list[:5])
 
-    csv_name_loop = f'fish_window_{i}'
-    splits = DecisionTree.split_data(initial_features, csv_name_loop, labels)
-    X_train, Y_train, X_test, Y_test, X_valid, Y_valid = splits
+    # csv_name_loop = f'fish_window_{i}'
+    # splits = DecisionTree.split_data(initial_features, csv_name_loop, labels)
+    # X_train, Y_train, X_test, Y_test, X_valid, Y_valid = splits
 
-    pickle_name = f'window_{i}_cascade'
-    orderlist = np.arange(len(strong_classifier.features))
-    validation_prediction = Boosting.strong_prediction(strong_classifier.trees, orderlist, X_valid, strong_classifier.alpha_list)
-    current_accuracy = accuracy_score(Y_valid, validation_prediction)
-    print(current_accuracy)
+    # pickle_name = f'window_{i}_cascade'
+    # orderlist = np.arange(len(strong_classifier.features))
+    # validation_prediction = Boosting.strong_prediction(strong_classifier.trees, orderlist, X_valid, strong_classifier.alpha_list)
+    # current_accuracy = accuracy_score(Y_valid, validation_prediction)
+    # print(current_accuracy)
 
     # cascade = Cascade()
     # cascade.fill_cascade(strong_classifier.features, strong_classifier.trees, strong_classifier.alpha_list, splits)

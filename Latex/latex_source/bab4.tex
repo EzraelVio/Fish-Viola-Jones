@@ -867,9 +867,24 @@
 		\emph{features} untuk dapat langsung membaca nilai fitur langsung dari gambar. Hasil dari \emph{boosting} untuk ketiga \emph{strong classifier} cukup memuaskan 
 		dengan akurasi 71\% untuk ketiga \emph{strong classifier}.
 		
-		% Adapula didapatkan 5 fitur 
-		% paling atas dari ketiga \emph{classiffier}. Berikut adalah gambaran dari fitur-fitur tersebut:
+		\begin{table}[h]
+			\centering
+			\begin{tabular}{|c|p{2cm}|c|p{3cm}|}
+				\hline
+				\textbf{Window pickle name} & \textbf{Num. Features} & \textbf{Accuracy} & \textbf{Top Feature} \\
+				\hline
+				window\_0\_strong\_classsifier & 2751 & 71\% & ('Right Triangular', 26, 24, 4, 4) \\
+				\hline
+				window\_1\_strong\_classsifier & 4521 & 71\% & ('Four Diagonal', 4, 40, 8, 4) \\
+				\hline
+				window\_2\_strong\_classsifier & 6749 & 71\% &  ('Two Horizontal', 0, 0, 4, 4) \\
+				\hline
 
+			\end{tabular}
+			\caption{Hasil boosting pada ketiga \textit{window}}
+			\label{tab:mytable}
+		\end{table}
+		
 	\subsection{\textit{Training Cascade}}
 		
 		Pelatihan pickle dimulai dengan pertama membuat \textit{class} \texttt{Cascade} yang 
@@ -983,6 +998,12 @@
 			\label{code: save Cascade to pickle}
 		\end{figure}
 
+		\begin{figure}[H]
+			\centering{}
+			  \includegraphics[width=0.8\textwidth]{gambar/flowchart\_cascade}
+			\caption{Gambaran \textit{cascade} window 1 (kiri) dan cara kerjanya}
+		\end{figure}
+
 \section{Validasi}
 
 		Untuk proses validasi atau penggunaan, penulis telah membuat sebuah \textit{file} 
@@ -1072,12 +1093,27 @@
 			\label{code: predict.py}
 		\end{figure}
 
-		\textit{Source code} selengkapnya termasuk dengan \textit{source code training} 
-		bisa dilihat di \url(https://github.com/EzraelVio/Fish-Viola-Jones) dibawah lisense 
-		\textit{GNU General Public License v3.0.} \textit{Prototype System} Pendeteksi 
-		Spesies Ikan Menggunakan \textit{Viola-Jones Featues Extraction} dan \textit{Boosting} 
-		berbasis \textit{Decision Tree}. Rincian yang lebih lengkap soal hasil klasifikasi 
-		bisa diliat di lampiran.
+		\begin{figure}[H]
+			\centering{}
+			  \includegraphics[width=0.4\textwidth]{gambar/fish\_classes}
+			\caption{Ketiga kelas ikan}
+		\end{figure}
+
+		\texttt{Predict.py} pertama membaca gambar-gambar yang akan diklasifikasi dari folder 
+		\textit{classification\_target}, metode yang digunakan kurang lebih sama dengan 
+		yang digunakan pada \texttt{load\_image()}. Lalu program akan melakukan \textit{looping} 
+		dari kiri atas gambar, bergerak ke kiri bawah gambar, hal ini adalah \emph{sliding window}. 
+		Pada setiap \emph{window}, program akan memanggil cascade yang berhubungan untuk melakukan klasfikasi. 
+		Bila \emph{cascade} mengembalikan suatu kelas ikan, maka \textit{looping} untuk area tersebut 
+		akan dihentikan dan dilanjutkan ke area berikutnya. Proses \textit{looping} ini dijalankan 
+		tiga kali untuk area kiri, tengah dan kanan. Estimasi area kiri adalah x = 0 sampai x = 115 - 50, 
+		estimasi area tengah adalah x = 116 sampai x = 232 - 50, dan area kanan x = 233 sampai x = 350 -50. 
+		Semua loop dikurangi dengan 50, ukuran dari \emph{sub-window}, agar \textit{slidin window} tidak mencoba mendeteksi keluar dari 
+		areanya atau keluar dari gambar. Terakhir hasil prediksi akan ditentukan oleh suara 
+		mayoritas dari ketiga \textit{window}, kecuali kalau ketiga \emph{window} mem-\textit{voting} 
+		kelas yang berbeda, maka kelas 0 atau None akan dipilih. Gambar lalu akan dianotasi dengan nama 
+		kelas ditulis di kiri atas gambar \textit{output}, kelas dan informasi penting lainnya juga ditambahkan 
+		ke nama dokumen gambar \textit{output} agar mudah diperiksa.
 
 \section{Analisa Hasil}
 		Setelah prediksi menggunakan \textit{sliding window} dilakukan, ditemukan bahwa hanya 
@@ -1101,12 +1137,13 @@
 			gambar Amphiprion23}
 		\end{figure}
 		
-		Problem baru lainnya juga keluar pada klasifikasi ini, yaitu 
+		Problem baru lainnya juga keluar pada saat klasifikasi, adalah 
 		bias \emph{weak classifier} yang lebih kuat pada awal \emph{cascade} terhadap beberapa kelas tertentu, dalam 
 		banyak kasus bias-nya adalah ke kelas ikan Abudefduf. Umumnya \emph{weak classifier} yang paling awal 
 		didalam \emph{cascade} memiliki bobot \textit{voting} yang terlalu kuat, sehingga ketika mereka mem-\textit{voting} 
 		suatu kelas jumlah total bobot \textit{voting weak classifier} setelahnya tidak dapat mengalahkan 
-		\textit{voting weak classifier} paling awal.
+		\textit{voting weak classifier} paling awal. Dari 50 gambar yang bukan kelas Abudefdu, Abudeduf keluar sebanyak 
+		32 kali dalam klasifikasi.
 		
 		
 

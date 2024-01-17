@@ -27,7 +27,7 @@
 \contentsline {section}{\numberline {3.2}Desain Sistem}{9}{section.3.2}%
 \contentsline {section}{\numberline {3.3}Training \emph {Strong Classifier}}{10}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}\textit {Input Dataset} Pelatihan}{10}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Pembuatan \textit {Haar like Features}}{12}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Pembuatan \textit {Haar like Features}}{11}{subsection.3.3.2}%
 \contentsline {subsection}{\numberline {3.3.3}Pembuatan \textit {Decision Tree}}{13}{subsection.3.3.3}%
 \contentsline {subsection}{\numberline {3.3.4}\emph {Boosting}}{14}{subsection.3.3.4}%
 \contentsline {subsection}{\numberline {3.3.5}Pembuatan \emph {Attentional Cascade}}{15}{subsection.3.3.5}%
@@ -43,10 +43,12 @@
 \contentsline {subsection}{\numberline {4.1.4}\textit {Create Decision Tree for each Feature}}{23}{subsection.4.1.4}%
 \contentsline {subsection}{\numberline {4.1.5}\textit {Boosting}}{29}{subsection.4.1.5}%
 \contentsline {subsection}{\numberline {4.1.6}\textit {Training Cascade}}{33}{subsection.4.1.6}%
-\contentsline {section}{\numberline {4.2}Validasi}{34}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Analisa Hasil}{36}{section.4.3}%
-\contentsline {chapter}{\numberline {V}KESIMPULAN DAN SARAN}{37}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Kesimpulan}{37}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Saran}{37}{section.5.2}%
-\contentsline {chapter}{DAFTAR PUSTAKA}{38}{Item.19}%
-\contentsline {chapter}{\numberline {A}Tabel pengolahan data citra input}{39}{appendix.A}%
+\contentsline {section}{\numberline {4.2}Validasi}{35}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Analisa Hasil}{37}{section.4.3}%
+\contentsline {chapter}{\numberline {V}KESIMPULAN DAN SARAN}{39}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Kesimpulan}{39}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Saran}{39}{section.5.2}%
+\contentsline {chapter}{DAFTAR PUSTAKA}{40}{Item.19}%
+\contentsline {chapter}{\numberline {A}\textit {Source Code}}{41}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Tabel data \textit {training}}{42}{appendix.B}%
+\contentsline {chapter}{\numberline {C}Tabel pengolahan data gambar validasi}{45}{appendix.C}%
