@@ -53,13 +53,16 @@ initial_features = generate_features(50, 50)
 # print(testing[:10])
 
 for i in range(3):
+    print(f'Data file boosting dari window {i}')
     pickle_name = f'window_{i}_strong_classsifier'
     strong_classifier = Utilities.read_from_pickle(pickle_name)
     # print(strong_classifier.trees[:10])
-    print(np.shape(strong_classifier.trees))
-    print(np.shape(strong_classifier.features))
-    print(strong_classifier.features[:5])
-    print(strong_classifier.alpha_list[:5])
+    print(f'jumlah decision tree:{np.shape(strong_classifier.trees)}')
+    print(f'jumlah decision features:{np.shape(strong_classifier.features)}')
+    print(f'top 5 features:')
+    for j in range(5):
+        print(f'feature {i}: {strong_classifier.features[j]}')
+        print(f'alpha {i}: {strong_classifier.alpha_list[j]}')
 
     # csv_name_loop = f'fish_window_{i}'
     # splits = DecisionTree.split_data(initial_features, csv_name_loop, labels)
