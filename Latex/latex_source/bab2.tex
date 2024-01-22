@@ -50,9 +50,9 @@ ada alasan besar lainnya untuk penggunaan fitur yaitu sistem berbasis fitur bero
 daripada sistem yang berbasis nilai piksel.
 
 Fitur sederhana yang digunakan mirip dengan \emph{Haar Basis Function} yang 
-digunakan \cite{papaetal}. Lebih tepatnya ada tiga jenis fitur: dua persegi, tiga persegi dan 
+digunakan \cite{papaetal}. Lebih tepatnya ada tiga jenis fitur: dua persegi panjang, tiga persegi dan 
 empat persegi diagonal. 
-Nilai dari sebuah \emph{fitur dua persegi} adalah perbedaaan diantara 
+Nilai dari sebuah \emph{fitur dua persegi panjang} adalah perbedaaan diantara 
 jumlah nilai piksel didalam dua atau lebih area persegi. Area-area tersebut memiliki 
 ukuran dan bentuk yang sama, dan juga bersebelahan secara horizontal dan vertikal.
 Subuah \emph{fitur tiga persegi} menghitung jumlah piksel dua area persegi 
@@ -150,7 +150,10 @@ ia akan dipanggil untuk menyelesaikan sederet problem pembelajaran. Setelah
 satu ronde pembelajaran selesai, setiap contoh pembelajarannya akan dibobot ulang 
 untuk menekankan problem yang salah diklasifikasi oleh \emph{weak learner} 
 sebelumnya. Bentuk \emph{final strong classifier} adalah 
-sebuah kombinasi \emph{weak learner} berbobot. 
+sebuah kombinasi \emph{weak learner} berbobot. Untuk klasifikasi multi-kelas 
+perlu dilakukan modifikasi kecil terhadap algoritma \emph{boosting}. Hal ini dengan menambahkan 
+perhitungan kecil pada penghitungan bobot, dengan memperhitungkan jumlah kelas yang akan 
+diklasifikasi. (\cite{samme})
 
 \subsection{\emph{Weaklearn}}
 

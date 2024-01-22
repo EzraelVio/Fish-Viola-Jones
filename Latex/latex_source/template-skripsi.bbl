@@ -37,7 +37,7 @@
       \field{sortinit}{A}
       \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
       \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Rancangan Bangun Fish Counter Untuk Menghitung Bibit Ikan Lele}
@@ -73,11 +73,29 @@
       \field{sortinit}{D}
       \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
       \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Pengaruh Kepadatan Yang Berbeda Terhadap Kelulushidupan dan Pertumbuhan Ikan Nila (Oreochromis niloticus) Pada Sistem Resirkulasi Dengan Filter Zeolit}
       \field{year}{2013}
+    \endentry
+    \entry{fishbase}{online}{}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{url}
+      \field{labeltitlesource}{title}
+      \field{title}{FishBase}
+      \field{urlday}{18}
+      \field{urlmonth}{1}
+      \field{urlyear}{2024}
+      \field{urldateera}{ce}
+      \verb{urlraw}
+      \verb https://fishbase.mnhn.fr/search.php
+      \endverb
+      \verb{url}
+      \verb https://fishbase.mnhn.fr/search.php
+      \endverb
     \endentry
     \entry{freundetal}{article}{}
       \name{author}{2}{}{%
@@ -103,11 +121,55 @@
       \field{sortinit}{F}
       \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
       \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{note}{\url{https://doi.org/10.1006/jcss.1997.1504}}
       \field{title}{A Decision-Theoretic Generalization of On-Line Learning and an Application to Boosting}
       \field{year}{1996}
+    \endentry
+    \entry{samme}{article}{}
+      \name{author}{4}{}{%
+        {{un=0,uniquepart=base,hash=0cb8fe4210baa81c4b0e67913b4d2768}{%
+           family={Hastie},
+           familyi={H\bibinitperiod},
+           given={Trevor},
+           giveni={T\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=419317fdd051d6322062748170149516}{%
+           family={Rosset},
+           familyi={R\bibinitperiod},
+           given={Saharon},
+           giveni={S\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=885c2d20b53bf31151fa702f9fadcfe5}{%
+           family={Zhu},
+           familyi={Z\bibinitperiod},
+           given={Ji},
+           giveni={J\bibinitperiod},
+           givenun=0}}%
+        {{un=0,uniquepart=base,hash=f15b129e88b4820c7ed982265e79986b}{%
+           family={Zou},
+           familyi={Z\bibinitperiod},
+           given={Hui},
+           giveni={H\bibinitperiod},
+           givenun=0}}%
+      }
+      \strng{namehash}{45eb7d473651da447f1d77717e7f8650}
+      \strng{fullhash}{cf549ee3d7396b0152cc474f9514c490}
+      \strng{bibnamehash}{45eb7d473651da447f1d77717e7f8650}
+      \strng{authorbibnamehash}{45eb7d473651da447f1d77717e7f8650}
+      \strng{authornamehash}{45eb7d473651da447f1d77717e7f8650}
+      \strng{authorfullhash}{cf549ee3d7396b0152cc474f9514c490}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{extradatescope}{labelyear}
+      \field{labeldatesource}{year}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{\url{https://dx.doi.org/10.4310/SII.2009.v2.n3.a8}}
+      \field{title}{Multi-class adaboost}
+      \field{year}{2009}
     \endentry
     \entry{hoetal}{article}{}
       \name{author}{3}{}{%
@@ -139,9 +201,10 @@
       \field{sortinit}{H}
       \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
       \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{note}{\url{https://doi.org/10.1109/ACIIDS.2009.25}}
       \field{title}{Two-stage License Plate Detection using Gentle Adaboost and SIFT-SVM}
       \field{year}{2009}
     \endentry
@@ -175,9 +238,10 @@
       \field{sortinit}{P}
       \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
       \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{note}{\url{https://doi.org/10.1109/ICCV.1998.710772}}
       \field{title}{A General Framework for Object Detection}
       \field{year}{1998}
     \endentry
@@ -211,9 +275,10 @@
       \field{sortinit}{R}
       \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
       \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{note}{\url{https://doi.org/10.1109/CVPR.2007.383514}}
       \field{title}{Object Classification in Visual Surveillance Using Adaboost}
       \field{year}{2007}
     \endentry
@@ -235,42 +300,11 @@
       \field{sortinit}{R}
       \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
       \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Perancangan Mesin Penghitung Benih Ikan Otomatis untuk Membantu Kinerja Peternak Ikan}
       \field{year}{2019}
-    \endentry
-    \entry{harianjogja}{online}{}
-      \name{author}{1}{}{%
-        {{un=0,uniquepart=base,hash=82e9157d91d60ade8a95a63686199a34}{%
-           family={Sunartono},
-           familyi={S\bibinitperiod}}}%
-      }
-      \strng{namehash}{82e9157d91d60ade8a95a63686199a34}
-      \strng{fullhash}{82e9157d91d60ade8a95a63686199a34}
-      \strng{bibnamehash}{82e9157d91d60ade8a95a63686199a34}
-      \strng{authorbibnamehash}{82e9157d91d60ade8a95a63686199a34}
-      \strng{authornamehash}{82e9157d91d60ade8a95a63686199a34}
-      \strng{authorfullhash}{82e9157d91d60ade8a95a63686199a34}
-      \field{sortinit}{S}
-      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
-      \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Fantastis! Menteri KKP Sebut Nilai Pasar Ikan Capai Rp2.400 Triliun}
-      \field{urlday}{8}
-      \field{urlmonth}{8}
-      \field{urlyear}{2023}
-      \field{year}{2023}
-      \field{urldateera}{ce}
-      \verb{urlraw}
-      \verb https://news.harianjogja.com/read/2023/02/28/500/1127655/fantastis-menteri-kkp-sebut-nilai-pasar-ikan-capai-rp2400-triliun
-      \endverb
-      \verb{url}
-      \verb https://news.harianjogja.com/read/2023/02/28/500/1127655/fantastis-menteri-kkp-sebut-nilai-pasar-ikan-capai-rp2400-triliun
-      \endverb
     \endentry
     \entry{violaetal}{article}{}
       \name{author}{2}{}{%
@@ -296,9 +330,10 @@
       \field{sortinit}{V}
       \field{sortinithash}{afb52128e5b4dc4b843768c0113d673b}
       \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
+      \field{note}{\url{https://doi.org/10.1023/B:VISI.0000013087.49260.fb}}
       \field{title}{Robust Real-Time Face Detection}
       \field{year}{2004}
     \endentry
@@ -320,11 +355,11 @@
       \field{sortinit}{W}
       \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
       \field{extradatescope}{labelyear}
-      \field{labeldatesource}{}
+      \field{labeldatesource}{year}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{title}{Generic Object Detection using AdaBoost}
-      \field{year}{2006}
+      \field{title}{Generic object detection using AdaBoost}
+      \field{year}{2008}
     \endentry
   \enddatalist
 \endrefsection

@@ -3,13 +3,14 @@
 \chapter{\textit{Source Code}}
 	\textit{Source code} selengkapnya termasuk dengan \textit{data} 
 	bisa dilihat di \url(https://github.com/EzraelVio/Fish-Viola-Jones) dibawah lisense 
-	\textit{GNU General Public License v3.0.} \textit{Prototype System} Pendeteksi 
-	Spesies Ikan Menggunakan \textit{Viola-Jones Featues Extraction} dan \textit{Boosting} 
+	\textit{GNU General Public License v3.0.} \textit{Prototype System} Klasifikasi 
+	Genus Ikan Menggunakan \textit{Viola-Jones Featues Extraction} dan \textit{Boosting} 
 	berbasis \textit{Decision Tree}.
 
 \chapter{Tabel data \textit{training}}
 
 \begin{longtable}{|c|c|c|c|c|}
+	\caption{Gambar-gambar yang digunakan untuk training} \label{tab: Training set} \\
     \hline
     \textbf{No.} & \textbf{Abudefduf} & \textbf{Amphiprion} & \textbf{Chaetodon} & \textbf{Negative} \\
     \hline
@@ -71,6 +72,7 @@ Pada kolom \textit{Window} terdapat koordinat klasifikasi dan hasil klasifikasi.
 berarti, 'dikasifikasikan di x = 6, y = 110 dengan hasil klasifikasi 1'.
 
 \begin{longtable}{|c|c|c|c|c|}
+	\caption{Hasil prediksi menggunakan \emph{cascade} dan \emph{sliding window}} \label{tab: Classification result} \\
 	\hline
 	\textbf{Image} & \textbf{Window 1} & \textbf{Window 2} & \textbf{Window 3} & \textbf{Final Result} \\
 	\hline
@@ -212,6 +214,4 @@ berarti, 'dikasifikasikan di x = 6, y = 110 dengan hasil klasifikasi 1'.
 
 	
 	% Add more rows as needed
-	\caption{Hasil prediksi menggunakan \emph{cascade} dan \emph{sliding window}}
-	\label{tab: Classification result}
   \end{longtable}

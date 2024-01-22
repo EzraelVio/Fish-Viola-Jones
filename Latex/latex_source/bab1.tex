@@ -8,15 +8,6 @@
 
 \section{Latar Belakang Masalah}
 
-% Intro
-Sektor ikan di Indonesia adalah sebuah pasar yang sangat besar, nilainya mencapai 
-Rp 2.400.000.000.000.000 rupiah pada tahun 2022. Meskipun pasar yang besar, potensi 
-perikanan di Indonesia belum maksmimal, tutur Menteri Kelautan dan Perikanan RI Wahyu Sakti Trenggono. 
-Namun produktivitas perikanan di Indonesia masih kalah dari Vietnam. 
-Ia menegaskan bahwa potensial perikanan tersebut harus ditangkap dengan baik terutama 
-di sektor budidaya yang saat ini berjalan dalam sekala kecil, berbeda dengan negara 
-tetangga seperti Vietnam yang mengusai eksport ke berbagai negara (\cite{harianjogja}).
-
 % Dasar problem permasalahan lapangan
 Budidaya ikan di Indonesia memiliki problem yang lumayan besar yaitu 
 diperlukannya usaha yang besar untuk menghitung dan mengawasi jumlah ikan 
@@ -96,14 +87,20 @@ Kumpulan weak learner tersebut nantinya akan dinilai sesuai dengan akurasi
 mereka, di mana weak learner yang secara konsisten benar menebak fitur sebuah 
 objek akan memiliki nilai lebih dalam keputusan klasifikasi akhir.
 
+Adaboost juga dapat dimodifikasi untuk dapat melakukan klasifikasi yaitu proses 
+memberikan deskripsi label ke sebuah segmentasi objek. Hal ini dilakukan dengan 
+memodifikasi \textit{framework viola-jones} dan juga metode \textit{adaboost} untuk 
+dapat mendeteksi lebih dari satu kelas objek. Hal ini dapat dilakukan dengan modifikasi 
+seperti yang dilakukan oleh \cite{samme}.
+
 % Usulan
-Berdasarkan latar yang telah dijelaskan, penulis mengusulkan untuk mendeteksi 
-jenis ikan dengan menggunakan metode \emph{Viola-Jones Feature Extraction dan Boosting Berbasis 
+Berdasarkan latar yang telah dijelaskan, penulis akan menggunakan untuk mengklasifikasi
+genus ikan dengan menggunakan metode \emph{Viola-Jones Feature Extraction dan Boosting Berbasis 
 	Decision Tree}. 
 \emph{Viola-Jones Feature Extraction dan Boosting Berbasis 
 	Decision Tree} berguna untuk 
-mengkonstruksi sebuah \emph{classifier} objek ikan yang nantinya dapat mendeteksi 
-ikan dalam input gambar maupun video. Hasil yang diharapkan adalah sistem 
+mengkonstruksi sebuah \emph{classifier} genus ikan yang nantinya dapat mengklasifikasi 
+ikan dengan input gambar. Hasil yang diharapkan adalah sistem 
 mampu mengklasifikasi ikan dari gambar secara akurat.
 
 \section{Rumusan Masalah}
@@ -117,7 +114,7 @@ Batasan masalah pada penelitian ini adalah:
 \begin{enumerate}
 	\item Klasifikasi ikan menggunakan \textit{Viola-Jones Feature Extraction dan Boosting Berbasis 
 	Decision Tree}.
-	\item Klasifikasi harus bisa melakukan klasifikasi tiga kelas spesies ikan, Abudefduf, Amphiprion, dan Chaetodon.
+	\item Klasifikasi harus bisa melakukan klasifikasi tiga kelas genus ikan, Abudefduf, Amphiprion, dan Chaetodon.
 	\item Klasifikasi dilakukan dengan gambar tampak samping ikan saja dengan ikan menghadap ke kiri. Gambar 
 	berukuran 350 x 200 piksel, dan dengan latar belakang sudah dihilangkan.
 \end{enumerate}

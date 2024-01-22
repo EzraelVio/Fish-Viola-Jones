@@ -201,11 +201,11 @@
 	\texttt{Dataset}, untuk melakukan perhitungan fitur, digunakan \textit{Offset} 
 	menspesifikasi lokasi mulut, sirip dan ekor ikan pada gambar. Hal ini dilakukan 
 	karena masing-masing kelas ikan semuanya memiliki 
-	mulut, sirip dan ekor dengan lokasi yang berbeda satu dengan yang lainnya. Contohnya: Mulut dari spesies ikan Chaetodon 
+	mulut, sirip dan ekor dengan lokasi yang berbeda satu dengan yang lainnya. Contohnya: Mulut dari genus ikan Chaetodon 
 	agak lebih kebawah dibandingkan kedua kelas ikan lainnya. Selain itu juga untuk setiap bagian 
 	ikan yang akan diklasifikasi akan dicari lokasi yang paling terlihat unik daripada kelas-kelas lainnya. Contohnya 
-	pada kelas spesies ikan Abudefduf diambil bagian ekor yang memberntuk huruf "V" 
-	sementara pada kelas spesies Amphiprion bagian kelas yang dipelajari adalah 
+	pada kelas genus ikan Abudefduf diambil bagian ekor yang memberntuk huruf "V" 
+	sementara pada kelas genus Amphiprion bagian kelas yang dipelajari adalah 
 	bagian melengkung bagian atas diantara ekor dan badan. Berikut adalah 
 	\textit{offset} yang penulis gunakan untuk pelatihan:
 
@@ -868,6 +868,8 @@
 		dengan akurasi 71\% untuk ketiga \emph{strong classifier}.
 		
 		\begin{table}[h]
+			\caption{Hasil boosting pada ketiga \textit{window}}
+			\label{tab:mytable}
 			\centering
 			\begin{tabular}{|c|p{2cm}|c|p{3cm}|}
 				\hline
@@ -881,8 +883,6 @@
 				\hline
 
 			\end{tabular}
-			\caption{Hasil boosting pada ketiga \textit{window}}
-			\label{tab:mytable}
 		\end{table}
 		
 	\subsection{\textit{Training Cascade}}
@@ -1108,7 +1108,7 @@
 		akan dihentikan dan dilanjutkan ke area berikutnya. Proses \textit{looping} ini dijalankan 
 		tiga kali untuk area kiri, tengah dan kanan. Estimasi area kiri adalah x = 0 sampai x = 115 - 50, 
 		estimasi area tengah adalah x = 116 sampai x = 232 - 50, dan area kanan x = 233 sampai x = 350 -50. 
-		Semua loop dikurangi dengan 50, ukuran dari \emph{sub-window}, agar \textit{slidin window} tidak mencoba mendeteksi keluar dari 
+		Semua loop dikurangi dengan 50, ukuran dari \emph{sub-window}, agar \textit{slidin window} tidak mencoba mengklasifikasi keluar dari 
 		areanya atau keluar dari gambar. Terakhir hasil prediksi akan ditentukan oleh suara 
 		mayoritas dari ketiga \textit{window}, kecuali kalau ketiga \emph{window} mem-\textit{voting} 
 		kelas yang berbeda, maka kelas 0 atau None akan dipilih. Gambar lalu akan dianotasi dengan nama 
@@ -1123,8 +1123,8 @@
 
 		Klasifikasi ikan menggunakan metode \emph{sliding window} menunjukan sebuah problem baru 
 		yaitu salahnya prediksi pada lokasi \textit{sub-window} yang tidak seharusnya. \emph{Sliding window} 
-		memulai deteksi dari pojok kiri atas area deteksi dan bergerak kebawah menuju pojok kiri bawah, dengan 
-		lokasi akhir deteksi pojok kanan bawah. Dalam pergerakannya ini ia akan menolak mayoritas \textit{sub-window} 
+		memulai klasifikasi dari pojok kiri atas area klasifikasi dan bergerak kebawah menuju pojok kiri bawah, dengan 
+		lokasi akhir klasifikasi pojok kanan bawah. Dalam pergerakannya ini ia akan menolak mayoritas \textit{sub-window} 
 		yang tidak memiliki nilai, atau \textit{background}, namun ketika ia menemukan sedikit saja piksel dalam 
 		\textit{sub-window}-nya ia akan melakukan klasifikasi. 
 		

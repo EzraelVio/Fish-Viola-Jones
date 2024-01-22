@@ -20,7 +20,7 @@ Gambar \textit{flowchart} berikut mengilustrasikan proses pelatihan
 \begin{figure}[H]
   \centering{}
 	\includegraphics[width=0.6\textwidth]{gambar/use\_flochart\_riil}
-  \caption{Diagram alir untuk algoritma pendeteksian objek}
+  \caption{Diagram alir untuk algoritma klasifikasi objek}
 \end{figure}
 
 %(Jelasin disini secara ringkas, biar gak terlalu ambigu)
@@ -48,7 +48,7 @@ pada \textit{strong clossifier}. Akhrinya dari sekumpulan \emph{decision tree} i
 sebuah \emph{final strong classifier} yang berbentuk \textit{cascade}.
 
 Dengan \emph{final strong classifier}, barulah klasifikasi objek yang sesungguhnya dapat dilakukan. 
-Pertama gambar yang akan dideteksi akan melalui \emph{pre-processing}. setiap sub-window akan dicek menggunakan 
+Pertama gambar yang akan diklasifikasi akan melalui \emph{pre-processing}. setiap sub-window akan dicek menggunakan 
 \emph{strong classifier} untuk menentukan kelasnya. Hal ini dilakukan pada tiga area: area kiri untuk 
 mengklasifikasi mulut dari ikan, area tengah untuk mengklasifikasi sirip dari ikan, dan terakhir area kanan 
 untuk mengklasifikasi bentuk ekor dari ikan. Hasil ketiga \textit{sub-window} ini nantinya juga akan ber-\textit{voting}
@@ -72,10 +72,10 @@ pembuatan \emph{decision tree} untuk setiap \emph{features},
   \caption{Contoh gambar Abudefduf, Amphiprion, Chaetodon dan contoh gambar-gambar negatif}
 \end{figure}
 
-\textit{Dataset} yang akan dipakai diambil dari FishBase (Dapat dilihat di https://fishbase.mnhn.fr/) yang 
-berisikan berbagai gambar ikan termasuk gambar dari spesies Abudefduf, gambar dari spesies 
-Amphiprion dan gambar dari spesies Chaetodon. 
-Ketiga spesies ikan ini dipilih karena bentuknya yang berbeda satu-sama lain. %Selain itu 
+\textit{Dataset} yang akan dipakai diambil dari FishBase (Dapat dilihat di \cite{fishbase}: https://fishbase.mnhn.fr/) yang 
+berisikan berbagai gambar ikan termasuk gambar dari genus Abudefduf, gambar dari genus 
+Amphiprion dan gambar dari genus Chaetodon. 
+Ketiga genus ikan ini dipilih karena bentuknya yang berbeda satu-sama lain. %Selain itu 
 % \textit{dataset} juga akan ditambahkan dari hasil penelitian lapangan 
 % secukupnya, dengan mempertimbangkan waktu komputasi pada tahap 
 % pelatihan.
@@ -88,6 +88,11 @@ diambil dari sumber folder gambar. Kelas 0 direservasi untuk kelas negatif, seme
 1, 2 dan 3 direservasi untuk Abudefduf, Amphiprion dan Chaetodon.
 \textit{Dataset} ini lalu dibagi menjadi tiga yaitu \textit{training dataset}, 
 \textit{testing dataset}, dan \emph{validation dataset} dengan jumlah yang sama.
+
+Semua gambar akan di-\textit{load} menggunakan \textit{library} CV2. \textit{Library} 
+ini adalah sebuah \textit{library} yang dapat digunakan untuk membaca gambar dan mengubahnya 
+menjadi sebuah bentuk \textit{array 2d}, dimana \textit{array} akan memiliki ukuran persis dengan 
+ukuran gambar. Selain itu CV2 juga akan digunakan untuk melakukan anotasi pada akhir klasifikasi.
 
 Selain itu untuk setiap kelas sudah dibuatkan \textit{sub-window} spesifik untuk diklasifikasi. 
 \textit{Sub-window} ini secara spesifik mengklasifikasi tiga bagian ikan yaitu, mulut, sirip dan ekor. 
@@ -132,13 +137,13 @@ Fitur-fitur yang akan digunakan dalam klasifikasi dibuat
 berdasarkan \emph{Haar-like Features} dan berisikan informasi penting yang dapat digunakan 
 untuk mencari nilai sebuah fitur. Sebuah fitur berisikan tipe fiturnya, lokasi fitur tersebut 
 didalam \textit{sub-window}, dan ukuran dari fitur tersebut.
-Misalnya ada sebuah fitur, ia bertipe dua persegi menghadap ke kiri, lokasi x-nya adalah 12 piksel, 
+Misalnya ada sebuah fitur, ia bertipe dua persegi panjang menghadap ke kiri, lokasi x-nya adalah 12 piksel, 
 dan lokasi y-nya adalah 10 piksel, dia memiliki ukuran 8 x 8 piksel.
 
 \begin{figure}[H]
   \centering{}
 	\includegraphics[width=0.6\textwidth]{gambar/feature\_data\_2}
-  \caption{Sebuah fitur dua persegi menghadap ke kiri, lokasi x = 12 piksel, 
+  \caption{Sebuah fitur dua persegi panjang menghadap ke kiri, lokasi x = 12 piksel, 
   lokasi y = 10 piksel, dengan ukuran 12 x 12 piksel.}
 \end{figure} 
 Dengan informasi yang ada didalam sebuah fitur tersebut, nilai fitur dapat dicari dengan 
@@ -153,7 +158,7 @@ mudah menggunakan rumus:
 Pada tahap ini fitur yang dipilih akan dibuat untuk semua 
 posibilitas lokasi yang ada dan ukuran yang ada. Hal ini dilakukan dengan 
 membuat fitur dimulai dari kiri atas gambar dengan ukuran 2 x 2 piksel untuk fitur 
-dua persegi, empat persegi dan diagonal. Dan fitur 1 x 3 piksel atau 3 x 1 piksel untuk 
+dua persegi panjang, empat persegi dan diagonal. Dan fitur 1 x 3 piksel atau 3 x 1 piksel untuk 
 fitur tiga persegi. Hal ini juga dilakukan sampai ukuran fitur lebih besar 
 dari \emph{sub-window} dan tidak bisa muat lagi.
 
@@ -243,7 +248,7 @@ Karena bobot \textit{voting} dan urutan \textit{weak classifier} sudah ditentuka
 tahap \textit{Boosting}, pada tahap ini hanya perlu membagi \textit{weak classifier} menjadi 
 beberapa \textit{stage} yang nantinya bisa dipanggil secara terpisah. Sebuah \textit{stage} 
 berlaku layaknya sebuah \textit{strong cloassifier} kecil yang ditargetkan hanya memiliki 
-tingkat akurasi paling tidak 50\% saja. Hal ini dilakukan agar pendeteksian seluruh \textit{sub-window} 
+tingkat akurasi paling tidak 50\% saja. Hal ini dilakukan agar klasfikasi seluruh \textit{sub-window} 
 dapat dilakukan tanpa harus memanggil keseluruhan dari \textit{strong classifier}. 
 Metode konstruksi sebuah \textit{stage cascade} adalah sebagai berikut:
 
@@ -288,10 +293,10 @@ memvalidasi akurasi dari \emph{classifier} tersebut.
 Gambar ikan yang akan dipakai dalam proses validasi akan 
 melalui beberapa langkah dalam tahap ini, 
 yaitu: \textit{Pre-processing} dalam bentuk \emph{grayscaling}, 
-dan deteksi yang sesungguhnya menggunakan \emph{cascade} 
+dan klasifikasi yang sesungguhnya menggunakan \emph{cascade} 
 yang telah dibuat dengan metode \textit{sliding window}. Terlebih, klasifikasi akan dilakukan di 
-tiga area berbeda pada gambar: area kiri untuk mendeteksi mulut, area tengah untuk mendeteksi sirip, 
-dan area kanan untuk mendeteksi ekor. Pada akhirnya ketiga \textit{cascade} 
+tiga area berbeda pada gambar: area kiri untuk mengklasifikasi mulut, area tengah untuk mengklasifikasi sirip, 
+dan area kanan untuk mengklasifikasi ekor. Pada akhirnya ketiga \textit{cascade} 
 dari ketiga area tersebut akan mem-\textit{voting} kelas dari objek pada gambar. 
 Bila didapat bahwa ketiga \textit{cascade} tersebut mem-\textit{voting} tiga 
 kelas yang berbeda, maka kelas yang dipilih adalah 0 atau negatif. 
@@ -368,9 +373,9 @@ melakukan klasifikasi.
   \caption{Anotasi gambar ikan yang sudah diklasifikasi}
 \end{figure}
 
-Setelah ketiga \textit{window} sudah dideteksi oleh \emph{cascade classifer} 
+Setelah ketiga \textit{window} sudah diklasifikasi oleh \emph{cascade classifer} 
 menggunakan \textit{sliding window}, masing-masing hasilnya akan dipakai 
 untuk menentukan kelas dari objek pada gambar. Setelahnya nama 
-spesies ikan akan ditulis pada kiri atas gambar pada gambar hasil.
+genus ikan akan ditulis pada kiri atas gambar pada gambar hasil.
 
 
