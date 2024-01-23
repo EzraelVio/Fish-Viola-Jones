@@ -57,9 +57,9 @@ for filename in os.listdir(directory):
 
         match image_class:
             case 0: image_class = 'None'
-            case 1: image_class = 'Abudefduf'
-            case 2: image_class = 'Amphiprion'
-            case 3: image_class = 'Chaetodon'
+            case 1: image_class = 'Ikan Emas'
+            case 2: image_class = 'Ikan Lele'
+            case 3: image_class = 'Ikan Nila'
 
         position = (10, 30)
         font = cv2.FONT_HERSHEY_SIMPLEX

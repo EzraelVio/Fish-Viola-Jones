@@ -1077,6 +1077,13 @@
 								case 2: image_class = 'Amphiprion'
 								case 3: image_class = 'Chaetodon'
 
+			\end{lstlisting}
+			\caption{\emph{source code: } predict.py untuk melakukan klasifikasi sebenarnya (bagian 1)}
+			\label{code: predict.py}
+		\end{figure}
+
+		\begin{figure}[H]
+			\begin{lstlisting}[language=Python, basicstyle=\tiny]
 							position = (10, 30)
 							font = cv2.FONT_HERSHEY_SIMPLEX
 							font_scale = 1
@@ -1087,9 +1094,8 @@
 							cv2.putText(image_unedited, image_class, position, font, font_scale, font_color, font_thickness)
 							cv2.imwrite(output_image_path, image_unedited)
 							print('anotated image completed!')
-
 			\end{lstlisting}
-			\caption{\emph{source code: } predict.py untuk melakukan klasifikasi sebenarnya}
+			\caption{\emph{source code: } predict.py untuk melakukan klasifikasi sebenarnya (bagian 2)}
 			\label{code: predict.py}
 		\end{figure}
 
@@ -1114,6 +1120,28 @@
 		kelas yang berbeda, maka kelas 0 atau None akan dipilih. Gambar lalu akan dianotasi dengan nama 
 		kelas ditulis di kiri atas gambar \textit{output}, kelas dan informasi penting lainnya juga ditambahkan 
 		ke nama dokumen gambar \textit{output} agar mudah diperiksa.
+
+\subsection{Validasi Tes Lapangan}
+		Untuk melakukan validasi lapangan, penulis mengambil gambar ikan secara 
+		mandiri ke salah satu petani ikan. Ikan yang akan diklasifikasi adalah spesies 
+		ikan Lele, Ikan Nila dan Ikan Emas. Untuk setiap ikan digunakan 9 gambar untuk training, dan 
+		dari masing-masing ikan ada satu gambar untuk validasi. Gambar ikan diperlakukan 
+		selayaknya training dan validasi sebelumnya, ukuran dirubah menjadi 350 x 200 piksel, 
+		dan latar belakang dihilangkan.
+
+		\begin{figure}[H]
+			\centering{}
+			  \includegraphics[width=0.3\textwidth]{gambar/lapangan\_compound}
+			\caption{Ketiga ikan yang akan diklasifikasi}
+		\end{figure}
+
+		Dari tes lapangan ini lagi-lagi akurasi \emph{classifier} 
+		sangatlah rendah. Dari tiga gambar yang diklasifikasi, hanya satu 
+		gambar yang berhasil diklasifikasi secara benar yaitu gambar ikan Emas. 
+		Namun hal ini lagi-lagi terjadi karena bias bobot \textit{voting} dari 
+		\emph{weak classifier} dan mekanisme \textit{sliding window} yang masih bermasalah. 
+		Karena dari ketiga gambar yang diklasifikasi, tiga-tiganya 
+		diklasifikasikan sebagai ikan Emas.
 
 \section{Analisa Hasil}
 		Setelah prediksi menggunakan \textit{sliding window} dilakukan, ditemukan bahwa hanya 

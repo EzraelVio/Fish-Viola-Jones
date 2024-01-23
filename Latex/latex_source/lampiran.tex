@@ -215,3 +215,69 @@ berarti, 'dikasifikasikan di x = 6, y = 110 dengan hasil klasifikasi 1'.
 	
 	% Add more rows as needed
   \end{longtable}
+
+\chapter{Gambar Pelatihan Tes Lapangan}
+
+  \begin{longtable}{|c|c|c|c|c|}
+    \caption{Gambar-gambar yang digunakan untuk \textit{training} tes lapangan} \label{tab: Training set} \\
+    \hline
+    \textbf{No.} & \textbf{Emas} & \textbf{Lele} & \textbf{Nila} & \textbf{Negative} \\
+    \hline
+    \endfirsthead
+    \multicolumn{5}{c}{{\tablename\ \thetable{} -- continued from previous page}} \\
+    \hline
+    \textbf{No.} & \textbf{Emas} & \textbf{Lele} & \textbf{Nila} & \textbf{Negative} \\
+    \hline
+    \endhead
+    \hline \multicolumn{5}{|r|}{{Continued on next page}} \\ \hline
+    \endfoot
+    \hline
+    \endlastfoot
+
+    1 & \includegraphics[width=3cm]{gambar/emas/M01} & \includegraphics[width=3cm]{gambar/lele/L01} & \includegraphics[width=3cm]{gambar/nila/N01} & \includegraphics[width=3cm]{gambar/negative_examples/N1} \\
+    \hline
+    2 & \includegraphics[width=3cm]{gambar/emas/M02} & \includegraphics[width=3cm]{gambar/lele/L02} & \includegraphics[width=3cm]{gambar/nila/N02} & \includegraphics[width=3cm]{gambar/negative_examples/N2} \\
+    \hline
+    3 & \includegraphics[width=3cm]{gambar/emas/M03} & \includegraphics[width=3cm]{gambar/lele/L03} & \includegraphics[width=3cm]{gambar/nila/N03} & \includegraphics[width=3cm]{gambar/negative_examples/N3} \\
+    \hline
+    4 & \includegraphics[width=3cm]{gambar/emas/M04} & \includegraphics[width=3cm]{gambar/lele/L04} & \includegraphics[width=3cm]{gambar/nila/N04} & \includegraphics[width=3cm]{gambar/negative_examples/N4} \\
+    \hline
+    5 & \includegraphics[width=3cm]{gambar/emas/M05} & \includegraphics[width=3cm]{gambar/lele/L05} & \includegraphics[width=3cm]{gambar/nila/N05} & \includegraphics[width=3cm]{gambar/negative_examples/N5} \\
+    \hline
+    6 & \includegraphics[width=3cm]{gambar/emas/M06} & \includegraphics[width=3cm]{gambar/lele/L06} & \includegraphics[width=3cm]{gambar/nila/N06} & \includegraphics[width=3cm]{gambar/negative_examples/N6} \\
+    \hline
+    7 & \includegraphics[width=3cm]{gambar/emas/M07} & \includegraphics[width=3cm]{gambar/lele/L07} & \includegraphics[width=3cm]{gambar/nila/N07} & \includegraphics[width=3cm]{gambar/negative_examples/N7} \\
+    \hline
+    8 & \includegraphics[width=3cm]{gambar/emas/M08} & \includegraphics[width=3cm]{gambar/lele/L08} & \includegraphics[width=3cm]{gambar/nila/N08} & \includegraphics[width=3cm]{gambar/negative_examples/N8} \\
+    \hline
+    9 & \includegraphics[width=3cm]{gambar/emas/M09} & \includegraphics[width=3cm]{gambar/lele/L09} & \includegraphics[width=3cm]{gambar/nila/N09} & \includegraphics[width=3cm]{gambar/negative_examples/N9} \\
+    \hline
+\end{longtable}
+
+\chapter{Tabel pengolahan data gambar validasi tes lapangan}
+
+\begin{longtable}{|c|c|c|c|c|}
+	\caption{Hasil prediksi menggunakan \emph{cascade} dan \emph{sliding window}} \label{tab: Classification result} \\
+	\hline
+	\textbf{Image} & \textbf{Window 1} & \textbf{Window 2} & \textbf{Window 3} & \textbf{Final Result} \\
+	\hline
+	\endfirsthead
+	\multicolumn{5}{c}{{\tablename\ \thetable{} -- continued from previous page}} \\
+	\hline
+	\textbf{Image} & \textbf{Window 1} & \textbf{Window 2} & \textbf{Window 3} & \textbf{Final Result} \\
+	\hline
+	\endhead
+	\hline \multicolumn{5}{|r|}{{Continued on next page}} \\ \hline
+	\endfoot
+	\hline
+	\endlastfoot
+	\includegraphics[width=3cm]{gambar/dataset_validasi/M10}
+	& [7,84] class: 1 & [116,45] class: 1 & [233,68] class: 1 & Ikan Emas \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/L10}
+	& [17,104] class: 1 & [116,40] class: 1 & [233,50] class: 1 & Ikan Emas \\
+	\hline
+	\includegraphics[width=3cm]{gambar/dataset_validasi/N10}
+	& [24,31] class: 1 & [116,64] class: 1 & [233,81] class: 3 & Ikan Emas \\
+	\hline
+\end{longtable}
