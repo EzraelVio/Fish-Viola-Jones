@@ -10,9 +10,9 @@ class Dataset:
         # for searching mouth features
 
         (0, 0),
-        (0, 88),
-        (0, 73),
-        (15, 100)
+        (0, 70),
+        (17, 77),
+        (1, 87)
     ]
 
     class_Window_offset_2 = [
@@ -20,9 +20,9 @@ class Dataset:
         # for searching fin features
 
         (0, 0),
-        (116, 0),
-        (153, 9),
-        (116, 0)
+        (116, 15),
+        (117, 50),
+        (116, 15)
     ]
 
     class_Window_offset_3 = [
@@ -30,9 +30,9 @@ class Dataset:
         # for searching tail feature
 
         (0, 0),
-        (280, 89),
-        (291, 75),
-        (277, 80)
+        (279, 65),
+        (300, 90),
+        (300, 69)
     ]
 
     def __init__(self, image, label, feature_list):

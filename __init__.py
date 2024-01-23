@@ -22,7 +22,7 @@ print("starting...")
 
 # generate CSV of image feature values. Run if CSV have not been made
 # write_csv splits data into 3 dataframes. Image feature value depends on preassigned windows and class in Dataset.py
-csv_name = "fish" # change name accordingly
+csv_name = "fish2" # change name accordingly
 # Utilities.write_csv(images, labels, initial_features, csv_name)
 
 # create weak classifiers (Decision Trees) for each window
@@ -41,16 +41,16 @@ for i in range(3):
 
     # create decision tree and saving it in pickle for later. Skip if Pickel has already been made
     # Long ahh progress est. 2+ hours for all 3 window
-    # trees, accuracies = DecisionTree.build_all_tree(splits, features)
-    # decision_trees = PickleTree(features, trees, accuracies)
+    trees, accuracies = DecisionTree.build_all_tree(splits, features)
+    decision_trees = PickleTree(features, trees, accuracies)
     pickle_name = f'window_{i}_decision_trees'
-    # Utilities.dump_to_pickle(pickle_name, decision_trees)
+    Utilities.dump_to_pickle(pickle_name, decision_trees)
 
     # read pickle for further use in creating strong classifier.
     # Run only if pickle for decision trees exist
-    window_decision_trees = Utilities.read_from_pickle(pickle_name)
-    trees = window_decision_trees.trees
-    accuracies = window_decision_trees.accuracies
+    # window_decision_trees = Utilities.read_from_pickle(pickle_name)
+    # trees = window_decision_trees.trees
+    # accuracies = window_decision_trees.accuracies
 
     # train strong classifier which also double as feature elimination. Saving it into another pickle
     pickle_name = f'window_{i}_strong_classsifier'
