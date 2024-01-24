@@ -28,30 +28,30 @@
 \contentsline {section}{\numberline {3.3}Training \emph {Strong Classifier}}{11}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}\textit {Input Dataset} Pelatihan}{11}{subsection.3.3.1}%
 \contentsline {subsection}{\numberline {3.3.2}Pembuatan \textit {Haar like Features}}{13}{subsection.3.3.2}%
-\contentsline {subsection}{\numberline {3.3.3}Pembuatan \textit {Decision Tree}}{15}{subsection.3.3.3}%
-\contentsline {subsection}{\numberline {3.3.4}\emph {Boosting}}{16}{subsection.3.3.4}%
-\contentsline {subsection}{\numberline {3.3.5}Pembuatan \emph {Attentional Cascade}}{17}{subsection.3.3.5}%
-\contentsline {section}{\numberline {3.4}Skenario Eksperimen dan Validasi}{18}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}\textit {Pre-processing}}{18}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.3.3}Pembuatan \textit {Decision Tree}}{14}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}\emph {Boosting}}{15}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Pembuatan \emph {Attentional Cascade}}{16}{subsection.3.3.5}%
+\contentsline {section}{\numberline {3.4}Skenario Eksperimen dan Validasi}{17}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}\textit {Pre-processing}}{17}{subsection.3.4.1}%
 \contentsline {subsection}{\numberline {3.4.2}Klasifikasi}{18}{subsection.3.4.2}%
-\contentsline {subsection}{\numberline {3.4.3}Anotasi}{20}{subsection.3.4.3}%
-\contentsline {chapter}{\numberline {IV}HASIL DAN PEMBAHASAN}{21}{chapter.4}%
-\contentsline {section}{\numberline {4.1}\textit {Training Strong Classifier}}{21}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}\textit {Input} Gambar dan \textit {labeling}}{21}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}\textit {Generate Haar-like Features}}{22}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}\textit {Calculating all features of all images}}{23}{subsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.1.4}\textit {Create Decision Tree for each Feature}}{27}{subsection.4.1.4}%
-\contentsline {subsection}{\numberline {4.1.5}\textit {Boosting}}{34}{subsection.4.1.5}%
-\contentsline {subsection}{\numberline {4.1.6}\textit {Training Cascade}}{39}{subsection.4.1.6}%
-\contentsline {section}{\numberline {4.2}Validasi}{41}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Validasi Tes Lapangan}{44}{subsection.4.2.1}%
-\contentsline {section}{\numberline {4.3}Analisa Hasil}{45}{section.4.3}%
-\contentsline {chapter}{\numberline {V}KESIMPULAN DAN SARAN}{46}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Kesimpulan}{46}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Saran}{46}{section.5.2}%
-\contentsline {chapter}{DAFTAR PUSTAKA}{47}{Item.19}%
-\contentsline {chapter}{\numberline {A}\textit {Source Code}}{48}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Tabel data \textit {training}}{49}{appendix.B}%
-\contentsline {chapter}{\numberline {C}Tabel pengolahan data gambar validasi}{52}{appendix.C}%
-\contentsline {chapter}{\numberline {D}Gambar Pelatihan Tes Lapangan}{60}{appendix.D}%
+\contentsline {subsection}{\numberline {3.4.3}Anotasi}{19}{subsection.3.4.3}%
+\contentsline {chapter}{\numberline {IV}HASIL DAN PEMBAHASAN}{20}{chapter.4}%
+\contentsline {section}{\numberline {4.1}\textit {Training Strong Classifier}}{20}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}\textit {Input} Gambar dan \textit {labeling}}{20}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}\textit {Generate Haar-like Features}}{21}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}\textit {Calculating all features of all images}}{22}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}\textit {Create Decision Tree for each Feature}}{26}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}\textit {Boosting}}{33}{subsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.1.6}\textit {Training Cascade}}{38}{subsection.4.1.6}%
+\contentsline {section}{\numberline {4.2}Validasi}{40}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Validasi Tes Lapangan}{43}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.3}Analisa Hasil}{44}{section.4.3}%
+\contentsline {chapter}{\numberline {V}KESIMPULAN DAN SARAN}{45}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Kesimpulan}{45}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Saran}{45}{section.5.2}%
+\contentsline {chapter}{DAFTAR PUSTAKA}{46}{Item.19}%
+\contentsline {chapter}{\numberline {A}\textit {Source Code}}{47}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Tabel data \textit {training}}{48}{appendix.B}%
+\contentsline {chapter}{\numberline {C}Tabel pengolahan data gambar validasi}{51}{appendix.C}%
+\contentsline {chapter}{\numberline {D}Gambar Pelatihan Tes Lapangan}{59}{appendix.D}%
 \contentsline {chapter}{\numberline {E}Tabel pengolahan data gambar validasi tes lapangan}{61}{appendix.E}%
