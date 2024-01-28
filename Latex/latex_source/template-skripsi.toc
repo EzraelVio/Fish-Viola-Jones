@@ -50,10 +50,10 @@
 \contentsline {chapter}{\numberline {V}KESIMPULAN DAN SARAN}{45}{chapter.5}%
 \contentsline {section}{\numberline {5.1}Kesimpulan}{45}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Saran}{45}{section.5.2}%
-\contentsline {chapter}{DAFTAR PUSTAKA}{46}{Item.19}%
-\contentsline {chapter}{\numberline {A}\textit {Source Code}}{47}{appendix.A}%
-\contentsline {chapter}{\numberline {B}Tabel data \textit {training}}{48}{appendix.B}%
-\contentsline {chapter}{\numberline {C}Tabel pengolahan data gambar validasi}{51}{appendix.C}%
-\contentsline {chapter}{\numberline {D}Gambar Pelatihan Tes Lapangan}{59}{appendix.D}%
-\contentsline {chapter}{\numberline {E}Tabel pengolahan data gambar validasi tes lapangan}{61}{appendix.E}%
-\contentsline {chapter}{DAFTAR RIWAYAT HIDUP}{62}{table.E.1}%
+\contentsline {chapter}{DAFTAR PUSTAKA}{47}{Item.19}%
+\contentsline {chapter}{\numberline {A}\textit {Source Code}}{48}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Tabel data \textit {training}}{49}{appendix.B}%
+\contentsline {chapter}{\numberline {C}Tabel pengolahan data gambar validasi}{52}{appendix.C}%
+\contentsline {chapter}{\numberline {D}Gambar Pelatihan Tes Lapangan}{60}{appendix.D}%
+\contentsline {chapter}{\numberline {E}Tabel pengolahan data gambar validasi tes lapangan}{62}{appendix.E}%
+\contentsline {chapter}{DAFTAR RIWAYAT HIDUP}{63}{table.E.1}%

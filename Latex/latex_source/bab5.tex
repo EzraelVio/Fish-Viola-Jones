@@ -19,22 +19,22 @@ telah penulis rancang, maka didapatkan kesimpulan sebagai berikut:
 
 	\item Berdasarkan hasil pengetesan akurasi yang dilakukan pada saat validasi, metode ini 
 	berhasil mengklasifikasi 12 dari 75 gambar, atau memiliki akurasi 16\%. Akurasi ini 
-	sangat rendah bila ingin digunakan untuk mengklasifikasi, apalagi untuk menghitung ikan.
+	sangat rendah bila ingin digunakan untuk mengklasifikasi secara konsisten.
 
-	\item Klasifikasi memiliki akurasi rendah dikarenakan dua faktor, yaitu tidak 
+	\item Klasifikasi memiliki akurasi yang rendah dikarenakan dua faktor: tidak 
 	sesuainya lokasi \emph{sub-window} yang diklasifikasi dan juga bias bobot \textit{voting} 
 	\emph{weak classifier} awal pada \emph{cascade}. Bias nampaknya ditunjukan kepada kelas 
-	ikan Abudefduf karena dari 50 hasil yang bukan kelas Abudefdu, 32-nya diklasifikasikan 
+	ikan Abudefduf karena dari 50 hasil yang bukan kelas Abudefduf, 32-nya diklasifikasikan 
 	sebagai Abudefduf.
 
 \end{enumerate}
 
 \section{Saran}
 \begin{enumerate}
-	\item Penelitian ini masih belum bisa secara akurat mengklasifikasi jenis ikan. Oleh 
+	\item Penelitian ini masih belum bisa secara akurat mengklasifikasi ikan. Oleh 
 	karena itu perlu ada penelitian lanjutan yang menyempurnakan tingkat akurasi klasifikasi 
 	dengan mengganti atau merombak metode yang ada, terutama metode \emph{sliding window} 
-	dan bias klasifikasi ke kelas tertentu.
+	dan \emph{boosting} bobot \textit{voting} yang memiliki bias klasifikasi ke kelas tertentu.
 	\item Pemutakhiran dapat dilakukan agar dapat menerima gambar dengan ukuran yang 
 	dinamis 
 	\item Pengimplementasian \textit{multiprocessing} untuk mempercepat proses 

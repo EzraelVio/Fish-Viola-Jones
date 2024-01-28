@@ -184,7 +184,7 @@ diklasifikasi. (\cite{samme})
   \end{algorithmic}
 \end{algorithm}
 
-\emph{Framework Viola Jones} menggunakan sebuah \emph{weaklearn} yang bernama 
+\emph{Framework Viola Jones} menggunakan sebuah \emph{weak learner} yang bernama 
 \emph{Decision Stump}, atau sebuah \emph{Decision Tree} yang hanya memiliki 
 dua daun kelas saja. \emph{Decision Tree} sendiri mampu digunakan untuk 
 permasalahan \emph{multi-class}.
@@ -199,12 +199,12 @@ pilihan, sebuah struktur yang berbentuk:
   setiap hasil dari tes.
 \end{itemize}
 
-Sebuah \emph{Decision Tree} dapat digunakan untuk mengkasifikasi sebuah kasus 
-dengan memulai dari akar pohon dan bergerak sampai sebuah daun ditemukan. 
+Sebuah \emph{Decision Tree} dapat digunakan untuk mengklasifikasi sebuah kasus 
+dengan memulai tes dari akar pohon dan bergerak sampai sebuah daun kelas ditemukan. 
 Pada setiap \emph{node} yang bukan merupakan daun, hasil dari tes kasus 
-dideterminasi dan tes berlanjut ke \emph{node} berikutnya sesuai dengan 
-hasil tes tersebut. Ketika proses pada akhirnya (dan dengan pasti) 
-menuju ke sebuah daun, kelas dari kasus diprediksi sesuai label yang ada pada daun.
+dideterminasi dan tes dilanjutkan ke \emph{node} berikutnya sesuai dengan 
+hasil tes tersebut. Hingga proses pada akhirnya (dan dengan pasti) 
+menuju ke sebuah daun kelas.
 
 % \subsection{\emph{Boosting}}
 
@@ -229,7 +229,7 @@ menuju ke sebuah daun, kelas dari kasus diprediksi sesuai label yang ada pada da
 \end{figure}
 
 \emph{Attentional Cascade} adalah sebuah \emph{cascade} dari banyak 
-\emph{classifier} yang dibuat untuk meningkatkan performa deteksi dengan secara radikal mengurangi jumlah 
+\emph{wea kclassifier} yang dibuat untuk meningkatkan performa deteksi dengan secara radikal mengurangi jumlah 
 komputasi. Intinya \emph{weak classifier} yang telah di-\emph{boost} dapat dibuat lebih 
 kecil dan efisien, yang dapat menolak mayoritas \emph{sub-window} negatif dan 
 mendeteksi sebagian besar dari \emph{sub-window} positif. \emph{Classifier} yang lebih 
@@ -249,7 +249,7 @@ contoh-contoh yang telah berhasil melewati tahap sebelumnya. Oleh karenanya,
 daripada yang pertama.
 
 \emph{Cascade} dimulai dengan membuat sebuah \textit{stage} awal, dimana \textit{weak classifier} 
-ditambahkan secara perlahan hingga \emph{detection rate} yang dituju sampai. \emph{Detection rate} 
+ditambahkan secara perlahan hingga \emph{detection rate} yang diinginkan tercapai. \emph{Detection rate} 
 ini harus disesuaikan oleh pengguna sesuai dengan keperluannya, tujuannya tetap untuk mengurangi 
 waktu komputasi tapi juga mencoba agar tidak terlalu banyak kasus \emph{false positive} yang dapat 
 lewat.
