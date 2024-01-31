@@ -48,9 +48,9 @@ for i in range(3):
 
     # read pickle for further use in creating strong classifier.
     # Run only if pickle for decision trees exist
-    # window_decision_trees = Utilities.read_from_pickle(pickle_name)
-    # trees = window_decision_trees.trees
-    # accuracies = window_decision_trees.accuracies
+    window_decision_trees = Utilities.read_from_pickle(pickle_name)
+    trees = window_decision_trees.trees
+    accuracies = window_decision_trees.accuracies
 
     # train strong classifier which also double as feature elimination. Saving it into another pickle
     pickle_name = f'window_{i}_strong_classsifier'

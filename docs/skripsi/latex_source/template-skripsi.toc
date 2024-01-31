@@ -1,0 +1,59 @@
+\babel@toc {english}{}\relax 
+\babel@toc {bahasa}{}\relax 
+\contentsline {chapter}{LEMBAR PENGESAHAN}{iii}{section*.1}%
+\contentsline {chapter}{LEMBAR PERNYATAAN}{iv}{section*.1}%
+\contentsline {chapter}{KATA PENGANTAR}{vi}{Item.6}%
+\contentsline {chapter}{ABSTRAK}{vii}{chapter*.3}%
+\contentsline {chapter}{\emph {ABSTRACT}}{viii}{chapter*.4}%
+\contentsline {chapter}{DAFTAR ISI}{ix}{chapter*.5}%
+\contentsline {chapter}{DAFTAR GAMBAR}{xii}{chapter*.6}%
+\contentsline {chapter}{DAFTAR TABEL}{xiii}{chapter*.7}%
+\babel@toc {bahasa}{}\relax 
+\contentsline {chapter}{\numberline {I}PENDAHULUAN}{1}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Latar Belakang Masalah}{1}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Rumusan Masalah}{3}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Batasan Masalah}{3}{section.1.3}%
+\contentsline {section}{\numberline {1.4}Tujuan Penelitian}{3}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Manfaat Penelitian}{4}{section.1.5}%
+\babel@toc {bahasa}{}\relax 
+\contentsline {chapter}{\numberline {II}KAJIAN PUSTAKA}{5}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Pengertian Klasifikasi Objek}{5}{section.2.1}%
+\contentsline {section}{\numberline {2.2}\emph {Viola Jones Object Detection Framework}}{5}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}\emph {Features}}{6}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}\emph {Adaboost}}{6}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}\emph {Weaklearn}}{7}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}\emph {Attentional Cascade}}{8}{subsection.2.2.4}%
+\contentsline {chapter}{\numberline {III}METODOLOGI PENELITIAN}{10}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Tahapan Penelitian}{10}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Desain Sistem}{10}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Training \emph {Strong Classifier}}{11}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}\textit {Input Dataset} Pelatihan}{11}{subsection.3.3.1}%
+\contentsline {subsection}{\numberline {3.3.2}Pembuatan \textit {Haar like Features}}{13}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.3}Pembuatan \textit {Decision Tree}}{14}{subsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.3.4}\emph {Boosting}}{15}{subsection.3.3.4}%
+\contentsline {subsection}{\numberline {3.3.5}Pembuatan \emph {Attentional Cascade}}{16}{subsection.3.3.5}%
+\contentsline {section}{\numberline {3.4}Skenario Eksperimen dan Validasi}{17}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}\textit {Pre-processing}}{17}{subsection.3.4.1}%
+\contentsline {subsection}{\numberline {3.4.2}Klasifikasi}{18}{subsection.3.4.2}%
+\contentsline {subsection}{\numberline {3.4.3}Anotasi}{19}{subsection.3.4.3}%
+\contentsline {chapter}{\numberline {IV}HASIL DAN PEMBAHASAN}{20}{chapter.4}%
+\contentsline {section}{\numberline {4.1}\textit {Training Strong Classifier}}{20}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}\textit {Input} Gambar dan \textit {labeling}}{20}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}\textit {Generate Haar-like Features}}{21}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}\textit {Calculating all features of all images}}{22}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}\textit {Create Decision Tree for each Feature}}{26}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}\textit {Boosting}}{33}{subsection.4.1.5}%
+\contentsline {subsection}{\numberline {4.1.6}\textit {Training Cascade}}{38}{subsection.4.1.6}%
+\contentsline {section}{\numberline {4.2}Validasi}{40}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Validasi Tes Lapangan}{43}{subsection.4.2.1}%
+\contentsline {section}{\numberline {4.3}Analisa Hasil}{44}{section.4.3}%
+\contentsline {chapter}{\numberline {V}KESIMPULAN DAN SARAN}{45}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Kesimpulan}{45}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Saran}{45}{section.5.2}%
+\contentsline {chapter}{DAFTAR PUSTAKA}{47}{Item.19}%
+\contentsline {chapter}{\numberline {A}\textit {Source Code}}{48}{appendix.A}%
+\contentsline {chapter}{\numberline {B}Tabel data \textit {training}}{49}{appendix.B}%
+\contentsline {chapter}{\numberline {C}Tabel pengolahan data gambar validasi}{52}{appendix.C}%
+\contentsline {chapter}{\numberline {D}Gambar Pelatihan Tes Lapangan}{60}{appendix.D}%
+\contentsline {chapter}{\numberline {E}Tabel pengolahan data gambar validasi tes lapangan}{62}{appendix.E}%
+\contentsline {chapter}{DAFTAR RIWAYAT HIDUP}{63}{table.E.1}%
