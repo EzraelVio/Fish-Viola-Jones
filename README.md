@@ -8,5 +8,6 @@ karena ukurannya terlalu besar. Hubungi Discord: @ezraelvio untuk data run awal 
 - Python 3.5+
 - Python Libraries: Numpy, Pandas, Pickle, sklearn
 
-### How to use
+### Links
 - Link ke manual: https://github.com/EzraelVio/Fish-Viola-Jones/blob/main/docs/skripsi/Manual.md
+- Link ke laporan skripsi: https://github.com/EzraelVio/Fish-Viola-Jones/blob/main/docs/skripsi/latex_source/template-skripsi.pdf
