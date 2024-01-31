@@ -9,4 +9,4 @@ karena ukurannya terlalu besar. Hubungi Discord: @ezraelvio untuk data run awal 
 - Python Libraries: Numpy, Pandas, Pickle, sklearn
 
 ### How to use
-- Link ke manual:
+- Link ke manual: https://github.com/EzraelVio/Fish-Viola-Jones/blob/main/docs/skripsi/Manual.md
