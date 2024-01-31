@@ -1,10 +1,9 @@
-Manual Prototype System Klasifikasi Genus Ikan Menggunakan 
-Viola-Jones Feature Extraction dan Boosting Berbasis Decision Tree
+# Manual Prototype System Klasifikasi Genus Ikan Menggunakan Viola-Jones Feature Extraction dan Boosting Berbasis Decision Tree
 
-Nama: Nehemiah Austen Pison
-NIM	: 1313619021
+### Nama: Nehemiah Austen Pison
+### NIM	: 1313619021
 
-== TRAINING ==
+# TRAINING 
 1. masukan semua gambar training ke foldernya
 masing-maasing di /fish_dataset. Tambahkan juga satu folder dan isi dengan gambar negatif (gambar hitam semuanya)
 2a. Sesuaikan nama kelas dan folder pada LoadImages.py
@@ -15,7 +14,7 @@ masing-maasing di /fish_dataset. Tambahkan juga satu folder dan isi dengan gamba
 5b. sesuaikan initial_features = generate_features(50, 50) ke ukuran window yang ingin digunakan (50, 50) adalah window 50x50 piksel
 6. Run __init__.py dan tunggu hingga cascade setiap window sudah di-generate pada folder /Data
 
-== USE ==
+# USE 
 1. Pastikan cascade yang sesuai sudah ada di dalam /Data
 2. Masukan gambar yang ingin diklasifikasi ke folder /classification_target
 3. Sesuaikan teks anotasi pada predict.py sesuai kelas yang akan diklasifikasi
