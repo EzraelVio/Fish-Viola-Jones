@@ -73,6 +73,7 @@ class CascadeStage:
             validation_prediction = Boosting.strong_prediction(self.trees, orderlist, X_valid, self.alpha_list)
             detection_rate = accuracy_score(Y_valid, validation_prediction)
             used_features += 1
+            print('debug')
         print(f'features used in this stage: {used_features}')
         
     def stage_prediction(self, image, x_offset, y_offset, scoreboard):
