@@ -5,7 +5,7 @@ from Boosting import *
 from HaarFeatures import *
 from LoadImages import *
 
-images, labels = combine_dataset()
+# images, labels = combine_dataset()
 # print(np.shape(images))
 # print(labels)
 
@@ -13,17 +13,17 @@ images, labels = combine_dataset()
 # print(dec_tree.accuracies)
 # Boosting.training_strong_classifier(features, trees, splits, accuracies, pickle_name)
 
-alp = Utilities.read_from_pickle('window_0_decision_trees')
+alp = Utilities.read_from_pickle('window_0_strong_classsifier')
 count = 0
-# print(len(alp.trees))
-# # print(alp.features[:20])
-# # print(alp.alpha_list[:20])
-print(alp.accuracies[3738])
-# alp.trees[500000].print_tree()
-# for i in range(len(alp.trees)):
-#     if alp.accuracies[i] > 0.4:
-#         count +=1
-# print(count)
+print(len(alp.trees))
+print(alp.features[:20])
+print(alp.alpha_list[:20])
+# print(alp.accuracies[3738])
+alp.trees[0].print_tree()
+for i in range(len(alp.trees)):
+    if alp.alpha_list[i] > 0.4:
+        count +=1
+print(count)
 
 
 # # Assuming you have a CSV file and you read it into a DataFrame

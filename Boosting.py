@@ -62,7 +62,7 @@ class Boosting:
         print('Boosting...')
         alpha_list = np.zeros(len(orderlist))
         image_weights = image_weights.copy()
-        for i in range(1, len(orderlist)):
+        for i in range(len(orderlist)):
             # make prediction with i-th tree
             treeN = orderlist[i]
             prediction  = trees[treeN].predict(X_test)
