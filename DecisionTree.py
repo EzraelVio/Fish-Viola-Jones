@@ -39,7 +39,7 @@ class DecisionTree:
         return splits
 
     def get_data(features, csv_name):
-        col_names = ['image_ids']
+        col_names = []
         for i in range(len(features)):
             temp_column_name = f'win_1_feature_{i}'
             col_names.append(temp_column_name)

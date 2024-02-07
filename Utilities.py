@@ -27,7 +27,6 @@ class Utilities:
         print("starting write_csv")
         for window_num in range(3):
             temp_window_values = np.zeros((len(images), len(features)), dtype=object)
-            image_ids = np.arange(len(images))
 
             for i in range(len(images)):
                 new_data = Dataset(images[i], labels[i], features)
@@ -38,7 +37,7 @@ class Utilities:
                 elif window_num == 2:
                     temp_window_values[i] = new_data.window_3_features
 
-            window_feature = {'image_ids': image_ids}
+            window_feature = {}
             for i in range(len(features)):
                 column_name = f'win_{window_num + 1}_feature_{i}'
                 window_feature[column_name] = temp_window_values[:, i]
