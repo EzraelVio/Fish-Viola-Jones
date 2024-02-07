@@ -10,8 +10,8 @@ class DecisionTree:
         classifiers = [None] * len(features)
         classifiers_accuracy = [0] * len(features)
         X_train, Y_train, X_test, Y_test, X_valid, Y_valid = splits
-        minimum_splits = 2
-        maximum_depth = 5
+        minimum_splits = 3
+        maximum_depth = 3
         for i in range(len(features)):
             if i % 1000 == 0: print (f'starting tree {i}')
             temp_X_train = X_train[:, i].reshape(-1, 1)
@@ -28,13 +28,13 @@ class DecisionTree:
         labels_df = pd.DataFrame({'Label' : labels})
         data = pd.concat([data, labels_df], axis=1)
 
-        X = data.iloc[:, 1:-1].values 
+        X = data.iloc[:, :-1].values 
         Y = data.iloc[:, -1].values.reshape(-1, 1)
 
         X_temp, X_train, Y_temp, Y_train = train_test_split(X, Y, test_size=0.3, random_state=42)
         X_valid, X_test, Y_valid, Y_test = train_test_split(X_temp, Y_temp, test_size=0.5, random_state=42)
 
-        print(type(X_train))
+        # print(type(X_train))
         splits = [X_train, Y_train, X_test, Y_test, X_valid, Y_valid]
         return splits
 

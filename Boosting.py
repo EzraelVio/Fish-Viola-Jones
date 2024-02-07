@@ -62,7 +62,7 @@ class Boosting:
         print('Boosting...')
         alpha_list = np.zeros(len(orderlist))
         image_weights = image_weights.copy()
-        for i in range(len(orderlist)):
+        for i in range(1, len(orderlist)):
             # make prediction with i-th tree
             treeN = orderlist[i]
             prediction  = trees[treeN].predict(X_test)
@@ -72,7 +72,7 @@ class Boosting:
             epsilon = np.sum(image_weights * indicator) / np.sum(image_weights)
 
             # calculate the weight of the tree
-            alpha = 0.5 * np.log((1 - epsilon) / (epsilon + 1e-10)) + np.log(3 - 1) #1e-10 const added to prevent div by 0. 4 is number of class
+            alpha = 0.5 * np.log((1 - epsilon) / (epsilon + 1e-10)) + np.log(4 - 1) #1e-10 const added to prevent div by 0. 4 is number of class
             if alpha < 1e-10: alpha = 1e-10 #1e-10 const added to prevent alpha getting too small in np.exp(alpha * indicator) later
             alpha_list[i] = alpha
 

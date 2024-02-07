@@ -36,16 +36,16 @@ def load_images(directory):
 def combine_dataset():
     # load datasets from directories
     # add class to get_label first or the class will be considered a negative example
-    # emas_images, emas_labels = load_images("fish_dataset\\emas")
+    emas_images, emas_labels = load_images("fish_dataset\\emas")
     lele_images, lele_labels = load_images("fish_dataset\\lele")
     nila_images, nila_labels = load_images("fish_dataset\\nila")
     negatives_images, negatives_labels = load_images("fish_dataset\\negative_examples")
 
     # combining into a single dataset
-    # images = np.concatenate((emas_images, lele_images, nila_images, negatives_images), axis = 0)
-    # labels = np.concatenate((emas_labels, lele_labels, nila_labels, negatives_labels), axis = 0)
+    images = np.concatenate((emas_images, lele_images, nila_images, negatives_images), axis = 0)
+    labels = np.concatenate((emas_labels, lele_labels, nila_labels, negatives_labels), axis = 0)
 
-    images = np.concatenate((lele_images, nila_images, negatives_images), axis = 0)
-    labels = np.concatenate((lele_labels, nila_labels, negatives_labels), axis = 0)
+    # images = np.concatenate((lele_images, nila_images, negatives_images), axis = 0)
+    # labels = np.concatenate((lele_labels, nila_labels, negatives_labels), axis = 0)
 
     return images, labels

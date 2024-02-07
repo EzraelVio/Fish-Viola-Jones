@@ -38,6 +38,8 @@ for i in range(3):
     # X_test and Y_test for boosting
     # X_valid and Y_valid for training final strong classifier and cascade
     splits = DecisionTree.split_data(features, csv_name_loop, labels)
+    X_train, Y_train, X_test, Y_test, X_valid, Y_valid = splits
+    print(np.shape(X_train))
 
     # create decision tree and saving it in pickle for later. Skip if Pickel has already been made
     # Long ahh progress est. 2+ hours for all 3 window
