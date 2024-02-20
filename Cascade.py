@@ -10,7 +10,7 @@ class Cascade:
         self.stages = []
 
     # fill cascade with stages until there are no more classifier left
-    def fill_cascade(self, features, trees, alpha_list, splits):
+    def fill_cascade(self, features, trees, alpha_list, splits, orderlist):
         print(f'starting to fill cascade...')
         X_train, Y_train, X_test, Y_test, X_valid, Y_valid = splits
         used_features = 0
@@ -18,7 +18,7 @@ class Cascade:
         while True:
             if used_features >= len(features): break
             new_cascade = CascadeStage()
-            new_cascade.train_stage(features, trees, alpha_list, X_valid, Y_valid, used_features)
+            new_cascade.train_stage(features, trees, alpha_list, X_valid, Y_valid, used_features, orderlist)
             used_features += len(new_cascade.trees) #check the total number of features used
             self.stages.append(new_cascade)
         print(f'cascade is finished!')
@@ -60,7 +60,7 @@ class CascadeStage:
         self.trees = []
         self.alpha_list = []
 
-    def train_stage(self, features, trees, alpha_list, X_valid, Y_valid, used_features):
+    def train_stage(self, features, trees, alpha_list, X_valid, Y_valid, used_features, orderlist):
         detection_rate = 0
         while detection_rate < 0.5:
             if used_features >= len(features): break
@@ -69,7 +69,7 @@ class CascadeStage:
             self.trees.append(trees[used_features])
             self.alpha_list.append(alpha_list[used_features])
 
-            orderlist = np.arange(len(self.trees))
+            # orderlist = np.arange(len(self.trees))
             validation_prediction = Boosting.strong_prediction(self.trees, orderlist, X_valid, self.alpha_list)
             detection_rate = accuracy_score(Y_valid, validation_prediction)
             used_features += 1

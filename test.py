@@ -9,21 +9,31 @@ from LoadImages import *
 # print(np.shape(images))
 # print(labels)
 
-# dec_tree = Utilities.read_from_pickle('window_0_decision_trees')
-# print(dec_tree.accuracies)
-# Boosting.training_strong_classifier(features, trees, splits, accuracies, pickle_name)
-
-alp = Utilities.read_from_pickle('window_0_strong_classsifier')
+dec_tree = Utilities.read_from_pickle('window_0_decision_trees')
+list = []
 count = 0
-print(len(alp.trees))
-print(alp.features[:20])
-print(alp.alpha_list[:20])
-# print(alp.accuracies[3738])
-alp.trees[0].print_tree()
-for i in range(len(alp.trees)):
-    if alp.alpha_list[i] > 0.4:
-        count +=1
+# print(dec_tree.accuracies[:10])
+# Boosting.training_strong_classifier(features, trees, splits, accuracies, pickle_name)
+for i in range (len(dec_tree.accuracies)):
+    if dec_tree.accuracies[i] > 0.5:
+        list.append(dec_tree.accuracies[i])
+        count += 1
+print(list)
 print(count)
+# dec_tree.trees[300000].print_tree()
+# print(dec_tree.accuracies[300000])
+
+# alp = Utilities.read_from_pickle('window_0_strong_classsifier')
+# count = 0
+# print(len(alp.trees))
+# print(alp.features[:20])
+# print(alp.alpha_list[:20])
+# # print(alp.accuracies[3738])
+# alp.trees[0].print_tree()
+# for i in range(len(alp.trees)):
+#     if alp.alpha_list[i] > 0.4:
+#         count +=1
+# print(count)
 
 
 # # Assuming you have a CSV file and you read it into a DataFrame

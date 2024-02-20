@@ -10,8 +10,8 @@ class DecisionTree:
         classifiers = [None] * len(features)
         classifiers_accuracy = [0] * len(features)
         X_train, Y_train, X_test, Y_test, X_valid, Y_valid = splits
-        minimum_splits = 3
-        maximum_depth = 3
+        minimum_splits = 2
+        maximum_depth = 5
         for i in range(len(features)):
             if i % 1000 == 0: print (f'starting tree {i}')
             temp_X_train = X_train[:, i].reshape(-1, 1)
@@ -19,7 +19,9 @@ class DecisionTree:
             classifier.fit(temp_X_train, Y_train)
 
             classifiers[i] = classifier
-            Y_pred = classifier.predict(X_test)
+
+            temp_X_test = X_test[:, i].reshape(-1, 1)
+            Y_pred = classifier.predict(temp_X_test)
             classifiers_accuracy[i] = accuracy_score(Y_test, Y_pred)
         return classifiers, classifiers_accuracy
 

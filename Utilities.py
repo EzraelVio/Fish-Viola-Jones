@@ -16,10 +16,11 @@ class PickleTree:
         self.accuracies = accuracies
 
 class PickleTreeFinal:
-    def __init__(self, features, trees, alpha_list):
+    def __init__(self, features, trees, alpha_list, orderlist):
         self.features = features
         self.trees = trees
         self.alpha_list = alpha_list
+        self.orderlist = orderlist
 
 class Utilities:
 

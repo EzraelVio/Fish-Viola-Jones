@@ -53,7 +53,7 @@ class Boosting:
             final_trees[i] = trees[orderlist[i]]
             final_features[i] = features[orderlist[i]]
 
-        pickle_this = PickleTreeFinal(final_features, final_trees, alpha_list)
+        pickle_this = PickleTreeFinal(final_features, final_trees, alpha_list, orderlist)
         Utilities.dump_to_pickle(f'{pickle_name}', pickle_this)
         
 
@@ -65,7 +65,8 @@ class Boosting:
         for i in range(len(orderlist)):
             # make prediction with i-th tree
             treeN = orderlist[i]
-            prediction  = trees[treeN].predict(X_test)
+            temp_X_test = X_test[:, treeN].reshape(-1, 1)
+            prediction  = trees[treeN].predict(temp_X_test)
 
             # calculate error of the tree
             indicator = np.array(np.array(prediction).astype(int) != Y_test.flatten(), dtype = float)
@@ -89,12 +90,13 @@ class Boosting:
         scoreboard = [[0, 0, 0, 0] for _ in range(len(X_valid))]
         for i in range(len(orderlist)):
             tree_index = orderlist[i]
-            prediction = trees[tree_index].predict(X_valid)
+            temp_X_valid = X_valid[:, tree_index].reshape(-1, 1)
+            prediction = trees[tree_index].predict(temp_X_valid)
 
             # add score to scoreboard according to results and alpha value of tree
             for j in range(len(prediction)):
                 weak_learner_prediction = int(prediction[j])
-                scoreboard[j][weak_learner_prediction] += 1 * alpha_list[i]
+                scoreboard[j][weak_learner_prediction] += alpha_list[i]
         
         # return score to the main scoreboard
         for k in range(len(prediction)):
@@ -108,7 +110,7 @@ class Boosting:
     # accuracy can be either from SKlearn comparison or alpha_list
     def get_initial_sorted_accuracy(accuracy, orderlist):
         print(f'initial feature count: {np.shape(orderlist)}')
-        accuracy_threshold = 0.4 # change 0.5 to whatever needed. 0.5 seems logical enough considering the random guessing concept
+        accuracy_threshold = 0.5 # change 0.5 to whatever needed. 0.5 seems logical enough considering the random guessing concept
         accuracy, orderlist = zip(*sorted(zip(accuracy, orderlist), reverse = True))
         orderlist = [classifier for accuracy, classifier in zip(accuracy, orderlist) if accuracy >= accuracy_threshold]
         print(f'after elimination feature count: {np.shape(orderlist)}')

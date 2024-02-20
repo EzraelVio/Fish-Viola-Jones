@@ -62,5 +62,5 @@ for i in range(3):
     strong_classifier = Utilities.read_from_pickle(pickle_name)
     pickle_name = f'window_{i}_cascade'
     cascade = Cascade()
-    cascade.fill_cascade(strong_classifier.features, strong_classifier.trees, strong_classifier.alpha_list, splits)
+    cascade.fill_cascade(strong_classifier.features, strong_classifier.trees, strong_classifier.alpha_list, splits, strong_classifier.orderlist)
     cascade.save_to_pickle(pickle_name)

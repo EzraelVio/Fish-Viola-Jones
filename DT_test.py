@@ -32,13 +32,16 @@ print(data)
 
 X = data.iloc[:, :-1].values 
 Y = data.iloc[:, -1].values.reshape(-1, 1)
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=.2, random_state=41)
+# X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=.2, random_state=41)
+# print(X_train)
+
+X_temp, X_train, Y_temp, Y_train = train_test_split(X, Y, test_size=0.3, random_state=42)
+X_valid, X_test, Y_valid, Y_test = train_test_split(X_temp, Y_temp, test_size=0.5, random_state=42)
 print(X_train)
 
-classifier = DecisionTreeClassifier(3, 3)
+classifier = DecisionTreeClassifier(2, 5)
 classifier.fit(X_train, Y_train)
 classifier.print_tree()
 
 Y_pred = classifier.predict(X_test)
-print("accuracy:")
-print (accuracy_score(Y_test, Y_pred))
+print(f"accuracy: {accuracy_score(Y_test, Y_pred)}")
