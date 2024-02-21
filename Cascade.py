@@ -62,15 +62,17 @@ class CascadeStage:
 
     def train_stage(self, features, trees, alpha_list, X_valid, Y_valid, used_features, orderlist):
         detection_rate = 0
+        temp_orderlist =[]
         while detection_rate < 0.5:
             if used_features >= len(features): break
             # append weak classifier into stage one by one
             self.features.append(features[used_features])
             self.trees.append(trees[used_features])
             self.alpha_list.append(alpha_list[used_features])
+            temp_orderlist.append(orderlist[used_features])
 
             # orderlist = np.arange(len(self.trees))
-            validation_prediction = Boosting.strong_prediction(self.trees, orderlist, X_valid, self.alpha_list)
+            validation_prediction = Boosting.strong_prediction(self.trees, temp_orderlist, X_valid, self.alpha_list, True)
             detection_rate = accuracy_score(Y_valid, validation_prediction)
             used_features += 1
             # print('debug')

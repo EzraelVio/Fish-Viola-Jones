@@ -85,13 +85,18 @@ class Boosting:
 
         return alpha_list
     
-    def strong_prediction(trees, orderlist, X_valid, alpha_list):
+    def strong_prediction(trees, orderlist, X_valid, alpha_list, is_cascade_train = False):
         predictions = [0] * len(X_valid)
         scoreboard = [[0, 0, 0, 0] for _ in range(len(X_valid))]
+        # print(f'trees: {len(trees)}, orderlist: {len(orderlist)}')
         for i in range(len(orderlist)):
             tree_index = orderlist[i]
             temp_X_valid = X_valid[:, tree_index].reshape(-1, 1)
-            prediction = trees[tree_index].predict(temp_X_valid)
+            if is_cascade_train == False:
+                prediction = trees[tree_index].predict(temp_X_valid)
+            else:
+                prediction = trees[i].predict(temp_X_valid)
+                
 
             # add score to scoreboard according to results and alpha value of tree
             for j in range(len(prediction)):
